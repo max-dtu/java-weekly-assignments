@@ -1,0 +1,1257 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 6, Part 1: Simple Classes and Objects &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 6, Part 2: More About Arrays and Objects" href="arrays-simple-classes-2.html" />
+    <link rel="prev" title="Module 5, Part 2: Lab Day" href="lab-day-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 6, Part 1: Simple Classes and Objects</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-simple-class-and-creating-objects">Defining a Simple Class and Creating Objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructors">Constructors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-static-object-methods">Non-Static Object Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point">01 - Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-2">02 - Point 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cars">03 - Cars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cars-2">04 - Cars 2</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-6-part-1-simple-classes-and-objects">
+<span id="mod-simple-classes"></span><h1>Module 6, Part 1: Simple Classes and Objects<a class="headerlink" href="#module-6-part-1-simple-classes-and-objects" title="Permalink to this heading">#</a></h1>
+<p>In this Module we study the fundamentals of <strong>Java classes and objects</strong>.</p>
+<p>When designing and writing programs, it is often necessary to model entities
+that can be described as <em>groups</em> of values, where each value has its its own
+(possibly distinct) type. In Java, we can represent such entities using
+<strong>classes and objects</strong> — and in this section we explore their basic concepts:</p>
+<ul class="simple">
+<li><p>How to <a class="reference internal" href="#sec-simple-classes-basic"><span class="std std-ref">define a simple class and create objects of that class</span></a>;</p></li>
+<li><p>What is a <a class="reference internal" href="#sec-simple-classes-constructor"><span class="std std-ref">constructor</span></a>
+and how it initialises a new object of a class;</p></li>
+<li><p>How to define
+<a class="reference internal" href="#sec-simple-classes-methods"><span class="std std-ref">(non-static) methods</span></a>
+in a class, and how to call such methods on objects of that class.</p></li>
+</ul>
+<span class="target" id="index-0"></span><div class="admonition note" id="index-1">
+<p class="admonition-title">Note</p>
+<p>In Java, classes are a very powerful and ubiquitous building block for
+programs.  In this section we explore a “simple” usage of classes, that
+roughly correspond to what other programming languages would call a
+<strong>structure</strong> or <strong>record</strong>.  Later in the course we will study more advanced
+notions and usages of classes.</p>
+</div>
+<span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><section id="defining-a-simple-class-and-creating-objects">
+<span id="sec-simple-classes-basic"></span><span id="index-6"></span><h2>Defining a Simple Class and Creating Objects<a class="headerlink" href="#defining-a-simple-class-and-creating-objects" title="Permalink to this heading">#</a></h2>
+<p>Suppose we want to write a program that handles items in a shop, and each item
+must contain information about:</p>
+<ul class="simple">
+<li><p>the item’s <em>name</em> (which we can model as value of type <code class="docutils literal notranslate"><span class="pre">String</span></code>)</p></li>
+<li><p>the item’s <em>net price</em> (which we can model as a value of type <code class="docutils literal notranslate"><span class="pre">double</span></code>)</p></li>
+<li><p>the item’s <em>VAT</em> (which we can model as a value of type <code class="docutils literal notranslate"><span class="pre">double</span></code>)</p></li>
+<li><p>the item’s <em>availability</em> in the shop (which we can model as a value of type
+<code class="docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+</ul>
+<p>In principle we could try representing and handling the information above by
+defining a bunch of variables and arrays (of different types) throughout our
+program.  However, to make our program more readable, understandable, and easier
+to maintain, it makes much more sense to
+<strong>define a new type describing a shop item</strong>, so that every value of
+that type represents a complete shop item with all the required information.</p>
+<p>To achieve this, in Java we can define a <strong>class</strong> describing a shop item: let
+us call such a class e.g. <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>.  The class definition, in turn, can
+specify zero or more <strong>fields</strong> to represent the shop item’s information (i.e.
+the item’s name, net price, VAT, and availability).</p>
+<p>After our new class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> is defined, we can write programs that create and
+use <strong>objects</strong> of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> (such objects are also called
+<strong>instances</strong> of the class <code class="docutils literal notranslate"><span class="pre">shopItem</span></code>).  Intuitively, a class works like a
+blueprint for creating objects: see <a class="reference internal" href="#fig-classes-cookie-cutters"><span class="std std-numref">Fig. 18</span></a> below.
+More precisely:</p>
+<ul class="simple">
+<li><p>the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> specifies the names and types of fields (e.g., the name
+of a shop item is a <code class="docutils literal notranslate"><span class="pre">String</span></code>, the VAT of a shop item is an <code class="docutils literal notranslate"><span class="pre">int</span></code>eger…), and</p></li>
+<li><p>each object of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> actually “contains” a value for each one
+of those fields.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> type is a <strong>structured data type</strong>, in the sense that a value
+(i.e., an object) of the type <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> “contains” other values (one per
+field).</p>
+<p>This is shown in detail in <a class="reference internal" href="#eg-shop-item">Example 37</a> below.</p>
+<figure class="align-default" id="fig-classes-cookie-cutters">
+<img alt="Cookie cutters and cookies" src="_images/cookie-cutters.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Defining a class is conceptually similar to building a cookie cutter. Then,
+creating objects of that class is conceptually similar to using that cookie
+cutter to make cookies: each cookie (i.e., each object) will have a shape (i.e.,
+fields and values) determined by the cookie cutter (i.e., by the class) used to
+create it. (Image from
+<a class="reference external" href="https://www.amazon.de/-/en/Stainless-Cutters-Biscuit-Biscuits-Accessories/dp/B08YJ6RLCB">https://www.amazon.de/-/en/Stainless-Cutters-Biscuit-Biscuits-Accessories/dp/B08YJ6RLCB</a>)</span><a class="headerlink" href="#fig-classes-cookie-cutters" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof example admonition" id="eg-shop-item">
+<p class="admonition-title"><span class="caption-number">Example 37 </span> (A simple class representing a shop item)</p>
+<section class="example-content" id="proof-content">
+<p>The following class definition describes a shop item, with four fields (<code class="docutils literal notranslate"><span class="pre">name</span></code>,
+<code class="docutils literal notranslate"><span class="pre">netPrice</span></code>, <code class="docutils literal notranslate"><span class="pre">vat</span></code>, and <code class="docutils literal notranslate"><span class="pre">availability</span></code>).  Note that, for each field, we specify
+the type followed by the field name: e.g. <code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">vat</span></code> means that the field
+called <code class="docutils literal notranslate"><span class="pre">vat</span></code> has type <code class="docutils literal notranslate"><span class="pre">double</span></code>. <em>(Try to copy&amp;paste the following class
+definition on the Java shell!)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">ShopItem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">availability</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you copy&amp;paste the code above on the Java shell, you will see the output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>| created class ShopItem
+</pre></div>
+</div>
+<p>This means that Java is now aware of the definition of the new class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>,
+and we can define new objects belonging to that class. The intuition is that the
+definition of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> works like a blueprint for creating new
+objects (or as a “cookie cutter” for creating new “cookies,” see
+<a class="reference internal" href="#fig-classes-cookie-cutters"><span class="std std-numref">Fig. 18</span></a> above): every object created as an instance
+of <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> will contain a field called <code class="docutils literal notranslate"><span class="pre">name</span></code> (with a value of type
+<code class="docutils literal notranslate"><span class="pre">String</span></code>), a field called <code class="docutils literal notranslate"><span class="pre">netPrice</span></code> (with a value of type <code class="docutils literal notranslate"><span class="pre">double</span></code>), etc.</p>
+<p>For instance, we can try:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var item1 = new ShopItem();
+</span>item1 ==&gt; ShopItem@52cc8049
+|  created variable item1 : ShopItem
+</pre></div>
+</div>
+<p>This way, we have created a new object of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> (using <code class="docutils literal notranslate"><span class="pre">new</span></code>),
+and that object has been used to declare the variable <code class="docutils literal notranslate"><span class="pre">item1</span></code>: therefore, the
+variable <code class="docutils literal notranslate"><span class="pre">item1</span></code> has type <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>, and we can use the variable <code class="docutils literal notranslate"><span class="pre">item1</span></code> to
+access the newly-created object. <em>(The line <code class="docutils literal notranslate"><span class="pre">item1</span> <span class="pre">==&gt;</span> <span class="pre">ShopItem&#64;52cc8049</span></code> may
+be slightly different on your computer)</em></p>
+<p>The fields of the newly-created object have a <strong>default value</strong>, that we can see
+by printing the fields’ values on screen.  To access the fields of the object
+associated to the variable <code class="docutils literal notranslate"><span class="pre">item1</span></code>, we simply write <code class="docutils literal notranslate"><span class="pre">item1</span></code> followed by a dot
+<code class="docutils literal notranslate"><span class="pre">.</span></code> and the field name.  For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Name of &#39;item1&#39;: &quot; + item1.name)
+</span>Name of &#39;item1&#39;: null
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">null</span></code> means that no string has been specified for the field <code class="docutils literal notranslate"><span class="pre">name</span></code> of the
+newly-created object. We will discuss <code class="docutils literal notranslate"><span class="pre">null</span></code> values in (much) more detail later
+in the course.</p>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Net price of &#39;item1&#39;: &quot; + item1.netPrice)
+</span>Net price of &#39;item1&#39;: 0.0
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;VAT of &#39;item1&#39;: &quot; + item1.vat)
+</span>VAT of &#39;item1&#39;: 0.0
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Availability of &#39;item1&#39;: &quot; + item1.availability)
+</span>Availability of &#39;item1&#39;: 0
+</pre></div>
+</div>
+<p>We can change the values to the object fields by using assignments.  For
+instance: <em>(copy&amp;paste the following code on the Java shell)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">item1</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Freesbee&quot;</span><span class="p">;</span>
+<span class="n">item1</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">115</span><span class="p">;</span>
+<span class="n">item1</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span><span class="p">;</span>
+<span class="n">item1</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>And now, if we print the object fields again, we get:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Name of &#39;item1&#39;: &quot; + item1.name)
+</span>Name of &#39;item1&#39;: Freesbee
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Net price of &#39;item1&#39;: &quot; + item1.netPrice)
+</span>Net price of &#39;item1&#39;: 115
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;VAT of &#39;item1&#39;: &quot; + item1.vat)
+</span>VAT of &#39;item1&#39;: 0.25
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Availability of &#39;item1&#39;: &quot; + item1.availability)
+</span>Availability of &#39;item1&#39;: 42
+</pre></div>
+</div>
+<p>Of course, we can create new objects of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>, and each object
+will have its own fields with their own value, which we can read and modify.
+For example:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">item2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">();</span>
+<span class="n">item2</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Newspaper Politiken&quot;</span><span class="p">;</span>
+<span class="n">item2</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+<span class="n">item2</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="n">item2</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><em>(Try printing the values of the fields of <code class="docutils literal notranslate"><span class="pre">item2</span></code> on screen, and observe that
+they are different from the values in the fields of <code class="docutils literal notranslate"><span class="pre">item1</span></code>.)</em></p>
+</section>
+</div><span class="target" id="index-7"></span><span class="target" id="index-8"></span><section id="constructors">
+<span id="sec-simple-classes-constructor"></span><span id="index-9"></span><h3>Constructors<a class="headerlink" href="#constructors" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#eg-shop-item">Example 37</a> shows how to create a new object of our new class (in
+this case, <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>) — but it also shows the fields of newly-created objects
+contain default values that we may need to change afterwards, by assigning the
+desired values.  It would be more convenient to directly create objects whose
+fields have the desired values.  To do that, we can define one or more
+<strong>constructors</strong>, which take some arguments and use them to initialise the
+fields of the new object as we need.  This is shown in
+<a class="reference internal" href="#eg-shop-item-constructor">Example 38</a> below.</p>
+<div class="proof example admonition" id="eg-shop-item-constructor">
+<p class="admonition-title"><span class="caption-number">Example 38 </span> (Defining a constructor for the shop item objects)</p>
+<section class="example-content" id="proof-content">
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you have tried <a class="reference internal" href="#eg-shop-item">Example 37</a> on the Java shell, you will need to
+<strong>reset the Java shell</strong> before trying the code snippets below.  To reset the
+Java shell, write <code class="docutils literal notranslate"><span class="pre">/reset</span></code> and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code>.</p>
+</div>
+<p>Consider the following class definition for <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> — which is based on the
+definition in <a class="reference internal" href="#eg-shop-item">Example 37</a>, plus some additional lines (highlighted):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ShopItem</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">availability</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="hll"><span class="linenos"> 7</span><span class="w">    </span><span class="n">ShopItem</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">avail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 9</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">10</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">13</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Lines 7–12 define a <strong>constructor</strong> that takes 4 arguments (<code class="docutils literal notranslate"><span class="pre">name</span></code> of type
+<code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">netPrice</span></code> of type <code class="docutils literal notranslate"><span class="pre">double</span></code>, etc.).</p>
+<p>Intuitively, the constructor works a bit like a
+<a class="reference internal" href="structured.html#sec-structured-struct-static-methods"><span class="std std-ref">static method</span></a>, i.e. it is a
+sub-program that can be called by passing the required arguments.  However, the
+constructor has two key differences:</p>
+<ul class="simple">
+<li><p>the constructor above is called when we create a new object of the
+class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> (using <code class="docutils literal notranslate"><span class="pre">new</span></code>) with the required 4 arguments; and</p></li>
+<li><p>inside the constructor body, the newly-crated object can be accessed through a
+special predefined variable called <code class="docutils literal notranslate"><span class="pre">this</span></code> (which is <em>not</em> available inside a
+“normal” static method).</p></li>
+</ul>
+<p>By defining the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> with the constructor above, we can create new
+objects of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> in a more convenient way, as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var item3 = new ShopItem(&quot;Plant pot&quot;, 61.5, 0.25, 23)
+</span>item3 ==&gt; ShopItem@52cc8049
+|  created variable item3 : ShopItem
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">ShopItem(&quot;Plant</span> <span class="pre">pot&quot;,</span> <span class="pre">61.5,</span> <span class="pre">0.25,</span> <span class="pre">23)</span></code> is executed, the <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>
+constructor above is called with the specified actual arguments, and the
+following happens:</p>
+<ul class="simple">
+<li><p>in the body of the constructor, the special variable <code class="docutils literal notranslate"><span class="pre">this</span></code> automatically
+refers to the newly-created object;</p></li>
+<li><p>on line 8 of the constructor, the field <code class="docutils literal notranslate"><span class="pre">name</span></code> of <code class="docutils literal notranslate"><span class="pre">this</span></code> object (i.e.
+<code class="docutils literal notranslate"><span class="pre">this.name</span></code>) is assigned the actual value of the constructor argument <code class="docutils literal notranslate"><span class="pre">name</span></code>
+(which is <code class="docutils literal notranslate"><span class="pre">&quot;Plant</span> <span class="pre">pot&quot;</span></code>);</p></li>
+<li><p>on line 9 of the constructor, the field <code class="docutils literal notranslate"><span class="pre">netPrice</span></code> of <code class="docutils literal notranslate"><span class="pre">this</span></code> object (i.e.
+<code class="docutils literal notranslate"><span class="pre">this.netPrice</span></code>) is assigned the actual value of the constructor argument
+<code class="docutils literal notranslate"><span class="pre">netPrice</span></code> (which is 61.5);</p></li>
+<li><p>lines 10 and 11 of the constructor are similar: the fields <code class="docutils literal notranslate"><span class="pre">this.vat</span></code> and
+<code class="docutils literal notranslate"><span class="pre">this.availability</span></code> are assigned the actual values of the corresponding
+constructor arguments (which are 0.25 and 23, respectively).</p></li>
+</ul>
+<p>Now, if we print the values of the fields of <code class="docutils literal notranslate"><span class="pre">item3</span></code>, we can see that they have
+the values specified when we created the object using <code class="docutils literal notranslate"><span class="pre">new</span></code> (which in turn
+called the constructor):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Name of &#39;item3&#39;: &quot; + item3.name)
+</span>Name of &#39;item3&#39;: Plant pot
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Net price of &#39;item3&#39;: &quot; + item3.netPrice)
+</span>Net price of &#39;item3&#39;: 61.5
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;VAT of &#39;item3&#39;: &quot; + item3.vat)
+</span>VAT of &#39;item3&#39;: 0.25
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Availability of &#39;item3&#39;: &quot; + item3.availability)
+</span>Availability of &#39;item3&#39;: 23
+</pre></div>
+</div>
+</section>
+</div><div class="proof example admonition" id="eg-shopitem-program">
+<p class="admonition-title"><span class="caption-number">Example 39 </span> (A program using the <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> class)</p>
+<section class="example-content" id="proof-content">
+<p>Let us consider this task: write a program that creates two shop items,
+prints them on screen, then increases their net price by 10%, and prints the
+items on screen again.</p>
+<p>The program below is a possible solution to this task.  Notice that it uses the
+<code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> class introduced in <a class="reference internal" href="#eg-shop-item-constructor">Example 38</a> — but in
+order to avoid code duplication, it enriches the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> by defining
+two <a class="reference internal" href="structured.html#sec-structured-struct-static-methods"><span class="std std-ref">static methods</span></a>
+(highlighted) with useful functionality:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">description(item)</span></code> creates and returns a <code class="docutils literal notranslate"><span class="pre">String</span></code> that shows
+the values of the various fields of the given <code class="docutils literal notranslate"><span class="pre">item</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inflateNetPrice(item,</span> <span class="pre">percentage)</span></code> modifies <code class="docutils literal notranslate"><span class="pre">item</span></code> by increasing its net
+price by the given percentage.  <strong>NOTE:</strong> the return type of this static
+method is <code class="docutils literal notranslate"><span class="pre">void</span></code>, which means that calling <code class="docutils literal notranslate"><span class="pre">inflateNetPrice(item,</span> <span class="pre">...)</span></code> does
+<em>not</em> produce any result value: the only purpose of that static method is to
+modify the given <code class="docutils literal notranslate"><span class="pre">item</span></code>.  As a consequence, we cannot call
+<code class="docutils literal notranslate"><span class="pre">inflateNetPrice(...)</span></code> from inside an expression (if you try, you will get
+a type error, due to the return type <code class="docutils literal notranslate"><span class="pre">void</span></code>). Correspondingly, the body
+of the method <code class="docutils literal notranslate"><span class="pre">inflateNetPrice(...)</span></code> does <em>not</em> return any value.</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ShopPrices</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">item1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Cellphone&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">item2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Chocolate bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item 1: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">.</span><span class="na">description</span><span class="p">(</span><span class="n">item1</span><span class="p">));</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item 2: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">.</span><span class="na">description</span><span class="p">(</span><span class="n">item2</span><span class="p">));</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Applying 10% inflation to net prices... &quot;</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">        </span><span class="n">ShopItem</span><span class="p">.</span><span class="na">inflateNetPrice</span><span class="p">(</span><span class="n">item1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">ShopItem</span><span class="p">.</span><span class="na">inflateNetPrice</span><span class="p">(</span><span class="n">item2</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Done.&quot;</span><span class="p">);</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item 1: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">.</span><span class="na">description</span><span class="p">(</span><span class="n">item1</span><span class="p">));</span>
+<span class="linenos">15</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item 2: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">.</span><span class="na">description</span><span class="p">(</span><span class="n">item2</span><span class="p">));</span>
+<span class="linenos">16</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="kd">class</span> <span class="nc">ShopItem</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">availability</span><span class="p">;</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="w">    </span><span class="n">ShopItem</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">avail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">26</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">27</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos">28</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">;</span>
+<span class="linenos">30</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">31</span>
+<span class="hll"><span class="linenos">32</span><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="n">ShopItem</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">33</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (price: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; DKK + &quot;</span>
+</span><span class="hll"><span class="linenos">34</span><span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;% VAT; &quot;</span>
+</span><span class="hll"><span class="linenos">35</span><span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;availability: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">36</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">37</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">38</span>
+<span class="hll"><span class="linenos">39</span><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">inflateNetPrice</span><span class="p">(</span><span class="n">ShopItem</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">percentage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">40</span><span class="w">        </span><span class="n">item</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">percentage</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span><span class="p">));</span>
+</span><span class="hll"><span class="linenos">41</span>
+</span><span class="linenos">42</span><span class="w">        </span><span class="c1">// This &quot;return&quot; is optional, since this method returns nothing (void)</span>
+<span class="linenos">43</span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">44</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">45</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If you copy&amp;paste the program above in a Java file (called e.g.
+<code class="docutils literal notranslate"><span class="pre">ShopPrices.java</span></code>) and execute it, you will see the output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Item 1: Cellphone (price: 2500.0 DKK + 25.0% VAT; availability: 8)
+Item 2: Chocolate bar (price: 25.0 DKK + 25.0% VAT; availability: 37)
+Applying 10% inflation to net prices... Done.
+Item 1: Cellphone (price: 2750.0 DKK + 25.0% VAT; availability: 8)
+Item 2: Chocolate bar (price: 27.5 DKK + 25.0% VAT; availability: 37)
+</pre></div>
+</div>
+</section>
+</div><div class="proof remark admonition" id="remark-pass-objects-methods-modify">
+<p class="admonition-title"><span class="caption-number">Remark 16 </span> (Passing objects as arguments to a method)</p>
+<section class="remark-content" id="proof-content">
+<p>The program in <a class="reference internal" href="#eg-shopitem-program">Example 39</a> shows that <strong>if you call a method
+and give it an object as argument, then the method can modify that object</strong>.
+More specifically, you can observe that:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">main</span></code> method of the program calls the static method
+<code class="docutils literal notranslate"><span class="pre">ShopItem.inflateNetPrice(...)</span></code> twice, by providing as arguments the
+<code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> objects in variables <code class="docutils literal notranslate"><span class="pre">item1</span></code> and <code class="docutils literal notranslate"><span class="pre">item2</span></code>;</p></li>
+<li><p>the static method <code class="docutils literal notranslate"><span class="pre">ShopItem.inflateNetPrice(item,</span> <span class="pre">...)</span></code> modifies the object
+field <code class="docutils literal notranslate"><span class="pre">item.netPrice</span></code>; and</p></li>
+<li><p>after the method call returns, <code class="docutils literal notranslate"><span class="pre">main</span></code> prints the values of <code class="docutils literal notranslate"><span class="pre">item1.netPrice</span></code>
+and <code class="docutils literal notranslate"><span class="pre">item2.netPrice</span></code> (by calling <code class="docutils literal notranslate"><span class="pre">ShopItem.description(...)</span></code>) — and we can
+observe that the values of those fields have changed.</p></li>
+</ul>
+<p>The general intuition here is that when a program calls a method by providing an
+object as argument, then the program “passes the control over the whole object”
+to the method — and the method might change the values of the object’s fields.
+This is what <code class="docutils literal notranslate"><span class="pre">ShopItem.inflateNetPrice(...)</span></code> does.</p>
+<p><em>(In the next modules we will see more precisely why and how this happens.)</em></p>
+</section>
+</div><span class="target" id="index-10"></span><span class="target" id="index-11"></span><span class="target" id="index-12"></span></section>
+<section id="non-static-object-methods">
+<span id="sec-simple-classes-methods"></span><span id="index-13"></span><h3>Non-Static Object Methods<a class="headerlink" href="#non-static-object-methods" title="Permalink to this heading">#</a></h3>
+<p>In <a class="reference internal" href="#eg-shopitem-program">Example 39</a> we have enriched the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> with
+some <a class="reference internal" href="structured.html#sec-structured-struct-static-methods"><span class="std std-ref">static methods</span></a> that
+implement <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>-related functionality, making the code better organised and
+more reusable.</p>
+<p>However, static methods are not the only tool to achieve this result: we can
+also implement <strong>non-static methods</strong> (a.k.a. <strong>object method</strong>, or simply
+<strong>methods</strong>).</p>
+<p>From the caller perspective, the difference between a static method of class
+<code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> and a non-static method of an object of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> is that:</p>
+<ul>
+<li><p>in <a class="reference internal" href="#eg-shopitem-program">Example 39</a> we call e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">ShopItem</span><span class="p">.</span><span class="na">description</span><span class="p">(</span><span class="n">item1</span><span class="p">)</span>
+<span class="n">ShopItem</span><span class="p">.</span><span class="na">description</span><span class="p">(</span><span class="n">item2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>i.e. we specify the class that contains the static method
+(<code class="docutils literal notranslate"><span class="pre">ShopItem.description(...)</span></code>) and we provide as argument the object that the
+static method uses for its computations (<code class="docutils literal notranslate"><span class="pre">item1</span></code> and then <code class="docutils literal notranslate"><span class="pre">item2</span></code>);</p>
+</li>
+<li><p>instead, the corresponding calls to a similar <em>non-static</em> method would look
+like:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">item1</span><span class="p">.</span><span class="na">description</span><span class="p">()</span>
+<span class="n">item2</span><span class="p">.</span><span class="na">description</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which mean: <em>“call the method <code class="docutils literal notranslate"><span class="pre">description()</span></code> of the object in the variable
+<code class="docutils literal notranslate"><span class="pre">item1</span></code>,”</em> and then do the same with the object in <code class="docutils literal notranslate"><span class="pre">item2</span></code>.  Notice that we
+do not need to pass the object as parameter (because we have already selected
+the object when calling its method).</p>
+</li>
+</ul>
+<p>To achieve this result, we only need to apply a few changes to static methods in
+<a class="reference internal" href="#eg-shopitem-program">Example 39</a> (that are shown in
+<a class="reference internal" href="#eg-shopitem-program-nonstatic-methods">Example 40</a> below):</p>
+<ol class="arabic simple">
+<li><p>we remove the <code class="docutils literal notranslate"><span class="pre">static</span></code> keyword from the method definition, and</p></li>
+<li><p>we remove the argument of type <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> on which the original static
+methods operates.  Instead, inside the method body we can use the the
+special predefined variable <code class="docutils literal notranslate"><span class="pre">this</span></code> (the same special variable that we also
+used in the <a class="reference internal" href="#sec-simple-classes-constructor"><span class="std std-ref">constructor</span></a>).</p></li>
+</ol>
+<p>Non-static methods can make our code even more compact — and later in the
+course we will see that non-static methods have other very useful features.</p>
+<div class="proof example admonition" id="eg-shopitem-program-nonstatic-methods">
+<p class="admonition-title"><span class="caption-number">Example 40 </span> (A program using the <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> class, version 2)</p>
+<section class="example-content" id="proof-content">
+<p>The program below is a variation of the one in <a class="reference internal" href="#eg-shopitem-program">Example 39</a>
+where the static methods <code class="docutils literal notranslate"><span class="pre">description</span></code> and <code class="docutils literal notranslate"><span class="pre">inflateNetPrice</span></code> are converted into
+non-static methods.  The resulting differences with
+<a class="reference internal" href="#eg-shopitem-program">Example 39</a> are highlighted.</p>
+<p>Notice that:</p>
+<ul class="simple">
+<li><p>the non-static methods do <em>not</em> have the keyword <code class="docutils literal notranslate"><span class="pre">static</span></code> in their definition;</p></li>
+<li><p>in the body of the methods, we use the special predefined variable <code class="docutils literal notranslate"><span class="pre">this</span></code> to
+access the object that we used to call the method.  So, for example:</p>
+<ul>
+<li><p>when the code calls <code class="docutils literal notranslate"><span class="pre">item1.description()</span></code>, then the variable <code class="docutils literal notranslate"><span class="pre">this</span></code> on lines
+33–35 lets the method access the same object of the variable <code class="docutils literal notranslate"><span class="pre">item1</span></code>;</p></li>
+<li><p>when the code calls <code class="docutils literal notranslate"><span class="pre">item2.inflateNetPrice(10)</span></code>, then the variable <code class="docutils literal notranslate"><span class="pre">this</span></code> on
+line 40 lets the method access (and modify) the same object of the variable
+<code class="docutils literal notranslate"><span class="pre">item2</span></code>;</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ShopPrices</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">item1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Cellphone&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">item2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Chocolate bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="hll"><span class="linenos"> 6</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item 1: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item1</span><span class="p">.</span><span class="na">description</span><span class="p">());</span>
+</span><span class="hll"><span class="linenos"> 7</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item 2: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item2</span><span class="p">.</span><span class="na">description</span><span class="p">());</span>
+</span><span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Applying 10% inflation to net prices... &quot;</span><span class="p">);</span>
+<span class="hll"><span class="linenos">10</span><span class="w">        </span><span class="n">item1</span><span class="p">.</span><span class="na">inflateNetPrice</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="n">item2</span><span class="p">.</span><span class="na">inflateNetPrice</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span><span class="linenos">12</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Done.&quot;</span><span class="p">);</span>
+<span class="linenos">13</span>
+<span class="hll"><span class="linenos">14</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item 1: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item1</span><span class="p">.</span><span class="na">description</span><span class="p">());</span>
+</span><span class="hll"><span class="linenos">15</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item 2: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item2</span><span class="p">.</span><span class="na">description</span><span class="p">());</span>
+</span><span class="linenos">16</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="kd">class</span> <span class="nc">ShopItem</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">availability</span><span class="p">;</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="w">    </span><span class="n">ShopItem</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">avail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">26</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">27</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos">28</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">;</span>
+<span class="linenos">30</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">31</span>
+<span class="hll"><span class="linenos">32</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">33</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (price: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; DKK + &quot;</span>
+</span><span class="hll"><span class="linenos">34</span><span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;% VAT; &quot;</span>
+</span><span class="hll"><span class="linenos">35</span><span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;availability: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">36</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">37</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">38</span>
+<span class="hll"><span class="linenos">39</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">inflateNetPrice</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">percentage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">40</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">percentage</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span><span class="p">));</span>
+</span><span class="hll"><span class="linenos">41</span>
+</span><span class="linenos">42</span><span class="w">        </span><span class="c1">// This &quot;return&quot; is optional, since this method returns nothing (void)</span>
+<span class="linenos">43</span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">44</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">45</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+</section>
+<section id="concluding-remarks">
+<span id="sec-simple-classes-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of two main topics:</p>
+<ul class="simple">
+<li><p>How to define and use <a class="reference internal" href="#sec-simple-classes-basic"><span class="std std-ref">classes</span></a>
+to group values of different types into a single object, and how to define
+a <a class="reference internal" href="#sec-simple-classes-constructor"><span class="std std-ref">constructor</span></a> to
+initialise a new object (using the special predefined variable <code class="docutils literal notranslate"><span class="pre">this</span></code>);</p></li>
+<li><p>How to organise your code using
+<a class="reference internal" href="#sec-simple-classes-methods"><span class="std std-ref">(non-static) methods</span></a> that
+can be called using an object — and how methods can use the special
+special predefined variable <code class="docutils literal notranslate"><span class="pre">this</span></code> to access the object used to call them, and
+to read and modify the values of that object’s fields.</p></li>
+</ul>
+<p>With this knowledge, you should be able to understand each line of the programs
+in <a class="reference internal" href="arrays.html#eg-lotto-numbers-solution">Example 34</a> and
+<a class="reference internal" href="#eg-shopitem-program-nonstatic-methods">Example 40</a>.</p>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-simple-classes-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: they sometimes mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 4.1 - “Classes and Objects Revisited”</p></li>
+<li><p>Section 4.2 - “Anatomy of a Class”</p></li>
+<li><p>Section 4.4 - “Anatomy of a Method”</p></li>
+<li><p>Section 4.5 - “Constructors Revisited”</p></li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-simple-classes-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="ex-shopitem-more-methods">
+
+<p class="admonition-title"><span class="caption-number">Exercise 26 </span> (Adding more methods to <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>)</p>
+<section id="exercise-content">
+<p>Try to extend the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> in the Java program in
+<a class="reference internal" href="#eg-shopitem-program-nonstatic-methods">Example 40</a> by adding the following
+methods:</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="nf">price</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method computes and returns the full price of <code class="docutils literal notranslate"><span class="pre">this</span></code> shop item, by
+adding the item’s VAT to the item’s net price.  For example, consider the
+following program snippet:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">headphones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Headphones&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Price (including VAT): &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">headphones</span><span class="p">.</span><span class="na">price</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>The program snippet above should output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Price (including VAT): 875.0
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> the method must not modify the values of the object’s fields.</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">ShopItem</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">this</span></code> shop item is equal to the <code class="docutils literal notranslate"><span class="pre">other</span></code> shop
+item given as argument.  To be “equal,” the two objects <code class="docutils literal notranslate"><span class="pre">this</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>
+must have equal values in their corresponding fields.  If the two objects are
+not equal, the method returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>For example, consider the following program snippet:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">item1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;AAA batteries&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">item2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; batteries&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">item1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">item2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The items are equal&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The items are different&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The program snippet above should output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The items are equal
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> the method must not modify the values of the object fields.
+Also remember that, in order to check whether two <code class="docutils literal notranslate"><span class="pre">String</span></code> objects are equal,
+you should
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-strings-comparison"><span class="std std-ref">use the .equals(…) method</span></a>.</p>
+</li>
+</ul>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-simple-classes-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-simple-classes-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-simple-classes-point"><span class="std std-ref">01 - Point</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-simple-classes-point-2"><span class="std std-ref">02 - Point 2</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-simple-classes-cars"><span class="std std-ref">03 - Cars</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-simple-classes-cars-2"><span class="std std-ref">04 - Cars 2</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="point">
+<span id="lab-simple-classes-point"></span><h3>01 - Point<a class="headerlink" href="#point" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Point.java</span></code> provided in the handout, and implement a class called
+<code class="docutils literal notranslate"><span class="pre">Point</span></code> representing a point on the Cartesian plane.  The requirements are:</p>
+<ul>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> must have two fields called <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, both
+having type <code class="docutils literal notranslate"><span class="pre">double</span></code>.  Therefore, if <code class="docutils literal notranslate"><span class="pre">p</span></code> is an object of type <code class="docutils literal notranslate"><span class="pre">Point</span></code>, we can
+write e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+<span class="n">p</span><span class="p">.</span><span class="na">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The point coordinates are: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Point</span></code> must have the following static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method modifies the <code class="docutils literal notranslate"><span class="pre">Point</span></code> object <code class="docutils literal notranslate"><span class="pre">p</span></code> by adding to its fields
+<code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> the values <code class="docutils literal notranslate"><span class="pre">dx</span></code> and <code class="docutils literal notranslate"><span class="pre">dy</span></code>, respectively. (Remember that <code class="docutils literal notranslate"><span class="pre">void</span></code>
+means that the static method <code class="docutils literal notranslate"><span class="pre">move(...)</span></code> does not return any value.)</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Point</span></code> must have the following static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method creates and returns a <em>new</em> <code class="docutils literal notranslate"><span class="pre">Point</span></code> object whose
+coordinates are obtained from the coordinates <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> of the <code class="docutils literal notranslate"><span class="pre">Point</span></code>
+object <code class="docutils literal notranslate"><span class="pre">p</span></code>, by adding the values of the arguments <code class="docutils literal notranslate"><span class="pre">dx</span></code> and <code class="docutils literal notranslate"><span class="pre">dy</span></code>, respectively.
+<strong>NOTE:</strong> the method must <em>not</em> modify the fields the object <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">Point</span></code>, and they might not compile or
+work correctly until you complete the implementation of class <code class="docutils literal notranslate"><span class="pre">Point</span></code> in the
+file <code class="docutils literal notranslate"><span class="pre">Point.java</span></code>.  You should read those test programs and try to run them, but
+you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Point.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>You may want to read again <a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">how to split a Java program into separate files</span></a>.</p></li>
+<li><p>To check whether your solution works with one of the test programs, you will
+need to compile at least <code class="docutils literal notranslate"><span class="pre">Point.java</span></code> and that test program.  For instance, if
+you want to try <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, you will need to first run (on the console):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac Point.java Test01.java
+</pre></div>
+</div>
+<p>and then you can execute the <code class="docutils literal notranslate"><span class="pre">main</span></code> method contained in the class <code class="docutils literal notranslate"><span class="pre">Test01</span></code>, by
+running:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java Test01
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="point-2">
+<span id="lab-simple-classes-point-2"></span><h3>02 - Point 2<a class="headerlink" href="#point-2" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This assessment is a variation of <a class="reference internal" href="#lab-simple-classes-point"><span class="std std-ref">01 - Point</span></a>, with two
+goals:</p>
+<ol class="arabic simple">
+<li><p>adding a constructor to the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> (as explained in
+<a class="reference internal" href="#sec-simple-classes-constructor"><span class="std std-ref">Constructors</span></a>), and</p></li>
+<li><p>turning the static methods of the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> into non-static methods,
+(as explained in <a class="reference internal" href="#sec-simple-classes-methods"><span class="std std-ref">Non-Static Object Methods</span></a>).</p></li>
+</ol>
+<p>Therefore, you can solve this assessment by first solving
+<a class="reference internal" href="#lab-simple-classes-point"><span class="std std-ref">01 - Point</span></a>, and then adapting its solution according to the
+requirements below.</p>
+</div>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Point.java</span></code> provided in the handout, and implement a class called
+<code class="docutils literal notranslate"><span class="pre">Point</span></code> representing a point on the Cartesian plane.  The requirements are:</p>
+<ul>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> must have two fields called <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, both
+having type <code class="docutils literal notranslate"><span class="pre">double</span></code>.  Therefore, if <code class="docutils literal notranslate"><span class="pre">p</span></code> is an object of type <code class="docutils literal notranslate"><span class="pre">Point</span></code>, we can
+write e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+<span class="n">p</span><span class="p">.</span><span class="na">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The point coordinates are: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>The class must have the following constructor:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Point</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which allows us to create a new <code class="docutils literal notranslate"><span class="pre">Point</span></code> object by writing e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="mf">3.14</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Point</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method modifies <code class="docutils literal notranslate"><span class="pre">this</span></code> object by adding to its fields
+<code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> the values <code class="docutils literal notranslate"><span class="pre">dx</span></code> and <code class="docutils literal notranslate"><span class="pre">dy</span></code>, respectively. (Remember that <code class="docutils literal notranslate"><span class="pre">void</span></code>
+means that the method <code class="docutils literal notranslate"><span class="pre">move(...)</span></code> does not return any value.)</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Point</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Point</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dy</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method creates and returns a <em>new</em> <code class="docutils literal notranslate"><span class="pre">Point</span></code> object whose
+coordinates are obtained from <code class="docutils literal notranslate"><span class="pre">this</span></code> object’s coordinates <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> by
+adding the values of the arguments <code class="docutils literal notranslate"><span class="pre">dx</span></code> and <code class="docutils literal notranslate"><span class="pre">dy</span></code>, respectively.  <strong>NOTE:</strong> the
+method must <em>not</em> modify the fields of <code class="docutils literal notranslate"><span class="pre">this</span></code> object.</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">Point</span></code>, and they might not compile or
+work correctly until you complete the implementation of class <code class="docutils literal notranslate"><span class="pre">Point</span></code> in the
+file <code class="docutils literal notranslate"><span class="pre">Point.java</span></code>.  You should read those test programs and try to run them, but
+you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Point.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The hints given for <a class="reference internal" href="#lab-simple-classes-point"><span class="std std-ref">01 - Point</span></a> are also useful for
+this assessment.</p>
+</div>
+</section>
+<section id="cars">
+<span id="lab-simple-classes-cars"></span><h3>03 - Cars<a class="headerlink" href="#cars" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code> provided in the handout, and implement a class called
+<code class="docutils literal notranslate"><span class="pre">Car</span></code> representing a car.  The requirements are:</p>
+<ul>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">Car</span></code> must have four fields called respectively:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">brand</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;FIAT&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Topolino&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numberPlate</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;EZ</span> <span class="pre">13623&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;blue&quot;</span></code>)</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Car</span></code> class class must have the following static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="n">car</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method returns a string with information about the <code class="docutils literal notranslate"><span class="pre">car</span></code>
+object given as argument.  For instance, calling <code class="docutils literal notranslate"><span class="pre">Car.description(c)</span></code> (using a
+car object <code class="docutils literal notranslate"><span class="pre">c</span></code> with the field values listed above) must return a string of the
+following form:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>FIAT Topolino, blue [EZ 13623]
+</pre></div>
+</div>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Car</span></code> class must have the following static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="n">car</span><span class="p">,</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <code class="docutils literal notranslate"><span class="pre">brand</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">numberPlate</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">color</span></code> fields of the <code class="docutils literal notranslate"><span class="pre">car</span></code> given as argument are equal to the
+corresponding fields of the <code class="docutils literal notranslate"><span class="pre">other</span></code> argument; otherwise, the method returns
+<code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Car</span></code> class must have the following static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isAlike</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="n">car</span><span class="p">,</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <code class="docutils literal notranslate"><span class="pre">brand</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, and <code class="docutils literal notranslate"><span class="pre">color</span></code>
+fields of the <code class="docutils literal notranslate"><span class="pre">car</span></code> given as argument object are equal to the corresponding
+fields of the <code class="docutils literal notranslate"><span class="pre">other</span></code> argument; otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">Car</span></code>, and they might not compile or
+work correctly until you complete the implementation of class <code class="docutils literal notranslate"><span class="pre">Car</span></code> in the
+file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code>.  You should read those test programs and try to run them, but
+you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The hints given for <a class="reference internal" href="#lab-simple-classes-point"><span class="std std-ref">01 - Point</span></a> are also useful for
+this assessment.</p>
+</div>
+</section>
+<section id="cars-2">
+<span id="lab-simple-classes-cars-2"></span><h3>04 - Cars 2<a class="headerlink" href="#cars-2" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This assessment is a variation of <a class="reference internal" href="#lab-simple-classes-cars"><span class="std std-ref">03 - Cars</span></a>, with two
+goals:</p>
+<ol class="arabic simple">
+<li><p>adding a constructor to the class <code class="docutils literal notranslate"><span class="pre">Car</span></code> (as explained in
+<a class="reference internal" href="#sec-simple-classes-constructor"><span class="std std-ref">Constructors</span></a>), and</p></li>
+<li><p>turning the static methods of the class <code class="docutils literal notranslate"><span class="pre">Car</span></code> into non-static methods,
+(as explained in <a class="reference internal" href="#sec-simple-classes-methods"><span class="std std-ref">Non-Static Object Methods</span></a>).</p></li>
+</ol>
+<p>Therefore, you can solve this assessment by first solving
+<a class="reference internal" href="#lab-simple-classes-cars"><span class="std std-ref">03 - Cars</span></a>, and then adapting its solution according to the
+requirements below.</p>
+</div>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code> provided in the handout, and implement a class called
+<code class="docutils literal notranslate"><span class="pre">Car</span></code> representing a car.  The requirements are:</p>
+<ul>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">Car</span></code> must have four fields called respectively:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">brand</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Ford&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Fiesta&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numberPlate</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;AF</span> <span class="pre">54539&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>)</p></li>
+</ul>
+</li>
+<li><p>The class must have a constructor that takes the car’s brand, model,
+number plate, and colour, and can be called e.g. as:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Car</span><span class="p">(</span><span class="s">&quot;FIAT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Topolino&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EZ 13623&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Car</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When called, the method returns a string with the car information.  For
+instance, calling <code class="docutils literal notranslate"><span class="pre">c.description()</span></code> (using <code class="docutils literal notranslate"><span class="pre">c</span></code> from the previous point) must
+return a string of the following form:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>FIAT Topolino, blue [EZ 13623]
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Car</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <code class="docutils literal notranslate"><span class="pre">brand</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">numberPlate</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">color</span></code> fields of <code class="docutils literal notranslate"><span class="pre">this</span></code> object are equal to the corresponding fields of
+the <code class="docutils literal notranslate"><span class="pre">other</span></code> object; otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Car</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isAlike</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <code class="docutils literal notranslate"><span class="pre">brand</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, and <code class="docutils literal notranslate"><span class="pre">color</span></code>
+fields of <code class="docutils literal notranslate"><span class="pre">this</span></code> object are equal to the corresponding fields of the <code class="docutils literal notranslate"><span class="pre">other</span></code>
+object; otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">Car</span></code>, and they might not compile or
+work correctly until you complete the implementation of class <code class="docutils literal notranslate"><span class="pre">Car</span></code> in the
+file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code>.  You should read those test programs and try to run them, but
+you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The hints given for <a class="reference internal" href="#lab-simple-classes-point"><span class="std std-ref">01 - Point</span></a> are also useful for
+this assessment.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab-day-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 5, Part 2: Lab Day</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="arrays-simple-classes-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 6, Part 2: More About Arrays and Objects</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-simple-class-and-creating-objects">Defining a Simple Class and Creating Objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructors">Constructors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-static-object-methods">Non-Static Object Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point">01 - Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-2">02 - Point 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cars">03 - Cars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cars-2">04 - Cars 2</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

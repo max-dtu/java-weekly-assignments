@@ -1,0 +1,1187 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proof Index &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/tabs.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'prf-prf';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+
+   <h1>Proof Index</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-eg-area-calculator-cond-expr"><strong>eg-area-calculator-cond-expr</strong></a> | 
+   <a href="#cap-eg-area-calculator-solution"><strong>eg-area-calculator-solution</strong></a> | 
+   <a href="#cap-eg-array-array-jagged"><strong>eg-array-array-jagged</strong></a> | 
+   <a href="#cap-eg-array-array-matrix"><strong>eg-array-array-matrix</strong></a> | 
+   <a href="#cap-eg-array-array-matrix-add"><strong>eg-array-array-matrix-add</strong></a> | 
+   <a href="#cap-eg-array-array-matrix-default"><strong>eg-array-array-matrix-default</strong></a> | 
+   <a href="#cap-eg-array-method-argument"><strong>eg-array-method-argument</strong></a> | 
+   <a href="#cap-eg-array-of-objects"><strong>eg-array-of-objects</strong></a> | 
+   <a href="#cap-eg-arrays-cmd-line"><strong>eg-arrays-cmd-line</strong></a> | 
+   <a href="#cap-eg-asm-display-sym"><strong>eg-asm-display-sym</strong></a> | 
+   <a href="#cap-eg-asm-display-sym-limit"><strong>eg-asm-display-sym-limit</strong></a> | 
+   <a href="#cap-eg-asm-increase-reg"><strong>eg-asm-increase-reg</strong></a> | 
+   <a href="#cap-eg-asm-increase-reg-limit"><strong>eg-asm-increase-reg-limit</strong></a> | 
+   <a href="#cap-eg-asm-load-value"><strong>eg-asm-load-value</strong></a> | 
+   <a href="#cap-eg-asm-load-value-memory"><strong>eg-asm-load-value-memory</strong></a> | 
+   <a href="#cap-eg-asm-sum-values-mem"><strong>eg-asm-sum-values-mem</strong></a> | 
+   <a href="#cap-eg-asm-sum-values-mem-until-zero"><strong>eg-asm-sum-values-mem-until-zero</strong></a> | 
+   <a href="#cap-eg-blinkenbits-assembly"><strong>eg-blinkenbits-assembly</strong></a> | 
+   <a href="#cap-eg-blinkenbits-machine-instructions"><strong>eg-blinkenbits-machine-instructions</strong></a> | 
+   <a href="#cap-eg-boolean-and-or-not-jshell"><strong>eg-boolean-and-or-not-jshell</strong></a> | 
+   <a href="#cap-eg-code-duplication"><strong>eg-code-duplication</strong></a> | 
+   <a href="#cap-eg-code-duplication-separate-classes"><strong>eg-code-duplication-separate-classes</strong></a> | 
+   <a href="#cap-eg-code-duplication-separate-files"><strong>eg-code-duplication-separate-files</strong></a> | 
+   <a href="#cap-eg-code-duplication-static-method"><strong>eg-code-duplication-static-method</strong></a> | 
+   <a href="#cap-eg-computing-area-room"><strong>eg-computing-area-room</strong></a> | 
+   <a href="#cap-eg-conditional-expr-java-shell"><strong>eg-conditional-expr-java-shell</strong></a> | 
+   <a href="#cap-eg-do-while"><strong>eg-do-while</strong></a> | 
+   <a href="#cap-eg-dtu-christmas-party-inheritance"><strong>eg-dtu-christmas-party-inheritance</strong></a> | 
+   <a href="#cap-eg-dtu-christmas-party-one-class-no-interfaces"><strong>eg-dtu-christmas-party-one-class-no-interfaces</strong></a> | 
+   <a href="#cap-eg-dtu-christmas-party-two-classes-no-interfaces"><strong>eg-dtu-christmas-party-two-classes-no-interfaces</strong></a> | 
+   <a href="#cap-eg-files-read-all-lines"><strong>eg-files-read-all-lines</strong></a> | 
+   <a href="#cap-eg-files-write-data"><strong>eg-files-write-data</strong></a> | 
+   <a href="#cap-eg-final-field"><strong>eg-final-field</strong></a> | 
+   <a href="#cap-eg-final-local-variable"><strong>eg-final-local-variable</strong></a> | 
+   <a href="#cap-eg-finite-while-java-shell"><strong>eg-finite-while-java-shell</strong></a> | 
+   <a href="#cap-eg-finite-while-java-shell-break"><strong>eg-finite-while-java-shell-break</strong></a> | 
+   <a href="#cap-eg-for-continue"><strong>eg-for-continue</strong></a> | 
+   <a href="#cap-eg-getter-setter"><strong>eg-getter-setter</strong></a> | 
+   <a href="#cap-eg-guess-number-solution"><strong>eg-guess-number-solution</strong></a> | 
+   <a href="#cap-eg-if-then-else-java-shell"><strong>eg-if-then-else-java-shell</strong></a> | 
+   <a href="#cap-eg-if-then-else-nesting"><strong>eg-if-then-else-nesting</strong></a> | 
+   <a href="#cap-eg-if-then-java-shell"><strong>eg-if-then-java-shell</strong></a> | 
+   <a href="#cap-eg-import-class"><strong>eg-import-class</strong></a> | 
+   <a href="#cap-eg-infinite-while-java-shell"><strong>eg-infinite-while-java-shell</strong></a> | 
+   <a href="#cap-eg-inheritance-multiple-interfaces"><strong>eg-inheritance-multiple-interfaces</strong></a> | 
+   <a href="#cap-eg-inheritance-pets-cats-dogs"><strong>eg-inheritance-pets-cats-dogs</strong></a> | 
+   <a href="#cap-eg-inheritance-pets-cats-dogs-subclass-superclass"><strong>eg-inheritance-pets-cats-dogs-subclass-superclass</strong></a> | 
+   <a href="#cap-eg-inheritance-pets-cats-dogs-super"><strong>eg-inheritance-pets-cats-dogs-super</strong></a> | 
+   <a href="#cap-eg-inheritance-pets-cats-dogs-super-private"><strong>eg-inheritance-pets-cats-dogs-super-private</strong></a> | 
+   <a href="#cap-eg-inheritance-pets-snake-override"><strong>eg-inheritance-pets-snake-override</strong></a> | 
+   <a href="#cap-eg-inheritance-pets-sound-abstract"><strong>eg-inheritance-pets-sound-abstract</strong></a> | 
+   <a href="#cap-eg-jar-file-create"><strong>eg-jar-file-create</strong></a> | 
+   <a href="#cap-eg-jar-file-use"><strong>eg-jar-file-use</strong></a> | 
+   <a href="#cap-eg-jar-file-use-library"><strong>eg-jar-file-use-library</strong></a> | 
+   <a href="#cap-eg-java-packages"><strong>eg-java-packages</strong></a> | 
+   <a href="#cap-eg-lotto-numbers-solution"><strong>eg-lotto-numbers-solution</strong></a> | 
+   <a href="#cap-eg-multiple-interfaces"><strong>eg-multiple-interfaces</strong></a> | 
+   <a href="#cap-eg-nesting-loops"><strong>eg-nesting-loops</strong></a> | 
+   <a href="#cap-eg-shop-item"><strong>eg-shop-item</strong></a> | 
+   <a href="#cap-eg-shop-item-constructor"><strong>eg-shop-item-constructor</strong></a> | 
+   <a href="#cap-eg-shopitem-program"><strong>eg-shopitem-program</strong></a> | 
+   <a href="#cap-eg-shopitem-program-nonstatic-methods"><strong>eg-shopitem-program-nonstatic-methods</strong></a> | 
+   <a href="#cap-eg-splitting-string-into-array"><strong>eg-splitting-string-into-array</strong></a> | 
+   <a href="#cap-eg-stack-heap-array"><strong>eg-stack-heap-array</strong></a> | 
+   <a href="#cap-eg-stack-heap-array-fun"><strong>eg-stack-heap-array-fun</strong></a> | 
+   <a href="#cap-eg-stack-heap-array-of-arrays"><strong>eg-stack-heap-array-of-arrays</strong></a> | 
+   <a href="#cap-eg-stack-heap-object"><strong>eg-stack-heap-object</strong></a> | 
+   <a href="#cap-eg-static-binding"><strong>eg-static-binding</strong></a> | 
+   <a href="#cap-eg-static-fields"><strong>eg-static-fields</strong></a> | 
+   <a href="#cap-eg-static-fields-2"><strong>eg-static-fields-2</strong></a> | 
+   <a href="#cap-eg-summing-numbers-for"><strong>eg-summing-numbers-for</strong></a> | 
+   <a href="#cap-eg-switch-string"><strong>eg-switch-string</strong></a> | 
+   <a href="#cap-eg-throwing-arith-exception"><strong>eg-throwing-arith-exception</strong></a> | 
+   <a href="#cap-eg-throwing-catching-arith-exception"><strong>eg-throwing-catching-arith-exception</strong></a> | 
+   <a href="#cap-eg-throwing-catching-checked-exception"><strong>eg-throwing-catching-checked-exception</strong></a> | 
+   <a href="#cap-eg-while-scanner-hasnextint-jshell"><strong>eg-while-scanner-hasnextint-jshell</strong></a> | 
+   <a href="#cap-eg-while-scanner-hasnextint-terminal"><strong>eg-while-scanner-hasnextint-terminal</strong></a> | 
+   <a href="#cap-remark-1"><strong>remark-1</strong></a> | 
+   <a href="#cap-remark-array-default-val"><strong>remark-array-default-val</strong></a> | 
+   <a href="#cap-remark-avoid-break"><strong>remark-avoid-break</strong></a> | 
+   <a href="#cap-remark-avoid-continue"><strong>remark-avoid-continue</strong></a> | 
+   <a href="#cap-remark-classes-vs-types"><strong>remark-classes-vs-types</strong></a> | 
+   <a href="#cap-remark-closing-default-input-stream"><strong>remark-closing-default-input-stream</strong></a> | 
+   <a href="#cap-remark-flowcharts"><strong>remark-flowcharts</strong></a> | 
+   <a href="#cap-remark-omitting-curly"><strong>remark-omitting-curly</strong></a> | 
+   <a href="#cap-remark-pass-objects-methods-modify"><strong>remark-pass-objects-methods-modify</strong></a> | 
+   <a href="#cap-remark-reassigning-vars"><strong>remark-reassigning-vars</strong></a> | 
+   <a href="#cap-remark-scanner-close"><strong>remark-scanner-close</strong></a> | 
+   <a href="#cap-remark-scanner-errors"><strong>remark-scanner-errors</strong></a> | 
+   <a href="#cap-remark-scanner-localisation"><strong>remark-scanner-localisation</strong></a> | 
+   <a href="#cap-remark-scope"><strong>remark-scope</strong></a> | 
+   <a href="#cap-remark-statements-vs-expressions"><strong>remark-statements-vs-expressions</strong></a> | 
+   <a href="#cap-remark-type-promotion"><strong>remark-type-promotion</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-area-calculator-cond-expr"><td></td><td>
+       <strong>eg-area-calculator-cond-expr</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#eg-area-calculator-cond-expr"><code class="xref">eg-area-calculator-cond-expr</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-area-calculator-solution"><td></td><td>
+       <strong>eg-area-calculator-solution</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#eg-area-calculator-solution"><code class="xref">eg-area-calculator-solution</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-array-array-jagged"><td></td><td>
+       <strong>eg-array-array-jagged</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays-simple-classes-2.html#eg-array-array-jagged"><code class="xref">eg-array-array-jagged</code></a> <em>(arrays-simple-classes-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-array-array-matrix"><td></td><td>
+       <strong>eg-array-array-matrix</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays-simple-classes-2.html#eg-array-array-matrix"><code class="xref">eg-array-array-matrix</code></a> <em>(arrays-simple-classes-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-array-array-matrix-add"><td></td><td>
+       <strong>eg-array-array-matrix-add</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays-simple-classes-2.html#eg-array-array-matrix-add"><code class="xref">eg-array-array-matrix-add</code></a> <em>(arrays-simple-classes-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-array-array-matrix-default"><td></td><td>
+       <strong>eg-array-array-matrix-default</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays-simple-classes-2.html#eg-array-array-matrix-default"><code class="xref">eg-array-array-matrix-default</code></a> <em>(arrays-simple-classes-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-array-method-argument"><td></td><td>
+       <strong>eg-array-method-argument</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays.html#eg-array-method-argument"><code class="xref">eg-array-method-argument</code></a> <em>(arrays)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-array-of-objects"><td></td><td>
+       <strong>eg-array-of-objects</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays-simple-classes-2.html#eg-array-of-objects"><code class="xref">eg-array-of-objects</code></a> <em>(arrays-simple-classes-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-arrays-cmd-line"><td></td><td>
+       <strong>eg-arrays-cmd-line</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays-simple-classes-2.html#eg-arrays-cmd-line"><code class="xref">eg-arrays-cmd-line</code></a> <em>(arrays-simple-classes-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-asm-display-sym"><td></td><td>
+       <strong>eg-asm-display-sym</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-asm-display-sym"><code class="xref">eg-asm-display-sym</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-asm-display-sym-limit"><td></td><td>
+       <strong>eg-asm-display-sym-limit</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-asm-display-sym-limit"><code class="xref">eg-asm-display-sym-limit</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-asm-increase-reg"><td></td><td>
+       <strong>eg-asm-increase-reg</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-asm-increase-reg"><code class="xref">eg-asm-increase-reg</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-asm-increase-reg-limit"><td></td><td>
+       <strong>eg-asm-increase-reg-limit</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-asm-increase-reg-limit"><code class="xref">eg-asm-increase-reg-limit</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-asm-load-value"><td></td><td>
+       <strong>eg-asm-load-value</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-asm-load-value"><code class="xref">eg-asm-load-value</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-asm-load-value-memory"><td></td><td>
+       <strong>eg-asm-load-value-memory</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-asm-load-value-memory"><code class="xref">eg-asm-load-value-memory</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-asm-sum-values-mem"><td></td><td>
+       <strong>eg-asm-sum-values-mem</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-asm-sum-values-mem"><code class="xref">eg-asm-sum-values-mem</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-asm-sum-values-mem-until-zero"><td></td><td>
+       <strong>eg-asm-sum-values-mem-until-zero</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-asm-sum-values-mem-until-zero"><code class="xref">eg-asm-sum-values-mem-until-zero</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-blinkenbits-assembly"><td></td><td>
+       <strong>eg-blinkenbits-assembly</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-blinkenbits-assembly"><code class="xref">eg-blinkenbits-assembly</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-blinkenbits-machine-instructions"><td></td><td>
+       <strong>eg-blinkenbits-machine-instructions</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-blinkenbits-machine-instructions"><code class="xref">eg-blinkenbits-machine-instructions</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-boolean-and-or-not-jshell"><td></td><td>
+       <strong>eg-boolean-and-or-not-jshell</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#eg-boolean-and-or-not-jshell"><code class="xref">eg-boolean-and-or-not-jshell</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-code-duplication"><td></td><td>
+       <strong>eg-code-duplication</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="structured.html#eg-code-duplication"><code class="xref">eg-code-duplication</code></a> <em>(structured)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-code-duplication-separate-classes"><td></td><td>
+       <strong>eg-code-duplication-separate-classes</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="structured.html#eg-code-duplication-separate-classes"><code class="xref">eg-code-duplication-separate-classes</code></a> <em>(structured)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-code-duplication-separate-files"><td></td><td>
+       <strong>eg-code-duplication-separate-files</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="structured.html#eg-code-duplication-separate-files"><code class="xref">eg-code-duplication-separate-files</code></a> <em>(structured)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-code-duplication-static-method"><td></td><td>
+       <strong>eg-code-duplication-static-method</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="structured.html#eg-code-duplication-static-method"><code class="xref">eg-code-duplication-static-method</code></a> <em>(structured)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-computing-area-room"><td></td><td>
+       <strong>eg-computing-area-room</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#eg-computing-area-room"><code class="xref">eg-computing-area-room</code></a> <em>(basic-programming)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-conditional-expr-java-shell"><td></td><td>
+       <strong>eg-conditional-expr-java-shell</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#eg-conditional-expr-java-shell"><code class="xref">eg-conditional-expr-java-shell</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-do-while"><td></td><td>
+       <strong>eg-do-while</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#eg-do-while"><code class="xref">eg-do-while</code></a> <em>(loops)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-dtu-christmas-party-inheritance"><td></td><td>
+       <strong>eg-dtu-christmas-party-inheritance</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="inheritance-2.html#eg-dtu-christmas-party-inheritance"><code class="xref">eg-dtu-christmas-party-inheritance</code></a> <em>(inheritance-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-dtu-christmas-party-one-class-no-interfaces"><td></td><td>
+       <strong>eg-dtu-christmas-party-one-class-no-interfaces</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="interfaces.html#eg-dtu-christmas-party-one-class-no-interfaces"><code class="xref">eg-dtu-christmas-party-one-class-no-interfaces</code></a> <em>(interfaces)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-dtu-christmas-party-two-classes-no-interfaces"><td></td><td>
+       <strong>eg-dtu-christmas-party-two-classes-no-interfaces</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="interfaces.html#eg-dtu-christmas-party-two-classes-no-interfaces"><code class="xref">eg-dtu-christmas-party-two-classes-no-interfaces</code></a> <em>(interfaces)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-files-read-all-lines"><td></td><td>
+       <strong>eg-files-read-all-lines</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="files.html#eg-files-read-all-lines"><code class="xref">eg-files-read-all-lines</code></a> <em>(files)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-files-write-data"><td></td><td>
+       <strong>eg-files-write-data</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="files.html#eg-files-write-data"><code class="xref">eg-files-write-data</code></a> <em>(files)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-final-field"><td></td><td>
+       <strong>eg-final-field</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="classes-polymorphism.html#eg-final-field"><code class="xref">eg-final-field</code></a> <em>(classes-polymorphism)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-final-local-variable"><td></td><td>
+       <strong>eg-final-local-variable</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="classes-polymorphism.html#eg-final-local-variable"><code class="xref">eg-final-local-variable</code></a> <em>(classes-polymorphism)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-finite-while-java-shell"><td></td><td>
+       <strong>eg-finite-while-java-shell</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#eg-finite-while-java-shell"><code class="xref">eg-finite-while-java-shell</code></a> <em>(loops)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-finite-while-java-shell-break"><td></td><td>
+       <strong>eg-finite-while-java-shell-break</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#eg-finite-while-java-shell-break"><code class="xref">eg-finite-while-java-shell-break</code></a> <em>(loops)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-for-continue"><td></td><td>
+       <strong>eg-for-continue</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops2.html#eg-for-continue"><code class="xref">eg-for-continue</code></a> <em>(loops2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-getter-setter"><td></td><td>
+       <strong>eg-getter-setter</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="errors.html#eg-getter-setter"><code class="xref">eg-getter-setter</code></a> <em>(errors)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-guess-number-solution"><td></td><td>
+       <strong>eg-guess-number-solution</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#eg-guess-number-solution"><code class="xref">eg-guess-number-solution</code></a> <em>(loops)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-if-then-else-java-shell"><td></td><td>
+       <strong>eg-if-then-else-java-shell</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#eg-if-then-else-java-shell"><code class="xref">eg-if-then-else-java-shell</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-if-then-else-nesting"><td></td><td>
+       <strong>eg-if-then-else-nesting</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#eg-if-then-else-nesting"><code class="xref">eg-if-then-else-nesting</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-if-then-java-shell"><td></td><td>
+       <strong>eg-if-then-java-shell</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#eg-if-then-java-shell"><code class="xref">eg-if-then-java-shell</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-import-class"><td></td><td>
+       <strong>eg-import-class</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="projects.html#eg-import-class"><code class="xref">eg-import-class</code></a> <em>(projects)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-infinite-while-java-shell"><td></td><td>
+       <strong>eg-infinite-while-java-shell</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#eg-infinite-while-java-shell"><code class="xref">eg-infinite-while-java-shell</code></a> <em>(loops)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-inheritance-multiple-interfaces"><td></td><td>
+       <strong>eg-inheritance-multiple-interfaces</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="inheritance-2.html#eg-inheritance-multiple-interfaces"><code class="xref">eg-inheritance-multiple-interfaces</code></a> <em>(inheritance-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-inheritance-pets-cats-dogs"><td></td><td>
+       <strong>eg-inheritance-pets-cats-dogs</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="inheritance-oo.html#eg-inheritance-pets-cats-dogs"><code class="xref">eg-inheritance-pets-cats-dogs</code></a> <em>(inheritance-oo)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-inheritance-pets-cats-dogs-subclass-superclass"><td></td><td>
+       <strong>eg-inheritance-pets-cats-dogs-subclass-superclass</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-subclass-superclass"><code class="xref">eg-inheritance-pets-cats-dogs-subclass-superclass</code></a> <em>(inheritance-oo)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-inheritance-pets-cats-dogs-super"><td></td><td>
+       <strong>eg-inheritance-pets-cats-dogs-super</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-super"><code class="xref">eg-inheritance-pets-cats-dogs-super</code></a> <em>(inheritance-oo)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-inheritance-pets-cats-dogs-super-private"><td></td><td>
+       <strong>eg-inheritance-pets-cats-dogs-super-private</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-super-private"><code class="xref">eg-inheritance-pets-cats-dogs-super-private</code></a> <em>(inheritance-oo)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-inheritance-pets-snake-override"><td></td><td>
+       <strong>eg-inheritance-pets-snake-override</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="inheritance-oo.html#eg-inheritance-pets-snake-override"><code class="xref">eg-inheritance-pets-snake-override</code></a> <em>(inheritance-oo)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-inheritance-pets-sound-abstract"><td></td><td>
+       <strong>eg-inheritance-pets-sound-abstract</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="inheritance-2.html#eg-inheritance-pets-sound-abstract"><code class="xref">eg-inheritance-pets-sound-abstract</code></a> <em>(inheritance-2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-jar-file-create"><td></td><td>
+       <strong>eg-jar-file-create</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="projects.html#eg-jar-file-create"><code class="xref">eg-jar-file-create</code></a> <em>(projects)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-jar-file-use"><td></td><td>
+       <strong>eg-jar-file-use</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="projects.html#eg-jar-file-use"><code class="xref">eg-jar-file-use</code></a> <em>(projects)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-jar-file-use-library"><td></td><td>
+       <strong>eg-jar-file-use-library</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="projects.html#eg-jar-file-use-library"><code class="xref">eg-jar-file-use-library</code></a> <em>(projects)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-java-packages"><td></td><td>
+       <strong>eg-java-packages</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="projects.html#eg-java-packages"><code class="xref">eg-java-packages</code></a> <em>(projects)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-lotto-numbers-solution"><td></td><td>
+       <strong>eg-lotto-numbers-solution</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays.html#eg-lotto-numbers-solution"><code class="xref">eg-lotto-numbers-solution</code></a> <em>(arrays)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-multiple-interfaces"><td></td><td>
+       <strong>eg-multiple-interfaces</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="interfaces.html#eg-multiple-interfaces"><code class="xref">eg-multiple-interfaces</code></a> <em>(interfaces)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-nesting-loops"><td></td><td>
+       <strong>eg-nesting-loops</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops2.html#eg-nesting-loops"><code class="xref">eg-nesting-loops</code></a> <em>(loops2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-shop-item"><td></td><td>
+       <strong>eg-shop-item</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="simple-classes.html#eg-shop-item"><code class="xref">eg-shop-item</code></a> <em>(simple-classes)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-shop-item-constructor"><td></td><td>
+       <strong>eg-shop-item-constructor</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="simple-classes.html#eg-shop-item-constructor"><code class="xref">eg-shop-item-constructor</code></a> <em>(simple-classes)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-shopitem-program"><td></td><td>
+       <strong>eg-shopitem-program</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="simple-classes.html#eg-shopitem-program"><code class="xref">eg-shopitem-program</code></a> <em>(simple-classes)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-shopitem-program-nonstatic-methods"><td></td><td>
+       <strong>eg-shopitem-program-nonstatic-methods</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="simple-classes.html#eg-shopitem-program-nonstatic-methods"><code class="xref">eg-shopitem-program-nonstatic-methods</code></a> <em>(simple-classes)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-splitting-string-into-array"><td></td><td>
+       <strong>eg-splitting-string-into-array</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays.html#eg-splitting-string-into-array"><code class="xref">eg-splitting-string-into-array</code></a> <em>(arrays)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-stack-heap-array"><td></td><td>
+       <strong>eg-stack-heap-array</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="references-null.html#eg-stack-heap-array"><code class="xref">eg-stack-heap-array</code></a> <em>(references-null)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-stack-heap-array-fun"><td></td><td>
+       <strong>eg-stack-heap-array-fun</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="references-null.html#eg-stack-heap-array-fun"><code class="xref">eg-stack-heap-array-fun</code></a> <em>(references-null)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-stack-heap-array-of-arrays"><td></td><td>
+       <strong>eg-stack-heap-array-of-arrays</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="references-null.html#eg-stack-heap-array-of-arrays"><code class="xref">eg-stack-heap-array-of-arrays</code></a> <em>(references-null)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-stack-heap-object"><td></td><td>
+       <strong>eg-stack-heap-object</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="references-null.html#eg-stack-heap-object"><code class="xref">eg-stack-heap-object</code></a> <em>(references-null)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-static-binding"><td></td><td>
+       <strong>eg-static-binding</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="classes-polymorphism.html#eg-static-binding"><code class="xref">eg-static-binding</code></a> <em>(classes-polymorphism)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-static-fields"><td></td><td>
+       <strong>eg-static-fields</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="classes-polymorphism.html#eg-static-fields"><code class="xref">eg-static-fields</code></a> <em>(classes-polymorphism)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-static-fields-2"><td></td><td>
+       <strong>eg-static-fields-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="classes-polymorphism.html#eg-static-fields-2"><code class="xref">eg-static-fields-2</code></a> <em>(classes-polymorphism)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-summing-numbers-for"><td></td><td>
+       <strong>eg-summing-numbers-for</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops2.html#eg-summing-numbers-for"><code class="xref">eg-summing-numbers-for</code></a> <em>(loops2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-switch-string"><td></td><td>
+       <strong>eg-switch-string</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#eg-switch-string"><code class="xref">eg-switch-string</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-throwing-arith-exception"><td></td><td>
+       <strong>eg-throwing-arith-exception</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="errors.html#eg-throwing-arith-exception"><code class="xref">eg-throwing-arith-exception</code></a> <em>(errors)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-throwing-catching-arith-exception"><td></td><td>
+       <strong>eg-throwing-catching-arith-exception</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="errors.html#eg-throwing-catching-arith-exception"><code class="xref">eg-throwing-catching-arith-exception</code></a> <em>(errors)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-throwing-catching-checked-exception"><td></td><td>
+       <strong>eg-throwing-catching-checked-exception</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="errors.html#eg-throwing-catching-checked-exception"><code class="xref">eg-throwing-catching-checked-exception</code></a> <em>(errors)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-while-scanner-hasnextint-jshell"><td></td><td>
+       <strong>eg-while-scanner-hasnextint-jshell</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#eg-while-scanner-hasnextint-jshell"><code class="xref">eg-while-scanner-hasnextint-jshell</code></a> <em>(loops)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-eg-while-scanner-hasnextint-terminal"><td></td><td>
+       <strong>eg-while-scanner-hasnextint-terminal</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#eg-while-scanner-hasnextint-terminal"><code class="xref">eg-while-scanner-hasnextint-terminal</code></a> <em>(loops)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-1"><td></td><td>
+       <strong>remark-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#remark-1"><code class="xref">remark-1</code></a> <em>(loops)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-array-default-val"><td></td><td>
+       <strong>remark-array-default-val</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="arrays.html#remark-array-default-val"><code class="xref">remark-array-default-val</code></a> <em>(arrays)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-avoid-break"><td></td><td>
+       <strong>remark-avoid-break</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#remark-avoid-break"><code class="xref">remark-avoid-break</code></a> <em>(loops)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-avoid-continue"><td></td><td>
+       <strong>remark-avoid-continue</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops2.html#remark-avoid-continue"><code class="xref">remark-avoid-continue</code></a> <em>(loops2)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-classes-vs-types"><td></td><td>
+       <strong>remark-classes-vs-types</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#remark-classes-vs-types"><code class="xref">remark-classes-vs-types</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-closing-default-input-stream"><td></td><td>
+       <strong>remark-closing-default-input-stream</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops.html#remark-closing-default-input-stream"><code class="xref">remark-closing-default-input-stream</code></a> <em>(loops)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-flowcharts"><td></td><td>
+       <strong>remark-flowcharts</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basic-programming.html#remark-flowcharts"><code class="xref">remark-flowcharts</code></a> <em>(basic-programming)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-omitting-curly"><td></td><td>
+       <strong>remark-omitting-curly</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#remark-omitting-curly"><code class="xref">remark-omitting-curly</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-pass-objects-methods-modify"><td></td><td>
+       <strong>remark-pass-objects-methods-modify</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="simple-classes.html#remark-pass-objects-methods-modify"><code class="xref">remark-pass-objects-methods-modify</code></a> <em>(simple-classes)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-reassigning-vars"><td></td><td>
+       <strong>remark-reassigning-vars</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#remark-reassigning-vars"><code class="xref">remark-reassigning-vars</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-scanner-close"><td></td><td>
+       <strong>remark-scanner-close</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#remark-scanner-close"><code class="xref">remark-scanner-close</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-scanner-errors"><td></td><td>
+       <strong>remark-scanner-errors</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#remark-scanner-errors"><code class="xref">remark-scanner-errors</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-scanner-localisation"><td></td><td>
+       <strong>remark-scanner-localisation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#remark-scanner-localisation"><code class="xref">remark-scanner-localisation</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-scope"><td></td><td>
+       <strong>remark-scope</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="loops2.html#remark-scope"><code class="xref">remark-scope</code></a> <em>(loops2)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-statements-vs-expressions"><td></td><td>
+       <strong>remark-statements-vs-expressions</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="io-conditionals-strings.html#remark-statements-vs-expressions"><code class="xref">remark-statements-vs-expressions</code></a> <em>(io-conditionals-strings)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-type-promotion"><td></td><td>
+       <strong>remark-type-promotion</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="java-first-taste.html#remark-type-promotion"><code class="xref">remark-type-promotion</code></a> <em>(java-first-taste)</em></td><td>
+       <em>remark</em></td></tr>
+   </table>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

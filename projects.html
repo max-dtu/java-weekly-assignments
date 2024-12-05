@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/tabs.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projects';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 13, Part 1: Lab Day — Exam Simulation" href="lab-day-6.html" />
+    <link rel="prev" title="Module 12, Part 1: File I/O" href="files.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#java-packages">Java Packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-classes-from-other-packages">Importing Classes from Other Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protected-fields-and-methods">Protected Fields (and Methods)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributing-java-classes-and-programs-as-jar-files">Distributing Java Classes and Programs as JAR Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#java-build-tools">Java Build Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-12-part-2-managing-java-projects-packages-jar-files-build-tools">
+<span id="mod-projects"></span><h1>Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools<a class="headerlink" href="#module-12-part-2-managing-java-projects-packages-jar-files-build-tools" title="Permalink to this heading">#</a></h1>
+<p>In this second part of Module 12 we explore some features and tools of the Java
+programming language and ecosystem that are particularly useful when working on
+larger projects, where we may need to organise many classes and/or reuse classes
+from other projects.  These features and tools are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sec-projects-packages"><span class="std std-ref">packages</span></a> for grouping files and classes,
+and the related <a class="reference internal" href="#sec-projects-packages-import"><span class="std std-ref">“import” directive</span></a> and
+<a class="reference internal" href="#sec-projects-packages-protected"><span class="std std-ref">“protected” modifier</span></a>;</p></li>
+<li><p>creating and using <a class="reference internal" href="#sec-projects-packages-jar"><span class="std std-ref">JAR files</span></a> to easily
+distribute and reuse Java classes and programs;</p></li>
+<li><p>a brief look at <a class="reference internal" href="#sec-projects-build-tools"><span class="std std-ref">Java build tools</span></a> that
+automate many tasks during the development of Java projects.</p></li>
+</ul>
+<div class="admonition important" id="important-projects-topic-no-exam">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>These new topics are <strong>not</strong> part of the final exam of this course. They are
+addressed because they clarify some aspects that may pop up during daily usage
+of Java, even for small programs.  Moreover, these topics usually become very
+important as soon as one tries to work with existing Java programs created by
+experienced developers.</p></li>
+<li><p>The <strong><a class="reference internal" href="#sec-projects-lab"><span class="std std-ref">weekly assessments for this module</span></a></strong> are besed
+on a past exam paper, and are based on topics we have addressed in previous
+modules: <strong>you should work on them during the lab and submit them on DTU Autolab as usual</strong>,
+since they are provided to train your programming skills!</p></li>
+</ul>
+</div>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><section id="java-packages">
+<span id="sec-projects-packages"></span><span id="index-2"></span><h2>Java Packages<a class="headerlink" href="#java-packages" title="Permalink to this heading">#</a></h2>
+<p>Until now we have written Java programs that consist of a small number of
+<code class="docutils literal notranslate"><span class="pre">.java</span></code> files in a single directory.  Keeping a few files in a directory works
+well for programs of limited size (which are the focus of this course) — but
+the approach has two drawbacks:</p>
+<ul class="simple">
+<li><p>if a program grows functionality and in size, the number of its <code class="docutils literal notranslate"><span class="pre">.java</span></code> files
+may grow as well, and they may become chaotic and difficult to manage;</p></li>
+<li><p>it may be hard to reuse classes written for one program in other programs. For
+example, we may have a program (maybe written by someone else) that defines a
+class called <code class="docutils literal notranslate"><span class="pre">Utils</span></code> with various handy static methods, and we may want to
+reuse that class in another program — but if that other program also happens
+to define a different class called <code class="docutils literal notranslate"><span class="pre">Utils</span></code>, then we would need to rename one
+of the two classes and update the code accordingly.</p></li>
+</ul>
+<p>To address this issue, Java allows us to organise class definitions by grouping
+them in <strong>packages</strong>.  We have already encountered packages: e.g. when
+discussing <a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-console-io-scanner"><span class="std std-ref">how to create and use a Scanner object</span></a> we have briefly seen that when we
+write:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>we are creating a new object of the class <code class="docutils literal notranslate"><span class="pre">Scanner</span></code> contained in the Java
+package <code class="docutils literal notranslate"><span class="pre">java.util</span></code>, which is part of the Java API.  Technically,
+<code class="docutils literal notranslate"><span class="pre">java.util.Scanner</span></code> is the <strong>fully-qualified name of the class</strong> (i.e. the
+package name followed by the class name).</p>
+<p>To organise our code in packages, we have to consider three main aspects:</p>
+<ol class="arabic">
+<li><p>We must declare at the beginning of each <code class="docutils literal notranslate"><span class="pre">.java</span></code> file the name of the package
+that “owns” the file, by writing e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nn">my.cool.code</span>
+</pre></div>
+</div>
+<p><strong>Package names are hierarchical</strong>, and the different levels of the hierarchy
+are separated by dots: e.g. if a file called <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> begins with the
+line “<code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">my.cool.code</span></code>” above, then its code is organised with:</p>
+<ul class="simple">
+<li><p>a main package called <code class="docutils literal notranslate"><span class="pre">my</span></code>, which contains</p>
+<ul>
+<li><p>a sub-package called <code class="docutils literal notranslate"><span class="pre">cool</span></code>, which contains</p>
+<ul>
+<li><p>a sub-package called <code class="docutils literal notranslate"><span class="pre">code</span></code>, which contains</p>
+<ul>
+<li><p>any class defined in the file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>We must save the files in a <strong>hierarchy of directories that matches the
+package hierarchy</strong>.  For example, if a file called <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> begins with
+the line <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">my.cool.code</span></code>, then the file must be saved inside nested
+subdirectories called <code class="docutils literal notranslate"><span class="pre">my</span></code>, <code class="docutils literal notranslate"><span class="pre">cool</span></code>, and <code class="docutils literal notranslate"><span class="pre">code</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>my                        (directory)
+└── cool                  (directory)
+    └── code              (directory)
+        └── Utils.java    (Java file)
+</pre></div>
+</div>
+</li>
+<li><p>Finally, we need to consider <strong>how the classes defined in our <code class="docutils literal notranslate"><span class="pre">.java</span></code> file can
+be accessed</strong>:</p>
+<ul>
+<li><p>A class definition like <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Utils</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> (i.e. a class definition that
+is not explicitly declared <code class="docutils literal notranslate"><span class="pre">public</span></code>) means that the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code> is
+<strong>package-private</strong>, i.e. it can only be accessed by code contained in the
+same package <code class="docutils literal notranslate"><span class="pre">my.cool.code</span></code>. Similarly, fields and methods defined without
+<code class="docutils literal notranslate"><span class="pre">public</span></code> nor <code class="docutils literal notranslate"><span class="pre">private</span></code> modifiers are package-private, hence they can be
+only accessed by code contained in the same package.</p></li>
+<li><p>Instead, a class definition like <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">class</span> <span class="pre">Utils</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> can be
+accessed from everywhere (including code belonging to other packages).
+Similarly, <code class="docutils literal notranslate"><span class="pre">public</span></code> fields and methods can be accessed from any package.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>A <code class="docutils literal notranslate"><span class="pre">.java</span></code> file can define at most one <code class="docutils literal notranslate"><span class="pre">public</span></code> class</strong>, and
+<strong>the name of the <code class="docutils literal notranslate"><span class="pre">public</span></code> class must coincide with the name of the file</strong>.
+For instance, a <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">class</span> <span class="pre">Utils</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> must be defined in a file
+called <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code>.</p>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<p>The reason why Java enforces the restriction 2. and 3. above is that they can
+help working with large code bases: if a programmer is looking for the
+definition of a class <code class="docutils literal notranslate"><span class="pre">a.b.c.ClassName</span></code>, then the programmer can find the class
+definition inside a directory hierarchy that matches the package <code class="docutils literal notranslate"><span class="pre">a.b.c</span></code> — and
+moreover, if the class <code class="docutils literal notranslate"><span class="pre">ClassName</span></code> is public, then the programmer knows that its
+code can be found in a file called <code class="docutils literal notranslate"><span class="pre">ClassName.java</span></code>.</p>
+<p>This is illustrated in <a class="reference internal" href="#eg-java-packages">Example 73</a> below.</p>
+<div class="proof example admonition" id="eg-java-packages">
+<p class="admonition-title"><span class="caption-number">Example 73 </span> (A simple hierarchy of packages)</p>
+<section class="example-content" id="proof-content">
+<p>Suppose we need to write a program that manages the DTU Pet Clinic, using pet
+classes similar to <a class="reference internal" href="classes-polymorphism.html#eg-final-field">Example 63</a>, with the following requirements:</p>
+<ul class="simple">
+<li><p>the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> and the derived classes <code class="docutils literal notranslate"><span class="pre">Dog</span></code> and <code class="docutils literal notranslate"><span class="pre">Cat</span></code> must be <code class="docutils literal notranslate"><span class="pre">public</span></code> and
+must belong to a package called <code class="docutils literal notranslate"><span class="pre">dk.dtu.pets</span></code>;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">main</span></code> method of the program must belong to a <code class="docutils literal notranslate"><span class="pre">public</span></code> class called <code class="docutils literal notranslate"><span class="pre">Main</span></code>
+in the package <code class="docutils literal notranslate"><span class="pre">dk.dtu.petclinic</span></code>.</p></li>
+</ul>
+<p>To obtain this, we must:</p>
+<ul class="simple">
+<li><p>save the <code class="docutils literal notranslate"><span class="pre">public</span></code> classes in separate <code class="docutils literal notranslate"><span class="pre">.java</span></code> files with a name that matches
+the class name;</p></li>
+<li><p>write the desired package name at the beginning of each file <code class="docutils literal notranslate"><span class="pre">.java</span></code> file, and</p></li>
+<li><p>place each <code class="docutils literal notranslate"><span class="pre">.java</span></code> file under a subdirectory that matches its package name.</p></li>
+</ul>
+<p>As a result, the files and directories are organised as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dk                       (directory)
+└── dtu                  (directory)
+    ├── pets             (directory)
+    │   ├── Pet.java     (Java source code file)
+    │   ├── Dog.java     (Java source code file)
+    │   └── Cat.java     (Java source code file)
+    │
+    └── petclinic        (directory)
+        └── Main.java    (Java source code file)
+</pre></div>
+</div>
+<p><em><strong>You can download these source files here: <a class="reference download internal" download="" href="_downloads/b053c47b85d46ceb8663f5dcd81ceb10/dtu-pet-clinic.zip"><span class="xref download myst">dtu-pet-clinic.zip</span></a></strong></em></p>
+<p>To explore the source code, you can download and unzip the file above, and open
+the resulting folder <code class="docutils literal notranslate"><span class="pre">dtu-pet-clinic</span></code> with Visual Studio Code (e.g. by launching
+Visual Studio Code and clicking on <em>File -&gt; Open Folder…</em>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the ZIP file above, the file <code class="docutils literal notranslate"><span class="pre">Main.java</span></code> in the package <code class="docutils literal notranslate"><span class="pre">dk.dtu.petclinic</span></code>
+needs to use the classes <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, <code class="docutils literal notranslate"><span class="pre">Cat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, which belongs to a different
+package <code class="docutils literal notranslate"><span class="pre">dk.dtu.pets</span></code>. To do that, the code in <code class="docutils literal notranslate"><span class="pre">Main.java</span></code> refers to the
+fully-qualified class names, e.g. <code class="docutils literal notranslate"><span class="pre">dk.dtu.pets.Pet</span></code>.  (Just like we have been
+using e.g. the fully-qualified name <code class="docutils literal notranslate"><span class="pre">java.util.Scanner</span></code> to use the class
+<code class="docutils literal notranslate"><span class="pre">Scanner</span></code> contained in the package <code class="docutils literal notranslate"><span class="pre">java.util</span></code>.)  The file <code class="docutils literal notranslate"><span class="pre">Main.java</span></code> is shown
+below.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">package</span><span class="w"> </span><span class="nn">dk.dtu.petclinic</span><span class="p">;</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Welcome to the DTU Pet Clinic!&quot;</span><span class="p">);</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">pets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">dk</span><span class="p">.</span><span class="na">dtu</span><span class="p">.</span><span class="na">pets</span><span class="p">.</span><span class="na">Pet</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">dk</span><span class="p">.</span><span class="na">dtu</span><span class="p">.</span><span class="na">pets</span><span class="p">.</span><span class="na">Dog</span><span class="p">(</span><span class="s">&quot;Dr Wolf&quot;</span><span class="p">),</span>
+<span class="linenos"> 8</span><span class="w">                                           </span><span class="k">new</span><span class="w"> </span><span class="n">dk</span><span class="p">.</span><span class="na">dtu</span><span class="p">.</span><span class="na">pets</span><span class="p">.</span><span class="na">Dog</span><span class="p">(</span><span class="s">&quot;Mr Coyote&quot;</span><span class="p">),</span>
+<span class="linenos"> 9</span><span class="w">                                           </span><span class="k">new</span><span class="w"> </span><span class="n">dk</span><span class="p">.</span><span class="na">dtu</span><span class="p">.</span><span class="na">pets</span><span class="p">.</span><span class="na">Cat</span><span class="p">(</span><span class="s">&quot;Prof Los&quot;</span><span class="p">),</span>
+<span class="linenos">10</span><span class="w">                                           </span><span class="k">new</span><span class="w"> </span><span class="n">dk</span><span class="p">.</span><span class="na">dtu</span><span class="p">.</span><span class="na">pets</span><span class="p">.</span><span class="na">Cat</span><span class="p">(</span><span class="s">&quot;Dr Puma&quot;</span><span class="p">)</span><span class="w">   </span><span class="p">};</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Current list of pets:&quot;</span><span class="p">);</span>
+<span class="linenos">13</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="n">pets</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">14</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;    - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getDescription</span><span class="p">());</span>
+<span class="linenos">15</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">16</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">17</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>To compile and run the program in the ZIP file above, you can open a terminal in
+the unzipped folder, and execute the following commands.</p>
+<ol class="arabic">
+<li><p>Compile all Java files in all the various subdirectories, to generate a
+<code class="docutils literal notranslate"><span class="pre">.class</span></code> file for each <code class="docutils literal notranslate"><span class="pre">.java</span></code> file
+(as <a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">previously explained</span></a>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac dk/dtu/pets/*.java
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac dk/dtu/petclinic/*.java
+</pre></div>
+</div>
+<p>After the compilation, the files and directory structure will look as follows
+(the new <code class="docutils literal notranslate"><span class="pre">.class</span></code> files are highlighted)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dk                       (directory)
+└── dtu                  (directory)
+    ├── pets             (directory)
+    │   ├── Pet.java     (Java source code file)
+<span class="hll">    │   ├── Pet.class    (Java class file)
+</span>    │   ├── Dog.java     (Java source code file)
+<span class="hll">    │   ├── Dog.class    (Java class file)
+</span>    │   ├── Cat.java     (Java source code file)
+<span class="hll">    │   └── Cat.class    (Java class file)
+</span>    │
+    └── petclinic        (directory)
+        ├── Main.java    (Java source code file)
+<span class="hll">        └── Main.class   (Java class file)
+</span></pre></div>
+</div>
+</li>
+<li><p>Run the program, by asking Java to execute the static method <code class="docutils literal notranslate"><span class="pre">main</span></code> of the
+class <code class="docutils literal notranslate"><span class="pre">Main</span></code> in the package <code class="docutils literal notranslate"><span class="pre">dk.dtu.petclinic</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java dk.dtu.petclinic.Main
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</div><section id="importing-classes-from-other-packages">
+<span id="sec-projects-packages-import"></span><span id="index-3"></span><h3>Importing Classes from Other Packages<a class="headerlink" href="#importing-classes-from-other-packages" title="Permalink to this heading">#</a></h3>
+<p>When a class from another package is used often, it can be convenient to
+<strong><code class="docutils literal notranslate"><span class="pre">import</span></code> the class</strong> instead of repeating its fully-qualified name over and
+over again.  This is illustrated in <a class="reference internal" href="#eg-import-class">Example 74</a> below.</p>
+<div class="proof example admonition" id="eg-import-class">
+<p class="admonition-title"><span class="caption-number">Example 74 </span> (Importing the Pet class)</p>
+<section class="example-content" id="proof-content">
+<p>In <a class="reference internal" href="#eg-java-packages">Example 73</a> we have seen that the file <code class="docutils literal notranslate"><span class="pre">Main.java</span></code> in the
+package <code class="docutils literal notranslate"><span class="pre">dk.dtu.petclinic</span></code> uses e.g. the fully-qualified class name
+<code class="docutils literal notranslate"><span class="pre">dk.dtu.pets.Dog</span></code> to refer to a class in another package.  The file <code class="docutils literal notranslate"><span class="pre">Main.java</span></code>
+can instead <code class="docutils literal notranslate"><span class="pre">import</span></code> the class <code class="docutils literal notranslate"><span class="pre">dk.dtu.pets.Dog</span></code>: after being imported, the
+class can be simply referred as <code class="docutils literal notranslate"><span class="pre">Dog</span></code>.  The same can be done for the classes
+<code class="docutils literal notranslate"><span class="pre">Pet</span></code> and <code class="docutils literal notranslate"><span class="pre">Cat</span></code>.</p>
+<p>The modified file <code class="docutils literal notranslate"><span class="pre">Main.java</span></code> using <code class="docutils literal notranslate"><span class="pre">import</span></code> is shown below. <em>(The differences
+with the file <code class="docutils literal notranslate"><span class="pre">Main.java</span></code> in <a class="reference internal" href="#eg-java-packages">Example 73</a> are highlighted)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">package</span><span class="w"> </span><span class="nn">dk.dtu.petclinic</span><span class="p">;</span>
+<span class="linenos"> 2</span>
+<span class="hll"><span class="linenos"> 3</span><span class="kn">import</span><span class="w"> </span><span class="nn">dk.dtu.pets.Pet</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 4</span><span class="kn">import</span><span class="w"> </span><span class="nn">dk.dtu.pets.Dog</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 5</span><span class="kn">import</span><span class="w"> </span><span class="nn">dk.dtu.pets.Cat</span><span class="p">;</span>
+</span><span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Welcome to the DTU Pet Clinic!&quot;</span><span class="p">);</span>
+<span class="linenos">10</span>
+<span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">pets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pet</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">(</span><span class="s">&quot;Dr Wolf&quot;</span><span class="p">),</span>
+</span><span class="hll"><span class="linenos">12</span><span class="w">                               </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">(</span><span class="s">&quot;Mr Coyote&quot;</span><span class="p">),</span>
+</span><span class="hll"><span class="linenos">13</span><span class="w">                               </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">(</span><span class="s">&quot;Prof Los&quot;</span><span class="p">),</span>
+</span><span class="hll"><span class="linenos">14</span><span class="w">                               </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">(</span><span class="s">&quot;Dr Puma&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+</span><span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Current list of pets:&quot;</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="n">pets</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;    - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getDescription</span><span class="p">());</span>
+<span class="linenos">19</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">21</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div><span class="target" id="index-4"></span><span class="target" id="index-5"></span><span class="target" id="index-6"></span></section>
+<section id="protected-fields-and-methods">
+<span id="sec-projects-packages-protected"></span><span id="index-7"></span><h3>Protected Fields (and Methods)<a class="headerlink" href="#protected-fields-and-methods" title="Permalink to this heading">#</a></h3>
+<p>Until now we have seen that, when defining a class, we can decide the visibility
+of a field or method by using the optional modifiers <code class="docutils literal notranslate"><span class="pre">public</span></code> or <code class="docutils literal notranslate"><span class="pre">private</span></code>:</p>
+<ul class="simple">
+<li><p>a field/method defined with the <code class="docutils literal notranslate"><span class="pre">private</span></code> modifier is only accessible by code
+written in the same class;</p></li>
+<li><p>a field/method defined without modifiers is <em>package-private</em>, hence it is
+only accessible by code within the same package;</p></li>
+<li><p>a field/method defined with the <code class="docutils literal notranslate"><span class="pre">public</span></code> modifier is accessible by code
+written in any package.</p></li>
+</ul>
+<p>However, there may be cases where none of these three options fits our needs:</p>
+<ul class="simple">
+<li><p>we may want to protect a field/method from arbitrary “external” access (so we
+cannot make it <code class="docutils literal notranslate"><span class="pre">public</span></code>), and</p></li>
+<li><p>we may want to access the field/method from the subclasses (so we cannot
+make it <code class="docutils literal notranslate"><span class="pre">private</span></code>), and</p></li>
+<li><p>such subclasses might be defined in other packages (so we cannot make the
+field/method package-private).</p></li>
+</ul>
+<p>In these cases, we can make the field/method <code class="docutils literal notranslate"><span class="pre">protected</span></code>, i.e. only accessible
+by:</p>
+<ul class="simple">
+<li><p>code belonging to the same package, and</p></li>
+<li><p>the owner class and its subclasses.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">protected</span></code> modifier is typically relevant for larger Java applications, and
+it is not crucial for this course.  You can experiment with the <code class="docutils literal notranslate"><span class="pre">protected</span></code>
+modifier by trying <a class="reference internal" href="#ex-experimenting-protected"><span class="std std-numref">Exercise 35</span></a> below.</p>
+</div>
+</section>
+</section>
+<section id="distributing-java-classes-and-programs-as-jar-files">
+<span id="sec-projects-packages-jar"></span><h2>Distributing Java Classes and Programs as JAR Files<a class="headerlink" href="#distributing-java-classes-and-programs-as-jar-files" title="Permalink to this heading">#</a></h2>
+<p>When we compile Java source code, the Java compiler <code class="docutils literal notranslate"><span class="pre">javac</span></code> generates <code class="docutils literal notranslate"><span class="pre">.class</span></code>
+files that can be used <em>without the original source code</em>, on <em>any computer
+architecture and operating system supported by Java</em>: for instance, we can
+compile a <code class="docutils literal notranslate"><span class="pre">.java</span></code> file into a <code class="docutils literal notranslate"><span class="pre">.class</span></code> file on Linux, and that <code class="docutils literal notranslate"><span class="pre">.class</span></code> file can
+be used e.g. on MacOS (with an Intel or AMD or Apple Silicon CPU) or Windows
+(with an Intel or AMD or ARM CPU).  This is possible because <code class="docutils literal notranslate"><span class="pre">.class</span></code> files are
+loaded and interpreted by the <code class="docutils literal notranslate"><span class="pre">java</span></code> program, which in turn implements the
+<a class="reference external" href="https://www.infoworld.com/article/3272244/what-is-the-jvm-introducing-the-java-virtual-machine.html">Java Virtual Machine (JVM)</a> and is available on
+many operating systems and CPU architectures.</p>
+<p>In principle we could distribute our Java projects by distributing such <code class="docutils literal notranslate"><span class="pre">.class</span></code>
+files directly — but in practice, this can be cumbersome: each Java class is
+compiled into a separate <code class="docutils literal notranslate"><span class="pre">.class</span></code> file, so large Java projects may have many
+<code class="docutils literal notranslate"><span class="pre">.class</span></code> files.</p>
+<p>For this reason, the Java specification defines a standard way to package and
+distribute classes and programs: the <strong>JAR (Java ARchive) file format</strong> —
+which is just a ZIP file that contains:</p>
+<ul class="simple">
+<li><p>a “Manifest file” with information about the contents of the archive;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.class</span></code> files organised in a directory structure that matches their packages
+(as <a class="reference internal" href="#sec-projects-packages"><span class="std std-ref">previously explained</span></a>);</p></li>
+<li><p>other relevant files, if necessary.</p></li>
+</ul>
+<p>This is illustrated in <a class="reference internal" href="#eg-jar-file-create">Example 75</a>,
+<a class="reference internal" href="#eg-jar-file-use">Example 76</a>, and <a class="reference internal" href="#eg-jar-file-use-library">Example 77</a> below.</p>
+<div class="proof example admonition" id="eg-jar-file-create">
+<p class="admonition-title"><span class="caption-number">Example 75 </span> (Creating a JAR file)</p>
+<section class="example-content" id="proof-content">
+<p>Take the ZIP file provided in <a class="reference internal" href="#eg-java-packages">Example 73</a>
+(<a class="reference download internal" download="" href="_downloads/b053c47b85d46ceb8663f5dcd81ceb10/dtu-pet-clinic.zip"><span class="xref download myst">dtu-pet-clinic.zip</span></a>):
+we now see how to generate a JAR file containing the compiled <code class="docutils literal notranslate"><span class="pre">.class</span></code> files
+(while in <a class="reference internal" href="#eg-jar-file-use">Example 76</a> below we will use that JAR file to develop
+a new program).</p>
+<p>First, it is convenient to compile all <code class="docutils literal notranslate"><span class="pre">.java</span></code> files into <code class="docutils literal notranslate"><span class="pre">.class</span></code> files stored
+in a separate directory, called e.g. <code class="docutils literal notranslate"><span class="pre">build</span></code>.  To do this, you can open a
+terminal in the folder <code class="docutils literal notranslate"><span class="pre">dtu-pet-clinic</span></code> extracted from the ZIP file above, and
+run the <code class="docutils literal notranslate"><span class="pre">javac</span></code> compiler with the option <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">build</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac -d build dk/dtu/pets/*.java
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac -d build dk/dtu/petclinic/*.java
+</pre></div>
+</div>
+<p>After these commands, the contents of the directory <code class="docutils literal notranslate"><span class="pre">dtu-pet-clinic</span></code> should look
+as follows: <em>(notice that the compiled <code class="docutils literal notranslate"><span class="pre">.class</span></code> files are now inside the
+directory <code class="docutils literal notranslate"><span class="pre">build</span></code>, and they are arranged in subdirectories that match the
+directory structure of the source files)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dtu-pet-clinic                   (directory extracted from the ZIP file)
+├── dk                           (directory containing the Java source code)
+│   └── dtu                      (directory)
+│       ├── pets                 (directory)
+│       │   ├── Pet.java         (Java source code file)
+│       │   ├── Dog.java         (Java source code file)
+│       │   └── Cat.java         (Java source code file)
+│       │
+│       └── petclinic            (directory)
+│           └── Main.java        (Java source code file)
+│
+└── build
+    └── dk                       (directory contaning compiled .class files)
+        └── dtu                  (directory)
+            ├── pets             (directory)
+            │   ├── Pet.class    (Java class file)
+            │   ├── Dog.class    (Java class file)
+            │   └── Cat.class    (Java class file)
+            │
+            └── petclinic        (directory)
+                └── Main.class   (Java class file)
+</pre></div>
+</div>
+<p>We can now create a JAR file called e.g. <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code> based on the contents
+of the directory <code class="docutils literal notranslate"><span class="pre">build</span></code>, with the following command (which also specifies which
+class contains the <code class="docutils literal notranslate"><span class="pre">main</span></code> method):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jar --create --file PetClinic.jar --main-class dk.dtu.petclinic.Main -C build .
+</pre></div>
+</div>
+<p>After executing this command, you should see a new file called <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code>
+containing all the <code class="docutils literal notranslate"><span class="pre">.class</span></code> files above: we discuss how to use it in
+<a class="reference internal" href="#eg-jar-file-use">Example 76</a> below.</p>
+</section>
+</div><div class="proof example admonition" id="eg-jar-file-use">
+<p class="admonition-title"><span class="caption-number">Example 76 </span> (Using a JAR file)</p>
+<section class="example-content" id="proof-content">
+<p>This is a follow-up to <a class="reference internal" href="#eg-jar-file-create">Example 75</a> above, and the starting
+point is the file <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code> created there.</p>
+<p>The file <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code> can be easily distributed to reuse the Java classes it
+contains.  For instance, we can run the DTU Pet Clinic program contained in
+<code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code> by executing in a console (from within the same directory
+containing the file):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java -jar PetClinic.jar
+</pre></div>
+</div>
+<p>We can also develop new Java code that uses the classes saved in the JAR file
+<code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code>.  For example, consider the code below, that defines a class
+<code class="docutils literal notranslate"><span class="pre">Kangaroo</span></code> extending <code class="docutils literal notranslate"><span class="pre">dk.dtu.pets.Pet</span></code>, with a simple <code class="docutils literal notranslate"><span class="pre">main</span></code> method for testing:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Kangaroo</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">dk</span><span class="p">.</span><span class="na">dtu</span><span class="p">.</span><span class="na">pets</span><span class="p">.</span><span class="na">Pet</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Kangaroo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;kangaroo&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">args</span><span class="o">[]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Kangaroo</span><span class="p">(</span><span class="s">&quot;Clara&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Pet description: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="na">getDescription</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you save the code above in a file called e.g. <code class="docutils literal notranslate"><span class="pre">Kangaroo.java</span></code>, and you try to
+compile and run it by executing <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">Kangaroo.java</span></code>, you will get an error like
+<em>“package dk.dtu.pets does not exist”</em>: this is because Java does not know where
+to find the package <code class="docutils literal notranslate"><span class="pre">dk.dtu.pets</span></code> and the classes it contains.</p>
+<p>However, we can tell Java to look for such package and classes using the option
+<code class="docutils literal notranslate"><span class="pre">-classpath</span></code> (or <code class="docutils literal notranslate"><span class="pre">-cp</span></code> for short) with the file <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code> created above.
+If <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code> and <code class="docutils literal notranslate"><span class="pre">Kangaroo.java</span></code> are in the same directory, we can execute
+(from within that directory):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java -classpath PetClinic.jar Kangaroo.java
+</pre></div>
+</div>
+<p>And now the program will compile and run, using the class <code class="docutils literal notranslate"><span class="pre">dk.dtu.pets.Pet</span></code>
+provided by the JAR file <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code>.  The output will be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Pet description: Clara (kangaroo)
+</pre></div>
+</div>
+</section>
+</div><div class="proof example admonition" id="eg-jar-file-use-library">
+<p class="admonition-title"><span class="caption-number">Example 77 </span> (Using JAR files provided by other Java projects)</p>
+<section class="example-content" id="proof-content">
+<p>This is a follow-up to <a class="reference internal" href="#eg-jar-file-create">Example 75</a> (starting from the file
+<code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code>) and <a class="reference internal" href="#eg-jar-file-use">Example 76</a>: we now discuss how we can
+improve the small program in this last example by using a collection of Java
+classes (i.e. a <em>library</em>) that is <em>not</em> part of the standard Java API.</p>
+<p>Suppose we want to add some coloured output to the file <code class="docutils literal notranslate"><span class="pre">Kangaroo.java</span></code>
+developed in <a class="reference internal" href="#eg-jar-file-use">Example 76</a>.  The Java API does not provide any
+class nor method to produce coloured output on the console — but there is a
+popular Java library called <a class="reference external" href="https://fusesource.github.io/jansi">Jansi</a> that
+provides such facilities.</p>
+<p>To use the Jansi library, we first need to <strong>download its JAR file</strong>: you can
+find the JAR file for <strong>Jansi version 2.4.0</strong> on its
+<a class="reference external" href="https://fusesource.github.io/jansi/download.html">download page</a>.
+<strong>Please save the file <code class="docutils literal notranslate"><span class="pre">jansi-2.4.0.jar</span></code> in the directory that also contains the
+files <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code> and <code class="docutils literal notranslate"><span class="pre">Kangaroo.java</span></code>.</strong></p>
+<p>The, we can modify the file <code class="docutils literal notranslate"><span class="pre">Kangaroo.java</span></code> (from <a class="reference internal" href="#eg-jar-file-use">Example 76</a>) as
+follows, using the Jansi library according to its
+<a class="reference external" href="https://fusesource.github.io/jansi/documentation/api/index.html">API documentation</a>.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.fusesource.jansi.AnsiConsole</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.fusesource.jansi.Ansi</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Kangaroo</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">dk</span><span class="p">.</span><span class="na">dtu</span><span class="p">.</span><span class="na">pets</span><span class="p">.</span><span class="na">Pet</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Kangaroo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;kangaroo&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">args</span><span class="o">[]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Kangaroo</span><span class="p">(</span><span class="s">&quot;Clara&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">AnsiConsole</span><span class="p">.</span><span class="na">systemInstall</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ansi</span><span class="p">.</span><span class="na">ansi</span><span class="p">().</span><span class="na">fgGreen</span><span class="p">().</span><span class="na">a</span><span class="p">(</span><span class="s">&quot;Pet description: &quot;</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">bgRed</span><span class="p">().</span><span class="na">fgBrightYellow</span><span class="p">().</span><span class="na">bold</span><span class="p">().</span><span class="na">a</span><span class="p">(</span><span class="n">k</span><span class="p">.</span><span class="na">getDescription</span><span class="p">())</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">fgDefault</span><span class="p">().</span><span class="na">bgDefault</span><span class="p">();</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="w">        </span><span class="n">AnsiConsole</span><span class="p">.</span><span class="na">systemUninstall</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can now compile and run the revised file <code class="docutils literal notranslate"><span class="pre">Kangaroo.java</span></code> using <em>both</em> JAR
+files <code class="docutils literal notranslate"><span class="pre">PetClinic.java</span></code> and <code class="docutils literal notranslate"><span class="pre">jansi-2.4.0.jar</span></code>: <em>(NOTE: this is done slightly
+differently on Windows, compared to macOS and Linux)</em></p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Windows</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">macOS and Linux (Ubuntu)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java -classpath &quot;PetClinic.jar;jansi-2.4.0.jar&quot; Kangaroo.java
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java -classpath PetClinic.jar:jansi-2.4.0.jar Kangaroo.java
+</pre></div>
+</div>
+</div></div>
+<p>and the program should produce coloured output on the console.</p>
+</section>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The Java API is made available via a collection of JAR files containing many
+packages and classes (including the ones we have used thus far, like e.g.
+<code class="docutils literal notranslate"><span class="pre">java.util.Scanner</span></code>). Those JAR files are part of Java installation and they
+are automatically used when we compile or run Java programs, without need to
+load them with the <code class="docutils literal notranslate"><span class="pre">-classpath</span></code> command-line option (as we had to do for
+loading <code class="docutils literal notranslate"><span class="pre">PetClinic.jar</span></code> and <code class="docutils literal notranslate"><span class="pre">jansi-2.4.0</span></code> in <a class="reference internal" href="#eg-jar-file-use">Example 76</a> and
+<a class="reference internal" href="#eg-jar-file-use-library">Example 77</a>).</p></li>
+<li><p>The Java library includes a package called <code class="docutils literal notranslate"><span class="pre">java.lang</span></code> whose classes are
+automatically <code class="docutils literal notranslate"><span class="pre">import</span></code>ed.  This is why we can write e.g.
+<code class="docutils literal notranslate"><span class="pre">System.out.println(&quot;...&quot;)</span></code> without importing the class <code class="docutils literal notranslate"><span class="pre">System</span></code>, or we can
+create and <code class="docutils literal notranslate"><span class="pre">throw</span></code> an object of the class <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> without
+importing the class <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> itself: both classes <code class="docutils literal notranslate"><span class="pre">System</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> are part of the package <code class="docutils literal notranslate"><span class="pre">java.lang</span></code>, hence they are
+automatically imported in our Java programs.  Correspondingly, writing e.g.
+<code class="docutils literal notranslate"><span class="pre">System.out.println(&quot;...&quot;)</span></code> is equivalent to writing the more verbose
+<code class="docutils literal notranslate"><span class="pre">java.lang.System.out.println(&quot;...&quot;)</span></code>.</p></li>
+</ul>
+</div>
+<span class="target" id="index-8"></span><span class="target" id="index-9"></span></section>
+<section id="java-build-tools">
+<span id="sec-projects-build-tools"></span><span id="index-10"></span><h2>Java Build Tools<a class="headerlink" href="#java-build-tools" title="Permalink to this heading">#</a></h2>
+<p>The steps described in the previous sections and examples (compiling multiple
+Java files with the correct options, creating JAR files, downloading JAR files
+when needed, remembering to specify <code class="docutils literal notranslate"><span class="pre">-classpath</span></code>…) become very repetitive and
+time-consuming when developing Java programs.  For this reason, the Java
+ecosystem includes various <strong>build tools</strong> that automate these steps, and let
+programmers focus more on designing and writing their Java code.</p>
+<p>These build tools can be installed and used in a terminal — and editors like
+Visual Studio Code provide additional facilities to use build tools through a
+more intuitive point-and-click interface.</p>
+<p>These tools are outside the scope of this course — but if you are curious,
+here are two introductions to two very popular build tools for Java projects:</p>
+<ul class="simple">
+<li><p><strong>Maven</strong>: <a class="reference external" href="https://www.baeldung.com/maven">https://www.baeldung.com/maven</a></p></li>
+<li><p><strong>Gradle</strong>: <a class="reference external" href="https://www.baeldung.com/gradle">https://www.baeldung.com/gradle</a></p></li>
+</ul>
+</section>
+<section id="concluding-remarks">
+<span id="sec-projects-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of the following topics:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sec-projects-packages"><span class="std std-ref">Java packages</span></a> and the related
+<a class="reference internal" href="#sec-projects-packages-import"><span class="std std-ref">“import” directive</span></a> and
+<a class="reference internal" href="#sec-projects-packages-protected"><span class="std std-ref">“protected” modifier</span></a>.</p></li>
+<li><p>Creating and using <a class="reference internal" href="#sec-projects-packages-jar"><span class="std std-ref">JAR files</span></a>.</p></li>
+<li><p>The role of <a class="reference internal" href="#sec-projects-build-tools"><span class="std std-ref">Java build tools</span></a> in automating
+many tasks during the development of Java programs.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>As mentioned <a class="reference internal" href="#mod-projects"><span class="std std-ref">in the opening</span></a>, these topics are <strong>not</strong>
+part of the final exam of this course.  They are presented here because they
+usually become very important as soon as one tries to work on other people’s
+code, or steps beyond the scope of introductory programs.</p></li>
+<li><p>Most of the tasks described in this module can be automated using build tools
+(like Maven) and editors (like Visual Studio Code) and other advanced Java
+development environments (like <a class="reference external" href="https://www.eclipse.org/ide/">Eclipse</a> or
+<a class="reference external" href="https://www.jetbrains.com/idea/">IntelliJ Idea</a>).  Still, it it is important
+to have an intuition of what is happening “behind the scenes” to understand
+how to address possible issues.  For instance, an error reporting that a
+package used in your code “does not exist” might mean that you need to
+download the relevant JAR file(s) — or you may need to configure Maven or
+Eclipse or IntelliJ Idea to do that for you.</p></li>
+</ul>
+</div>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-projects-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>:</p>
+<ul class="simple">
+<li><p>Section 3.3 - “Packages”</p></li>
+<li><p>Section 9.1 - “Crating Subclasses” - “The <code class="docutils literal notranslate"><span class="pre">protected</span></code> Modifier”</p></li>
+</ul>
+<p>More details about Java packages are available in this tutorial:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.baeldung.com/java-packages">https://www.baeldung.com/java-packages</a></p></li>
+</ul>
+<p>Here are more details on how to compile multiple Java files in various
+directories:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.baeldung.com/javac-compile-classes-directory">https://www.baeldung.com/javac-compile-classes-directory</a></p></li>
+</ul>
+<p>Finally, this tutorial discusses how to create JAR files.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.baeldung.com/java-create-jar">https://www.baeldung.com/java-create-jar</a></p></li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-projects-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="ex-experimenting-packages">
+
+<p class="admonition-title"><span class="caption-number">Exercise 34 </span> (Experimenting with Java packages)</p>
+<section id="exercise-content">
+<p>To experiment with the package structure in Java, you may take one of the
+previous assessments and rearrange their classes into packages with the
+corresponding directory structure, as we did for <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, and <code class="docutils literal notranslate"><span class="pre">Cat</span></code> in
+<a class="reference internal" href="#eg-java-packages">Example 73</a>.</p>
+<p>For example, you could take the solution to
+<a class="reference internal" href="lab-day-5.html#lab-day-5-monsters-5"><span class="std std-ref">04 - Video Game Monsters, Part 5</span></a> (either your own solution, or the one
+provided by the teacher) and adapt it by:</p>
+<ul class="simple">
+<li><p>making all monster classes <code class="docutils literal notranslate"><span class="pre">public</span></code> (so they must be placed in their own
+file), and</p></li>
+<li><p>grouping all monster classes in a package called <code class="docutils literal notranslate"><span class="pre">dk.dtu.game.monsters</span></code>, and</p></li>
+<li><p>placing the class <code class="docutils literal notranslate"><span class="pre">GameUtils</span></code> in a package called <code class="docutils literal notranslate"><span class="pre">dk.dtu.game.utils</span></code>.</p></li>
+</ul>
+<p>After you reorganise the classes in this way, you can try revising some of the
+tests in the handout of <a class="reference internal" href="lab-day-5.html#lab-day-5-monsters-5"><span class="std std-ref">04 - Video Game Monsters, Part 5</span></a>, changing
+their code to make it compile and run using the new package names.  For
+instance, you may need to <code class="docutils literal notranslate"><span class="pre">import</span></code> the class <code class="docutils literal notranslate"><span class="pre">dk.dtu.game.monsters.Monster</span></code>…</p>
+</section>
+</div>
+<div class="exercise admonition" id="ex-experimenting-protected">
+
+<p class="admonition-title"><span class="caption-number">Exercise 35 </span> (Experimenting with protected fields)</p>
+<section id="exercise-content">
+<p>To see the <a class="reference internal" href="#sec-projects-packages-protected"><span class="std std-ref">“protected” modifier</span></a> in
+action, you can try the following experiment:</p>
+<ol class="arabic simple">
+<li><p>take the ZIP file provided in <a class="reference internal" href="#eg-java-packages">Example 73</a>
+(<a class="reference download internal" download="" href="_downloads/b053c47b85d46ceb8663f5dcd81ceb10/dtu-pet-clinic.zip"><span class="xref download myst">dtu-pet-clinic.zip</span></a>);</p></li>
+<li><p>modify the field <code class="docutils literal notranslate"><span class="pre">name</span></code> of the class <code class="docutils literal notranslate"><span class="pre">dk.dtu.pets.Pet</span></code> to be <code class="docutils literal notranslate"><span class="pre">protected</span></code>
+instead of <code class="docutils literal notranslate"><span class="pre">private</span></code>;</p></li>
+<li><p>define e.g. a class <code class="docutils literal notranslate"><span class="pre">Porcupine</span></code> that extends <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, but belongs to the package
+<code class="docutils literal notranslate"><span class="pre">dk.dtu.petclinic</span></code> (so, <code class="docutils literal notranslate"><span class="pre">Porcupine</span></code> and <code class="docutils literal notranslate"><span class="pre">Pet</span></code> belong to different packages);</p></li>
+<li><p>modify the code of <code class="docutils literal notranslate"><span class="pre">Porcupine</span></code> and <code class="docutils literal notranslate"><span class="pre">Main</span></code> to observe that:</p>
+<ul class="simple">
+<li><p>in the code written inside the class <code class="docutils literal notranslate"><span class="pre">dk.dtu.petclinic.Porcupine</span></code>, you can
+directly read and modify the value of the field <code class="docutils literal notranslate"><span class="pre">this.name</span></code>.  However,</p></li>
+<li><p>inside the static method <code class="docutils literal notranslate"><span class="pre">dk.dtu.petclinic.Main.main</span></code>, if <code class="docutils literal notranslate"><span class="pre">p</span></code> is an object
+of the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> (or one of its subclasses), then you <em>cannot</em> access
+the field <code class="docutils literal notranslate"><span class="pre">p.name</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-projects-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-projects-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For this Module, you can find the weekly assessments in a <strong>sample exam paper</strong>:</p>
+<ol class="arabic simple">
+<li><p>open the <strong>course page on DTU Learn</strong> (<a title="Course home page" href="https://learn.inside.dtu.dk/d2l/home/215298">https://learn.inside.dtu.dk/d2l/home/215298</a>);</p></li>
+<li><p>navigate to <strong><em>Contents → Sample Exam Papers</em></strong>;</p></li>
+<li><p>select the <strong>Sample Exam 01</strong> PDF file.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="files.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 12, Part 1: File I/O</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab-day-6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 13, Part 1: Lab Day — Exam Simulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#java-packages">Java Packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-classes-from-other-packages">Importing Classes from Other Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protected-fields-and-methods">Protected Fields (and Methods)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributing-java-classes-and-programs-as-jar-files">Distributing Java Classes and Programs as JAR Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#java-build-tools">Java Build Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

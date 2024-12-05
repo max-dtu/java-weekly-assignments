@@ -1,0 +1,1158 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 6, Part 2: More About Arrays and Objects &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/bussproofs"]}, "tex": {"packages": {"[+]": ["bussproofs"]}, "macros": {}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="_static/mathjax/es5/tex-svg.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 7, Part 1: Lab Day" href="lab-day-3.html" />
+    <link rel="prev" title="Module 6, Part 1: Simple Classes and Objects" href="simple-classes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 6, Part 2: More About Arrays and Objects</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-array-of-command-line-arguments">The Array of Command-Line Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-arrays-and-objects">Comparing Arrays and Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-of-objects-and-arrays-of-arrays">Arrays of Objects and Arrays of Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-of-objects">Arrays of Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-of-arrays-a-k-a-bidimensional-arrays">Arrays of Arrays (a.k.a. Bidimensional Arrays)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-command-line-arguments">05 - Unique Command-Line Arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-formatting">06 - Array Formatting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">07 - Matrix Multiplication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barf-bags-collection">08 - Barf Bags Collection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-class-barfbag">1. Implementing the Class <code class="docutils literal notranslate"><span class="pre">BarfBag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-barf-bag-information-from-the-terminal">2. Reading Barf Bag Information from the Terminal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-6-part-2-more-about-arrays-and-objects">
+<span id="mod-arrays-simple-classes-2"></span><h1>Module 6, Part 2: More About Arrays and Objects<a class="headerlink" href="#module-6-part-2-more-about-arrays-and-objects" title="Permalink to this heading">#</a></h1>
+<p>In this second part of Module 6 we reprise the topics addressed in
+<a class="reference internal" href="arrays.html#mod-arrays"><span class="std std-ref">Module 5, Part 1: Arrays</span></a> and <a class="reference internal" href="simple-classes.html#mod-simple-classes"><span class="std std-ref">Module 6, Part 1: Simple Classes and Objects</span></a>, and explore them in more depth.</p>
+<ul class="simple">
+<li><p>How to access the <a class="reference internal" href="#sec-arrays-simple-classes-2-cmdline-args"><span class="std std-ref">command-line arguments of a Java program</span></a></p></li>
+<li><p>How to <a class="reference internal" href="#sec-arrays-simple-classes-2-comparing-arr-objs"><span class="std std-ref">check whether two objects or two arrays are equal</span></a></p></li>
+<li><p>How to <a class="reference internal" href="#sec-arrays-simple-classes-2-array-obj"><span class="std std-ref">define and use arrays of objects and arrays of arrays</span></a></p></li>
+</ul>
+<span class="target" id="index-0"></span><section id="the-array-of-command-line-arguments">
+<span id="sec-arrays-simple-classes-2-cmdline-args"></span><span id="index-1"></span><h2>The Array of Command-Line Arguments<a class="headerlink" href="#the-array-of-command-line-arguments" title="Permalink to this heading">#</a></h2>
+<p>We have seen that, when writing Java programs, the execution begins with a
+static method called <code class="docutils literal notranslate"><span class="pre">main</span></code> (defined inside some class) that looks like this:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">ClassName</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice the type of the argument <code class="docutils literal notranslate"><span class="pre">args</span></code>, i.e. <code class="docutils literal notranslate"><span class="pre">String[]</span></code>: it means that <code class="docutils literal notranslate"><span class="pre">args</span></code> is
+an array of <code class="docutils literal notranslate"><span class="pre">String</span></code> objects.  That array lets our program access the
+<strong>command-line arguments</strong> used to start the program itself.</p>
+<p>More in detail: when a Java program is executed from a terminal, the method
+<code class="docutils literal notranslate"><span class="pre">main(args)</span></code> is automatically called by Java, with the array <code class="docutils literal notranslate"><span class="pre">args</span></code> containing
+the arguments passed to the Java program via the command-line.  Therefore,
+inside the body of the static method <code class="docutils literal notranslate"><span class="pre">main(args)</span></code> we can access those
+command-line arguments by accessing the contents of the array <code class="docutils literal notranslate"><span class="pre">args</span></code>: this is
+shown in <a class="reference internal" href="#eg-arrays-cmd-line">Example 41</a> below.</p>
+<div class="proof example admonition" id="eg-arrays-cmd-line">
+<p class="admonition-title"><span class="caption-number">Example 41 </span> (A program that examines its command-line arguments)</p>
+<section class="example-content" id="proof-content">
+<p>Consider the following program:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">CommandLineExample</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Number of command-line arguments: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">args</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;args[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;] is: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Save this program in a file called <code class="docutils literal notranslate"><span class="pre">CommandLineExample.java</span></code>, and then execute
+in a terminal (in the same folder where the program is saved):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java CommandLineExample.java
+</pre></div>
+</div>
+<p>The output will be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Number of command-line arguments: 0
+</pre></div>
+</div>
+<p>Now, try again by executing in a terminal (in the same folder where
+<code class="docutils literal notranslate"><span class="pre">CommandLineExample.java</span></code> is saved):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java CommandLineExample.java foo --bar -b -a -z
+</pre></div>
+</div>
+<p>The output will be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Number of command-line arguments: 5
+args[0] = foo
+args[1] = --bar
+args[2] = -b
+args[3] = -a
+args[4] = -z
+</pre></div>
+</div>
+<p>Notice that each argument written on the command line (after <code class="docutils literal notranslate"><span class="pre">java</span></code> and the name
+of the program itself) is available to the running program as an element of the
+array <code class="docutils literal notranslate"><span class="pre">args</span></code>.</p>
+</section>
+</div></section>
+<section id="comparing-arrays-and-objects">
+<span id="sec-arrays-simple-classes-2-comparing-arr-objs"></span><h2>Comparing Arrays and Objects<a class="headerlink" href="#comparing-arrays-and-objects" title="Permalink to this heading">#</a></h2>
+<p>We have seen that if <code class="docutils literal notranslate"><span class="pre">str1</span></code> and <code class="docutils literal notranslate"><span class="pre">str2</span></code> are two objects of type <code class="docutils literal notranslate"><span class="pre">String</span></code>,
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-strings-comparison"><span class="std std-ref">the correct way to compare them</span></a>
+is to call the method <code class="docutils literal notranslate"><span class="pre">str1.equals(str2)</span></code>, which returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if
+<code class="docutils literal notranslate"><span class="pre">str1</span></code> and <code class="docutils literal notranslate"><span class="pre">str2</span></code> are equal character-by-character.</p>
+<p>Instead, the expression <code class="docutils literal notranslate"><span class="pre">str1</span> <span class="pre">==</span> <span class="pre">str2</span></code> will often produce <code class="docutils literal notranslate"><span class="pre">false</span></code> even if <code class="docutils literal notranslate"><span class="pre">str1</span></code>
+and <code class="docutils literal notranslate"><span class="pre">str2</span></code> are equal character-by-character.  The same applies to Java arrays,
+and to Java objects in general, as illustrated below.</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">arr1</span></code> and <code class="docutils literal notranslate"><span class="pre">arr2</span></code> are arrays of the same type (e.g. <code class="docutils literal notranslate"><span class="pre">int[]</span></code>), the
+expression <code class="docutils literal notranslate"><span class="pre">arr1</span> <span class="pre">==</span> <span class="pre">arr2</span></code> will often return <code class="docutils literal notranslate"><span class="pre">false</span></code> even when <code class="docutils literal notranslate"><span class="pre">arr1</span></code> and
+<code class="docutils literal notranslate"><span class="pre">arr2</span></code> contain exactly the same values at the same positions.  To check
+whether the two arrays are equal, your Java programs will need to:</p>
+<ol class="arabic simple">
+<li><p>check whether <code class="docutils literal notranslate"><span class="pre">arr1</span></code> and <code class="docutils literal notranslate"><span class="pre">arr2</span></code> have the same length, and</p></li>
+<li><p>execute a loop that checks whether each element of <code class="docutils literal notranslate"><span class="pre">arr1</span></code> is equal to the
+element of <code class="docutils literal notranslate"><span class="pre">arr2</span></code> with the same index.</p></li>
+</ol>
+</li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">o1</span></code> and <code class="docutils literal notranslate"><span class="pre">o2</span></code> are objects of the same class, the expression <code class="docutils literal notranslate"><span class="pre">o1</span> <span class="pre">==</span> <span class="pre">o2</span></code> will
+often return <code class="docutils literal notranslate"><span class="pre">false</span></code> even when the fields of <code class="docutils literal notranslate"><span class="pre">o1</span></code> and <code class="docutils literal notranslate"><span class="pre">o2</span></code> contain exactly
+the same values.  To compare two objects <code class="docutils literal notranslate"><span class="pre">o1</span></code> and <code class="docutils literal notranslate"><span class="pre">o2</span></code>, you should typically
+call <code class="docutils literal notranslate"><span class="pre">o1.equals(o2)</span></code> instead. More in detail:</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">o1</span></code> and <code class="docutils literal notranslate"><span class="pre">o2</span></code> are objects of some class that is <em>not</em> defined by you
+(e.g., it is defined in the Java API), then the method <code class="docutils literal notranslate"><span class="pre">equals(...)</span></code>
+<em>usually</em> performs the object comparison in the expected way, so you can
+just call <code class="docutils literal notranslate"><span class="pre">o1.equals(o2)</span></code>. <em>(To be sure, you should check the documentation
+of the class <code class="docutils literal notranslate"><span class="pre">C</span></code>.)</em></p></li>
+<li><p>Otherwise, if <code class="docutils literal notranslate"><span class="pre">o1</span></code> and <code class="docutils literal notranslate"><span class="pre">o2</span></code> are objects of a class that <em>you</em> have defined,
+then you may want to define some method that performs the comparison and
+returns a <code class="docutils literal notranslate"><span class="pre">boolean</span></code>. Following the Java conventions, you may define and
+implement a method called <code class="docutils literal notranslate"><span class="pre">equals(...)</span></code> allowing you to call <code class="docutils literal notranslate"><span class="pre">o1.equals(o2)</span></code>
+(you should have already done this: see <a class="reference internal" href="simple-classes.html#ex-shopitem-more-methods"><span class="std std-numref">Exercise 26</span></a> and
+the assessment <a class="reference internal" href="simple-classes.html#lab-simple-classes-cars-2"><span class="std std-ref">04 - Cars 2</span></a>).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Java provides a default implementation of the method <code class="docutils literal notranslate"><span class="pre">equals(...)</span></code> to all
+classes — including the classes defined by you. If you do not define the
+method <code class="docutils literal notranslate"><span class="pre">equals(...)</span></code> in your own classes, then the default method is used,
+which behaves like the operator <code class="docutils literal notranslate"><span class="pre">==</span></code>: therefore, its result may not be the
+one you want! For example, try defining a simple class and two objects on
+the Java shell:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Shoe</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Shoe</span><span class="p">();</span><span class="w">  </span><span class="n">s1</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">43</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Shoe</span><span class="p">();</span><span class="w">  </span><span class="n">s2</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">43</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now, if you call <code class="docutils literal notranslate"><span class="pre">s1.equals(s2)</span></code>, you will get the result <code class="docutils literal notranslate"><span class="pre">false</span></code>! This is
+because you are calling the default method <code class="docutils literal notranslate"><span class="pre">equals(...)</span></code> of the class <code class="docutils literal notranslate"><span class="pre">Shoe</span></code>,
+which returns the same result as the expression <code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">==</span> <span class="pre">s2</span></code>.</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="arrays-of-objects-and-arrays-of-arrays">
+<span id="sec-arrays-simple-classes-2-array-obj"></span><h2>Arrays of Objects and Arrays of Arrays<a class="headerlink" href="#arrays-of-objects-and-arrays-of-arrays" title="Permalink to this heading">#</a></h2>
+<p>We can define arrays that contain any type of data, depending on the
+requirements of the programs we write.  In this section we explore two common
+scenarios:</p>
+<ul class="simple">
+<li><p>Define and use an
+<a class="reference internal" href="#sec-arrays-simple-classes-2-array-obj-array-obj"><span class="std std-ref">array that contains objects</span></a></p></li>
+<li><p>Define and use an
+<a class="reference internal" href="#sec-arrays-simple-classes-2-array-obj-array-array"><span class="std std-ref">array that contains arrays</span></a></p></li>
+</ul>
+<section id="arrays-of-objects">
+<span id="sec-arrays-simple-classes-2-array-obj-array-obj"></span><h3>Arrays of Objects<a class="headerlink" href="#arrays-of-objects" title="Permalink to this heading">#</a></h3>
+<p>We have seen <a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-strings-methods"><span class="std std-ref">in previous modules</span></a>
+that, in Java, <code class="docutils literal notranslate"><span class="pre">String</span></code> is a class, and a string instance (like <code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;</span></code>) is an
+object with methods.  Therefore, to see a simple example of array of objects, we
+can create an array of <code class="docutils literal notranslate"><span class="pre">String</span></code>s on the Java shell:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var words = new String[] {&quot;Hello&quot;, &quot;DTU&quot;, &quot;this&quot;, &quot;is&quot;, &quot;a&quot;, &quot;test&quot;}
+</span>words ==&gt; String[5] { &quot;Hello&quot;, &quot;DTU&quot;, &quot;this&quot;, &quot;is&quot;, &quot;a&quot;, &quot;test&quot; }
+|  created variable words : String[]
+</pre></div>
+</div>
+<p>Now, if we want to print the length of the 3rd element of the array
+<code class="docutils literal notranslate"><span class="pre">words</span></code>, we can try:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Length of &#39;&quot; + words[5] + &quot;&#39;: &quot; + words[5].length())
+</span>Length of &#39;test&#39;: 4
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">words[5].length()</span></code> means: <em>“access the object stored at index 5 of the
+array <code class="docutils literal notranslate"><span class="pre">words</span></code> (i.e. <code class="docutils literal notranslate"><span class="pre">words[5]</span></code>) and call its method <code class="docutils literal notranslate"><span class="pre">length()</span></code>”</em>.</p>
+<p>We can also loop over all objects contained in the array and call their methods,
+e.g. by using a <a class="reference internal" href="arrays.html#sec-arrays-arrays-loops"><span class="std std-ref">for-each loop</span></a>:
+(<em>try this on the Java shell!</em>)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">w</span><span class="p">:</span><span class="w"> </span><span class="n">words</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Uppercase &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="na">toUpperCase</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Alternatively, we can produce the same output with a <code class="docutils literal notranslate"><span class="pre">for</span></code>-loop:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">words</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Uppercase &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">words</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">toUpperCase</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#eg-array-of-objects">Example 42</a> below shows a more complex use of arrays of
+objects.</p>
+<div class="proof example admonition" id="eg-array-of-objects">
+<p class="admonition-title"><span class="caption-number">Example 42 </span> (Arrays of objects)</p>
+<section class="example-content" id="proof-content">
+<p>Suppose we need to write a program that manages the inventory of a shop.  To
+represent the inventory, we could use an array, where each element is an object
+of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> from <a class="reference internal" href="simple-classes.html#eg-shopitem-program-nonstatic-methods">Example 40</a>.</p>
+<p>So, let us consider again the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> introduced in
+<a class="reference internal" href="simple-classes.html#eg-shopitem-program-nonstatic-methods">Example 40</a>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ShopItem</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">availability</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">ShopItem</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">avail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (price: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; DKK + &quot;</span>
+<span class="linenos">16</span><span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;% VAT; &quot;</span>
+<span class="linenos">17</span><span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;availability: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">inflateNetPrice</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">percentage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">percentage</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span><span class="p">));</span>
+<span class="linenos">23</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">24</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The program below creates an array (called <code class="docutils literal notranslate"><span class="pre">inventory</span></code>) of <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> objects,
+and then increases the price of each object in the array.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ShopInventory</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">inventory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Freesbee&quot;</span><span class="p">,</span><span class="w">            </span><span class="mi">115</span><span class="p">,</span><span class="w">  </span><span class="mi">25</span><span class="o">/</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">),</span>
+<span class="linenos"> 5</span><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Plant pot&quot;</span><span class="p">,</span><span class="w">           </span><span class="mf">61.5</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="o">/</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">),</span>
+<span class="linenos"> 6</span><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Newspaper Politiken&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">61.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="o">/</span><span class="mf">100.0</span><span class="p">,</span><span class="w">  </span><span class="mi">23</span><span class="p">),</span>
+<span class="linenos"> 7</span><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Cellphone&quot;</span><span class="p">,</span><span class="w">           </span><span class="mi">2500</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="o">/</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">),</span>
+<span class="linenos"> 8</span><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Chocolate bar&quot;</span><span class="p">,</span><span class="w">       </span><span class="mi">25</span><span class="p">,</span><span class="w">   </span><span class="mi">25</span><span class="o">/</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="p">};</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Shop items before inflation:&quot;</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">inventory</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">13</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;   - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">inventory</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+<span class="linenos">14</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Applying inflation...&quot;</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">item</span><span class="p">:</span><span class="w"> </span><span class="n">inventory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">            </span><span class="n">item</span><span class="p">.</span><span class="na">inflateNetPrice</span><span class="p">(</span><span class="mf">10.0</span><span class="p">);</span>
+<span class="linenos">19</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Shop items after inflation:&quot;</span><span class="p">);</span>
+<span class="linenos">22</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">inventory</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">23</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;   - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">inventory</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+<span class="linenos">24</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">26</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>When executed, the program above prints:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Shop items before inflation:
+   - Freesbee (price: 115.0 DKK + 25.0% VAT; availability: 42)
+   - Plant pot (price: 61.5 DKK + 25.0% VAT; availability: 23)
+   - Newspaper Politiken (price: 61.5 DKK + 0.0% VAT; availability: 23)
+   - Cellphone (price: 2500.0 DKK + 25.0% VAT; availability: 8)
+   - Chocolate bar (price: 25.0 DKK + 25.0% VAT; availability: 37)
+Applying inflation...
+Shop items after inflation:
+   - Freesbee (price: 126.5 DKK + 25.0% VAT; availability: 42)
+   - Plant pot (price: 67.65 DKK + 25.0% VAT; availability: 23)
+   - Newspaper Politiken (price: 67.65 DKK + 0.0% VAT; availability: 23)
+   - Cellphone (price: 2750.0 DKK + 25.0% VAT; availability: 8)
+   - Chocolate bar (price: 27.5 DKK + 25.0% VAT; availability: 37)
+</pre></div>
+</div>
+</section>
+</div></section>
+<section id="arrays-of-arrays-a-k-a-bidimensional-arrays">
+<span id="sec-arrays-simple-classes-2-array-obj-array-array"></span><h3>Arrays of Arrays (a.k.a. Bidimensional Arrays)<a class="headerlink" href="#arrays-of-arrays-a-k-a-bidimensional-arrays" title="Permalink to this heading">#</a></h3>
+<p>We can also define arrays that contain <em>other arrays</em> as elements.  The
+resulting arrays are often called <strong>bidimensional arrays</strong>.  This is a very
+common scenario, that deserves some discussion and examples.</p>
+<p>Recall that the type <code class="docutils literal notranslate"><span class="pre">int[]</span></code> describes an array that contains elements of type
+<code class="docutils literal notranslate"><span class="pre">int</span></code>; correspondingly, the type <code class="docutils literal notranslate"><span class="pre">int[][]</span></code> describes an array that contains
+elements of type <code class="docutils literal notranslate"><span class="pre">int[]</span></code> — i.e. each element of the array is itself an array
+which, in turn, contains <code class="docutils literal notranslate"><span class="pre">int</span></code> values.</p>
+<p>For example, you can try the following on the Java shell: create two arrays
+<code class="docutils literal notranslate"><span class="pre">arr1</span></code> and <code class="docutils literal notranslate"><span class="pre">arr2</span></code>, and then use them as elements of an array of arrays <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var arr1 = new int[] {1, 2}
+</span>arr1 ==&gt; int[2] { 1, 2 }
+|  created variable arr1 : int[]
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var arr2 = new int[] {3, 4}
+</span>arr2 ==&gt; int[2] { 3, 4 }
+|  created variable arr2 : int[]
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var arrArr = new int[][] { arr1, arr2 }
+</span>arrArr ==&gt; int[2][] { int[2] { 1, 2 }, int[2] { 3, 4 } }
+|  created variable arrArr : int[][]
+</pre></div>
+</div>
+<p>This way, we have declared the variable <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> as a new array that contains
+the two elements <code class="docutils literal notranslate"><span class="pre">arr1</span></code> and <code class="docutils literal notranslate"><span class="pre">arr2</span></code> of type <code class="docutils literal notranslate"><span class="pre">int[]</span></code> — and consequently, the
+type of the variable <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> is <code class="docutils literal notranslate"><span class="pre">int[][]</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When defining arrays of arrays, we can save some typing by creating the internal
+arrays “on the fly.”  E.g. we can write:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">arrArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+<p>We can save even more typing by omitting <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">int[]</span></code> inside the array
+definition. Therefore, the definition of <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> above can be shortened as:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">arrArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p>To access the elements of <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>, we simply write e.g.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;arrArr[1][0] contains the value: &quot; + arrArr[1][0])
+</span>arrArr[1][0] contains the value: 3
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">arrArr[1][0]</span></code> means:</p>
+<ul class="simple">
+<li><p>first, compute <code class="docutils literal notranslate"><span class="pre">arrArr[1]</span></code>, which produces the element at index <code class="docutils literal notranslate"><span class="pre">1</span></code> of
+<code class="docutils literal notranslate"><span class="pre">arrArr</span></code>.  Therefore, <code class="docutils literal notranslate"><span class="pre">arrArr[1]</span></code> produces the array containing the values
+<code class="docutils literal notranslate"><span class="pre">{3,</span> <span class="pre">4}</span></code>;</p></li>
+<li><p>then, take the element at index <code class="docutils literal notranslate"><span class="pre">0</span></code> of the array produced by <code class="docutils literal notranslate"><span class="pre">arrArr[1]</span></code> —
+which is the value 3.</p></li>
+</ul>
+<p>We can modify an element of an array of arrays in a similar way.  For example,
+to change the value stored at index 0 of the array stored at index 1 of
+<code class="docutils literal notranslate"><span class="pre">arrArr</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; arrArr[1][0] = 999
+</span>...
+</pre></div>
+</div>
+<p>Then, if we display the contents of <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>, we can observe that the value <code class="docutils literal notranslate"><span class="pre">3</span></code>
+has been changed to <code class="docutils literal notranslate"><span class="pre">999</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; arrArr
+</span>arrArr ==&gt; int[2][] { int[2] { 1, 2 }, int[2] { 999, 4 } }
+|  value of arrArr : int[][]
+</pre></div>
+</div>
+<div class="proof example admonition" id="eg-array-array-matrix">
+<p class="admonition-title"><span class="caption-number">Example 43 </span> (Representing a matrix as a bidimensional array)</p>
+<section class="example-content" id="proof-content">
+<p>The examples above suggests that arrays of arrays can be used to represent and
+store tabular data, like matrices.  For example, we could represent a matrix
+with 3 rows and 3 columns as an array containing 3 arrays, which in turn contain
+3 values of type <code class="docutils literal notranslate"><span class="pre">double</span></code>: <em>(try the following code snippet on the Java shell)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">},</span>
+<span class="w">                              </span><span class="p">{</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">},</span>
+<span class="w">                              </span><span class="p">{</span><span class="mf">7.0</span><span class="p">,</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span><span class="w"> </span><span class="mf">9.0</span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Then, we can print the element at the 2nd row and 3rd column of <code class="docutils literal notranslate"><span class="pre">matrix</span></code> by
+writing: <em>(remember that array elements are counted from 0, so the array indexes
+are row 1 and column 2)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(matrix[1][2])
+</span>6.0
+</pre></div>
+</div>
+<p>We can loop through all elements of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>, with two nested loops:</p>
+<ul class="simple">
+<li><p>one loop ranges over each row, i.e. over each array stored in <code class="docutils literal notranslate"><span class="pre">matrix</span></code></p></li>
+<li><p>then, a nested loop ranges over each element of the current row.</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">matrix</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Here, matrix[i] is the array stored at index &#39;i&#39; of &#39;matrix&#39;: it</span>
+<span class="w">    </span><span class="c1">// represents a row of values of the matrix.  Therefore, &#39;matrix[i].length&#39;</span>
+<span class="w">    </span><span class="c1">// is the number of values contained in row &#39;i&#39; of &#39;matrix&#39;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;matrix[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;][&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;] is: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">matrix</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div><div class="proof example admonition" id="eg-array-array-matrix-default">
+<p class="admonition-title"><span class="caption-number">Example 44 </span> (Bidimensional array with default values)</p>
+<section class="example-content" id="proof-content">
+<p>As with regular arrays, we can define a bidimensional array by specifying the
+number of elements along each dimension, and without providing the value of each
+element.  For example, if <code class="docutils literal notranslate"><span class="pre">n</span></code> is a variable of type <code class="docutils literal notranslate"><span class="pre">int</span></code> with a value read from
+the terminal, we can define a matrix of size <code class="docutils literal notranslate"><span class="pre">n</span></code> <span class="math notranslate nohighlight">\(\times\)</span> <code class="docutils literal notranslate"><span class="pre">n</span></code> (containing
+<code class="docutils literal notranslate"><span class="pre">double</span></code>s) by writing: <em>(try it on the Java shell!)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">]</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>As a consequence, the array of arrays will be filled with the default value 0.0
+— and we can modify those values afterwards.</p>
+</section>
+</div><div class="proof example admonition" id="eg-array-array-matrix-add">
+<p class="admonition-title"><span class="caption-number">Example 45 </span> (Adding two matrices)</p>
+<section class="example-content" id="proof-content">
+<p>Remember that the addition between a matrix <span class="math notranslate nohighlight">\(A\)</span> (with <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span>
+columns) and a matrix <span class="math notranslate nohighlight">\(B\)</span> (with <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns) is a matrix <span class="math notranslate nohighlight">\(C\)</span> with
+<span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns, such that:</p>
+<div class="math notranslate nohighlight">
+\[
+C_{i,j} \;=\; A_{i,j} +  B_{i,j}
+\]</div>
+<p>Based on this formula, we can add two matrices <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> by defining a target
+matrix <code class="docutils literal notranslate"><span class="pre">c</span></code> with the correct number of rows and columns (and filled with default
+values), and then updating each element of <code class="docutils literal notranslate"><span class="pre">c</span></code> with the result of the addition.
+To update each element of matrix <code class="docutils literal notranslate"><span class="pre">c</span></code>, we use a nested loop (as in the
+<a class="reference internal" href="#eg-array-array-matrix">previous example</a>). For instance:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">[][]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">},</span>
+<span class="w">                          </span><span class="p">{</span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">[][]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">20.0</span><span class="p">},</span>
+<span class="w">                          </span><span class="p">{</span><span class="mf">30.0</span><span class="p">,</span><span class="w"> </span><span class="mf">40.0</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">[</span><span class="n">a</span><span class="p">.</span><span class="na">length</span><span class="o">][</span><span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="c1">// Filled with 0.0</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div><span class="target" id="index-2"></span><div class="proof example admonition" id="eg-array-array-jagged">
+<span id="index-3"></span><p class="admonition-title"><span class="caption-number">Example 46 </span> (Jagged arrays (a.k.a. ragged arrays))</p>
+<section class="example-content" id="proof-content">
+<p>So far we have discussed “table-like” bidimensional arrays whose elements are
+arrays that all have the same size (like a
+<a class="reference internal" href="#eg-array-array-matrix">matrix</a>).  However, bidimensional arrays may
+not always be “table-like”: in Java, we can easily define a <strong>jagged array</strong>
+(a.k.a. <strong>ragged array</strong>), i.e. an array whose elements are arrays, whose sizes
+may be different from each other. For example:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">jagged</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"> </span><span class="mf">7.0</span><span class="p">},</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Consequently, <code class="docutils literal notranslate"><span class="pre">jagged</span></code> is an array that contains four arrays of <code class="docutils literal notranslate"><span class="pre">double</span></code>s:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jagged[0]</span></code> has length 1;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jagged[1]</span></code> has length 2;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jagged[2]</span></code> has length 4;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jagged[3]</span></code> has length 0.</p></li>
+</ul>
+</section>
+</div></section>
+</section>
+<section id="concluding-remarks">
+<span id="sec-arrays-simple-classes-2-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of these topics:</p>
+<ul class="simple">
+<li><p>Accessing the <a class="reference internal" href="#sec-arrays-simple-classes-2-cmdline-args"><span class="std std-ref">command-line arguments of a Java program</span></a>.</p></li>
+<li><p>How to <a class="reference internal" href="#sec-arrays-simple-classes-2-comparing-arr-objs"><span class="std std-ref">check whether two objects or two arrays are equal</span></a>.</p></li>
+<li><p>How to <a class="reference internal" href="#sec-arrays-simple-classes-2-array-obj"><span class="std std-ref">define and use arrays of objects and arrays of arrays</span></a>.</p></li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-arrays-simple-classes-2-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="ex-loop-matrix-foreach">
+
+<p class="admonition-title"><span class="caption-number">Exercise 27 </span> (For-each loop with bidimensional arrays)</p>
+<section id="exercise-content">
+<p>Consider again <a class="reference internal" href="#eg-array-array-matrix">Example 43</a>: print the elements of <code class="docutils literal notranslate"><span class="pre">matrix</span></code>
+by using nested <a class="reference internal" href="arrays.html#sec-arrays-arrays-loops"><span class="std std-ref">for-each loops</span></a>
+(instead of the nested <code class="docutils literal notranslate"><span class="pre">for</span></code>-loops).</p>
+</section>
+</div>
+<div class="exercise admonition" id="ex-loop-jagged-array">
+
+<p class="admonition-title"><span class="caption-number">Exercise 28 </span> (Experimenting with jagged arrays)</p>
+<section id="exercise-content">
+<p>Consider again <a class="reference internal" href="#eg-array-array-jagged">Example 46</a>:</p>
+<ul class="simple">
+<li><p>write a loop that prints the length of each array in <code class="docutils literal notranslate"><span class="pre">jagged</span></code>;</p></li>
+<li><p>write a loop that prints each element contained in each array in <code class="docutils literal notranslate"><span class="pre">jagged</span></code>.</p></li>
+</ul>
+<p>Experiment with different kinds of loops (<code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">for-each</span></code>).</p>
+<p>As a starting point, you can use the nested loop shown in
+<a class="reference internal" href="#eg-array-array-matrix">Example 43</a>.</p>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-arrays-simple-classes-2-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-arrays-simple-classes-2-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-arrays-simple-classes-2-unique-cmdline"><span class="std std-ref">05 - Unique Command-Line Arguments</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-arrays-simple-classes-2-array-format"><span class="std std-ref">06 - Array Formatting</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-arrays-simple-classes-2-matrix-mult"><span class="std std-ref">07 - Matrix Multiplication</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-arrays-simple-classes-barf"><span class="std std-ref">08 - Barf Bags Collection</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="unique-command-line-arguments">
+<span id="lab-arrays-simple-classes-2-unique-cmdline"></span><h3>05 - Unique Command-Line Arguments<a class="headerlink" href="#unique-command-line-arguments" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">UniqueArgs.java</span></code> provided in the handout, and write a program
+that prints all the <em>unique</em> command-line arguments passed to the program
+itself.  The program must print one unique command-line argument per line,
+respecting the order in which the arguments are provided.</p>
+<p>For example, if the program is executed from a terminal as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java UniqueArgs.java foo bar
+</pre></div>
+</div>
+<p>then the program must print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>foo
+bar
+</pre></div>
+</div>
+<p>Instead, if the program is executed from a terminal as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java UniqueArgs.java foo foo
+</pre></div>
+</div>
+<p>then the program must not print anything (because the argument <code class="docutils literal notranslate"><span class="pre">foo</span></code> is not
+unique).</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">UniqueArgs.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><a class="reference internal" href="#eg-arrays-cmd-line">Example 41</a> shows how a Java program can read its command-line
+arguments.</p>
+</div>
+</section>
+<section id="array-formatting">
+<span id="lab-arrays-simple-classes-2-array-format"></span><h3>06 - Array Formatting<a class="headerlink" href="#array-formatting" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> provided in the handout, and implement a class
+called <code class="docutils literal notranslate"><span class="pre">ArrayUtils</span></code> with the following static methods:</p>
+<ol class="arabic">
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method takes as argument an array of integers <code class="docutils literal notranslate"><span class="pre">arr</span></code>, and computes
+and returns a <code class="docutils literal notranslate"><span class="pre">String</span></code> containing each array element, with consecutive
+elements separated by one space.  <strong>NOTE:</strong> there must be no space after the
+last array element.  So, for example, if a program calls:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">ArrayUtils</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>the return value of the call should be the string <code class="docutils literal notranslate"><span class="pre">&quot;1</span> <span class="pre">2</span> <span class="pre">3&quot;</span></code>.</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method takes as argument an array of arrays of integers <code class="docutils literal notranslate"><span class="pre">arr</span></code>,
+and computes and returns a <code class="docutils literal notranslate"><span class="pre">String</span></code> containing a table-like representation of
+<code class="docutils literal notranslate"><span class="pre">arr</span></code>, where:</p>
+<ul class="simple">
+<li><p>each array of integers is on a separate line, and</p></li>
+<li><p>consecutive integers on a same line are separated by one space.
+So, for example, if a program
+calls:</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">ArrayUtils</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[][]</span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">}})</span>
+</pre></div>
+</div>
+<p>the return value of the call should be a string that, when printed on screen,
+should look like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1 2 3
+4 5 6
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> the returned string must <em>not</em> contain a line separator after the
+last line.</p>
+</li>
+</ol>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">ArrayUtils</span></code>, and they might not
+compile or work correctly until you complete the implementation of class
+<code class="docutils literal notranslate"><span class="pre">ArrayUtils</span></code> in the file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code>.  You should read those test programs
+and try to run them, but you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>When implementing <code class="docutils literal notranslate"><span class="pre">format(int[][]</span> <span class="pre">arr)</span></code>, you may save some work by calling
+<code class="docutils literal notranslate"><span class="pre">format(int[]</span> <span class="pre">arr)</span></code>.</p></li>
+<li><p>When implementing <code class="docutils literal notranslate"><span class="pre">format(int[][]</span> <span class="pre">arr)</span></code>, you will need to include line
+separators in the returned string.  To achieve this, you should use
+<code class="docutils literal notranslate"><span class="pre">System.lineSeparator()</span></code>, as explained in the hints of
+<a class="reference internal" href="structured.html#lab-structured-square2"><span class="std std-ref">06 - Square 2</span></a>.</p></li>
+</ul>
+</div>
+</section>
+<section id="matrix-multiplication">
+<span id="lab-arrays-simple-classes-2-matrix-mult"></span><h3>07 - Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Matrix.java</span></code> provided in the handout, and implement a class
+called <code class="docutils literal notranslate"><span class="pre">Matrix</span></code> with the following static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="nf">mult</span><span class="p">(</span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">[][]</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The static method takes two arrays of arrays of <code class="docutils literal notranslate"><span class="pre">double</span></code>s (<code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>) that
+represent two matrices, and computes and returns the result of their
+multiplication.</p>
+<p>Remember that the multiplication between a matrix <span class="math notranslate nohighlight">\(A\)</span> (with <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(p\)</span>
+columns) and a matrix <span class="math notranslate nohighlight">\(B\)</span> (with <span class="math notranslate nohighlight">\(p\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns) is a matrix <span class="math notranslate nohighlight">\(C\)</span> with
+<span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns, such that:</p>
+<div class="math notranslate nohighlight">
+\[
+C_{i,j} \;=\; \sum_{k = 1}^{p} A_{i,k}\, B_{k,j}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_{i,j}\)</span> is the element of matrix <span class="math notranslate nohighlight">\(C\)</span> located at row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>You can assume that the static method arguments <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> have at least one
+row and one column each.</p>
+<p>If the method <code class="docutils literal notranslate"><span class="pre">mult</span></code> is called with arrays of arrays of incompatible dimensions
+(i.e. the number of columns of <code class="docutils literal notranslate"><span class="pre">a</span></code> is not equal to the number of rows of <code class="docutils literal notranslate"><span class="pre">b</span></code>),
+then the method must print on screen <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">the</span> <span class="pre">matrices</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">multiplied</span></code>,
+and it must return an array of arrays with zero rows and zero columns (that
+can be created with <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">double[][]{}</span></code>).</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">MatrixUtils.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.: they contain utility methods and test programs that use the
+class <code class="docutils literal notranslate"><span class="pre">Matrix</span></code>, and they might not compile or work correctly until you complete
+the implementation of class <code class="docutils literal notranslate"><span class="pre">Matrix</span></code> in the file <code class="docutils literal notranslate"><span class="pre">Matrix.java</span></code>.  You should read
+those <code class="docutils literal notranslate"><span class="pre">.java</span></code> files, and try to run the test programs — but you must <em>not</em>
+modify any file besides <code class="docutils literal notranslate"><span class="pre">Matrix.java</span></code>.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Matrix.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>It may be useful to revise the examples on
+<a class="reference internal" href="#eg-array-array-matrix">how to represent matrices</a> and
+<a class="reference internal" href="#eg-array-array-matrix-add">how to add matrices</a>.</p></li>
+<li><p>To implement the static method <code class="docutils literal notranslate"><span class="pre">mult</span></code>, you might follow an approach similar to
+<a class="reference internal" href="#eg-array-array-matrix-add">this example</a>:</p>
+<ul class="simple">
+<li><p>first, create an array of arrays of <code class="docutils literal notranslate"><span class="pre">double</span></code>s <span class="math notranslate nohighlight">\(C\)</span> with the desired
+dimensions, and with its elements having the
+<a class="reference internal" href="arrays.html#remark-array-default-val">default value</a> for the type <code class="docutils literal notranslate"><span class="pre">double</span></code>
+(which is 0.0);</p></li>
+<li><p>then, you might change the value of each element of <span class="math notranslate nohighlight">\(C\)</span> by using the formula
+for computing <span class="math notranslate nohighlight">\(C_{i,j}\)</span> shown above.</p></li>
+</ul>
+<p>After that, the elements of <span class="math notranslate nohighlight">\(C\)</span> are the result of the matrix multiplication,
+and you can return it.</p>
+</li>
+</ul>
+</div>
+</section>
+<section id="barf-bags-collection">
+<span id="lab-arrays-simple-classes-barf"></span><h3>08 - Barf Bags Collection<a class="headerlink" href="#barf-bags-collection" title="Permalink to this heading">#</a></h3>
+<p>You are helping your friend Frogertha organise her
+<a class="reference external" href="https://www.barfbags.com/">collection of barf bags</a>: the objective is to write
+a Java program that can read barf bags information from the terminal, and
+represent and memorise barf bags using classes and objects.</p>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">BarfBagsCollection.java</span></code> included in the handout,
+which defines two classes: <code class="docutils literal notranslate"><span class="pre">BarfBag</span></code> (to represent a barf bag) and
+<code class="docutils literal notranslate"><span class="pre">BarfBagsCollection</span></code> (containing the <code class="docutils literal notranslate"><span class="pre">main</span></code> static method). You have two goals
+(described in detail below):</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#lab-arrays-simple-classes-barf-barf"><span class="std std-ref">implement the class BarfBag</span></a>, and</p></li>
+<li><p><a class="reference internal" href="#lab-arrays-simple-classes-barf-read"><span class="std std-ref">write a program to read barf bag information from the terminal</span></a>.</p></li>
+</ol>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">BarfBagsCollection.java</span></code> on DTU
+Autolab.</p>
+<section id="implementing-the-class-barfbag">
+<span id="lab-arrays-simple-classes-barf-barf"></span><h4>1. Implementing the Class <code class="docutils literal notranslate"><span class="pre">BarfBag</span></code><a class="headerlink" href="#implementing-the-class-barfbag" title="Permalink to this heading">#</a></h4>
+<p>Edit the class <code class="docutils literal notranslate"><span class="pre">BarfBag</span></code> (at the bottom of the file <code class="docutils literal notranslate"><span class="pre">BarfBagsCollection.java</span></code>)
+to satisfy the following requirements.</p>
+<ul>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">BarfBag</span></code> must have four fields called respectively:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">42</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">airline</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Air</span> <span class="pre">France&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">year</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">2010</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">450.0</span></code>)</p></li>
+</ul>
+</li>
+<li><p>The class must have a constructor that takes the barf bag’s id, airline, year,
+and value, and can be called e.g. as:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">bag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BarfBag</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Air France&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2010</span><span class="p">,</span><span class="w"> </span><span class="mf">450.0</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BarfBag</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When called, the method returns a string summarising all information about a
+barf bag. For instance, calling <code class="docutils literal notranslate"><span class="pre">bag.description()</span></code> (using <code class="docutils literal notranslate"><span class="pre">bag</span></code> from the
+previous point) must return a string of the following form:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Bag 42: Air France (2010). Value: 450.0 DKK
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="reading-barf-bag-information-from-the-terminal">
+<span id="lab-arrays-simple-classes-barf-read"></span><h4>2. Reading Barf Bag Information from the Terminal<a class="headerlink" href="#reading-barf-bag-information-from-the-terminal" title="Permalink to this heading">#</a></h4>
+<p>Edit the static method <code class="docutils literal notranslate"><span class="pre">main</span></code> in the class <code class="docutils literal notranslate"><span class="pre">BarfBagsCollection</span></code> and implement a
+program that reads a number <span class="math notranslate nohighlight">\(n\)</span> from the terminal, and then reads <span class="math notranslate nohighlight">\(n\)</span> lines of
+input text, each one containing information about a barf bag in Frogertha’s
+collection.</p>
+<p>Each line of input text read by the program contains the id, airline, year, and
+value of a barf bag, separated by “<code class="docutils literal notranslate"><span class="pre">;</span> </code>” (i.e., a semicolon and a space).</p>
+<p>After reading the <span class="math notranslate nohighlight">\(n\)</span> input lines, the program must print on the terminal the
+information about the <span class="math notranslate nohighlight">\(n\)</span> barf bags, in the same order, formatted using the
+method <code class="docutils literal notranslate"><span class="pre">description()</span></code> of the class <code class="docutils literal notranslate"><span class="pre">BarfBag</span></code> (see <a class="reference internal" href="#lab-arrays-simple-classes-barf-barf"><span class="std std-ref">above</span></a>).</p>
+<p>For instance, here is a possible execution of the program: (the highlighted
+lines are the user’s input)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">3
+</span><span class="hll">1; SAS; 2023; 25
+</span><span class="hll">13; Alitalia; 1991; 2300.10
+</span><span class="hll">42; Air France; 2010; 450.0
+</span>Bag 1: SAS (2023). Value: 25.0 DKK
+Bag 13: Alitalia (1991). Value: 2300.1 DKK
+Bag 42: Air France (2010). Value: 450.0 DKK
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you create a scanner <code class="docutils literal notranslate"><span class="pre">s</span></code> and then call <code class="docutils literal notranslate"><span class="pre">s.nextInt()</span></code> followed by
+<code class="docutils literal notranslate"><span class="pre">s.nextLine()</span></code>, your program may read a number followed by an empty string:
+the reason is explained e.g. in <a class="reference external" href="https://www.geeksforgeeks.org/why-is-scanner-skipping-nextline-after-use-of-other-next-functions/">this article</a>.</p>
+<p>To avoid the issue, you may read the number of barf bags <span class="math notranslate nohighlight">\(n\)</span> by using (instead
+of <code class="docutils literal notranslate"><span class="pre">s.nextInt()</span></code>):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">nextLine</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>You can split each input line into an array of <code class="docutils literal notranslate"><span class="pre">String</span></code>s as
+shown in <a class="reference internal" href="arrays.html#eg-splitting-string-into-array">Example 35</a>.</p></li>
+<li><p>To obtain an <code class="docutils literal notranslate"><span class="pre">int</span></code>eger from a <code class="docutils literal notranslate"><span class="pre">String</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">Integer.parseInt(...)</span></code>.
+For instance, <code class="docutils literal notranslate"><span class="pre">Integer.parseInt(&quot;42&quot;)</span></code> produces the value 42 (of type <code class="docutils literal notranslate"><span class="pre">int</span></code>).</p></li>
+<li><p>To obtain an <code class="docutils literal notranslate"><span class="pre">double</span></code> from a <code class="docutils literal notranslate"><span class="pre">String</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">Double.parseDouble(...)</span></code>.
+For instance, <code class="docutils literal notranslate"><span class="pre">Double.parseDouble(&quot;3.14&quot;)</span></code> produces the value 3.14 (of type
+<code class="docutils literal notranslate"><span class="pre">double</span></code>).</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more tests and more inputs.  After you submit,
+double-check your grading result on DTU Autolab: if the secret checks fail, then
+your solution is not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="simple-classes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 6, Part 1: Simple Classes and Objects</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab-day-3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 7, Part 1: Lab Day</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-array-of-command-line-arguments">The Array of Command-Line Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-arrays-and-objects">Comparing Arrays and Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-of-objects-and-arrays-of-arrays">Arrays of Objects and Arrays of Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-of-objects">Arrays of Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-of-arrays-a-k-a-bidimensional-arrays">Arrays of Arrays (a.k.a. Bidimensional Arrays)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-command-line-arguments">05 - Unique Command-Line Arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-formatting">06 - Array Formatting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">07 - Matrix Multiplication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barf-bags-collection">08 - Barf Bags Collection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-class-barfbag">1. Implementing the Class <code class="docutils literal notranslate"><span class="pre">BarfBag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-barf-bag-information-from-the-terminal">2. Reading Barf Bag Information from the Terminal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 11, Part 1: Lab Day &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 11, Part 2: Error Handling with Exceptions" href="errors.html" />
+    <link rel="prev" title="Module 10, Part 2: More on Java Classes and Polymorphism" href="classes-polymorphism.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 11, Part 1: Lab Day</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rowing-club-revisited">01 - Rowing Club, Revisited</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maze">02 - Maze</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-expressions-version-3">03 - Arithmetic Expressions, Version 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-monsters-part-5">04 - Video Game Monsters, Part 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle">05 - Particle</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-11-part-1-lab-day">
+<span id="mod-lab-day-5"></span><h1>Module 11, Part 1: Lab Day<a class="headerlink" href="#module-11-part-1-lab-day" title="Permalink to this heading">#</a></h1>
+<p>This first part of Module 11 does not introduce new contents: instead, it
+provides a series of assessments to improve your Java programming skills. All
+the following assignments can be solved with the Java programming notions
+introduced in Modules 2–10.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-day-5-rowing-club-2"><span class="std std-ref">01 - Rowing Club, Revisited</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-5-maze"><span class="std std-ref">02 - Maze</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-5-expressions3"><span class="std std-ref">03 - Arithmetic Expressions, Version 3</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-5-monsters-5"><span class="std std-ref">04 - Video Game Monsters, Part 5</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-5-particle"><span class="std std-ref">05 - Particle</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="rowing-club-revisited">
+<span id="lab-day-5-rowing-club-2"></span><h2>01 - Rowing Club, Revisited<a class="headerlink" href="#rowing-club-revisited" title="Permalink to this heading">#</a></h2>
+<p>This assessment is a revised version of
+<a class="reference internal" href="lab-day-4.html#lab-day-4-rowing-club"><span class="std std-ref">02 - Rowing Club</span></a>: your task is to help writing a
+program for the management of the boats of a rowing club, where a club member is
+represented as an object of the class <code class="docutils literal notranslate"><span class="pre">Member</span></code>.</p>
+<p>The key difference with <a class="reference internal" href="lab-day-4.html#lab-day-4-rowing-club"><span class="std std-ref">02 - Rowing Club</span></a> is that <strong>a boat must be
+now represented an <em>object</em> of the class <code class="docutils literal notranslate"><span class="pre">Boat</span></code></strong>, that offers the constructor
+and methods discussed below.  Overall, the idea is that the class <code class="docutils literal notranslate"><span class="pre">Boat</span></code> must
+provide methods to manage which <code class="docutils literal notranslate"><span class="pre">Member</span></code>s (if any) are sitting in a boat object.</p>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Boat.java</span></code> provided in the handout, and implement
+a class called <code class="docutils literal notranslate"><span class="pre">Boat</span></code> with the following constructor and methods. Besides, your
+definition of the class <code class="docutils literal notranslate"><span class="pre">Boat</span></code> can include all the fields you like, but they
+must be all <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p>
+<ol class="arabic">
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="nf">Boat</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">seats</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This constructor initialises a new boat with the given number of empty seats.</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This  method prints the content of each seat of <code class="docutils literal notranslate"><span class="pre">this</span></code> boat, one seat
+per line.</p>
+<ul class="simple">
+<li><p>When a seat is occupied by a member <code class="docutils literal notranslate"><span class="pre">m</span></code>, then this method must print the
+result of <code class="docutils literal notranslate"><span class="pre">m.description()</span></code>;</p></li>
+<li><p>Otherwise, when a seat is empty, this method must print: <code class="docutils literal notranslate"><span class="pre">&lt;Empty</span> <span class="pre">seat&gt;</span></code></p></li>
+</ul>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isFull</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if all seats of <code class="docutils literal notranslate"><span class="pre">this</span></code> boat are occupied.
+Otherwise (i.e. if there is at least one empty seat) this method returns
+<code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">assignMember</span><span class="p">(</span><span class="n">Member</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method tries to place the given member <code class="docutils literal notranslate"><span class="pre">m</span></code> in an empty seat of <code class="docutils literal notranslate"><span class="pre">this</span></code>
+boat.  This method may either:</p>
+<ul class="simple">
+<li><p>return <code class="docutils literal notranslate"><span class="pre">true</span></code> and modify <code class="docutils literal notranslate"><span class="pre">this</span></code> boat by placing <code class="docutils literal notranslate"><span class="pre">m</span></code> in the first available
+seat.  This may only happen if there is an empty seat on the <code class="docutils literal notranslate"><span class="pre">this</span></code> boat,
+and a member equal to <code class="docutils literal notranslate"><span class="pre">m</span></code> is <em>not</em> already sitting on the boat. Or,</p></li>
+<li><p>return <code class="docutils literal notranslate"><span class="pre">false</span></code> without modifying <code class="docutils literal notranslate"><span class="pre">this</span></code> boat.  This can only happen if:</p>
+<ul>
+<li><p>the boat is already full, or</p></li>
+<li><p>there is already a member equal to <code class="docutils literal notranslate"><span class="pre">m</span></code> that is sitting on the boat.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>The handout for this assessment contains the following files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Member.java</span></code>: definition of the class <code class="docutils literal notranslate"><span class="pre">Member</span></code> <em>(do not modify!)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Boat.java</span></code>: the class representing a boat</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, …: test programs <em>(do not modify!)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BoatTestUtils.java</span></code>: utility methods used by some tests <em>(do not modify!)</em></p></li>
+</ul>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Boat.java</span></code> on DTU Autolab.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>When implementing the class <code class="docutils literal notranslate"><span class="pre">Boat</span></code>, you might consider defining a <code class="docutils literal notranslate"><span class="pre">private</span></code>
+field of type <code class="docutils literal notranslate"><span class="pre">Member[]</span></code> to keep track of who is sitting in each boat
+position, and which seats are available (if any).</p></li>
+<li><p>You can approach this problem by taking the solution of
+<a class="reference internal" href="lab-day-4.html#lab-day-4-rowing-club"><span class="std std-ref">02 - Rowing Club</span></a> (either your own solution, or
+the one provided by the teacher) and converting its <code class="docutils literal notranslate"><span class="pre">static</span></code> methods into
+<a class="reference internal" href="simple-classes.html#sec-simple-classes-methods"><span class="std std-ref">(non-static) object methods</span></a>
+(as shown in <a class="reference internal" href="simple-classes.html#eg-shopitem-program-nonstatic-methods">Example 40</a>). <em>(Note: you
+will also need to slightly change the name of some methods, according to the
+requirements above.)</em></p></li>
+</ul>
+</div>
+</section>
+<section id="maze">
+<span id="lab-day-5-maze"></span><h2>02 - Maze<a class="headerlink" href="#maze" title="Permalink to this heading">#</a></h2>
+<p>You are helping develop a text-based video game where the player moves in a
+maze.  The maze has a rectangular shape and is represented as a bidimensional
+array of characters, where each character depicts the content of a cell of the
+maze:</p>
+<ul class="simple">
+<li><p>The character <code class="docutils literal notranslate"><span class="pre">X</span></code> depicts the player position.</p></li>
+<li><p>The character <code class="docutils literal notranslate"><span class="pre">#</span></code> depicts a wall: the player cannot move there.</p></li>
+<li><p>The character <code class="docutils literal notranslate"> </code>  (space) depicts an empty cell: the player can move
+there.</p></li>
+</ul>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Maze.java</span></code> provided in the handout, and implement
+the following <code class="docutils literal notranslate"><span class="pre">static</span></code> methods:</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">char</span><span class="o">[][]</span><span class="w"> </span><span class="nf">createMaze</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cols</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method creates a maze with the given number of <code class="docutils literal notranslate"><span class="pre">rows</span></code> and columns
+(<code class="docutils literal notranslate"><span class="pre">cols</span></code>).  The maze must be empty, i.e. each cell must contain the character <code class="docutils literal notranslate"> </code>    (space).</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">moveUp</span><span class="p">(</span><span class="kt">char</span><span class="o">[][]</span><span class="w"> </span><span class="n">maze</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">moveDown</span><span class="p">(</span><span class="kt">char</span><span class="o">[][]</span><span class="w"> </span><span class="n">maze</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">moveLeft</span><span class="p">(</span><span class="kt">char</span><span class="o">[][]</span><span class="w"> </span><span class="n">maze</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">moveRight</span><span class="p">(</span><span class="kt">char</span><span class="o">[][]</span><span class="w"> </span><span class="n">maze</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Each one of these static methods tries to move the player by one cell in the
+requested direction in the given <code class="docutils literal notranslate"><span class="pre">maze</span></code>.  If the move is possible (i.e., if
+the destination cell is within the limits of the given <code class="docutils literal notranslate"><span class="pre">maze</span></code>, and the cell is
+empty), then the static method must update the <code class="docutils literal notranslate"><span class="pre">maze</span></code> (by moving the player as
+requested) and return <code class="docutils literal notranslate"><span class="pre">true</span></code>; otherwise, the static method must <em>not</em> modify
+the <code class="docutils literal notranslate"><span class="pre">maze</span></code>, and must just return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When writing these methods, you can assume that the given <code class="docutils literal notranslate"><span class="pre">maze</span></code> contains
+exactly one cell with the player.</p>
+</div>
+</li>
+</ul>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Maze.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more mazes.  After you submit, double-check your
+grading result on DTU Autolab: if the secret checks fail, then your solution is
+not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>Remember that a value of type <code class="docutils literal notranslate"><span class="pre">char</span></code> in Java is represented between single
+quotes <code class="docutils literal notranslate"><span class="pre">'</span></code> — for instance, <code class="docutils literal notranslate"><span class="pre">'A'</span></code>, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> (space), …</p></li>
+<li><p>The static methods <code class="docutils literal notranslate"><span class="pre">moveUp(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">moveDown(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">moveLeft(...)</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">moveRight(...)</span></code> must determine the position of the player in the given maze,
+before moving it.  To do that, you could inspect each position in the maze,
+until you find the one that contains <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p></li>
+<li><p>When implementing <code class="docutils literal notranslate"><span class="pre">moveUp(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">moveDown(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">moveLeft(...)</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">moveRight(...)</span></code>, you might be able to reduce the amount of code duplication
+by writing an auxiliary (and <code class="docutils literal notranslate"><span class="pre">private</span></code>) static method that can move the
+player in any direction…</p></li>
+</ul>
+</div>
+</section>
+<section id="arithmetic-expressions-version-3">
+<span id="lab-day-5-expressions3"></span><h2>03 - Arithmetic Expressions, Version 3<a class="headerlink" href="#arithmetic-expressions-version-3" title="Permalink to this heading">#</a></h2>
+<p>This is a follow-up to the assessment <a class="reference internal" href="inheritance-2.html#lab-inheritance-2-expressions2"><span class="std std-ref">04 - Arithmetic Expressions, Version 2</span></a>,
+and the starting point is its solution, i.e. the file <code class="docutils literal notranslate"><span class="pre">Expression.java</span></code>
+(you can use either your own file, or the one provided by the teacher as a
+solution to <a class="reference internal" href="inheritance-2.html#lab-inheritance-2-expressions2"><span class="std std-ref">04 - Arithmetic Expressions, Version 2</span></a>).</p>
+<p>Your task is to improve the solution to <a class="reference internal" href="inheritance-2.html#lab-inheritance-2-expressions2"><span class="std std-ref">04 - Arithmetic Expressions, Version 2</span></a>
+by adding support for some <em>unary</em> operations, i.e. operations that take only
+one argument.  The goal is to introduce 3 new classes with the following
+constructors:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Minus(e)</span></code>, whose result is the result of the given expression <code class="docutils literal notranslate"><span class="pre">e</span></code> with its
+sign flipped (from positive to negative, or <em>vice versa</em>).  For instance, if
+we have <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">m</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">Minus(Constant(42.0))</span></code>, then:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m.result()</span></code> must return the value -42.0;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">m.format()</span></code> must return the string <code class="docutils literal notranslate"><span class="pre">&quot;-(42.0)&quot;</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AbsoluteValue(e)</span></code>, whose result is the absolute value of the result of the
+given expression <code class="docutils literal notranslate"><span class="pre">e</span></code>.  For instance, if we have
+<code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">AbsoluteValue(Constant(-42.0))</span></code>, then:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a.result()</span></code> must return the value 42.0;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a.format()</span></code> must return the string <code class="docutils literal notranslate"><span class="pre">&quot;abs(42.0)&quot;</span></code>.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The Java API method
+<a class="reference external" href="https://www.codecademy.com/resources/docs/java/math-methods/abs">Math.abs(…)</a>
+can be useful.</p>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SquareRoot(e)</span></code>, whose result is the square root of the result of the given
+expression <code class="docutils literal notranslate"><span class="pre">e</span></code>.  For instance, if we have
+<code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">s</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">SquareRoot(Constant(9.0))</span></code>, then:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">s.result()</span></code> must return the value 3.0;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s.format()</span></code> must return the string <code class="docutils literal notranslate"><span class="pre">&quot;sqrt(9.0)&quot;</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>All the new classes <code class="docutils literal notranslate"><span class="pre">Minus</span></code>, <code class="docutils literal notranslate"><span class="pre">AbsoluteValue</span></code>, and <code class="docutils literal notranslate"><span class="pre">SquareRoot</span></code> must extend an
+abstract class called <code class="docutils literal notranslate"><span class="pre">UnaryOperation</span></code> which implements the interface
+<code class="docutils literal notranslate"><span class="pre">Expression</span></code>.</p>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Expression.java</span></code> and implement the classes
+described above, matching the UML diagram in
+<a class="reference internal" href="#fig-uml-expressions-inheritance-unary"><span class="std std-numref">Fig. 32</span></a> below — where the difference
+with <a class="reference internal" href="inheritance-2.html#lab-inheritance-2-expressions2"><span class="std std-ref">04 - Arithmetic Expressions, Version 2</span></a> are the abstract class
+<code class="docutils literal notranslate"><span class="pre">UnaryOperation</span></code> and its subclasses.</p>
+<figure class="align-default" id="fig-uml-expressions-inheritance-unary">
+<img alt="UML class diagram for &quot;Arithmetic expressions, version 3&quot; assessment" src="_images/expression-abstract-class-unary.svg" /><figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">UML class diagram for <a class="reference internal" href="#lab-day-5-expressions3"><span class="std std-ref">03 - Arithmetic Expressions, Version 3</span></a>.</span><a class="headerlink" href="#fig-uml-expressions-inheritance-unary" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Expression.java</span></code> on DTU Autolab.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the code you should write in <code class="docutils literal notranslate"><span class="pre">Expression.java</span></code>,
+and they might not compile or work correctly until you complete your work.  You
+should read those test programs, try to run them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see
+their expected outputs — but you must <em>not</em> modify those files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This assessment has several potential solutions.  In fact, the UML diagram in
+<a class="reference internal" href="#fig-uml-expressions-inheritance-unary"><span class="std std-numref">Fig. 32</span></a> omits various details in the
+classes <code class="docutils literal notranslate"><span class="pre">BinaryOperation</span></code> and <code class="docutils literal notranslate"><span class="pre">UnaryOperation</span></code> — e.g. what is its constructor
+(if any), what methods it implements, and whether it has non-<code class="docutils literal notranslate"><span class="pre">private</span></code> fields:
+you are free to choose those details as you like, trying to minimise code
+duplication as much as possible.  After the submission deadline expires, please
+compare your solution with the one provided by the teacher.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more expressions.  After you submit, double-check your
+grading result on DTU Autolab: if the secret checks fail, then your solution is
+not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+<section id="video-game-monsters-part-5">
+<span id="lab-day-5-monsters-5"></span><h2>04 - Video Game Monsters, Part 5<a class="headerlink" href="#video-game-monsters-part-5" title="Permalink to this heading">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For this assessment you must submit <strong>two files: <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code></strong>.  For the submission instructions, see the
+<a class="reference internal" href="#note-monsters4-grading-zipfile"><span class="std std-ref">note at the end of this assessment</span></a>.</p>
+</div>
+<p>This is a follow-up to the assessment
+<a class="reference internal" href="classes-polymorphism.html#lab-classes-polymorphism-monsters-4"><span class="std std-ref">06 - Video Game Monsters, Part 4</span></a>, and the starting point is its
+solution, i.e. the files <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> and <code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code> (you can use either
+your own files, or the ones provided by the teacher as a solution to
+<a class="reference internal" href="classes-polymorphism.html#lab-classes-polymorphism-monsters-4"><span class="std std-ref">06 - Video Game Monsters, Part 4</span></a>).</p>
+<p>The development of the video game has two new requirements:</p>
+<ul class="simple">
+<li><p>there is a new species of monster called the “thing”;</p></li>
+<li><p>sometimes, the game may need to create some monsters that do not fit one of
+the 4 main species (wumpus, owlbear, demogorgon, thing).</p></li>
+</ul>
+<p>Therefore, the development team decides to revise the structure of the Java code
+of the game:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Monster</span></code> will become a class (instead of an interface) allowing the creation
+of various kinds of monsters having different species, names, maximum health
+points, and damage from being hit or burnt;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Wumpus</span></code>, <code class="docutils literal notranslate"><span class="pre">Owlbear</span></code>, and <code class="docutils literal notranslate"><span class="pre">Demogorgon</span></code> should become sub-classes of the class
+<code class="docutils literal notranslate"><span class="pre">Monster</span></code>, each one with with its predetermined characteristics (listed in
+<a class="reference internal" href="interfaces.html#lab-interfaces-monsters-2"><span class="std std-ref">06 - Video Game Monsters, Part 2</span></a>).</p></li>
+</ul>
+<p>You will need to edit the file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> to turn the <code class="docutils literal notranslate"><span class="pre">interface</span> <span class="pre">Monster</span></code>
+into a <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Monster</span></code> in the file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code>.  <strong>The class <code class="docutils literal notranslate"><span class="pre">Monster</span></code> must
+implement all the methods that were specified for the <code class="docutils literal notranslate"><span class="pre">Monster</span></code> interface (as
+described in <a class="reference internal" href="interfaces.html#lab-interfaces-monsters-2"><span class="std std-ref">06 - Video Game Monsters, Part 2</span></a>)</strong>, plus the one listed below.
+Besides, feel free to define all the fields you need — but they must be all
+<code class="docutils literal notranslate"><span class="pre">private</span></code>.</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Monster</span></code> must provide the constructor:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="nf">Monster</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">species</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxHealth</span><span class="p">,</span>
+<span class="w">               </span><span class="kt">double</span><span class="w"> </span><span class="n">hitDamageFactor</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">burnDamageFactor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This constructor initialises a new object of the class <code class="docutils literal notranslate"><span class="pre">Monster</span></code> with the
+given <code class="docutils literal notranslate"><span class="pre">species</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>, maximum health (<code class="docutils literal notranslate"><span class="pre">maxHealth</span></code>), and <code class="docutils literal notranslate"><span class="pre">hitDamageFactor</span></code>
+and <code class="docutils literal notranslate"><span class="pre">burnDamageFactor</span></code>, which modify the damage the monster takes when hit or
+burnt, respectively (for example: if <code class="docutils literal notranslate"><span class="pre">burnDamageFactor</span></code> is 0.5, then the
+monster takes half the damage when burnt; instead, if <code class="docutils literal notranslate"><span class="pre">burnDamageFactor</span></code> is
+2.0, the monster takes twice the damage when burnt).  When created, the health
+points of the monster object correspond to its maximum health points.</p>
+<p>For example, the constructor can be used as follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">monster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Monster</span><span class="p">(</span><span class="s">&quot;skeleton&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Toothless&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This creates a new monster of the species “skeleton” that is called Toothless,
+has 42 maximum health points, takes twice the damage when hit, and normal
+damage when burnt.</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Monster</span></code> must provide the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="nf">getSymbol</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method returns a character representing the monster, used to show the
+monster on the playground.  The character must be the first letter of the
+monster species, uppercase.  For example, for the variable <code class="docutils literal notranslate"><span class="pre">monster</span></code> defined
+above, <code class="docutils literal notranslate"><span class="pre">monster.getSymbol()</span></code> must return the character <code class="docutils literal notranslate"><span class="pre">S</span></code> (i.e. the first
+letter of <code class="docutils literal notranslate"><span class="pre">&quot;skeleton&quot;</span></code>, uppercase).</p>
+</li>
+</ul>
+<p>After you implement the class <code class="docutils literal notranslate"><span class="pre">Monster</span></code>, you will need to revise the classes
+<code class="docutils literal notranslate"><span class="pre">Wumpus</span></code>, <code class="docutils literal notranslate"><span class="pre">Owlbear</span></code>, and <code class="docutils literal notranslate"><span class="pre">Demogorgon</span></code> to make them extend the class <code class="docutils literal notranslate"><span class="pre">Monster</span></code>.</p>
+<p>Finally, <strong>you will need to implement the new class <code class="docutils literal notranslate"><span class="pre">Thing</span></code></strong> for the new
+species of monster, which has a maximum of 30 health points, and takes double
+damage when burned.</p>
+<div class="admonition note" id="note-monsters4-grading-zipfile">
+<p class="admonition-title">Note</p>
+<p>For this assessment you need to prepare and submit a ZIP file containing your
+modified versions of <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> and <code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code>.  To prepare that ZIP
+file, you can simply execute from the terminal (inside the handout directory):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./grade -z
+</pre></div>
+</div>
+<p>This command will grade your work <em>and</em> prepare a ZIP file that you can then
+submit on DTU Autolab.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>When solving this assessment, you should <em>not</em> need to change the file
+<code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code> developed for <a class="reference internal" href="classes-polymorphism.html#lab-classes-polymorphism-monsters-4"><span class="std std-ref">06 - Video Game Monsters, Part 4</span></a>
+(i.e. you should be able to just copy&amp;paste it, and submit it as it is).</p></li>
+<li><p>As you revise the classes <code class="docutils literal notranslate"><span class="pre">Wumpus</span></code>, <code class="docutils literal notranslate"><span class="pre">Owlbear</span></code>, and <code class="docutils literal notranslate"><span class="pre">Demogorgon</span></code> to make them
+extend the class <code class="docutils literal notranslate"><span class="pre">Monster</span></code>, you should be able to remove almost all their
+code, and reuse the methods already provided by <code class="docutils literal notranslate"><span class="pre">Monster</span></code>.  You should just
+need to call the constructor of the <code class="docutils literal notranslate"><span class="pre">Monster</span></code> superclass using <code class="docutils literal notranslate"><span class="pre">super</span></code> (as
+shown in <a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-super">Example 56</a> and
+<a class="reference internal" href="inheritance-2.html#eg-dtu-christmas-party-inheritance">Example 60</a>).</p></li>
+<li><p>Similarly, your implementation of the class <code class="docutils literal notranslate"><span class="pre">Thing</span></code> that derives from
+<code class="docutils literal notranslate"><span class="pre">Monster</span></code>, you should be able to reuse all the methods provided by <code class="docutils literal notranslate"><span class="pre">Monster</span></code>.</p></li>
+<li><p>When updating a monster’s health after the monster is hit or burnt, you will
+need to multiply the damage by the <code class="docutils literal notranslate"><span class="pre">hitDamageFactor</span></code> or <code class="docutils literal notranslate"><span class="pre">burnDamageFactor</span></code>
+(which have type <code class="docutils literal notranslate"><span class="pre">double</span></code>).  To this end, you might need convert the result of
+an expression of type <code class="docutils literal notranslate"><span class="pre">double</span></code> to type <code class="docutils literal notranslate"><span class="pre">int</span></code>: to achieve this you can use a
+<a class="reference external" href="https://docs.oracle.com/javase/specs/jls/se17/html/jls-5.html#jls-5.1.3">narrowing primitive cast</a>
+by writing <code class="docutils literal notranslate"><span class="pre">(int)</span></code> before the expression of type <code class="docutils literal notranslate"><span class="pre">double</span></code>, e.g.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">expression_of_type_double</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This way, the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> has type <code class="docutils literal notranslate"><span class="pre">int</span></code> and has the result of
+<code class="docutils literal notranslate"><span class="pre">expression_of_type_double</span></code> with its decimal digits truncated.</p>
+</li>
+</ul>
+</div>
+</section>
+<section id="particle">
+<span id="lab-day-5-particle"></span><h2>05 - Particle<a class="headerlink" href="#particle" title="Permalink to this heading">#</a></h2>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Particle.java</span></code> provided in the handout, and
+implement a class named <code class="docutils literal notranslate"><span class="pre">Particle</span></code> that simulates a particle moving through a
+rectangular grid. The particle has a position represented by non-negative row
+and column numbers. The position corresponding to row 0 and column 0 is located
+in the top-left corner of the grid. The particle moves in one of the following
+directions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code> for north;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NE</span></code> for north-east;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E</span></code> for east;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SE</span></code> for south-east;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S</span></code> for south;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SW</span></code> for south-west;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code> for west;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NW</span></code> for north-west.</p></li>
+</ul>
+<p>The definition of the class <code class="docutils literal notranslate"><span class="pre">Particle</span></code> must satisfy the following requirements;
+besides, feel free to define all the fields you need — but they must be all
+<code class="docutils literal notranslate"><span class="pre">private</span></code>.</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Particle</span></code> must have the <code class="docutils literal notranslate"><span class="pre">public</span></code> constructor:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="nf">Particle</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">gridRows</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">gridColumns</span><span class="p">,</span>
+<span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which constructs a <code class="docutils literal notranslate"><span class="pre">Particle</span></code> object located in a grid at the position <code class="docutils literal notranslate"><span class="pre">row</span></code>,
+<code class="docutils literal notranslate"><span class="pre">column</span></code>; the grid has a total number of rows and columns given by the
+arguments <code class="docutils literal notranslate"><span class="pre">gridRows</span></code> and <code class="docutils literal notranslate"><span class="pre">gridColumns</span></code>, respectively; moreover, the particle
+moves in the given <code class="docutils literal notranslate"><span class="pre">direction</span></code>.</p>
+<p>You can assume that <code class="docutils literal notranslate"><span class="pre">row</span></code> and <code class="docutils literal notranslate"><span class="pre">column</span></code> are non-negative and smaller than
+<code class="docutils literal notranslate"><span class="pre">gridRows</span></code> and <code class="docutils literal notranslate"><span class="pre">gridColumns</span></code>, respectively; moreover, you can assume that the
+argument <code class="docutils literal notranslate"><span class="pre">direction</span></code> is one of the directions listed above.</p>
+</li>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">Particle</span></code> must provide the methods:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getRow</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getColumn</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDirection</span><span class="p">()</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>which return the current row, column, and direction of <code class="docutils literal notranslate"><span class="pre">this</span></code> particle,
+respectively.</p>
+</li>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">Particle</span></code> must provide the method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">move</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method must change the current row and/or column of <code class="docutils literal notranslate"><span class="pre">this</span></code> particle by
+moving it by one cell along its current direction, in a grid having the number
+of rows and columns specified in the constructor above.</p>
+<p>For instance, if <code class="docutils literal notranslate"><span class="pre">p</span></code> is a particle located at row 2 and column 3 of a 10x10
+grid, and <code class="docutils literal notranslate"><span class="pre">p</span></code> is moving in the direction <code class="docutils literal notranslate"><span class="pre">SW</span></code>, then the method call <code class="docutils literal notranslate"><span class="pre">p.move()</span></code>
+must change the position of <code class="docutils literal notranslate"><span class="pre">p</span></code> to row 3 and column 2.</p>
+<p>Importantly, <strong>the particle must bounce and change direction</strong> if it tries to
+move beyond the limits of the grid.</p>
+<p>For instance, if <code class="docutils literal notranslate"><span class="pre">p</span></code> is a particle located at row 5 and column 3 of a 6x4
+grid, and <code class="docutils literal notranslate"><span class="pre">p</span></code> moving in the direction <code class="docutils literal notranslate"><span class="pre">SW</span></code>, then the method call <code class="docutils literal notranslate"><span class="pre">p.move()</span></code>
+must change the position of <code class="docutils literal notranslate"><span class="pre">p</span></code> to row 4 and column 2, and the direction of
+<code class="docutils literal notranslate"><span class="pre">p</span></code> must change to <code class="docutils literal notranslate"><span class="pre">NW</span></code> — i.e., <code class="docutils literal notranslate"><span class="pre">p</span></code> cannot keep moving south-west after row
+5 (because it is the last row of the 6x4 grid), so it bounces and starts
+moving north-west.  <em>(See the <a class="reference internal" href="#tip-particle-animation"><span class="std std-ref">animation at the end of this assessment</span></a> for a visual representation of a bouncing
+particle.)</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Remember that the grid position at row 0 and column 0 is located in
+the top-left corner of the grid. Therefore, a particle moving south will
+increase its row number (unless it has already reached the last row of the
+grid), and a particle moving east will decrease its column number (unless it
+has already reached column 0).</p>
+</div>
+</li>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">Particle</span></code> must provide the method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">display</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method must return a string that, when printed, visualises <code class="docutils literal notranslate"><span class="pre">this</span></code>
+particle as an asterisk <code class="docutils literal notranslate"><span class="pre">*</span></code> inside a rectangle having the number of rows and
+columns specified by the arguments <code class="docutils literal notranslate"><span class="pre">gridRows</span></code> and <code class="docutils literal notranslate"><span class="pre">gridColumns</span></code> of the
+constructor above. Moreover, the returned string must include the particle
+position and direction.</p>
+<p>For instance, if <code class="docutils literal notranslate"><span class="pre">p</span></code> is a particle located at row 2 and column 3 in a 5x5
+grid, and <code class="docutils literal notranslate"><span class="pre">p</span></code> is moving in the direction <code class="docutils literal notranslate"><span class="pre">SW</span></code>, then the method call
+<code class="docutils literal notranslate"><span class="pre">p.display()</span></code> must return the following string: <em>(remember that the coordinate
+with row 0 and column 0 is in the top-left corner of the grid)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+-----+
+|     |
+|     |
+|   * |
+|     |
+|     |
++-----+
+Position: (2,3); direction: SW
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To create the string returned by the method <code class="docutils literal notranslate"><span class="pre">display(...)</span></code>, you will need to
+use <code class="docutils literal notranslate"><span class="pre">System.lineSeparator()</span></code>, as explained in the hints of
+<a class="reference internal" href="structured.html#lab-structured-square2"><span class="std std-ref">06 - Square 2</span></a>. Notice that the returned string must include a
+line separator at the end of the last line.</p>
+</div>
+</li>
+</ul>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Particle.java</span></code> on DTU Autolab.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the code you should write in <code class="docutils literal notranslate"><span class="pre">Particle.java</span></code>,
+and they might not compile or work correctly until you complete your work.  You
+should read those test programs, try to run them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see
+their expected outputs — but you must <em>not</em> modify those files.</p>
+<div class="admonition tip" id="tip-particle-animation">
+<p class="admonition-title">Tip</p>
+<p>The test <code class="docutils literal notranslate"><span class="pre">Test13.java</span></code> can show an animation based on your implementation of the
+class <code class="docutils literal notranslate"><span class="pre">Particle</span></code>.  To see the animation, you will need to open a terminal in the
+directory of the handout and compile all Java files:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac *.java
+</pre></div>
+</div>
+<p>Then you can execute <code class="docutils literal notranslate"><span class="pre">Test13</span></code> by providing the command-line argument
+<code class="docutils literal notranslate"><span class="pre">animate</span></code>, e.g.:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java Test13 animate
+</pre></div>
+</div>
+<p>The animation should look as follows:</p>
+<img alt="Game of life animation" class="align-center" src="_images/particle-animation.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>For Windows users:</strong> if the animation is not displayed correctly, make
+sure that the console program you are using is Git Bash
+(<a class="reference internal" href="overview.html#sec-autolab-demo-assessment"><span class="std std-ref">as recommended</span></a>) or
+<a class="reference external" href="https://adamtheautomator.com/windows-open-powershell-in-a-folder/">Powershell</a>.</p>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks.
+After you submit, double-check your grading result on DTU Autolab: if the secret
+checks fail, then your solution is not correct, and you should fix it and
+resubmit.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="classes-polymorphism.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 10, Part 2: More on Java Classes and Polymorphism</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="errors.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 11, Part 2: Error Handling with Exceptions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rowing-club-revisited">01 - Rowing Club, Revisited</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maze">02 - Maze</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-expressions-version-3">03 - Arithmetic Expressions, Version 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-monsters-part-5">04 - Video Game Monsters, Part 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle">05 - Particle</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

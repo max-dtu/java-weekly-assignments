@@ -1,0 +1,1214 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 11, Part 2: Error Handling with Exceptions &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 12, Part 1: File I/O" href="files.html" />
+    <link rel="prev" title="Module 11, Part 1: Lab Day" href="lab-day-5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 11, Part 2: Error Handling with Exceptions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-and-handling-errors-via-exceptions">Reporting and Handling Errors via Exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-exception-class-and-its-hierarchy">The <code class="docutils literal notranslate"><span class="pre">Exception</span></code> Class and its Hierarchy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions">Throwing Exceptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-exceptions-via-try-catch-finally-statements">Handling Exceptions via <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> Statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checked-exceptions">Checked Exceptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getters-and-setters">Getters and Setters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dates-version-2">06 - Dates, Version 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contacts">07 - Contacts</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-11-part-2-error-handling-with-exceptions">
+<span id="mod-errors"></span><h1>Module 11, Part 2: Error Handling with Exceptions<a class="headerlink" href="#module-11-part-2-error-handling-with-exceptions" title="Permalink to this heading">#</a></h1>
+<p>In this second part of Module 11 we address how to
+<a class="reference internal" href="#sec-errors-exceptions"><span class="std std-ref">report and handle errors in Java (via “Exceptions”)</span></a>.
+We also address the topic of
+<a class="reference internal" href="#sec-errors-getters-setters"><span class="std std-ref">getter and setter methods</span></a>, where
+exceptions are often used.</p>
+<section id="reporting-and-handling-errors-via-exceptions">
+<span id="sec-errors-exceptions"></span><h2>Reporting and Handling Errors via Exceptions<a class="headerlink" href="#reporting-and-handling-errors-via-exceptions" title="Permalink to this heading">#</a></h2>
+<p>In this section we explore the use of <strong>exceptions</strong> in Java, by discussing:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sec-errors-exceptions-class"><span class="std std-ref">The Exception Class and its Hierarchy</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-errors-exceptions-throw"><span class="std std-ref">Throwing Exceptions</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-errors-exceptions-catch"><span class="std std-ref">Handling Exceptions via try-catch-finally Statements</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-errors-exceptions-checked"><span class="std std-ref">Checked Exceptions</span></a></p></li>
+</ul>
+<span class="target" id="index-0"></span><section id="the-exception-class-and-its-hierarchy">
+<span id="sec-errors-exceptions-class"></span><span id="index-1"></span><h3>The <code class="docutils literal notranslate"><span class="pre">Exception</span></code> Class and its Hierarchy<a class="headerlink" href="#the-exception-class-and-its-hierarchy" title="Permalink to this heading">#</a></h3>
+<p>In Java, <code class="docutils literal notranslate"><span class="pre">Exception</span></code> is the name of a class (provided by the Java API) used for
+the purpose of <strong>reporting and handling “exceptional” situations</strong> (typically
+errors) while the program runs.</p>
+<p>An object of the class <code class="docutils literal notranslate"><span class="pre">Exception</span></code> can be created in the usual way, using <code class="docutils literal notranslate"><span class="pre">new</span></code>
+— and typically using a constructor that takes as an argument a <code class="docutils literal notranslate"><span class="pre">String</span></code> with
+an error message that explains the exception.  For example, you can try on the
+Java shell:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var e = new Exception(&quot;Something went wrong!&quot;)
+</span>e ==&gt; java.lang.Exception: Something went wrong!
+|  created variable e : Exception
+</pre></div>
+</div>
+<p>Then, you can retrieve the message carried by the exception <code class="docutils literal notranslate"><span class="pre">e</span></code> via the method
+<code class="docutils literal notranslate"><span class="pre">e.getMessage()</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;Exception message: &quot; + e.getMessage())
+</span>Exception message: Something went wrong!
+</pre></div>
+</div>
+<p>Besides the class <code class="docutils literal notranslate"><span class="pre">Exception</span></code>, Java provides a whole hierarchy of classes that
+describe various kinds of errors.  The hierarchy is outlined in
+<a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a> below, and each one of the classes can be
+used to create a corresponding object carrying a message (as shown above).  We
+can also derive those classes to define our own custom exception classes.</p>
+<figure class="align-default" id="fig-exceptions-hierarchy">
+<img alt="Exception class hierarchy" src="_images/java-exceptions-hierarchy-example.webp" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Class hierarchy of exceptions and errors in Java. The branch starting with
+<code class="docutils literal notranslate"><span class="pre">Error</span></code> contains classes that represent unrecoverable internal errors that
+should not be normally handled by an application.  The branch starting with
+<code class="docutils literal notranslate"><span class="pre">Exception</span></code> contains classes that represent errors which may be recoverable, so
+an application may want to handle them. <em>(Image from
+<a class="reference external" href="https://rollbar.com/blog/java-exceptions-hierarchy-explained/">https://rollbar.com/blog/java-exceptions-hierarchy-explained/</a>, copyright by
+Rollbar Inc.)</em></span><a class="headerlink" href="#fig-exceptions-hierarchy" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<span class="target" id="index-2"></span></section>
+<section id="throwing-exceptions">
+<span id="sec-errors-exceptions-throw"></span><span id="index-3"></span><h3>Throwing Exceptions<a class="headerlink" href="#throwing-exceptions" title="Permalink to this heading">#</a></h3>
+<p>Objects that derive from the class <code class="docutils literal notranslate"><span class="pre">Throwable</span></code> in
+<a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a> can be <strong>thrown</strong> to report an error, using
+the statement <code class="docutils literal notranslate"><span class="pre">throw</span></code>.  When a method throws an exception (or, more generally, a
+<code class="docutils literal notranslate"><span class="pre">Throwable</span></code> object), the execution of the method stops, and Java looks for some
+surrounding code that can handle that exception (as we discuss later in
+<a class="reference internal" href="#sec-errors-exceptions-catch"><span class="std std-ref">Handling Exceptions via try-catch-finally Statements</span></a>).  If the exception is not handled, the whole
+program is terminated and the exception is printed on the console, together with
+a <strong>stack trace</strong> that describes where the exception was thrown.  This is
+illustrated in <a class="reference internal" href="#eg-throwing-arith-exception">Example 67</a> below.</p>
+<div class="proof example admonition" id="eg-throwing-arith-exception">
+<p class="admonition-title"><span class="caption-number">Example 67 </span> (Throwing an <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code>)</p>
+<section class="example-content" id="proof-content">
+<p>Consider the following Java program: it defines and calls a static method
+<code class="docutils literal notranslate"><span class="pre">divide(x,</span> <span class="pre">y)</span></code> which throws an <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> (listed in
+<a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a>) if the divisor <code class="docutils literal notranslate"><span class="pre">y</span></code> is equal to 0.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Division</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The result of 3 divided by 0 is...&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bye!&quot;</span><span class="p">);</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos">10</span><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArithmeticException</span><span class="p">(</span><span class="s">&quot;Division by zero! :-(&quot;</span><span class="p">);</span>
+</span><span class="linenos">11</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">14</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">15</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If we run the program above, it produces the following output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The result of 3 divided by 0 is...
+Exception in thread &quot;main&quot; java.lang.ArithmeticException: Division by zero! :-(
+	at Division.divide(Division.java:10)
+	at Division.main(Division.java:4)
+</pre></div>
+</div>
+<p>This happens because the exception thrown on line 10 is not handled anywhere in
+the program, and therefore Java terminates the program.  In fact, you can notice
+that, after the first line of output, the program does <em>not</em> print <code class="docutils literal notranslate"><span class="pre">Bye!</span></code>: this
+is because the exception is thrown when the static method <code class="docutils literal notranslate"><span class="pre">divide(...)</span></code> is
+running, hence the program terminates while executing line 4, and before
+executing line 5.</p>
+<p>The output printed on the console reports the error message used to create the
+exception (<code class="docutils literal notranslate"><span class="pre">Division</span> <span class="pre">by</span> <span class="pre">zero!</span> <span class="pre">:-(</span></code>) and a stack trace showing that:</p>
+<ul class="simple">
+<li><p>the exception was thrown in the method <code class="docutils literal notranslate"><span class="pre">Division.divide</span></code>, on line 10 of the
+file <code class="docutils literal notranslate"><span class="pre">Division.java</span></code>, and</p></li>
+<li><p>that method, in turn, was called by the method <code class="docutils literal notranslate"><span class="pre">Division.main</span></code> on line 4
+of the file <code class="docutils literal notranslate"><span class="pre">Division.java</span></code>.</p></li>
+</ul>
+<p>With this information we can find where the exception was thrown while the
+program was running, and this can be helpful for debugging.</p>
+</section>
+</div><span class="target" id="index-4"></span><span class="target" id="index-5"></span></section>
+<section id="handling-exceptions-via-try-catch-finally-statements">
+<span id="sec-errors-exceptions-catch"></span><span id="index-6"></span><h3>Handling Exceptions via <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> Statements<a class="headerlink" href="#handling-exceptions-via-try-catch-finally-statements" title="Permalink to this heading">#</a></h3>
+<p>To handle an exception, we can surround the code that might throw an exception
+with a <strong><code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> statement</strong>, which has the following shape:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="c1">// Code that might throw an exception</span>
+<span class="linenos"> 3</span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ExceptionClass1</span><span class="w"> </span><span class="n">e1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="c1">// Code that handles exceptions of type ExceptionClass1</span>
+<span class="linenos"> 5</span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ExceptionClass2</span><span class="w"> </span><span class="n">e2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="c1">// Code that handles exceptions of type ExceptionClass2</span>
+<span class="linenos"> 7</span><span class="p">}</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">...</span>
+<span class="linenos"> 9</span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">10</span><span class="w">    </span><span class="c1">// Code that is always executed before leaving the try-catch block</span>
+<span class="linenos">11</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The code of the <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> statement outlined above is executed as
+follows.</p>
+<ul class="simple">
+<li><p>First, Java executes the code inside the <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> block (line 2).</p>
+<ul>
+<li><p>If that code does not throw any exception, then the execution continues with
+the code in the <code class="docutils literal notranslate"><span class="pre">finally</span></code> block.</p></li>
+<li><p>Otherwise, if the code inside <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> throws an exception of the class
+<code class="docutils literal notranslate"><span class="pre">E</span></code>, then Java checks the exception classes specified in the various <code class="docutils literal notranslate"><span class="pre">catch</span></code>
+blocks (line 3, line 5, etc.) looking for one that is equal to <code class="docutils literal notranslate"><span class="pre">E</span></code> or is a
+superclass of <code class="docutils literal notranslate"><span class="pre">E</span></code>.</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">ExceptionClass1</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">E</span></code> (or is a superclass of <code class="docutils literal notranslate"><span class="pre">E</span></code>), Java
+executes the code on line 4, with variable <code class="docutils literal notranslate"><span class="pre">e1</span></code> containing the exception
+object thrown from inside the <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> block.  Then, Java executes
+the <code class="docutils literal notranslate"><span class="pre">finally</span></code> block (line 10).</p></li>
+<li><p>Otherwise, if <code class="docutils literal notranslate"><span class="pre">ExceptionClass2</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">E</span></code> (or is a superclass of <code class="docutils literal notranslate"><span class="pre">E</span></code>),
+Java executes the code on line 6, with variable <code class="docutils literal notranslate"><span class="pre">e2</span></code> containing the
+exception object thrown from inside the <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> block.  Then, Java
+executes the <code class="docutils literal notranslate"><span class="pre">finally</span></code> block (line 10).</p></li>
+<li><p>Otherwise, Java continues similarly checking the other <code class="docutils literal notranslate"><span class="pre">catch</span></code> clauses (if
+any).</p></li>
+<li><p>If none of the <code class="docutils literal notranslate"><span class="pre">catch</span></code> clauses handles the exception thrown from inside
+the <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> block, then Java executes the code in the <code class="docutils literal notranslate"><span class="pre">finally</span></code>
+block (line 10), and then <em>throws the exception again</em>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">finally</span></code> block is optional, and is often not used.  (In fact, the
+<code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> statement is often simply called “<code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>
+statement.”)</p></li>
+<li><p>It is possible to nest <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> statements: if an exception is
+thrown but not caught by any inner <code class="docutils literal notranslate"><span class="pre">catch</span></code> clause, it may be caught by an
+outer <code class="docutils literal notranslate"><span class="pre">catch</span></code> clause.</p></li>
+<li><p>The code inside <code class="docutils literal notranslate"><span class="pre">catch</span></code> and <code class="docutils literal notranslate"><span class="pre">finally</span></code> clauses can throw exceptions, too: if
+this happens, the exception may be handled by a surrounding
+<code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> statement.  If no exception is thrown by <code class="docutils literal notranslate"><span class="pre">catch</span></code> nor
+<code class="docutils literal notranslate"><span class="pre">finally</span></code>, then the execution continues with the code that follows the whole
+<code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> statement.</p></li>
+</ul>
+<p>This might sound complicated — and indeed, it is!  Catching and throwing
+exceptions can lead to very complex code that can be hard to understand and
+maintain.  In this course we will focus on simple uses of exceptions.</p>
+</div>
+<p>The behaviour of a simple <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code> statement is illustrated in
+<a class="reference internal" href="#eg-throwing-catching-arith-exception">Example 68</a> below.</p>
+<div class="proof example admonition" id="eg-throwing-catching-arith-exception">
+<p class="admonition-title"><span class="caption-number">Example 68 </span> (Throwing and catching <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code>)</p>
+<section class="example-content" id="proof-content">
+<p>Let us revise the code of <a class="reference internal" href="#eg-throwing-arith-exception">Example 67</a> by adding
+a <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code> statement that handles the <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> thrown by the
+static method <code class="docutils literal notranslate"><span class="pre">divide(...)</span></code>: (the differences with
+<a class="reference internal" href="#eg-throwing-arith-exception">Example 67</a> are highlighted)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Division</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The result of 3 divided by 0 is...&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span>
+<span class="hll"><span class="linenos"> 5</span><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos"> 6</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
+</span><span class="hll"><span class="linenos"> 7</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ArithmeticException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;*** Exception caught: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+</span><span class="hll"><span class="linenos"> 9</span><span class="w">        </span><span class="p">}</span>
+</span><span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bye!&quot;</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArithmeticException</span><span class="p">(</span><span class="s">&quot;Division by zero! :-(&quot;</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">21</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If we run the program above, it produces the following output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The result of 3 divided by 0 is...
+*** Exception caught: Division by zero! :-(
+Bye!
+</pre></div>
+</div>
+<p>You can observe that the exception thrown by the static method <code class="docutils literal notranslate"><span class="pre">divide</span></code> has been
+caught on lines 7–9: in fact, the program has <em>not</em> been immediately terminated
+by the exception, and Java has not printed on the console any stack trace.
+Instead, the program prints <code class="docutils literal notranslate"><span class="pre">***</span> <span class="pre">Exception</span> <span class="pre">caught:</span> <span class="pre">...</span></code> (line 8) and then
+continues executing the rest of <code class="docutils literal notranslate"><span class="pre">main(...)</span></code>, by printing <code class="docutils literal notranslate"><span class="pre">Bye!</span></code> (line 10) and
+then terminating regularly.</p>
+</section>
+</div><span class="target" id="index-7"></span></section>
+<section id="checked-exceptions">
+<span id="sec-errors-exceptions-checked"></span><span id="index-8"></span><h3>Checked Exceptions<a class="headerlink" href="#checked-exceptions" title="Permalink to this heading">#</a></h3>
+<p>Most of the exception classes shown in the hierarchy in
+<a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a> are <strong>checked</strong> by the Java compiler — i.e.
+if a checked exception might be thrown somewhere in your program, the Java
+compiler will make sure that your code “does something” about it, and you (as a
+programmer) do not “forget” that the exception might be thrown.  <em>Every</em>
+subclass of <code class="docutils literal notranslate"><span class="pre">Throwable</span></code> in <a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a> is checked —
+<em>except</em> the subclasses of <code class="docutils literal notranslate"><span class="pre">Error</span></code> and <code class="docutils literal notranslate"><span class="pre">RuntimeException</span></code>.</p>
+<p>If a method might throw an exception of a checked class <code class="docutils literal notranslate"><span class="pre">E</span></code>, then the method
+declaration must highlight this possibility, by adding <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">throws</span> <span class="pre">E</span></code> after the
+method’s name and arguments.  The only way to avoid this is to handle the
+checked exception <code class="docutils literal notranslate"><span class="pre">E</span></code> <em>inside</em> the method, with a <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code> statement that
+catches <code class="docutils literal notranslate"><span class="pre">E</span></code>.</p>
+<p>The use of checked exceptions is illustrated in
+<a class="reference internal" href="#eg-throwing-catching-checked-exception">Example 69</a> below.</p>
+<div class="proof example admonition" id="eg-throwing-catching-checked-exception">
+<p class="admonition-title"><span class="caption-number">Example 69 </span> (Handling a checked exception)</p>
+<section class="example-content" id="proof-content">
+<p>Let us modify the code of <a class="reference internal" href="#eg-throwing-catching-arith-exception">Example 68</a> by
+replacing line 16 with the following line, which throws an exception of
+type <code class="docutils literal notranslate"><span class="pre">java.io.IOException</span></code> (instead of <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code>):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">16</span><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="p">(</span><span class="s">&quot;Division by zero! :-(&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If we do this, Java will report an error on this line, saying that the exception
+is not handled.  To address the error, we must either:</p>
+<ul>
+<li><p>surround the <code class="docutils literal notranslate"><span class="pre">throw</span> <span class="pre">...</span></code> statement with a <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> block that
+handles exceptions of type <code class="docutils literal notranslate"><span class="pre">java.io.IOException</span></code>, or</p></li>
+<li><p>declare that the method <code class="docutils literal notranslate"><span class="pre">divide(...)</span></code> might throw that exception, by modifying
+the method declaration (on line 14) as:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">14</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="w"> </span><span class="p">{</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>If we follow the second option, we obtain an error in the <code class="docutils literal notranslate"><span class="pre">main</span></code> method, which
+does not handle exceptions of type <code class="docutils literal notranslate"><span class="pre">java.io.IOException</span></code>.  Again, we have two
+options:</p>
+<ul>
+<li><p>revise the <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code> statement on lines 5–9 to handle exceptions of type
+<code class="docutils literal notranslate"><span class="pre">java.io.IOException</span></code>, or</p></li>
+<li><p>declare that the method <code class="docutils literal notranslate"><span class="pre">main(...)</span></code> might throw that exception, by modifying
+the method declaration (on line 2) as:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="w"> </span><span class="p">{</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>If we follow again the second option, the code will look as follows: (the
+differences with <a class="reference internal" href="#eg-throwing-catching-arith-exception">Example 68</a> are
+highlighted)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Division</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos"> 3</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The result of 3 divided by 0 is...&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ArithmeticException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;*** Exception caught: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bye!&quot;</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="hll"><span class="linenos">14</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">15</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos">16</span><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="p">(</span><span class="s">&quot;Division by zero! :-(&quot;</span><span class="p">);</span>
+</span><span class="linenos">17</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">21</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>And if we run this code, the program will terminate as soon as it throws the
+exception, with the following output: (similar to
+<a class="reference internal" href="#eg-throwing-arith-exception">Example 67</a>)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The result of 3 divided by 0 is...
+Exception in thread &quot;main&quot; java.io.IOException: Division by zero! :-(
+	at Division.divide(Division-checked.java:16)
+	at Division.main(Division-checked.java:6)
+</pre></div>
+</div>
+<p>As an alternative, we could have e.g. caught the <code class="docutils literal notranslate"><span class="pre">IOException</span></code> inside
+<code class="docutils literal notranslate"><span class="pre">main(...)</span></code>, as follows: (the
+differences with <a class="reference internal" href="#eg-throwing-catching-arith-exception">Example 68</a> are
+highlighted)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Division</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The result of 3 divided by 0 is...&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ArithmeticException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;*** Exception caught: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<span class="hll"><span class="linenos"> 9</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">10</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;*** IOException caught: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="p">}</span>
+</span><span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bye!&quot;</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">15</span>
+<span class="hll"><span class="linenos">16</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">17</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos">18</span><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="p">(</span><span class="s">&quot;Division by zero! :-(&quot;</span><span class="p">);</span>
+</span><span class="linenos">19</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">22</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">23</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that on line 2 of this last program we do <em>not</em> need to declare that
+<code class="docutils literal notranslate"><span class="pre">main(...)</span></code> can throw a <code class="docutils literal notranslate"><span class="pre">java.io.IOException</span></code>, because that exception is now
+caught on lines 9–10.  If we run this last program, its output is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The result of 3 divided by 0 is...
+*** IOException caught: Division by zero! :-(
+Bye!
+</pre></div>
+</div>
+</section>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In <a class="reference internal" href="#eg-throwing-catching-arith-exception">Example 68</a> we did not need to worry
+about adding <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">throws</span> <span class="pre">ArithmeticException</span></code> to the declaration of the method
+<code class="docutils literal notranslate"><span class="pre">divide(...)</span></code>.  This is because <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> is a subclass of
+<code class="docutils literal notranslate"><span class="pre">RuntimeException</span></code> (see hierarchy in <a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a>), hence
+<code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> is <em>not</em> a checked exception (whereas the
+<code class="docutils literal notranslate"><span class="pre">java.io.IOException</span></code> used in <a class="reference internal" href="#eg-throwing-catching-checked-exception">Example 69</a>
+is checked).</p>
+</div>
+<span class="target" id="index-9"></span></section>
+</section>
+<section id="getters-and-setters">
+<span id="sec-errors-getters-setters"></span><span id="index-10"></span><h2>Getters and Setters<a class="headerlink" href="#getters-and-setters" title="Permalink to this heading">#</a></h2>
+<p>We have seen that, when writing Java classes, it is often good practice to:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="prog-interf-encapsulation.html#sec-interfaces-encapsulation-encapsulation"><span class="std std-ref">keep the fields private (when possible)</span></a>,
+to reduce the programming interface exposed by our classes and objects;</p></li>
+<li><p><a class="reference internal" href="classes-polymorphism.html#sec-classes-polymorphism-final"><span class="std std-ref">make the public fields static (when possible)</span></a>
+to ensure that everyone can read the value of the fields, but nobody can
+change value of the the field by mistake.</p></li>
+</ul>
+<p>There is, however, a very common third scenario: we may want to write a class
+that makes a field available to everyone for both reading and updating — but
+we want to <em>ensure that field updates are always correct</em>.  The recipe for this
+scenario is to:</p>
+<ol class="arabic simple">
+<li><p>make the field <code class="docutils literal notranslate"><span class="pre">private</span></code>, and</p></li>
+<li><p>provide a <code class="docutils literal notranslate"><span class="pre">public</span></code> <strong>getter</strong> method that returns the current value
+of the field, and</p></li>
+<li><p>provide a <code class="docutils literal notranslate"><span class="pre">public</span></code> <strong>setter</strong> method that updates the value of the field,
+after performing some correctness checks (and executing other code, if
+needed).  If the setter method is called with an incorrect argument, then the
+setter can immediately
+<a class="reference internal" href="#sec-errors-exceptions-throw"><span class="std std-ref">throw an exception</span></a>, so the
+presence and position of the bug is clearly evident and can be fixed more
+easily.</p></li>
+</ol>
+<p>This idea is illustrated in <a class="reference internal" href="#eg-getter-setter">Example 70</a> below.</p>
+<div class="proof example admonition" id="eg-getter-setter">
+<p class="admonition-title"><span class="caption-number">Example 70 </span> (Validating serial codes)</p>
+<section class="example-content" id="proof-content">
+<p>Let us consider again the code for the office supplies shop in
+<a class="reference internal" href="inheritance-2.html#eg-inheritance-multiple-interfaces">Example 61</a>: the abstract class <code class="docutils literal notranslate"><span class="pre">Device</span></code>
+includes a <code class="docutils literal notranslate"><span class="pre">private</span></code> field <code class="docutils literal notranslate"><span class="pre">serialCode</span></code> (of type <code class="docutils literal notranslate"><span class="pre">String</span></code>) that is set by the
+constructor (when an object is created) and cannot be changed afterwards.</p>
+<p>Now, suppose we have two new requirements:</p>
+<ul class="simple">
+<li><p>it must be possible to change the serial code of an existing object of the
+class <code class="docutils literal notranslate"><span class="pre">Device</span></code>;</p></li>
+<li><p>serial codes must always be valid, i.e. they cannot be <code class="docutils literal notranslate"><span class="pre">null</span></code> and must have
+the form <code class="docutils literal notranslate"><span class="pre">XXXX-YYYY</span></code> — where <code class="docutils literal notranslate"><span class="pre">XXXX</span></code> must be 4 lowercase letters, and <code class="docutils literal notranslate"><span class="pre">YYYY</span></code>
+must be 4 digits.</p></li>
+</ul>
+<p>To satisfy this requirement, we could revise the class <code class="docutils literal notranslate"><span class="pre">Device</span></code> as follows.</p>
+<ol class="arabic simple">
+<li><p>We implement a serial code validity check, by writing an auxiliary static
+method <code class="docutils literal notranslate"><span class="pre">isSerialCodeValid(code)</span></code> that returns <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>
+depending on whether the given serial <code class="docutils literal notranslate"><span class="pre">code</span></code> is valid or not;</p></li>
+<li><p>We keep the field <code class="docutils literal notranslate"><span class="pre">serialCode</span></code> as <code class="docutils literal notranslate"><span class="pre">private</span></code> <em>(which already is)</em>, and we
+provide:</p>
+<ul class="simple">
+<li><p>a <code class="docutils literal notranslate"><span class="pre">public</span></code> <strong>getter</strong> method <code class="docutils literal notranslate"><span class="pre">getSerialCode()</span></code> that returns the current
+value of the <code class="docutils literal notranslate"><span class="pre">private</span></code> field <code class="docutils literal notranslate"><span class="pre">this.serialCode</span></code>; <em>(note that the class
+<code class="docutils literal notranslate"><span class="pre">Device</span></code> in <a class="reference internal" href="inheritance-2.html#eg-inheritance-multiple-interfaces">Example 61</a> already provides
+this method)</em></p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">public</span></code> <strong>setter</strong> method <code class="docutils literal notranslate"><span class="pre">setSerialCode(code)</span></code> which checks whether the
+given serial <code class="docutils literal notranslate"><span class="pre">code</span></code> is valid (using the static method
+<code class="docutils literal notranslate"><span class="pre">isSerialCodeValid(...)</span></code>):</p>
+<ul>
+<li><p>if the given serial code is valid, then the setter method
+<code class="docutils literal notranslate"><span class="pre">setSerialCode(...)</span></code> updates the value of the <code class="docutils literal notranslate"><span class="pre">private</span></code> field
+<code class="docutils literal notranslate"><span class="pre">this.serialCode</span></code>;</p></li>
+<li><p>otherwise, the setter method <code class="docutils literal notranslate"><span class="pre">setSerialCode(...)</span></code> throws a suitable
+exception — for instance, it could throw an <code class="docutils literal notranslate"><span class="pre">IllegalArgumentException</span></code>
+(listed in <a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a>).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Finally, we update the constructor of the class <code class="docutils literal notranslate"><span class="pre">Device</span></code> to check the serial
+code when a new object is created, and throw an exception if the serial code
+is not valid. To this end, the constructor can simply call the setter method
+<code class="docutils literal notranslate"><span class="pre">this.setSerialCode(...)</span></code>.</p></li>
+</ol>
+<p>The revised class <code class="docutils literal notranslate"><span class="pre">Device</span></code> is shown below, where the differences with
+<a class="reference internal" href="inheritance-2.html#eg-inheritance-multiple-interfaces">Example 61</a> are highlighted.  <em>(Note: the rest
+of the classes and interfaces in <a class="reference internal" href="inheritance-2.html#eg-inheritance-multiple-interfaces">Example 61</a>
+and the file <code class="docutils literal notranslate"><span class="pre">OfficeSupplies.java</span></code> in <a class="reference internal" href="interfaces.html#eg-multiple-interfaces">Example 53</a> are
+unchanged.)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Device</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Device</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="hll"><span class="linenos"> 7</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">setSerialCode</span><span class="p">(</span><span class="n">serialCode</span><span class="p">);</span>
+</span><span class="linenos"> 8</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">17</span>
+<span class="hll"><span class="linenos">18</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSerialCode</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">19</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isSerialCodeValid</span><span class="p">(</span><span class="n">code</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">20</span><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">21</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">22</span><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Invalid serial code: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">code</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">24</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">25</span>
+<span class="linenos">26</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">();</span>
+<span class="linenos">27</span>
+<span class="hll"><span class="linenos">28</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isSerialCodeValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">29</span><span class="w">        </span><span class="c1">// The serial code cannot be null</span>
+</span><span class="hll"><span class="linenos">30</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">code</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">31</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">32</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">33</span>
+</span><span class="hll"><span class="linenos">34</span><span class="w">        </span><span class="c1">// The serial code must have the form XXXX-YYYY, so we try to split it</span>
+</span><span class="hll"><span class="linenos">35</span><span class="w">        </span><span class="c1">// around the separator &quot;-&quot;</span>
+</span><span class="hll"><span class="linenos">36</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">codeSplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;-&quot;</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">37</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">codeSplit</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">38</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">39</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">40</span>
+</span><span class="hll"><span class="linenos">41</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">firstPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codeSplit</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">42</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">secondPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codeSplit</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">43</span>
+</span><span class="hll"><span class="linenos">44</span><span class="w">        </span><span class="c1">// Both parts of the serial code must be 4 characters long</span>
+</span><span class="hll"><span class="linenos">45</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">firstPart</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">secondPart</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">46</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">47</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">48</span>
+</span><span class="hll"><span class="linenos">49</span><span class="w">        </span><span class="c1">// The first part must only contain lowercase letters</span>
+</span><span class="hll"><span class="linenos">50</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">firstPart</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">51</span><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstPart</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">52</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">c</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;z&#39;</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">53</span><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">54</span><span class="w">            </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">55</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">56</span>
+</span><span class="hll"><span class="linenos">57</span><span class="w">        </span><span class="c1">// The second part must only contain digits</span>
+</span><span class="hll"><span class="linenos">58</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">secondPart</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">59</span><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">secondPart</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">60</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">c</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;9&#39;</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">61</span><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">62</span><span class="w">            </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">63</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">64</span>
+</span><span class="hll"><span class="linenos">65</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// If we get here, the serial code is valid!</span>
+</span><span class="hll"><span class="linenos">66</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">67</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, the revised constructor of the class <code class="docutils literal notranslate"><span class="pre">Device</span></code> is used by all subclasses
+defined in in <a class="reference internal" href="inheritance-2.html#eg-inheritance-multiple-interfaces">Example 61</a> (<code class="docutils literal notranslate"><span class="pre">Scanner</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Printer</span></code>, <code class="docutils literal notranslate"><span class="pre">AllInOne</span></code>), since they all call <code class="docutils literal notranslate"><span class="pre">super(...)</span></code>.  Moreover, those
+subclasses inherit the new setter method <code class="docutils literal notranslate"><span class="pre">setSerialCode(...)</span></code>.</p>
+<p>Furthermore, the program <code class="docutils literal notranslate"><span class="pre">OfficeSupplies.java</span></code> in
+<a class="reference internal" href="interfaces.html#eg-multiple-interfaces">Example 53</a> still compiles and runs with the updated class
+<code class="docutils literal notranslate"><span class="pre">Device</span></code> above — but if we actually run the program, it terminates with an
+exception like the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Exception in thread &quot;main&quot; IllegalArgumentException: Bad serial code A123Z
+	at Device.setSerialCode(Device.java:22)
+	at Device.&lt;init&gt;(Device.java:7)
+	at Scanner.&lt;init&gt;(Device.java:76)
+	at OfficeSupplies.main(OfficeSupplies.java:3)
+</pre></div>
+</div>
+<p>The error message carried by the exception tells us that an invalid serial code
+<code class="docutils literal notranslate"><span class="pre">A123Z</span></code> is being set.  The last line of the stack trace points to line 3 in the
+file <code class="docutils literal notranslate"><span class="pre">OfficeSupplies.java</span></code> — and indeed, that line contains the creation of a
+new <code class="docutils literal notranslate"><span class="pre">Scanner</span></code> object with an invalid serial code:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="s">&quot;Canon CanoScan Lide 300&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4800</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A123Z&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We can fix that line by writing a valid serial code, e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="s">&quot;Canon CanoScan Lide 300&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4800</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;abcd-1234&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>and if we replace all serial codes used in <code class="docutils literal notranslate"><span class="pre">OfficeSupplies.java</span></code> with valid
+serial codes, the program will run correctly.</p>
+<p>We can now also change the serial code of an object <em>after</em> its creation, using
+the new setter method <code class="docutils literal notranslate"><span class="pre">setSerialCode(...)</span></code>.  However, if we use that method with
+an invalid serial code like:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">.</span><span class="na">setSerialCode</span><span class="p">(</span><span class="s">&quot;hej&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>then the program will terminate with an <code class="docutils literal notranslate"><span class="pre">IllegalArgumentException</span></code> (as above).
+Instead, if we write a valid serial code like:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">.</span><span class="na">setSerialCode</span><span class="p">(</span><span class="s">&quot;blah-6789&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>then the program will run correctly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Calling an overridable method (like our <code class="docutils literal notranslate"><span class="pre">setSerialCode(...)</span></code>) from a constructor
+is <em>not</em> generally considered good practice in Java programs (for more details
+and references, see <a class="reference external" href="https://stackoverflow.com/a/4893909">this post on Stack
+Overflow</a>).  This example does it to keep
+things simple — but a better solution would be e.g. to write the serial code
+validation in a <code class="docutils literal notranslate"><span class="pre">private</span></code> method that is called by both the constructor and
+<code class="docutils literal notranslate"><span class="pre">setSerialCode(...)</span></code>.</p>
+</div>
+</section>
+</div></section>
+<section id="concluding-remarks">
+<span id="sec-errors-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of the following topics:</p>
+<ul class="simple">
+<li><p>how to use <a class="reference internal" href="#sec-errors-exceptions"><span class="std std-ref">exceptions</span></a> to report and
+handle errors in your Java programs;</p></li>
+<li><p>how to write
+<a class="reference internal" href="#sec-errors-getters-setters"><span class="std std-ref">getter and setter methods</span></a> for
+protecting and validating the fields of an object.</p></li>
+</ul>
+<p>We have only touched upon these topics: exception handling can become rather
+complex, and we have only seen a small part of the file I/O functionalities
+provided Java.  You will likely learn more about these topics by writing more
+complex programs, and exploring the
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/index.html">Java API documentation</a>.</p>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-errors-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>:</p>
+<ul class="simple">
+<li><p>Section 11.1 - “Exception Handling”</p></li>
+<li><p>Section 11.2 - “Uncaught Exceptions”</p></li>
+<li><p>Section 11.3 - “The <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code> Statement”</p></li>
+<li><p>Section 11.4 - “Exception Propagation”</p></li>
+<li><p>Section 11.5 - “The Exception Class Hierarchy”</p></li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-errors-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="ex-exception-class-experiments">
+
+<p class="admonition-title"><span class="caption-number">Exercise 33 </span> (Experimenting with exception classes)</p>
+<section id="exercise-content">
+<p>Take the code in <a class="reference internal" href="#eg-throwing-arith-exception">Example 67</a> and experiment by
+changing the <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> into some other exception class listed in
+<a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a>: observe what changes when you select a
+subclass of <code class="docutils literal notranslate"><span class="pre">RuntimeException</span></code>, and what changes when you select some other
+exception class that is <a class="reference internal" href="#sec-errors-exceptions-checked"><span class="std std-ref">checked</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The exception names in <a class="reference internal" href="#fig-exceptions-hierarchy"><span class="std std-numref">Fig. 33</span></a> are often abbreviated:
+e.g. the figure shows <code class="docutils literal notranslate"><span class="pre">IOException</span></code> instead of <code class="docutils literal notranslate"><span class="pre">java.io.IOException</span></code>.</p>
+<p>To find the full name e.g. of the exception <code class="docutils literal notranslate"><span class="pre">SocketException</span></code>, you can search
+for it in the
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/17/docs/api/index.html">Java API documentation</a>
+(using the search box in the top-right corner of the page), and this will lead
+you to
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/SocketException.html">this page</a>
+showing the complete name <code class="docutils literal notranslate"><span class="pre">java.net.SocketException</span></code>.</p>
+</div>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-errors-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-errors-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-errors-files-dates2"><span class="std std-ref">06 - Dates, Version 2</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-errors-files-contacts"><span class="std std-ref">07 - Contacts</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="dates-version-2">
+<span id="lab-errors-files-dates2"></span><h3>06 - Dates, Version 2<a class="headerlink" href="#dates-version-2" title="Permalink to this heading">#</a></h3>
+<p>This is a follow-up to the assessment <a class="reference internal" href="lab-day-3.html#lab-day-3-dates"><span class="std std-ref">06 - Dates</span></a>: the starting
+point is the file <code class="docutils literal notranslate"><span class="pre">Date.java</span></code> that solves <a class="reference internal" href="lab-day-3.html#lab-day-3-dates"><span class="std std-ref">06 - Dates</span></a> (either
+your own file, or the one provided by the teacher as a solution to
+<a class="reference internal" href="lab-day-3.html#lab-day-3-dates"><span class="std std-ref">06 - Dates</span></a>).</p>
+<p>The class <code class="docutils literal notranslate"><span class="pre">Date</span></code> developed thus far is a bit fragile and may lead to buggy code,
+because:</p>
+<ul class="simple">
+<li><p>it can be used by Java programs to create <code class="docutils literal notranslate"><span class="pre">Date</span></code> objects containing invalid
+dates, and</p></li>
+<li><p>it provides a method <code class="docutils literal notranslate"><span class="pre">.isValid()</span></code> — but a programmer can easily forget to
+call this method every time he/she creates a <code class="docutils literal notranslate"><span class="pre">Date</span></code> object.</p></li>
+</ul>
+<p>Therefore, the goal is to improve the class <code class="docutils literal notranslate"><span class="pre">Date</span></code> in the file <code class="docutils literal notranslate"><span class="pre">Date.java</span></code>, with
+the following changes:</p>
+<ul>
+<li><p>Each object of the class <code class="docutils literal notranslate"><span class="pre">Date</span></code> must provide the following <code class="docutils literal notranslate"><span class="pre">public</span></code> and
+<a class="reference internal" href="classes-polymorphism.html#sec-classes-polymorphism-final"><span class="std std-ref">final</span></a> fields that store the year,
+month, and day:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">;</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">month</span><span class="p">;</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Date</span></code> must provide the following constructor (as before):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="nf">Date</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>However, the constructor must now check if the given year <code class="docutils literal notranslate"><span class="pre">y</span></code>, month <code class="docutils literal notranslate"><span class="pre">m</span></code>, and
+day <code class="docutils literal notranslate"><span class="pre">d</span></code> represent a valid date: if not, the constructor must throw an
+<code class="docutils literal notranslate"><span class="pre">IllegalArgumentException</span></code>. Otherwise (i.e. <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, and <code class="docutils literal notranslate"><span class="pre">d</span></code> represent a
+valid date), the constructor must initialise the new <code class="docutils literal notranslate"><span class="pre">Date</span></code> object as
+expected.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Date</span></code> objects do <em>not</em> need to provide this method any more:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In fact, the method is now redundant (because every <code class="docutils literal notranslate"><span class="pre">Date</span></code> objects always
+contains a valid date).</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Instead of simply removing the method <code class="docutils literal notranslate"><span class="pre">isValid()</span></code>, you could make it <code class="docutils literal notranslate"><span class="pre">private</span></code>
+and use it inside the constructor to check whether a date is valid, as
+required above…</p>
+</div>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">Date</span></code>, and they might not compile or
+work correctly until you complete the implementation of <code class="docutils literal notranslate"><span class="pre">Date.java</span></code>.  You should
+read those test programs and try to run them, but you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Date.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more dates (either valid or invalid).  After you
+submit, double-check your grading result on DTU Autolab: if the secret checks
+fail, then your solution is not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+<section id="contacts">
+<span id="lab-errors-files-contacts"></span><h3>07 - Contacts<a class="headerlink" href="#contacts" title="Permalink to this heading">#</a></h3>
+<p>Your are helping in the development of a contact management application.  Your
+task is to implement a class called <code class="docutils literal notranslate"><span class="pre">Contact</span></code> which can store the name, surname,
+phone number, and email address of a contact.</p>
+<p>Importantly, the class <code class="docutils literal notranslate"><span class="pre">Contact</span></code> must ensure that the name, surname, phone
+number, and email address of the contact are stored as <code class="docutils literal notranslate"><span class="pre">String</span></code>s and are always
+valid, according to the following rules:</p>
+<ul class="simple">
+<li><p>the name and surname cannot be <code class="docutils literal notranslate"><span class="pre">null</span></code> nor empty;</p></li>
+<li><p>the phone number cannot be <code class="docutils literal notranslate"><span class="pre">null</span></code>, and it must consist of one or more digits;
+it may optionally begin with <code class="docutils literal notranslate"><span class="pre">+</span></code>.  For instance, both <code class="docutils literal notranslate"><span class="pre">45123123</span></code> and
+<code class="docutils literal notranslate"><span class="pre">+45123123</span></code> are valid phone numbers, whereas <code class="docutils literal notranslate"><span class="pre">abc</span></code> and <code class="docutils literal notranslate"><span class="pre">123+456</span></code> are not;</p></li>
+<li><p>the email address cannot be <code class="docutils literal notranslate"><span class="pre">null</span></code> and must have the form <code class="docutils literal notranslate"><span class="pre">recipient&#64;host</span></code>,
+where both <code class="docutils literal notranslate"><span class="pre">recipient</span></code> and <code class="docutils literal notranslate"><span class="pre">host</span></code> are non-empty sequences of characters that
+can be either digits, letters, or the dot <code class="docutils literal notranslate"><span class="pre">.</span></code>.  For instance, <code class="docutils literal notranslate"><span class="pre">alcsc&#64;dtu.dk</span></code>
+and <code class="docutils literal notranslate"><span class="pre">s123456&#64;student.dtu.dk</span></code> are valid email addresses, whereas <code class="docutils literal notranslate"><span class="pre">alcsc</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&#64;dtu.dk</span></code> are not valid email addresses;</p></li>
+</ul>
+<p>To enforce the rules above, the fields of the class <code class="docutils literal notranslate"><span class="pre">Contact</span></code> that store the
+name, surname, phone, and email, must all be <code class="docutils literal notranslate"><span class="pre">private</span></code> and only accessible via
+getters and setters.</p>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Contact.java</span></code> and implement the class <code class="docutils literal notranslate"><span class="pre">Contact</span></code>, with the
+following requirements:</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Contact</span></code> must provide the constructor:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="nf">Contact</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">phone</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The constructor must check whether the given arguments <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">surname</span></code>,
+<code class="docutils literal notranslate"><span class="pre">phone</span></code>, and <code class="docutils literal notranslate"><span class="pre">email</span></code> are valid, in this order, according to the rules above.
+If one of the arguments is invalid, the constructor must throw an
+<code class="docutils literal notranslate"><span class="pre">IllegalArgumentException</span></code> carrying one of the following error messages
+(depending on the first invalid argument):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">name&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">surname&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">phone</span> <span class="pre">number&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">email</span> <span class="pre">address&quot;</span></code></p></li>
+</ul>
+<p>If all arguments are valid, the constructor must initialise the new object as
+expected.</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Contact</span></code> must provide the following getters, which retrieve the
+value of their corresponding field of <code class="docutils literal notranslate"><span class="pre">this</span></code> object:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSurname</span><span class="p">()</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getPhone</span><span class="p">()</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEmail</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Contact</span></code> must provide the following setters, which change the
+value of their corresponding field of <code class="docutils literal notranslate"><span class="pre">this</span></code> object:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSurname</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">surname</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPhone</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">phone</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEmail</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Before updating the object fields, each one of these setters must check
+whether its argument is valid according to the rules above: if not, the setter
+must throw an <code class="docutils literal notranslate"><span class="pre">IllegalArgumentException</span></code> carrying one of the error messages
+listed in the description of the constructor (see above).</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">Contact</span></code>, and they might not compile
+or work correctly until you complete the implementation of <code class="docutils literal notranslate"><span class="pre">Contact.java</span></code>.  You
+should read those test programs and try to run them, but you must <em>not</em> modify
+them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Contact.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more contacts (using either valid or invalid
+arguments for the constructor and the setters).  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Contact</span></code> in the handout already contains some auxiliary static
+methods to check whether a character is a digit or a letter.</p></li>
+<li><p>To validate the fields of <code class="docutils literal notranslate"><span class="pre">Contact</span></code>, you may take inspiration from
+<a class="reference internal" href="#eg-getter-setter">Example 70</a>.  Also the solution to
+<a class="reference internal" href="loops2.html#lab-loops2-characters"><span class="std std-ref">04 - Characters</span></a> may be handy…</p></li>
+<li><p>Remember that, if <code class="docutils literal notranslate"><span class="pre">str</span></code> is a <code class="docutils literal notranslate"><span class="pre">String</span></code>, then you can use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str.charAt(n)</span></code> to get the character at position <code class="docutils literal notranslate"><span class="pre">n</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str.split(separator)</span></code> to split the string around the given <code class="docutils literal notranslate"><span class="pre">separator</span></code>.</p></li>
+</ul>
+<p>For more details, see <a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-strings-methods"><span class="std std-ref">Some Useful String Methods</span></a> and
+<a class="reference internal" href="arrays.html#eg-splitting-string-into-array">Example 35</a>.</p>
+</li>
+<li><p>Since the constructor and the setters in the class <code class="docutils literal notranslate"><span class="pre">Contact</span></code> perform similar
+checks, you should try to avoid code duplication.  There are multiple ways to
+do it: when the teacher publishes the solution to this assessment, compare it
+with your code.</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab-day-5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 11, Part 1: Lab Day</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="files.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 12, Part 1: File I/O</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-and-handling-errors-via-exceptions">Reporting and Handling Errors via Exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-exception-class-and-its-hierarchy">The <code class="docutils literal notranslate"><span class="pre">Exception</span></code> Class and its Hierarchy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions">Throwing Exceptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-exceptions-via-try-catch-finally-statements">Handling Exceptions via <code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-<code class="docutils literal notranslate"><span class="pre">finally</span></code> Statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checked-exceptions">Checked Exceptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getters-and-setters">Getters and Setters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dates-version-2">06 - Dates, Version 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contacts">07 - Contacts</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

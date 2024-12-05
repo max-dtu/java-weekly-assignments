@@ -1,0 +1,724 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 0: Overview of the Course and Assessment &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/tabs.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'overview';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 1: Basic Notions of Computing and Programming" href="basic-programming.html" />
+    <link rel="prev" title="02312 Introductory Programming — Fall 2024" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 0: Overview of the Course and Assessment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-of-the-course">Objectives of the Course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-organisation-and-learning-materials">Course Organisation and Learning Materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lectures-and-labs">Lectures and Labs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-notes">Lecture Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-book">Reference Book</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help-during-the-labs-and-on-dtu-learn">Help During the Labs and on DTU Learn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-used-during-the-course">Software Used During the Course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment">Assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-dtu-autolab-for-the-weekly-assessments">Using DTU Autolab for the Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-assessment">Demo Assessment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-your-scores-on-the-gradebook">Monitoring Your Scores on the Gradebook</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-0-overview-of-the-course-and-assessment">
+<span id="mod-course-overview"></span><h1>Module 0: Overview of the Course and Assessment<a class="headerlink" href="#module-0-overview-of-the-course-and-assessment" title="Permalink to this heading">#</a></h1>
+<p>Here is an overview of <a class="reference internal" href="#sec-objectives"><span class="std std-ref">what you will learn</span></a> during this
+course, how the course is <a class="reference internal" href="#sec-course-structure"><span class="std std-ref">organised</span></a>, which
+<a class="reference internal" href="#sec-required-software"><span class="std std-ref">tools</span></a> we will use, and how you will be
+<a class="reference internal" href="#sec-assessment"><span class="std std-ref">assessed</span></a>.  You can also find instructions on
+<a class="reference internal" href="#sec-autolab"><span class="std std-ref">how to use DTU Autolab for the weekly assessments</span></a>.</p>
+<section id="objectives-of-the-course">
+<span id="sec-objectives"></span><h2>Objectives of the Course<a class="headerlink" href="#objectives-of-the-course" title="Permalink to this heading">#</a></h2>
+<p>You will learn fundamental concepts and techniques of programming, and you will
+be able to design and implement programs of moderate size and complexity.</p>
+<p>There are many programming techniques and program design approaches, and new
+ones are developed over time.  In this course, we will focus on <strong>imperative and
+object-oriented programming</strong>, using a programming language with wide
+industrial adoption: <strong>Java</strong>.  You will encounter many other programming
+approaches and languages during your career as a student and in industry — and
+you will need to adapt what you learn in this course to new scenarios.</p>
+</section>
+<section id="course-organisation-and-learning-materials">
+<span id="sec-course-structure"></span><h2>Course Organisation and Learning Materials<a class="headerlink" href="#course-organisation-and-learning-materials" title="Permalink to this heading">#</a></h2>
+<section id="lectures-and-labs">
+<span id="sec-lectures-labs"></span><h3>Lectures and Labs<a class="headerlink" href="#lectures-and-labs" title="Permalink to this heading">#</a></h3>
+<p>Most sessions of the course will consist of a lecture followed by a lab. The
+lecture will present new topics and contents.  During the lab, you can work on
+the <a class="reference internal" href="#sec-assessment"><span class="std std-ref">weekly assessments</span></a> or on other exercises.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>You will need to <strong>bring your laptop</strong> to the lectures and labs.</p></li>
+<li><p>The lectures and labs will take place in the <strong>DTU campus in Lyngby</strong>, and
+they will be also <strong>recorded</strong>.  For details on the classrooms and how to
+access the recordings, please see the <strong>course home page on DTU Learn:
+<a title="Course home page" href="https://learn.inside.dtu.dk/d2l/home/215298">https://learn.inside.dtu.dk/d2l/home/215298</a></strong></p></li>
+</ul>
+</div>
+<p>During the course there will be various <strong>lab days</strong>: in those days no new
+content will be introduced — instead, you will be given programming exercises
+to strengthen your programming skills and your understanding of the course
+topics.</p>
+</section>
+<section id="lecture-notes">
+<span id="sec-lecture-notes"></span><h3>Lecture Notes<a class="headerlink" href="#lecture-notes" title="Permalink to this heading">#</a></h3>
+<p>These lecture notes reflect and expand upon the topics presented during the
+<a class="reference internal" href="#sec-lectures-labs"><span class="std std-ref">Lectures and Labs</span></a>: their main focus is the hands-on, problem-driven
+learning of key programming concepts.  The suggestion is, for each module of the
+course:</p>
+<ul class="simple">
+<li><p>if you can, read the lecture notes of a module <em>before</em> the module’s lecture
+and lab, and prepare questions on any unclear aspect;</p></li>
+<li><p>then, attend the lecture, ask questions, and study in more depth the
+corresponding lecture notes and solve the corresponding assignments;</p></li>
+<li><p>then, continue with the module’s <em>References and Further Readings</em>: they list
+the relevant and recommended sections of the <a class="reference internal" href="#sec-book"><span class="std std-ref">Reference Book</span></a> (or other
+resources) where you can find more details, examples, in-depth discussion,
+and exercises.</p></li>
+</ul>
+</section>
+<section id="reference-book">
+<span id="sec-book"></span><h3>Reference Book<a class="headerlink" href="#reference-book" title="Permalink to this heading">#</a></h3>
+<p>These lecture notes will often refer to the following book:</p>
+<p><em>John Lewis and William Loftus. <strong>Java Software Solutions (9th edition)</strong>.
+Pearson Education, Jan 2018. ISBN: 9781292221724</em></p>
+<p>The source code of all programs mentioned in the book is available here:</p>
+<p><strong><a class="reference download internal" download="" href="_downloads/2c373fc9a2d4b550d217991da440c1c6/Lewis%20and%20Loftus%20Java%20Software%20Solutions%20-%20source%20code.zip"><span class="xref download myst">Lewis and Loftus Java Software Solutions - source code.zip</span></a></strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use <a class="reference external" href="https://polyteknisk.dk/home/dtu/soege_resultat?utf8=%E2%9C%93&amp;amp;st=a&amp;amp;fs=false&amp;amp;fl=false&amp;amp;fe=false&amp;amp;q=Java+Software+Solutions">this link</a>
+to buy the book with a 10% discount.</p>
+</div>
+</section>
+<section id="help-during-the-labs-and-on-dtu-learn">
+<span id="sec-help"></span><h3>Help During the Labs and on DTU Learn<a class="headerlink" href="#help-during-the-labs-and-on-dtu-learn" title="Permalink to this heading">#</a></h3>
+<p>During the labs and lab days, the teacher and TAs will be available for
+questions and help.</p>
+<p>Outside the labs, you can ask questions on the <strong>discussion forum</strong> available on
+the course home page on DTU Learn.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>There is a course team on MS Teams that you can use to contact other students
+and create channels for discussion and collaboration.</p>
+<p><strong>If you ask questions on MS Teams, you may get an answer from the teacher or
+TAs — but do not expect them to be always available!</strong> To get help outside
+lectures and labs, you should use the discussion forum on DTU Learn (see above).</p>
+<p>Besides, you are welcome (and encouraged!) to use MS Teams and/or the discussion
+forum on DTU Learn to interact with your fellow students and answer their
+questions!</p>
+</div>
+</section>
+</section>
+<section id="software-used-during-the-course">
+<span id="sec-required-software"></span><h2>Software Used During the Course<a class="headerlink" href="#software-used-during-the-course" title="Permalink to this heading">#</a></h2>
+<p>During the course we will use the <strong>Java Development Kit (JDK) version 21</strong> and
+we will often work on a <strong>terminal</strong>.  It is also recommended to install
+<strong>Visual Studio Code</strong> (a.k.a. “VS Code”).  Please follow the instructions below
+to install the required software, depending on your operating system.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p><strong>The recommended version of the JDK is 21</strong>.  If you have a more recent
+version already installed on your computer, it should work — but in case of
+problems, you may want to try version 21.</p></li>
+</ul>
+<!-- - If you have troubles installing JDK version 22, then version 21 should be
+  sufficient for the first modules of the course --- although it may cause some
+  difficulties later on. -->
+<ul class="simple">
+<li><p>After the installation of VS Code, you may be asked to install some extensions
+for Java.  However, the recommendation is: <strong>please do <em>not</em> install any Java
+extension for VS Code</strong> until the teacher asks you to do so. We will address
+those extensions later in the course.</p></li>
+<li><p>After you install the required software on your computer, you can check
+whether everything works by trying a <a class="reference internal" href="#sec-autolab"><span class="std std-ref">demo assessment</span></a>.</p></li>
+</ul>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Windows</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Linux (Ubuntu)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>To install the JDK version 21, please follow
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/install/installation-jdk-microsoft-windows-platforms.html">these instructions</a>.</p>
+<p>To install VS Code, please follow
+<a class="reference external" href="https://code.visualstudio.com/docs/setup/windows">these instructions</a>.</p>
+<p>Please also install <a class="reference external" href="https://git-scm.com/download/win">Git for Windows</a>, which
+includes a terminal program that we will use during the course (Git Bash).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When installing Git for Windows, the installer will show a long series of
+dialogs allowing you to customise various options (as shown in
+<a class="reference external" href="https://phoenixnap.com/kb/how-to-install-git-windows">this installation guide</a>).
+You can just accept the default configuration by clicking “Next” until the
+installation ends.</p>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>To install the JDK version 21 (or later), please follow
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/install/installation-jdk-macos.html">these instructions</a>.
+Alternatively, you may install a package manager like <a class="reference external" href="https://brew.sh/">Homebrew</a>
+and then use it to <a class="reference external" href="https://formulae.brew.sh/formula/openjdk">install OpenJDK 21 (or later)</a>.</p>
+<p>To install VS Code, please follow
+<a class="reference external" href="https://code.visualstudio.com/docs/setup/mac">these instructions</a>.</p>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>To install the JDK version 21, open a terminal (by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Alt</span></code>+<code class="docutils literal notranslate"><span class="pre">T</span></code>)
+and execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-21-jdk
+</pre></div>
+</div>
+<p>To install VS Code, please download the <code class="docutils literal notranslate"><span class="pre">.deb</span></code> package from
+<a class="reference external" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> and then
+<a class="reference external" href="https://phoenixnap.com/kb/install-deb-files-ubuntu">install it</a>.</p>
+</div></div>
+</section>
+<section id="assessment">
+<span id="sec-assessment"></span><h2>Assessment<a class="headerlink" href="#assessment" title="Permalink to this heading">#</a></h2>
+<p>The course assessment has two components.</p>
+<ul class="simple">
+<li><p><strong>Weekly assessments.</strong>  They are not strictly mandatory but <strong>highly
+recommended</strong> for training your programming skills, and preparing towards the
+final written exam (see below).  If you solve the weekly assessments and
+submit them by their due date on <a class="reference internal" href="#sec-autolab"><span class="std std-ref">DTU Autolab</span></a>, you will
+get a bonus score on your final grade.</p></li>
+<li><p><strong>Final written exam (4 hours).</strong>  This is the main assessment of the course.
+During the written exam you will need to solve a series of programming tasks
+on your computer; the programming tasks will be similar to the weekly
+assessments.</p></li>
+</ul>
+<p>The final grade of the course is based on the result of the final written exam.
+In addition, the bonus score given by the weekly assessments can boost the final
+grade by up to 20%.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>The final written exam will be with all aids allowed, so you can bring, e.g.,
+a copy of these lecture notes, or your own notes, or solutions to past
+exercises… However, the exam will be <strong>without internet access</strong> and
+<strong>the use of AI tools (such as ChatGPT) will be forbidden</strong>. To prepare for
+the written exam, you should aim at solving the weekly assignments by
+yourself, without the help of ChatGPT or similar tools.</p></li>
+<li><p>In principle, you can pass the course (and even aim at the highest grade) even
+if you do not solve and submit the weekly assessments.  Although possible,
+taking this path is risky and <strong>not recommended!</strong>  The recommendation is to
+solve the weekly assessments, and ask for help if you encounter difficulties or
+something is unclear.</p></li>
+</ul>
+</div>
+</section>
+<section id="using-dtu-autolab-for-the-weekly-assessments">
+<span id="sec-autolab"></span><h2>Using DTU Autolab for the Weekly Assessments<a class="headerlink" href="#using-dtu-autolab-for-the-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the course, the weekly assessments will be available on <strong>DTU Autolab</strong>.
+This section explains <a class="reference internal" href="#sec-autolab-demo-assessment"><span class="std std-ref">how to use Autolab with a demo assessment</span></a>
+and <a class="reference internal" href="#sec-autolab-gradebook"><span class="std std-ref">how to monitor your scores on the Gradebook</span></a>.</p>
+<section id="demo-assessment">
+<span id="sec-autolab-demo-assessment"></span><h3>Demo Assessment<a class="headerlink" href="#demo-assessment" title="Permalink to this heading">#</a></h3>
+<p>To see how Autolab works and how it is used in this course, please follow the
+instructions below.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>If you have not logged on DTU Autolab before, <strong>you must first set up
+your password for accessing DTU Autolab</strong>.  Please go to
+<strong><a class="reference external" href="https://autolab.compute.dtu.dk/auth/users/password/new">https://autolab.compute.dtu.dk/auth/users/password/new</a></strong>,
+write your DTU student email address (<strong><code class="docutils literal notranslate"><span class="pre">sXXXXXX&#64;student.dtu.dk</span></code></strong>), and click
+on <em>“Send me reset password instructions.”</em></p></li>
+<li><p>If you have trouble resetting your password, make sure you are using your
+email address <strong><code class="docutils literal notranslate"><span class="pre">sXXXXXX&#64;student.dtu.dk</span></code></strong> — and <strong>not</strong> <code class="docutils literal notranslate"><span class="pre">sXXXXXX&#64;dtu.dk</span></code>!</p></li>
+</ul>
+</div>
+<ol class="arabic">
+<li><p>Log on <strong><a class="reference external" href="https://autolab.compute.dtu.dk/">https://autolab.compute.dtu.dk/</a></strong> using your DTU student email
+address (<strong><code class="docutils literal notranslate"><span class="pre">sXXXXXX&#64;student.dtu.dk</span></code></strong>).</p>
+<ul class="simple">
+<li><p>If you have trouble logging in, make sure you are using your
+email address <strong><code class="docutils literal notranslate"><span class="pre">sXXXXXX&#64;student.dtu.dk</span></code></strong> — and <strong>not</strong> <code class="docutils literal notranslate"><span class="pre">sXXXXXX&#64;dtu.dk</span></code>!</p></li>
+</ul>
+</li>
+<li><p>Go to the Autolab page for this course: <strong><a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.
+<em>(If you cannot access the course page, please contact the teacher)</em></p></li>
+<li><p>You will see a series of <strong>“Assessments”</strong>: look under <strong>“Module 00”</strong>, and
+click on <strong>“00 - Using Autolab”</strong>.</p></li>
+<li><p>You will now see the webpage for downloading the handout of the assessment
+called “00 - Using Autolab” and for submitting your solution.  On the left of
+the webpage there are some <strong>“Options”</strong>: click on <strong>“Download handout”</strong>.
+This will let you download a <strong>zip file</strong> containing a demo assessment.  You
+will need to <strong>unzip the file</strong> (i.e. extract its contents) by following the
+instructions below (depending on your operating system).</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Windows</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Linux (Ubuntu)</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>Please follow <a class="reference external" href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-8d28fa72-f2f9-712f-67df-f80cf89fd4e5">these instructions</a>.</p>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>Please follow <a class="reference external" href="https://www.parallels.com/uk/tips/zip-unzip/mac/unzip/how-to/">these instructions</a>.</p>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>Please follow <a class="reference external" href="https://linuxconfig.org/how-to-unzip-a-zip-file-from-command-line-and-gui">these instructions</a>.</p>
+</div></div>
+</li>
+<li><p>After the extraction of the zip file, you will see a new folder called
+<code class="docutils literal notranslate"><span class="pre">m00a00autolab</span></code> that contains the materials for the demo assessment “00 -
+Using Autolab”.  This is just a demo, so you have nothing to solve — but
+you can use this demo assessment to check whether your computer is correctly
+configured and ready to use for this course.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The following instructions will only work if you have already installed the
+<a class="reference internal" href="#sec-required-software"><span class="std std-ref">software required for the course</span></a>.  If you have
+not done it yet, you can jump to point 6 below.</p>
+</div>
+<ul>
+<li><p>Open a terminal inside the folder <code class="docutils literal notranslate"><span class="pre">m00a00autolab</span></code> by following the
+instructions below (depending on your operating system).</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Windows</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Linux (Ubuntu)</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><p>Please follow <a class="reference external" href="https://www.toolsqa.com/git/common-directory-commands-on-git-bash/">these instructions</a>
+(look for the section “Open Git Bash directly in the folder”).</p>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>Please follow <a class="reference external" href="https://www.maketecheasier.com/launch-terminal-current-folder-mac/">these instructions</a>.</p>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><p>Please follow <a class="reference external" href="https://itsfoss.com/open-terminal-ubuntu/#bonus-tip-open-current-directory-location-in-terminal-from-nautilus">these instructions</a>.</p>
+</div></div>
+</li>
+<li><p>When the terminal starts, write:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./grade
+</pre></div>
+</div>
+<p>and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code> (return key): this will start the execution of various
+checks. When the checks are completed, the summary should report 0 failed
+checks and 100% correctness.</p>
+</li>
+</ul>
+</li>
+<li><p>The folder <code class="docutils literal notranslate"><span class="pre">m00a00autolab</span></code> (obtained by extracting the zip file at point 4
+above) contains a file called <code class="docutils literal notranslate"><span class="pre">AutolabTest.java</span></code>: it is the solution of this
+demo assessment.  Submit that file by following these steps:</p>
+<ul class="simple">
+<li><p>drag the file <code class="docutils literal notranslate"><span class="pre">AutolabTest.java</span></code> on the webpage for the assessment “00 -
+Using Autolab” (that we reached at point 3 above), and drop it in the area
+that says <em>“Drag a file here to hand in”</em>;</p></li>
+<li><p>tick the checkbox <em>“I affirm that I have complied with this course’s
+academic integrity policy…”</em>;</p></li>
+<li><p>click “Submit”.</p></li>
+</ul>
+</li>
+<li><p>You will now see a webpage that confirms your submission.  Autolab will
+evaluate your submission and report the result with a “Correctness” score.
+If the result is not immediately available, you can click on <em>“View
+autograding progress.”</em>  After the Correctness score of the submission is
+computed, you can click on it to see more details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Correctness score reported by Autolab for this assessment should be the
+same reported on your computer at point 5 above, after running the <code class="docutils literal notranslate"><span class="pre">./grade</span></code>
+command on the terminal.</p>
+</div>
+</li>
+</ol>
+<p>You can repeat the procedure above and submit <code class="docutils literal notranslate"><span class="pre">AutolabTest.java</span></code> as many times
+as you wish, until the assessment due date has passed.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you have installed the
+<a class="reference internal" href="#sec-required-software"><span class="std std-ref">software required for the course</span></a> you can can try
+modifying the file <code class="docutils literal notranslate"><span class="pre">AutolabTest.java</span></code>.  You can open the file in VS Code by
+running on the terminal:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>code AutolabTest.java
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If VS Code suggests you to install some “Java extensions,” please ignore it.</p>
+</div>
+<p>You can then edit the file and observe the effect of your changes by saving the
+file (by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">S</span></code> or <code class="docutils literal notranslate"><span class="pre">⌘</span></code>+<code class="docutils literal notranslate"><span class="pre">S</span></code>) and re-running <code class="docutils literal notranslate"><span class="pre">./grade</span></code>: some checks
+may fail and, as a result, the Correctness score may decrease.</p>
+</div>
+</section>
+<section id="monitoring-your-scores-on-the-gradebook">
+<span id="sec-autolab-gradebook"></span><h3>Monitoring Your Scores on the Gradebook<a class="headerlink" href="#monitoring-your-scores-on-the-gradebook" title="Permalink to this heading">#</a></h3>
+<p>You can see a summary of the weekly assessments and their Correctness scores on
+the Autolab <strong>Gradebook</strong>: you can find a link on top of every Autolab webpage.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The score of an assessment will appear on the Gradebook only after the
+assessment due date has passed.</p>
+<p>Meanwhile, if you click on the name of an assessment on the Gradebook, you will
+find the assessment’s <em>“Submission Summary”</em> with the Correctness score of each
+submission.  The score of the latest submission will appear on the Gradebook
+after the assessment due date has passed.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">02312 Introductory Programming — Fall 2024</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="basic-programming.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 1: Basic Notions of Computing and Programming</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-of-the-course">Objectives of the Course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-organisation-and-learning-materials">Course Organisation and Learning Materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lectures-and-labs">Lectures and Labs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-notes">Lecture Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-book">Reference Book</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help-during-the-labs-and-on-dtu-learn">Help During the Labs and on DTU Learn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-used-during-the-course">Software Used During the Course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment">Assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-dtu-autolab-for-the-weekly-assessments">Using DTU Autolab for the Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-assessment">Demo Assessment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-your-scores-on-the-gradebook">Monitoring Your Scores on the Gradebook</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

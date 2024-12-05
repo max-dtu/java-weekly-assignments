@@ -1,0 +1,1273 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 10, part 1: More on Class Inheritance and abstract classes &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/bussproofs"]}, "tex": {"packages": {"[+]": ["bussproofs"]}, "macros": {}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="_static/mathjax/es5/tex-svg.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 10, Part 2: More on Java Classes and Polymorphism" href="classes-polymorphism.html" />
+    <link rel="prev" title="Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming" href="inheritance-oo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 10, part 1: More on Class Inheritance and abstract classes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-java-root-class-object">The Java Root Class “<code class="docutils literal notranslate"><span class="pre">Object</span></code>”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-classes-and-methods">Abstract Classes and Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-interfaces-vs-using-class-inheritance">Using Interfaces vs. Using Class Inheritance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-equality-and-tostring">01 - Object Equality and <code class="docutils literal notranslate"><span class="pre">toString()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vehicle-fleet-management-version-3">02 - Vehicle Fleet Management, Version 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electronic-devices-shop-version-2">03 - Electronic Devices Shop, Version 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-expressions-version-2">04 - Arithmetic Expressions, Version 2</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-10-part-1-more-on-class-inheritance-and-abstract-classes">
+<span id="mod-inheritance-2"></span><h1>Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es<a class="headerlink" href="#module-10-part-1-more-on-class-inheritance-and-abstract-classes" title="Permalink to this heading">#</a></h1>
+<p>In this first part of Module 10 we explore three topics related to class
+inheritance:</p>
+<ul class="simple">
+<li><p>the <a class="reference internal" href="#sec-inheritance-2-java-object"><span class="std std-ref">Java root class named “Object”</span></a>;</p></li>
+<li><p>the notions of <a class="reference internal" href="#sec-inheritance-2-abstract-methods"><span class="std std-ref">“abstract class” and “abstract method”</span></a>;</p></li>
+<li><p>the <a class="reference internal" href="#sec-inheritance-2-interfaces-vs-inheritance"><span class="std std-ref">similarities ande differences between using interfaces and using inheritance</span></a>.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To try the examples described in this Module, it is highly recommended to
+<a class="reference internal" href="prog-interf-encapsulation.html#sec-interfaces-encapsulation-vs-code-java"><span class="std std-ref">install and use the Java Extension Pack for Visual Studio Code</span></a>.</p>
+</div>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><section id="the-java-root-class-object">
+<span id="sec-inheritance-2-java-object"></span><span id="index-3"></span><h2>The Java Root Class “<code class="docutils literal notranslate"><span class="pre">Object</span></code>”<a class="headerlink" href="#the-java-root-class-object" title="Permalink to this heading">#</a></h2>
+<p>Consider again the UML class diagram previously shown in
+<a class="reference internal" href="inheritance-oo.html#fig-uml-pets-cat-dog-only"><span class="std std-numref">Fig. 21</span></a>, and also shown in
+<a class="reference internal" href="#fig-uml-pets-cat-dog-only-again"><span class="std std-numref">Fig. 24</span></a> below (for convenience).</p>
+<figure class="align-default" id="fig-uml-pets-cat-dog-only-again">
+<img alt="UML class diagram for the pet classes" src="_images/pet-cat-dog.svg" /><figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">UML class diagram showing the relationship between the classes <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">Cat</span></code>. (This diagram was previously shown in <a class="reference internal" href="inheritance-oo.html#fig-uml-pets-cat-dog-only"><span class="std std-numref">Fig. 21</span></a>.)</span><a class="headerlink" href="#fig-uml-pets-cat-dog-only-again" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>By looking at <a class="reference internal" href="#fig-uml-pets-cat-dog-only-again"><span class="std std-numref">Fig. 24</span></a> it might seem
+that <code class="docutils literal notranslate"><span class="pre">Pet</span></code> is the <strong>root class</strong> (or <strong>base class</strong>) of our class hierarchy,
+i.e. the class from which all other classes in the hierarchy descend.  However,
+this is not completely accurate: in fact, in Java, <strong>all classes derive from a
+root class named <code class="docutils literal notranslate"><span class="pre">Object</span></code></strong> (which is typically omitted in UML diagrams).
+Therefore, the UML class diagram in <a class="reference internal" href="#fig-uml-pets-cat-dog-only-again"><span class="std std-numref">Fig. 24</span></a>
+should look, more accurately, as shown in <a class="reference internal" href="#fig-uml-pets-object"><span class="std std-numref">Fig. 25</span></a> below.</p>
+<figure class="align-default" id="fig-uml-pets-object">
+<img alt="UML class diagram for the pet classes, including the root class Object" src="_images/object-pet-cat-dog-snake.svg" /><figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">UML class diagram showing the relationship between the classes <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, <code class="docutils literal notranslate"><span class="pre">Dog</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Cat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Snake</span></code> — including the root class named <code class="docutils literal notranslate"><span class="pre">Object</span></code> provided by Java.</span><a class="headerlink" href="#fig-uml-pets-object" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can create objects of the class named <code class="docutils literal notranslate"><span class="pre">Object</span></code> in the usual way.  For
+instance, if you write: <em>(try this on the Java shell!)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Then you can call e.g. <code class="docutils literal notranslate"><span class="pre">o.toString()</span></code> to get a representation of the object as a
+<code class="docutils literal notranslate"><span class="pre">String</span></code>, or <code class="docutils literal notranslate"><span class="pre">o.equals(o)</span></code> to check whether <code class="docutils literal notranslate"><span class="pre">o</span></code> is equal to itself.</p>
+<p>As expected, the methods of the class named <code class="docutils literal notranslate"><span class="pre">Object</span></code> are inherited by the
+subclasses — and therefore, if <code class="docutils literal notranslate"><span class="pre">dog</span></code> is a variable of type <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, you can call
+<code class="docutils literal notranslate"><span class="pre">dog.toString()</span></code> <em>(try it!)</em>.  It is quite common for Java classes to
+<a class="reference internal" href="inheritance-oo.html#sec-inheritance-oo-inheritance-overriding-methods"><span class="std std-ref">override</span></a> one or both
+methods <code class="docutils literal notranslate"><span class="pre">toString()</span></code> and <code class="docutils literal notranslate"><span class="pre">equals(...)</span></code> to provide custom implementations (e.g.,
+to make <code class="docutils literal notranslate"><span class="pre">dog.toString()</span></code> return a string with some information about the dog).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Java class named <code class="docutils literal notranslate"><span class="pre">Object</span></code> provides other methods that are not shown in
+<a class="reference internal" href="#fig-uml-pets-object"><span class="std std-numref">Fig. 25</span></a>.  If you are curious, you can have a look at the
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html">Java API documentation for the class named <code class="docutils literal notranslate"><span class="pre">Object</span></code></a>.</p>
+</div>
+<span class="target" id="index-4"></span></section>
+<section id="abstract-classes-and-methods">
+<span id="sec-inheritance-2-abstract-methods"></span><span id="index-5"></span><h2>Abstract Classes and Methods<a class="headerlink" href="#abstract-classes-and-methods" title="Permalink to this heading">#</a></h2>
+<p>When defining a superclass, we may want to require that each subclass provides
+some method that is <em>not</em> implemented by the superclass itself.  The idea is
+similar to <a class="reference internal" href="interfaces.html#sec-interfaces-interfaces"><span class="std std-ref">interfaces</span></a>, which allow us to
+specify <em>abstract methods</em> which must be implemented by classes that implement
+the interface.</p>
+<p>We can obtain a similar effect using Java classes. To achieve it, we must use
+the <code class="docutils literal notranslate"><span class="pre">abstract</span></code> modifier to mark <em>both</em> the class <em>and</em> the method(s) that are
+required to be implemented in the subclasses.  If we do it, the following rules
+apply:</p>
+<ul class="simple">
+<li><p><strong>an <code class="docutils literal notranslate"><span class="pre">abstract</span></code> class cannot be instantiated</strong>, i.e. we cannot create objects
+by using the constructor of an abstract class;</p></li>
+<li><p>if a class contains at least one <code class="docutils literal notranslate"><span class="pre">abstract</span></code> method, then the class must be
+marked <code class="docutils literal notranslate"><span class="pre">abstract</span></code>, too;</p></li>
+<li><p>if a subclass extends an <code class="docutils literal notranslate"><span class="pre">abstract</span></code> superclass but does <em>not</em> implement all
+the <code class="docutils literal notranslate"><span class="pre">abstract</span></code> methods required by the superclass, then the subclass must be
+marked <code class="docutils literal notranslate"><span class="pre">abstract</span></code>, too.</p></li>
+</ul>
+<p>This is illustrated in <a class="reference internal" href="#eg-inheritance-pets-sound-abstract">Example 59</a> below.
+Then, <a class="reference internal" href="#eg-dtu-christmas-party-inheritance">Example 60</a> illustrates how abstract
+classes can be used to revise a previous example (the DTU Christmas Party
+software).</p>
+<div class="proof example admonition" id="eg-inheritance-pets-sound-abstract">
+<p class="admonition-title"><span class="caption-number">Example 59 </span> (Abstract classes and methods)</p>
+<section class="example-content" id="proof-content">
+<p>Consider again the classes <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, and <code class="docutils literal notranslate"><span class="pre">Cat</span></code> in
+<a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-super-private">Example 57</a>, and <code class="docutils literal notranslate"><span class="pre">Snake</span></code> in
+<a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-snake-override">Example 58</a>.  Suppose that the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> has
+a new requirement: each object of that class must provide a method <code class="docutils literal notranslate"><span class="pre">getSound()</span></code>
+which returns a string with the sound of the pet. The idea is similar to the
+assessment <a class="reference internal" href="inheritance-oo.html#lab-inheritance-oo-pets"><span class="std std-ref">08 - Pets</span></a> — but here we have a different
+requirement:</p>
+<ul class="simple">
+<li><p>in the assessment <a class="reference internal" href="inheritance-oo.html#lab-inheritance-oo-pets"><span class="std std-ref">08 - Pets</span></a>, the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> provides an
+implementation of the method <code class="docutils literal notranslate"><span class="pre">getSound()</span></code> that returns <code class="docutils literal notranslate"><span class="pre">&quot;?&quot;</span></code> — and that
+method is overridden by all subclasses, in order to return the appropriate
+sound;</p></li>
+<li><p>now, we do <em>not</em> want to implement the method <code class="docutils literal notranslate"><span class="pre">getSound()</span></code> in the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code>
+— because returning the unspecified sound <code class="docutils literal notranslate"><span class="pre">&quot;?&quot;</span></code> for a generic pet does not
+make much sense. Instead, we want to require all subclasses of <code class="docutils literal notranslate"><span class="pre">Pet</span></code> to
+implement the method <code class="docutils literal notranslate"><span class="pre">getSound()</span></code> as needed.</p></li>
+</ul>
+<p>We can achieve this by adding to the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> an <code class="docutils literal notranslate"><span class="pre">abstract</span></code> method
+<code class="docutils literal notranslate"><span class="pre">getSound()</span></code> — and in order to do it, we must also mark the whole class <code class="docutils literal notranslate"><span class="pre">Pet</span></code>
+as <code class="docutils literal notranslate"><span class="pre">abstract</span></code>.  This forces all subclasses of <code class="docutils literal notranslate"><span class="pre">Pet</span></code> to implement their own
+version of the method <code class="docutils literal notranslate"><span class="pre">getSound()</span></code>, as shown below: (the differences with the
+classes defined in <a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-super-private">Example 57</a> in
+<a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-snake-override">Example 58</a> are highlighted)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Pet</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos"> 2</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">species</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Pet</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">species</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">species</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">species</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="hll"><span class="linenos">14</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSound</span><span class="p">();</span>
+</span><span class="linenos">15</span><span class="p">}</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="kd">class</span> <span class="nc">Dog</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Pet</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">18</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Dog</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">19</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dog&quot;</span><span class="p">);</span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">21</span>
+<span class="hll"><span class="linenos">22</span><span class="w">    </span><span class="nd">@Override</span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSound</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">24</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Woof!&quot;</span><span class="p">;</span>
+</span><span class="linenos">25</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">26</span><span class="p">}</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="kd">class</span> <span class="nc">Cat</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Pet</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">29</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Cat</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">30</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cat&quot;</span><span class="p">);</span>
+<span class="linenos">31</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">32</span>
+<span class="hll"><span class="linenos">33</span><span class="w">    </span><span class="nd">@Override</span>
+</span><span class="hll"><span class="linenos">34</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSound</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">35</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Meow!&quot;</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">36</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">37</span><span class="p">}</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="kd">class</span> <span class="nc">Snake</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Pet</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">40</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isPoisonous</span><span class="p">;</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Snake</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isPoisonous</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">43</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;snake&quot;</span><span class="p">);</span>
+<span class="linenos">44</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">isPoisonous</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isPoisonous</span><span class="p">;</span>
+<span class="linenos">45</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">46</span>
+<span class="linenos">47</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">48</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">49</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">danger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">isPoisonous</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;DANGER: poisonous&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;non-poisonous&quot;</span><span class="p">;</span>
+<span class="linenos">50</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">getDescription</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">danger</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+<span class="linenos">51</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">52</span>
+<span class="hll"><span class="linenos">53</span><span class="w">    </span><span class="nd">@Override</span>
+</span><span class="hll"><span class="linenos">54</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSound</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">55</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Hissss!&quot;</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">56</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">57</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>(The <code class="docutils literal notranslate"><span class="pre">&#64;Override</span></code> annotations on lines 22, 33, and 53 are not mandatory, but it
+is good practice to write them, to spot which methods are required by a
+superclass.)</p>
+<p>We can now instantiate objects representing the various classes of pets, and see
+that each call to <code class="docutils literal notranslate"><span class="pre">getSound()</span></code> uses the method of the corresponding class:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">dog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">(</span><span class="s">&quot;Mr Wolf&quot;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cat</span><span class="p">(</span><span class="s">&quot;Ms Jones&quot;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">snake1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Snake</span><span class="p">(</span><span class="s">&quot;Crawley&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">snake2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Snake</span><span class="p">(</span><span class="s">&quot;Mambojumbo&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">pets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pet</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cat</span><span class="p">,</span><span class="w"> </span><span class="n">dog</span><span class="p">,</span><span class="w"> </span><span class="n">snake1</span><span class="p">,</span><span class="w"> </span><span class="n">snake2</span><span class="w"> </span><span class="p">};</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Our pets are:&quot;</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="n">pets</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getDescription</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; says: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getSound</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>and the output of the code snippet above is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Our pets are:
+  - Ms Jones (cat) says: Meow!
+  - Mr Wolf (dog) says: Woof!
+  - Crawley (snake) (non-poisonous) says: Hissss!
+  - Mambojumbo (snake) (DANGER: poisonous) says: Hissss!
+</pre></div>
+</div>
+<p>The UML class diagram of the classes <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, <code class="docutils literal notranslate"><span class="pre">Cat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Snake</span></code> is shown
+in <a class="reference internal" href="#fig-uml-pets"><span class="std std-numref">Fig. 26</span></a> below. Notice that the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> is now abstract.</p>
+<figure class="align-default" id="fig-uml-pets">
+<img alt="UML class diagram for the pet classes" src="_images/pet-cat-dog-snake.svg" /><figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">UML class diagram showing the relationship between the classes <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, <code class="docutils literal notranslate"><span class="pre">Dog</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Cat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Snake</span></code>.</span><a class="headerlink" href="#fig-uml-pets" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that now <strong>we cannot directly create objects of the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> any more</strong>,
+because that class is now <code class="docutils literal notranslate"><span class="pre">abstract</span></code>.  The only way to create objects of the
+abstract class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> is to create objects belonging to the (non-<code class="docutils literal notranslate"><span class="pre">abstract</span></code>)
+subclasses of <code class="docutils literal notranslate"><span class="pre">Pet</span></code>.</p>
+<p>For example, the following code snippet worked correctly in
+<a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-super">Example 56</a> (because the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> was
+<em>not</em> abstract there) — but after marking the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> as <code class="docutils literal notranslate"><span class="pre">abstract</span></code> it
+does not work any more:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">pet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pet</span><span class="p">(</span><span class="s">&quot;Wilbur&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;parrot&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If you try it, Java will report an error like <em>“Pet is abstract; cannot be
+instantiated”</em>, and your code will not compile.</p>
+</section>
+</div><div class="proof example admonition" id="eg-dtu-christmas-party-inheritance">
+<p class="admonition-title"><span class="caption-number">Example 60 </span> (The DTU Christmas Party software, using class inheritance)</p>
+<section class="example-content" id="proof-content">
+<p>Let us consider again the
+<a class="reference internal" href="interfaces.html#sec-interfaces-christmas"><span class="std std-ref">DTU Christmas Party management software</span></a>.  The
+code below is the definition of the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code> and the classes
+<code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> previously discussed when we
+<a class="reference internal" href="interfaces.html#sec-interfaces-christmas-solution"><span class="std std-ref">implemented the DTU Christmas Party software using Java interfaces</span></a>.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">interface</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">();</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">();</span>
+<span class="linenos"> 4</span><span class="p">}</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kd">class</span> <span class="nc">Employee</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Employee</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Employee, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">22</span><span class="p">}</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="kd">class</span> <span class="nc">Guest</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">25</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Guest</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">29</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">30</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">31</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">34</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+<span class="linenos">35</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">38</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Guest, ticket &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="p">;</span>
+<span class="linenos">39</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">40</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>We can observe that there is some code duplication:</p>
+<ul class="simple">
+<li><p>both classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> define a field <code class="docutils literal notranslate"><span class="pre">name</span></code> of type <code class="docutils literal notranslate"><span class="pre">String</span></code>,
+and</p></li>
+<li><p>both classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> define a method <code class="docutils literal notranslate"><span class="pre">getName()</span></code>.</p></li>
+</ul>
+<p>We can reduce the code duplication in three steps:</p>
+<ol class="arabic simple">
+<li><p>we turn <code class="docutils literal notranslate"><span class="pre">Person</span></code> from an <code class="docutils literal notranslate"><span class="pre">interface</span></code> into an <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>, and we move
+duplicated fields and methods code from <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> into <code class="docutils literal notranslate"><span class="pre">Person</span></code>.</p></li>
+<li><p>we declare that the classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> <em>extend</em> the class
+<code class="docutils literal notranslate"><span class="pre">Person</span></code> (instead of <em>implementing</em> the old interface).</p></li>
+</ol>
+<p>More concretely, when designing the abstract class <code class="docutils literal notranslate"><span class="pre">Person</span></code>, we can:</p>
+<ul class="simple">
+<li><p>provide an implementation of the method <code class="docutils literal notranslate"><span class="pre">getName()</span></code> reusable by all
+subclasses;</p></li>
+<li><p>mark the field <code class="docutils literal notranslate"><span class="pre">name</span></code> with the <code class="docutils literal notranslate"><span class="pre">private</span></code> modifier (since that field is only
+accessed by the code in the class <code class="docutils literal notranslate"><span class="pre">Person</span></code>); and</p></li>
+<li><p>declare an <code class="docutils literal notranslate"><span class="pre">abstract</span></code> method <code class="docutils literal notranslate"><span class="pre">getInfo()</span></code>, to be implemented by all derived
+classes.</p></li>
+</ul>
+<p>Then, when implementing the <code class="docutils literal notranslate"><span class="pre">Person</span></code>’s subclasses <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code>, we
+can:</p>
+<ul class="simple">
+<li><p>call the <code class="docutils literal notranslate"><span class="pre">Person</span></code>’s constructor (via <code class="docutils literal notranslate"><span class="pre">super</span></code>) to store the person’s name (that
+we can retrieve later via the method <code class="docutils literal notranslate"><span class="pre">getName()</span></code>); and</p></li>
+<li><p>mark the fields <code class="docutils literal notranslate"><span class="pre">department</span></code> (in <code class="docutils literal notranslate"><span class="pre">Employee</span></code>) and <code class="docutils literal notranslate"><span class="pre">ticketNumber</span></code> (in <code class="docutils literal notranslate"><span class="pre">Guest</span></code>)
+with the modifier <code class="docutils literal notranslate"><span class="pre">private</span></code>, since they are only accessed internally by their
+own class.</p></li>
+</ul>
+<p>The result of this revision is shown below: the differences with the code
+in <a class="reference internal" href="interfaces.html#sec-interfaces-christmas-solution"><span class="std std-ref">Implementing the DTU Christmas Party Software Using interfaces</span></a> are
+highlighted, and we add the recommended annotation <code class="docutils literal notranslate"><span class="pre">&#64;Override</span></code> where needed.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos"> 2</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 3</span>
+</span><span class="hll"><span class="linenos"> 4</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos"> 5</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 6</span><span class="w">    </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos"> 7</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos"> 9</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">10</span><span class="w">    </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">11</span>
+</span><span class="hll"><span class="linenos">12</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">();</span>
+</span><span class="hll"><span class="linenos">13</span><span class="p">}</span>
+</span><span class="linenos">14</span>
+<span class="hll"><span class="linenos">15</span><span class="kd">class</span> <span class="nc">Employee</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">16</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Employee</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos">19</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+</span><span class="linenos">20</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">24</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Employee, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">27</span><span class="p">}</span>
+<span class="linenos">28</span>
+<span class="hll"><span class="linenos">29</span><span class="kd">class</span> <span class="nc">Guest</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">30</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Guest</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos">33</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+</span><span class="linenos">34</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">35</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">38</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">39</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Guest, ticket &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="p">;</span>
+<span class="linenos">40</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">41</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The UML class diagram of the revised classes <code class="docutils literal notranslate"><span class="pre">Person</span></code>, <code class="docutils literal notranslate"><span class="pre">Employee</span></code>, and <code class="docutils literal notranslate"><span class="pre">Guest</span></code>
+is shown in <a class="reference internal" href="#fig-uml-dtu-christmas-party-inheritance"><span class="std std-numref">Fig. 27</span></a> below.</p>
+<figure class="align-default" id="fig-uml-dtu-christmas-party-inheritance">
+<img alt="UML class diagram for DTU Christmas Party, using inheritance" src="_images/person-employee-guest-inheritance.svg" /><figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">UML class diagram showing the relationship between the classes <code class="docutils literal notranslate"><span class="pre">Person</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Employee</span></code>, and <code class="docutils literal notranslate"><span class="pre">Guest</span></code>.</span><a class="headerlink" href="#fig-uml-dtu-christmas-party-inheritance" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After the changes above, the code of the class <code class="docutils literal notranslate"><span class="pre">ChristmasParty</span></code> and its
+method <code class="docutils literal notranslate"><span class="pre">main(...)</span></code> (shown towards the end of
+<a class="reference internal" href="interfaces.html#sec-interfaces-christmas-solution"><span class="std std-ref">Implementing the DTU Christmas Party Software Using interfaces</span></a>) can be used
+without any change — but a recompilation may be needed to correctly access the
+revised classes <code class="docutils literal notranslate"><span class="pre">Person</span></code>, <code class="docutils literal notranslate"><span class="pre">Employee</span></code>, and <code class="docutils literal notranslate"><span class="pre">Guest</span></code>.</p>
+</div>
+</section>
+</div><section id="using-interfaces-vs-using-class-inheritance">
+<span id="sec-inheritance-2-interfaces-vs-inheritance"></span><h3>Using Interfaces vs. Using Class Inheritance<a class="headerlink" href="#using-interfaces-vs-using-class-inheritance" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#eg-dtu-christmas-party-inheritance">Example 60</a> shows that the situations where we
+may want to use inheritance may overlap the cases where we may use
+<a class="reference internal" href="interfaces.html#sec-interfaces-interfaces"><span class="std std-ref">interfaces</span></a>.  In fact, there are
+many similarities between the two:</p>
+<ul class="simple">
+<li><p>A class can <em>“implement”</em> an interface or <em>“extend”</em> a superclass.</p></li>
+<li><p>We can define an <code class="docutils literal notranslate"><span class="pre">abstract</span></code> class with <code class="docutils literal notranslate"><span class="pre">abstract</span></code> methods, and those methods
+must be implemented by the subclasses.  This is similar to defining an
+interface with abstract methods that must be implemented by the classes that
+extend the interface.</p></li>
+<li><p>The fields and methods defined in a superclass can be reused by the subclasses
+(via inheritance).  Instead, interfaces do not allow for this kind of reuse.</p></li>
+</ul>
+<p>Therefore, it may seem that one could always use class inheritance instead of
+interfaces.  However, class inheritance in Java has a key limitation: <strong>a class
+can implement any number of interfaces, but can only extend <em>one</em> superclass</strong>.
+This means that:</p>
+<ul class="simple">
+<li><p><strong>class inheritance is strictly hierarchical and tree-based</strong>,
+i.e. superclasses and subclasses form a tree-like hierarchy with <em>just one</em>
+top-level class;</p></li>
+<li><p>instead, interfaces can be more flexible, as they can be combined more freely,
+and not necessarily hierarchically.  This is illustrated in
+<a class="reference internal" href="#eg-inheritance-multiple-interfaces">Example 61</a> below.</p></li>
+</ul>
+<div class="proof example admonition" id="eg-inheritance-multiple-interfaces">
+<p class="admonition-title"><span class="caption-number">Example 61 </span> (Combining class inheritance and interfaces)</p>
+<section class="example-content" id="proof-content">
+<p>Consider <a class="reference internal" href="interfaces.html#eg-multiple-interfaces">Example 53</a> again, and observe that there is some
+code duplication in the classes <code class="docutils literal notranslate"><span class="pre">Scanner</span></code>, <code class="docutils literal notranslate"><span class="pre">Printer</span></code>, and <code class="docutils literal notranslate"><span class="pre">AllInOne</span></code>:</p>
+<ul class="simple">
+<li><p>they all have their own fields <code class="docutils literal notranslate"><span class="pre">model</span></code> and <code class="docutils literal notranslate"><span class="pre">serialCode</span></code>, and</p></li>
+<li><p>each class has a copy&amp;pasted implementation of the methods <code class="docutils literal notranslate"><span class="pre">getModel()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">getSerialCode()</span></code>.</p></li>
+</ul>
+<p>We can reduce this code duplication as follows. (This is similar to what we
+did in <a class="reference internal" href="#eg-dtu-christmas-party-inheritance">Example 60</a>.)</p>
+<ol class="arabic simple">
+<li><p>We turn the interface <code class="docutils literal notranslate"><span class="pre">Device</span></code> into an <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code> representing a
+generic device, which “absorbs” all the duplicated code in <code class="docutils literal notranslate"><span class="pre">Scanner</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Printer</span></code>, and <code class="docutils literal notranslate"><span class="pre">AllInOne</span></code>, by defining:</p>
+<ul class="simple">
+<li><p>the (<code class="docutils literal notranslate"><span class="pre">private</span></code>) fields <code class="docutils literal notranslate"><span class="pre">model</span></code> and <code class="docutils literal notranslate"><span class="pre">serialNumber</span></code></p></li>
+<li><p>a constructor that initialises those fields when a new object is created;</p></li>
+<li><p>the methods <code class="docutils literal notranslate"><span class="pre">getModel()</span></code> and <code class="docutils literal notranslate"><span class="pre">getSerialCode()</span></code>, which just return the value
+of the corresponding fields; and</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">abstract</span></code> method <code class="docutils literal notranslate"><span class="pre">getDescription()</span></code> (which must be implemented by the
+subclasses).</p></li>
+</ul>
+</li>
+<li><p>We keep the interfaces <code class="docutils literal notranslate"><span class="pre">CanScan</span></code> and <code class="docutils literal notranslate"><span class="pre">CanPrint</span></code> — but they cannot extend
+<code class="docutils literal notranslate"><span class="pre">Device</span></code> any more (since <code class="docutils literal notranslate"><span class="pre">Device</span></code> is now a <code class="docutils literal notranslate"><span class="pre">class</span></code>, not an <code class="docutils literal notranslate"><span class="pre">interface</span></code>);
+therefore, we add the abstract methods <code class="docutils literal notranslate"><span class="pre">getModel()</span></code> and <code class="docutils literal notranslate"><span class="pre">getSerialCode()</span></code> to
+both interfaces, to make sure e.g. that each object which “can scan” also has
+a model and serial number.</p></li>
+<li><p>Finally, we revise the classes <code class="docutils literal notranslate"><span class="pre">Scanner</span></code>, <code class="docutils literal notranslate"><span class="pre">Printer</span></code>, and <code class="docutils literal notranslate"><span class="pre">AllInOne</span></code> as
+follows:</p>
+<ul class="simple">
+<li><p>we make each class extend the class <code class="docutils literal notranslate"><span class="pre">Device</span></code>, and implement the interfaces
+<code class="docutils literal notranslate"><span class="pre">CanScan</span></code>, or <code class="docutils literal notranslate"><span class="pre">CanPrint</span></code>, or both;</p></li>
+<li><p>we change the constructor of each class to make it call the constructor of
+<code class="docutils literal notranslate"><span class="pre">Device</span></code> (using <code class="docutils literal notranslate"><span class="pre">super</span></code>) to store the model and serial code;</p></li>
+<li><p>we delete all the duplicated code already provided by the class <code class="docutils literal notranslate"><span class="pre">Device</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+<p>The result of this revision is shown below (the differences with
+<a class="reference internal" href="interfaces.html#eg-multiple-interfaces">Example 53</a> are highlighted).  You can notice that the
+classes <code class="docutils literal notranslate"><span class="pre">Scanner</span></code>, <code class="docutils literal notranslate"><span class="pre">Printer</span></code>, and <code class="docutils literal notranslate"><span class="pre">AllInOne</span></code> are considerably shorter.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Device</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos"> 2</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 3</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 4</span>
+</span><span class="hll"><span class="linenos"> 5</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Device</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos"> 6</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 7</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="w">    </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos"> 9</span>
+</span><span class="hll"><span class="linenos">10</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">13</span>
+</span><span class="hll"><span class="linenos">14</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">15</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">16</span><span class="w">    </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">17</span>
+</span><span class="hll"><span class="linenos">18</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">();</span>
+</span><span class="hll"><span class="linenos">19</span><span class="p">}</span>
+</span><span class="linenos">20</span>
+<span class="hll"><span class="linenos">21</span><span class="kd">interface</span> <span class="nc">CanScan</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">22</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">();</span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">();</span>
+</span><span class="linenos">24</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getScannerDPI</span><span class="p">();</span>
+<span class="linenos">25</span><span class="p">}</span>
+<span class="linenos">26</span>
+<span class="hll"><span class="linenos">27</span><span class="kd">interface</span> <span class="nc">CanPrint</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">28</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">();</span>
+</span><span class="hll"><span class="linenos">29</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">();</span>
+</span><span class="linenos">30</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPrinterDPI</span><span class="p">();</span>
+<span class="linenos">31</span><span class="p">}</span>
+<span class="linenos">32</span>
+<span class="hll"><span class="linenos">33</span><span class="kd">class</span> <span class="nc">Scanner</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Device</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CanScan</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">34</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Scanner</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dpi</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos">37</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">serialCode</span><span class="p">);</span>
+</span><span class="linenos">38</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos">39</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">42</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getScannerDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">43</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos">44</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">47</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">48</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Scanner&quot;</span><span class="p">;</span>
+<span class="linenos">49</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">50</span><span class="p">}</span>
+<span class="linenos">51</span>
+<span class="hll"><span class="linenos">52</span><span class="kd">class</span> <span class="nc">Printer</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Device</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CanPrint</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">53</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Printer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dpi</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">56</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">serialCode</span><span class="p">);</span>
+<span class="hll"><span class="linenos">57</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+</span><span class="linenos">58</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">59</span>
+<span class="linenos">60</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">61</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPrinterDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">62</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos">63</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">64</span>
+<span class="linenos">65</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">66</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">67</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Printer&quot;</span><span class="p">;</span>
+<span class="linenos">68</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">69</span><span class="p">}</span>
+<span class="linenos">70</span>
+<span class="hll"><span class="linenos">71</span><span class="kd">class</span> <span class="nc">AllInOne</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Device</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CanScan</span><span class="p">,</span><span class="w"> </span><span class="n">CanPrint</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">72</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scannerDpi</span><span class="p">;</span>
+<span class="linenos">73</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">printerDpi</span><span class="p">;</span>
+<span class="linenos">74</span>
+<span class="linenos">75</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">AllInOne</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scanDpi</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">printDpi</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos">76</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">serialCode</span><span class="p">);</span>
+</span><span class="linenos">77</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">scannerDpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanDpi</span><span class="p">;</span>
+<span class="linenos">78</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">printerDpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">printDpi</span><span class="p">;</span>
+<span class="linenos">79</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">80</span>
+<span class="linenos">81</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">82</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPrinterDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">83</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">printerDpi</span><span class="p">;</span>
+<span class="linenos">84</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">85</span>
+<span class="linenos">86</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">87</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getScannerDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">88</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">scannerDpi</span><span class="p">;</span>
+<span class="linenos">89</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">90</span>
+<span class="linenos">91</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">92</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">93</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Multifunction scanner + printer&quot;</span><span class="p">;</span>
+<span class="linenos">94</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">95</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The updated UML class diagram is shown in
+<a class="reference internal" href="#fig-uml-office-supplies-inheritance"><span class="std std-numref">Fig. 28</span></a> below, where:</p>
+<ul class="simple">
+<li><p>each interface and class specifies its methods, with argument types and return
+types;</p></li>
+<li><p>the solid arrows show when a class (the origin of the arrow) <em>extends</em>
+another class (the target of the arrow);</p></li>
+<li><p>the dashed arrows show when a class (the origin of the arrow) <em>implements</em> one
+or more interfaces (the target(s) of the arrow).</p></li>
+</ul>
+<figure class="align-default" id="fig-uml-office-supplies-inheritance">
+<img alt="UML class diagram for the office supplies shop software, using interfaces and inheritance" src="_images/office-supplies-inheritance.svg" /><figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">UML class diagram showing the relationship between the interfaces and classes
+of the “office supplies shop” example, revised using class inheritance.  Observe
+that the <code class="docutils literal notranslate"><span class="pre">Device</span></code> is the superclass of all device subclasses, the interfaces
+<code class="docutils literal notranslate"><span class="pre">CanScan</span></code> and <code class="docutils literal notranslate"><span class="pre">CanPrint</span></code> are now completely independent,
+and the class <code class="docutils literal notranslate"><span class="pre">AllInOne</span></code> implements both interfaces.</span><a class="headerlink" href="#fig-uml-office-supplies-inheritance" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After the changes above, the code of the class <code class="docutils literal notranslate"><span class="pre">OfficeSupplies</span></code> and its method
+<code class="docutils literal notranslate"><span class="pre">main(...)</span></code> (shown towards the end of <a class="reference internal" href="interfaces.html#eg-multiple-interfaces">Example 53</a>) can be
+used without any change — but a recompilation may be needed to correctly
+access the revised classes <code class="docutils literal notranslate"><span class="pre">Scanner</span></code>, <code class="docutils literal notranslate"><span class="pre">Printer</span></code>, and <code class="docutils literal notranslate"><span class="pre">AllInOne</span></code>.</p>
+</div>
+</section>
+</div><span class="target" id="index-6"></span><span class="target" id="index-7"></span></section>
+</section>
+<section id="concluding-remarks">
+<span id="sec-inheritance-2-concluding-remarks"></span><span id="index-8"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of three main topics:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="#sec-inheritance-2-java-object"><span class="std std-ref">Java root class named “Object”</span></a>;</p></li>
+<li><p>The notions of <a class="reference internal" href="#sec-inheritance-2-abstract-methods"><span class="std std-ref">“abstract class” and “abstract method”</span></a>;</p></li>
+<li><p>The <a class="reference internal" href="#sec-inheritance-2-interfaces-vs-inheritance"><span class="std std-ref">similarities and differences between using interfaces and using inheritance</span></a>;</p></li>
+</ul>
+<p>As previously mentioned, it takes some practice to master the use of inheritance
+— and, more generally, to design software that satisfies the principles of
+object-oriented programming. Moreover, there are often multiple ways to design
+and implement a program that satisfies some given requirements: in fact, in
+<a class="reference internal" href="#eg-dtu-christmas-party-inheritance">Example 60</a> and
+<a class="reference internal" href="#eg-inheritance-multiple-interfaces">Example 61</a> we have discussed how to revise
+previous examples, although we already had working code for them.  Software
+development often proceeds by alternating two phases:</p>
+<ul class="simple">
+<li><p>a “top-down” phase, where the design of a program is specified (e.g. using UML
+diagrams that capture the main classes/interfaces and their relationships) and
+then implemented in code by following the specification;</p></li>
+<li><p>a “bottom-up” phase, where the experience gained during implementation may
+suggest improvements to the overall design (e.g. finding commonalities between
+different classes, and opportunities for removing code duplication).</p></li>
+</ul>
+<p>The more you program, the more you will gain experience and skills to master all
+these aspects.</p>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-inheritance-2-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: they might mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 9.3 - “Class Hierarchies”</p>
+<ul>
+<li><p>Especially “The <code class="docutils literal notranslate"><span class="pre">Object</span></code> Class” and “Abstract Classes”</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-inheritance-2-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="ex-inheritance-to-interfaces">
+
+<p class="admonition-title"><span class="caption-number">Exercise 31 </span> (From class inheritance to interfaces)</p>
+<section id="exercise-content">
+<p>To see why class inheritance can be sometimes more convenient than defining
+<code class="docutils literal notranslate"><span class="pre">interface</span></code>s, try to rewrite the pet/cat/dog/snake example in
+<a class="reference internal" href="#eg-inheritance-pets-sound-abstract">Example 59</a> by turning <code class="docutils literal notranslate"><span class="pre">Pet</span></code> into the
+following <code class="docutils literal notranslate"><span class="pre">interface</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">Pet</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSound</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then adjust the class <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, <code class="docutils literal notranslate"><span class="pre">Cat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Snake</span></code> to make them extend the
+interface <code class="docutils literal notranslate"><span class="pre">Pet</span></code> above.</p>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-inheritance-2-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-inheritance-2-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-inheritance-2-object"><span class="std std-ref">01 - Object Equality and toString()</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-inheritance-2-vehicles3"><span class="std std-ref">02 - Vehicle Fleet Management, Version 3</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-inheritance-2-phones-2"><span class="std std-ref">03 - Electronic Devices Shop, Version 2</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-inheritance-2-expressions2"><span class="std std-ref">04 - Arithmetic Expressions, Version 2</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="object-equality-and-tostring">
+<span id="lab-inheritance-2-object"></span><h3>01 - Object Equality and <code class="docutils literal notranslate"><span class="pre">toString()</span></code><a class="headerlink" href="#object-equality-and-tostring" title="Permalink to this heading">#</a></h3>
+<p>We have mentioned that <a class="reference internal" href="#sec-inheritance-2-java-object"><span class="std std-ref">the Java root class “Object”</span></a>
+provides default implementations of the methods <code class="docutils literal notranslate"><span class="pre">equals(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">.toString()</span></code>.
+This assessment allows you to experiment with some variations of those methods,
+and see why it is sometimes useful to override them.</p>
+<p>The task of the assessment is to implement a class that represents a point in 3D
+space, with coordinates <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> (of type <code class="docutils literal notranslate"><span class="pre">double</span></code>).</p>
+<p>The handout provides a file called <code class="docutils literal notranslate"><span class="pre">Point3D.java</span></code> with an “ugly” and simplistic
+implementation of a 3D point, called <code class="docutils literal notranslate"><span class="pre">UglyPoint3D</span></code>, which includes:</p>
+<ul>
+<li><p>the fields <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code> (of type <code class="docutils literal notranslate"><span class="pre">double</span></code>) for the point coordinates, and</p></li>
+<li><p>the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">UglyPoint3D</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>that returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">this</span></code> point and the <code class="docutils literal notranslate"><span class="pre">other</span></code> point are
+<a class="reference internal" href="references-null.html#note-array-object-equality-alias"><span class="std std-ref">aliases</span></a>
+(i.e. if <code class="docutils literal notranslate"><span class="pre">this</span> <span class="pre">==</span> <span class="pre">other</span></code>).</p>
+</li>
+</ul>
+<p>Your task is to edit <code class="docutils literal notranslate"><span class="pre">Point3D.java</span></code> and implement a series of classes that
+progressively improve this simplistic implementation of a 3D point — with
+improvements ranging from “meh,” to “ok,” to “good,” to “excellent,” as
+explained below.</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">MehPoint3D</span></code> (which must extend <code class="docutils literal notranslate"><span class="pre">UglyPoint3D</span></code>) must provide a
+constructor to create a new 3D point with given coordinates, e.g. as
+follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MehPoint3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">OkPoint3D</span></code> (which must extend <code class="docutils literal notranslate"><span class="pre">MehPoint3D</span></code>) must provide a
+constructor similar to the one above.  Moreover, <code class="docutils literal notranslate"><span class="pre">OkPoint3D</span></code> must
+<a class="reference internal" href="inheritance-oo.html#sec-inheritance-oo-inheritance-overriding-methods"><span class="std std-ref">override</span></a> the method
+<code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">boolean</span> <span class="pre">equals(UglyPoint3D</span> <span class="pre">other)</span></code>: the overridden method must return
+<code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">this</span></code> point has exactly the same coordinates of the <code class="docutils literal notranslate"><span class="pre">other</span></code> point.</p></li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">GoodPoint3D</span></code> (which must extend <code class="docutils literal notranslate"><span class="pre">OkPoint3D</span></code>) must provide a
+constructor similar to the one above.  Moreover, <code class="docutils literal notranslate"><span class="pre">GoodPoint3D</span></code> must further
+<a class="reference internal" href="inheritance-oo.html#sec-inheritance-oo-inheritance-overriding-methods"><span class="std std-ref">override</span></a> the method
+<code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">boolean</span> <span class="pre">equals(UglyPoint3D</span> <span class="pre">other)</span></code>: the overridden method must return
+<code class="docutils literal notranslate"><span class="pre">true</span></code> if the difference between each coordinate of <code class="docutils literal notranslate"><span class="pre">this</span></code> point and the
+corresponding coordinate of <code class="docutils literal notranslate"><span class="pre">other</span></code> point is <em>not</em> greater than 0.0002.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To check the difference between two coordinates, the Java API method
+<a class="reference external" href="https://www.codecademy.com/resources/docs/java/math-methods/abs">Math.abs(…)</a>
+can be useful.</p>
+</div>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">ExcellentPoint3D</span></code> (which must extend <code class="docutils literal notranslate"><span class="pre">GoodPoint3D</span></code>) must provide
+a constructor and a method <code class="docutils literal notranslate"><span class="pre">equals(...)</span></code> similar to the ones above.  Moreover,
+the class <code class="docutils literal notranslate"><span class="pre">ExcellentPoint3D</span></code> must override the following method (provided by
+the root class <code class="docutils literal notranslate"><span class="pre">Object</span></code>):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The overridden method must return a readable representation of the point, with
+its coordinates.  For example, if a point <code class="docutils literal notranslate"><span class="pre">p</span></code> is created as follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ExcellentPoint3D</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>then <code class="docutils literal notranslate"><span class="pre">p.toString()</span></code> must return the string <code class="docutils literal notranslate"><span class="pre">&quot;Point3D(1.0,</span> <span class="pre">2.0,</span> <span class="pre">3.0)&quot;</span></code>.</p>
+</li>
+</ul>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Point3D.java</span></code> on DTU Autolab.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the code you should write in <code class="docutils literal notranslate"><span class="pre">Point3D.java</span></code>,
+and they might not compile or work correctly until you complete your work.  You
+should read those test programs, try to run them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see
+their expected outputs — but you must <em>not</em> modify those files.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more points with different coordinates.  After you
+submit, double-check your grading result on DTU Autolab: if the secret checks
+fail, then your solution is not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+<section id="vehicle-fleet-management-version-3">
+<span id="lab-inheritance-2-vehicles3"></span><h3>02 - Vehicle Fleet Management, Version 3<a class="headerlink" href="#vehicle-fleet-management-version-3" title="Permalink to this heading">#</a></h3>
+<p>This is a follow-up to the assessment
+<a class="reference internal" href="inheritance-oo.html#lab-inheritance-oo-vehicles2"><span class="std std-ref">07 - Vehicle Fleet Management, Version 2</span></a>: the goal is to turn <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> class into
+an <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code> (instead of being a “regular” <code class="docutils literal notranslate"><span class="pre">class</span></code>) that contains reusable
+methods (and minimises code duplication), similarly to
+<a class="reference internal" href="#eg-dtu-christmas-party-inheritance">Example 60</a> and
+<a class="reference internal" href="#eg-inheritance-multiple-interfaces">Example 61</a>.</p>
+<p>You can choose to start this exercise from scratch, or you can edit the file
+<code class="docutils literal notranslate"><span class="pre">Vehicle.java</span></code> that solves <a class="reference internal" href="inheritance-oo.html#lab-inheritance-oo-vehicles2"><span class="std std-ref">07 - Vehicle Fleet Management, Version 2</span></a>.
+(either your own file, or the one provided by the teacher as a solution to
+<a class="reference internal" href="inheritance-oo.html#lab-inheritance-oo-vehicles2"><span class="std std-ref">07 - Vehicle Fleet Management, Version 2</span></a>).</p>
+<p>Your task is to write in the file <code class="docutils literal notranslate"><span class="pre">Vehicle.java</span></code> the classes that correspond to
+the class diagram in <a class="reference internal" href="#fig-uml-vehicles3-inheritance"><span class="std std-numref">Fig. 29</span></a> below. Note that:</p>
+<ul class="simple">
+<li><p>the abstract class <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> must implement both methods <code class="docutils literal notranslate"><span class="pre">getModel()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">getRegistrationPlate()</span></code>, and only have <code class="docutils literal notranslate"><span class="pre">private</span></code> fields;</p></li>
+<li><p>the abstract class <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> must include an abstract method <code class="docutils literal notranslate"><span class="pre">getCostPerKm()</span></code>
+which returns a <code class="docutils literal notranslate"><span class="pre">double</span></code> representing estimate of the operating costs per km
+(in DKK). That abstract method must be implemented by the subclasses of
+<code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> (see details below); and</p></li>
+<li><p>the classes <code class="docutils literal notranslate"><span class="pre">Minivan</span></code> and <code class="docutils literal notranslate"><span class="pre">Truck</span></code> must <em>not</em> reimplement (i.e. <a class="reference internal" href="inheritance-oo.html#sec-inheritance-oo-inheritance-overriding-methods"><span class="std std-ref">override</span></a>) the methods
+<code class="docutils literal notranslate"><span class="pre">getModel()</span></code> and <code class="docutils literal notranslate"><span class="pre">getRegistrationPlate()</span></code>.  Instead, the classes <code class="docutils literal notranslate"><span class="pre">Minivan</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Truck</span></code> must rely on the methods <code class="docutils literal notranslate"><span class="pre">getModel()</span></code> and <code class="docutils literal notranslate"><span class="pre">getRegistrationPlate()</span></code>
+provided by their superclass <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> (to minimise code duplication).</p></li>
+</ul>
+<p>The costs per km for the different vehicles are computed as follows:</p>
+<ul class="simple">
+<li><p>Minivan: 5 DKK per seat;</p></li>
+<li><p>Truck: 0.175 DKK per kg of maximum load.</p></li>
+</ul>
+<figure class="align-default" id="fig-uml-vehicles3-inheritance">
+<img alt="UML class diagram for &quot;Vehicle fleet management, version 3&quot; assessment" src="_images/vehicle-inheritance.svg" /><figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">UML diagram for the revised classes in <a class="reference internal" href="#lab-inheritance-2-vehicles3"><span class="std std-ref">02 - Vehicle Fleet Management, Version 3</span></a>.</span><a class="headerlink" href="#fig-uml-vehicles3-inheritance" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Vehicle.java</span></code> on DTU Autolab.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the code you should write in <code class="docutils literal notranslate"><span class="pre">Vehicle.java</span></code>,
+and they might not compile or work correctly until you complete your work.  You
+should read those test programs, try to run them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see
+their expected outputs — but you must <em>not</em> modify those files.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You may want to store the model and registration plate in <code class="docutils literal notranslate"><span class="pre">private</span></code> fields
+of the class <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code>, that you can initialise using <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code>’s constructor
+(which you can call using <code class="docutils literal notranslate"><span class="pre">super</span></code>,
+as shown in <a class="reference internal" href="inheritance-oo.html#sec-inheritance-oo-inheritance-super-constructor"><span class="std std-ref">Calling a “super” Constructor</span></a>).</p>
+</div>
+</section>
+<section id="electronic-devices-shop-version-2">
+<span id="lab-inheritance-2-phones-2"></span><h3>03 - Electronic Devices Shop, Version 2<a class="headerlink" href="#electronic-devices-shop-version-2" title="Permalink to this heading">#</a></h3>
+<p>This is a follow-up to the assessment
+<a class="reference internal" href="interfaces.html#lab-interfaces-phones"><span class="std std-ref">05 - Electronic Devices Shop</span></a>, and the starting point is its
+solution, i.e. the file <code class="docutils literal notranslate"><span class="pre">Device.java</span></code> (you can use either your own file, or the
+one provided by the teacher as a solution to
+<a class="reference internal" href="interfaces.html#lab-interfaces-phones"><span class="std std-ref">05 - Electronic Devices Shop</span></a>).  The goal is to turn <code class="docutils literal notranslate"><span class="pre">Device</span></code> into
+an <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code> (instead of being an <code class="docutils literal notranslate"><span class="pre">interface</span></code>) to minimise code
+duplication.</p>
+<p>Your task is to write in the file <code class="docutils literal notranslate"><span class="pre">Device.java</span></code> the classes and interfaces that
+correspond to the class diagram in <a class="reference internal" href="#fig-uml-devices-inheritance"><span class="std std-numref">Fig. 30</span></a> below.
+Note that:</p>
+<ul class="simple">
+<li><p>the interfaces <code class="docutils literal notranslate"><span class="pre">CanTakePictures</span></code>, <code class="docutils literal notranslate"><span class="pre">CanMakeCalls</span></code>, and <code class="docutils literal notranslate"><span class="pre">CanPlayMusic</span></code> are now
+independent from each other, and now they all include the abstract method
+<code class="docutils literal notranslate"><span class="pre">getModel()</span></code>;</p></li>
+<li><p>the abstract class <code class="docutils literal notranslate"><span class="pre">Device</span></code> must implement the method <code class="docutils literal notranslate"><span class="pre">getModel()</span></code>, and</p></li>
+<li><p>the other derived classes must <em>not</em> reimplement (i.e. <a class="reference internal" href="inheritance-oo.html#sec-inheritance-oo-inheritance-overriding-methods"><span class="std std-ref">override</span></a>) the method
+<code class="docutils literal notranslate"><span class="pre">getModel()</span></code>: they must instead rely on the method <code class="docutils literal notranslate"><span class="pre">getModel()</span></code> provided by
+their superclass <code class="docutils literal notranslate"><span class="pre">Device</span></code> (to minimise code duplication).</p></li>
+</ul>
+<figure class="align-default" id="fig-uml-devices-inheritance">
+<img alt="UML class diagram for &quot;Electronic devices shop, version 2&quot; assessment" src="_images/device-camera-player-calls-inheritance.svg" /><figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">UML diagram for the revised classes and interfaces in <a class="reference internal" href="#lab-inheritance-2-phones-2"><span class="std std-ref">03 - Electronic Devices Shop, Version 2</span></a>.</span><a class="headerlink" href="#fig-uml-devices-inheritance" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Device.java</span></code> on DTU Autolab.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">ClassTestUtils.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.: they are test programs that use the code you
+should write in <code class="docutils literal notranslate"><span class="pre">Device.java</span></code>, and they might not compile or work correctly
+until you complete your work.  You should read those test programs, try to run
+them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see their expected outputs — but you must
+<em>not</em> modify those files.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You may want to store the model in a <code class="docutils literal notranslate"><span class="pre">private</span></code> field
+of the class <code class="docutils literal notranslate"><span class="pre">Device</span></code>, that you can initialise using <code class="docutils literal notranslate"><span class="pre">Device</span></code>’s constructor
+(which you can call using <code class="docutils literal notranslate"><span class="pre">super</span></code>,
+as shown in <a class="reference internal" href="inheritance-oo.html#sec-inheritance-oo-inheritance-super-constructor"><span class="std std-ref">Calling a “super” Constructor</span></a>).</p>
+</div>
+</section>
+<section id="arithmetic-expressions-version-2">
+<span id="lab-inheritance-2-expressions2"></span><h3>04 - Arithmetic Expressions, Version 2<a class="headerlink" href="#arithmetic-expressions-version-2" title="Permalink to this heading">#</a></h3>
+<p>This is a follow-up to the assessment <a class="reference internal" href="lab-day-4.html#lab-day-4-expressions"><span class="std std-ref">03 - Arithmetic Expressions</span></a>, and the
+starting point is its solution, i.e. the file <code class="docutils literal notranslate"><span class="pre">Expression.java</span></code> (you can use
+either your own file, or the one provided by the teacher as a solution to
+<a class="reference internal" href="lab-day-4.html#lab-day-4-expressions"><span class="std std-ref">03 - Arithmetic Expressions</span></a>).</p>
+<p>The solution to <a class="reference internal" href="lab-day-4.html#lab-day-4-expressions"><span class="std std-ref">03 - Arithmetic Expressions</span></a> shows some duplicated code: all
+classes that implement binary operations (i.e. <code class="docutils literal notranslate"><span class="pre">Addition</span></code>, <code class="docutils literal notranslate"><span class="pre">Subtraction</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Multiplication</span></code>, and <code class="docutils literal notranslate"><span class="pre">Division</span></code>) have very similar fields for storing their
+sub-expressions, and very similar code e.g. for the method <code class="docutils literal notranslate"><span class="pre">format()</span></code>.</p>
+<p>Your task is to improve the solution to <a class="reference internal" href="lab-day-4.html#lab-day-4-expressions"><span class="std std-ref">03 - Arithmetic Expressions</span></a>: edit the
+file <code class="docutils literal notranslate"><span class="pre">Expression.java</span></code> and introduce an abstract class called <code class="docutils literal notranslate"><span class="pre">BinaryOperation</span></code>
+that implements the interface <code class="docutils literal notranslate"><span class="pre">Expression</span></code>, and is a superclass for <code class="docutils literal notranslate"><span class="pre">Addition</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Subtraction</span></code>, <code class="docutils literal notranslate"><span class="pre">Multiplication</span></code>, and <code class="docutils literal notranslate"><span class="pre">Division</span></code>.  You should try to minimise the
+duplicated code (by moving methods and fields into the class <code class="docutils literal notranslate"><span class="pre">BinaryOperation</span></code>)
+as much as you can, similarly to <a class="reference internal" href="#eg-dtu-christmas-party-inheritance">Example 60</a>
+and <a class="reference internal" href="#eg-inheritance-multiple-interfaces">Example 61</a>.</p>
+<p>The UML diagram of the revised classes should look as in
+<a class="reference internal" href="#fig-uml-expressions-inheritance"><span class="std std-numref">Fig. 31</span></a> below.</p>
+<figure class="align-default" id="fig-uml-expressions-inheritance">
+<img alt="UML class diagram for &quot;Arithmetic expressions, version 2&quot; assessment" src="_images/expression-abstract-class.svg" /><figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">UML diagram for the revised classes in <a class="reference internal" href="#lab-inheritance-2-expressions2"><span class="std std-ref">04 - Arithmetic Expressions, Version 2</span></a>.</span><a class="headerlink" href="#fig-uml-expressions-inheritance" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Expression.java</span></code> on DTU Autolab.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the code you should write in <code class="docutils literal notranslate"><span class="pre">Expression.java</span></code>,
+and they might not compile or work correctly until you complete your work.  You
+should read those test programs, try to run them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see
+their expected outputs — but you must <em>not</em> modify those files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This assessment has several potential solutions.  In fact, the UML diagram in
+<a class="reference internal" href="#fig-uml-expressions-inheritance"><span class="std std-numref">Fig. 31</span></a> omits various details in the class
+<code class="docutils literal notranslate"><span class="pre">BinaryOperation</span></code> — e.g. what is its constructor (if any), what methods it
+implements, and whether it has non-<code class="docutils literal notranslate"><span class="pre">private</span></code> fields: you are free to choose
+those details as you like, trying to minimise code duplication as much as
+possible.  After the submission deadline expires, please compare your solution
+with the one provided by the teacher.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more expressions.  After you submit, double-check your
+grading result on DTU Autolab: if the secret checks fail, then your solution is
+not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="inheritance-oo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="classes-polymorphism.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 10, Part 2: More on Java Classes and Polymorphism</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-java-root-class-object">The Java Root Class “<code class="docutils literal notranslate"><span class="pre">Object</span></code>”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-classes-and-methods">Abstract Classes and Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-interfaces-vs-using-class-inheritance">Using Interfaces vs. Using Class Inheritance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-equality-and-tostring">01 - Object Equality and <code class="docutils literal notranslate"><span class="pre">toString()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vehicle-fleet-management-version-3">02 - Vehicle Fleet Management, Version 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electronic-devices-shop-version-2">03 - Electronic Devices Shop, Version 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-expressions-version-2">04 - Arithmetic Expressions, Version 2</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

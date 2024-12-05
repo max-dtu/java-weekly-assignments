@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 5, Part 2: Lab Day &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/bussproofs"]}, "tex": {"packages": {"[+]": ["bussproofs"]}, "macros": {}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="_static/mathjax/es5/tex-svg.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 6, Part 1: Simple Classes and Objects" href="simple-classes.html" />
+    <link rel="prev" title="Module 5, Part 1: Arrays" href="arrays.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 5, Part 2: Lab Day</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#triangles">05 - Triangles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyramids">06 - Pyramids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#count-the-occurrences-2">07 - Count the Occurrences 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-temperatures">08 - Water Temperatures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-array">09 - Sub-Array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-rotation">10 - Array Rotation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-5-part-2-lab-day">
+<span id="mod-lab-day-2"></span><h1>Module 5, Part 2: Lab Day<a class="headerlink" href="#module-5-part-2-lab-day" title="Permalink to this heading">#</a></h1>
+<p>This second part of Module 5 does not introduce new contents: instead, it
+provides a series of assignments that focus on console I/O, conditionals, loops,
+and arrays, to improve your Java programming skills. All the following
+assignments can be solved with the Java programming notions introduced in
+Modules 2, 3, 4, and 5 (part 1).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-day-2-triangles"><span class="std std-ref">05 - Triangles</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-2-pyramids"><span class="std std-ref">06 - Pyramids</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-2-count-2"><span class="std std-ref">07 - Count the Occurrences 2</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-2-water-temp"><span class="std std-ref">08 - Water Temperatures</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-2-sub-array"><span class="std std-ref">09 - Sub-Array</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-2-array-rotation"><span class="std std-ref">10 - Array Rotation</span></a></p></li>
+</ul>
+<section id="triangles">
+<span id="lab-day-2-triangles"></span><h2>05 - Triangles<a class="headerlink" href="#triangles" title="Permalink to this heading">#</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Triangles.java</span></code> provided in the handout, and write a program
+that reads from the console 3 values (of type <code class="docutils literal notranslate"><span class="pre">double</span></code>) representing the lengths
+of the 3 sides of a triangle, and then prints which kind of triangle it is,
+depending on its internal angles.</p>
+<p>The program must print either:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Degenerate</span></code>, if at least one of the internal angles is 180 degrees.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Obtuse</span></code>, if at least one internal angle is greater than 90 degrees and
+smeller than 180 degrees.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Acute</span></code>, if all internal angles are smaller than 90 degrees.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Right</span></code>, if one internal angle is 90 degrees.</p></li>
+</ul>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Triangles.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>Before reading values of type <code class="docutils literal notranslate"><span class="pre">double</span></code> from the console, remember to
+<a class="reference internal" href="io-conditionals-strings.html#remark-scanner-localisation">configure the Scanner with the English localisation</a>.</p></li>
+<li><p>To compute the internal angles of the triangle
+(in <a class="reference external" href="https://en.wikipedia.org/wiki/Radian">radians</a>), you can refer to
+<a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_cosines">this explanation</a>.</p></li>
+<li><p>To perform the computations required by this program, the Java API provides:
+<em>(try these on the Java shell!)</em></p>
+<ul>
+<li><p>the static method <code class="docutils literal notranslate"><span class="pre">Math.acos(cos)</span></code>, which computes and returns the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions">arccosine</a>
+of the quantity <code class="docutils literal notranslate"><span class="pre">cos</span></code>.  Both the argument <code class="docutils literal notranslate"><span class="pre">cos</span></code> and the return value of
+<code class="docutils literal notranslate"><span class="pre">Math.acos(cos)</span></code> have type <code class="docutils literal notranslate"><span class="pre">double</span></code>; note that <code class="docutils literal notranslate"><span class="pre">Math.acos(...)</span></code> returns an
+angle in <a class="reference external" href="https://en.wikipedia.org/wiki/Radian">radians</a>;</p></li>
+<li><p>the constant <code class="docutils literal notranslate"><span class="pre">Math.PI</span></code>, which gives the value of <span class="math notranslate nohighlight">\(\pi\)</span>.  For example, to
+represent the expression <span class="math notranslate nohighlight">\(\frac{\pi}{2}\)</span> in Java (which corresponds to
+an angle of 90 degrees in <a class="reference external" href="https://en.wikipedia.org/wiki/Radian">radians</a>)
+we can write the expression: <code class="docutils literal notranslate"><span class="pre">Math.PI</span> <span class="pre">/</span> <span class="pre">2</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="pyramids">
+<span id="lab-day-2-pyramids"></span><h2>06 - Pyramids<a class="headerlink" href="#pyramids" title="Permalink to this heading">#</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Pyramid.java</span></code> provided in the handout, and write a program that
+reads from the console an <code class="docutils literal notranslate"><span class="pre">int</span></code> value <span class="math notranslate nohighlight">\(n\)</span>, and then prints a pyramid inside a
+rectangular frame of height <span class="math notranslate nohighlight">\(n\)</span>, using the symbols:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> where there is a pyramid block;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> where the rectangular frame is empty.</p></li>
+</ul>
+<p>For example, if the input is <code class="docutils literal notranslate"><span class="pre">3</span></code>, the program must print the following pyramid
+(of height 3):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>..#..
+.###.
+#####
+</pre></div>
+</div>
+<p>Instead, if the input is <code class="docutils literal notranslate"><span class="pre">5</span></code>, the program must print the following pyramid
+(of height 5):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>....#....
+...###...
+..#####..
+.#######.
+#########
+</pre></div>
+</div>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Pyramid.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional inputs.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You may start solving this assessment by writing a program that prints a
+simplified version of the required output, that looks like the following (when
+the input is <code class="docutils literal notranslate"><span class="pre">5</span></code>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#........
+###......
+#####....
+#######..
+#########
+</pre></div>
+</div>
+<p>Then, you could revise your program to produce the required output, by printing
+a certain number of <code class="docutils literal notranslate"><span class="pre">.</span></code> symbols before the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbols, depending on the height
+of the pyramid, and the current line being printed…</p>
+</div>
+</section>
+<section id="count-the-occurrences-2">
+<span id="lab-day-2-count-2"></span><h2>07 - Count the Occurrences 2<a class="headerlink" href="#count-the-occurrences-2" title="Permalink to this heading">#</a></h2>
+<p>This assessment is a variation of <a class="reference internal" href="arrays.html#lab-arrays-count"><span class="std std-ref">01 - Count the Occurrences</span></a>. Your task is to edit
+the file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> provided in the handout. In the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code>, implement
+the static method with the following signature:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">strings</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The static method must count how many times the string <code class="docutils literal notranslate"><span class="pre">s</span></code> occurs in the array
+<code class="docutils literal notranslate"><span class="pre">strings</span></code>, and return the result. The comparison must be case-insensitive:
+e.g., if the array <code class="docutils literal notranslate"><span class="pre">strings</span></code> is the array <code class="docutils literal notranslate"><span class="pre">{&quot;hello&quot;,</span> <span class="pre">&quot;world&quot;}</span></code>, then the static
+method call <code class="docutils literal notranslate"><span class="pre">count(&quot;Hello&quot;,</span> <span class="pre">strings)</span></code> must return 1. Note that <code class="docutils literal notranslate"><span class="pre">strings</span></code> might
+have 0 elements.</p>
+<p>The static method <code class="docutils literal notranslate"><span class="pre">Utils.count(...)</span></code> is used in the test program contained in the
+file <code class="docutils literal notranslate"><span class="pre">Occurrences.java</span></code>, which is also included in the handout: you should read
+<code class="docutils literal notranslate"><span class="pre">Occurrences.java</span></code> and try to run it, but you must <em>not</em> modify it.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> on DTU Autolab.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Besides testing your solution by running <code class="docutils literal notranslate"><span class="pre">./grade</span></code>, make sure you are also able
+to manually compile this multi-file Java program (using <code class="docutils literal notranslate"><span class="pre">javac</span></code>) and then run it
+(using <code class="docutils literal notranslate"><span class="pre">java</span></code>), as explained in <a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">Splitting Code into Separate Files</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional inputs.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>Remember that, to check whether two strings <code class="docutils literal notranslate"><span class="pre">s1</span></code> and <code class="docutils literal notranslate"><span class="pre">s2</span></code> are equal to each other,
+you will need to use <code class="docutils literal notranslate"><span class="pre">s1.equals(s2)</span></code> (see <a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-strings-comparison"><span class="std std-ref">how to compare strings</span></a>).</p></li>
+<li><p>When comparing the string argument <code class="docutils literal notranslate"><span class="pre">s</span></code> with the strings contained in the array
+<code class="docutils literal notranslate"><span class="pre">strings</span></code>, it may be handy to <a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-strings-methods"><span class="std std-ref">convert to uppercase or lowercase</span></a>…</p></li>
+</ul>
+</div>
+</section>
+<section id="water-temperatures">
+<span id="lab-day-2-water-temp"></span><h2>08 - Water Temperatures<a class="headerlink" href="#water-temperatures" title="Permalink to this heading">#</a></h2>
+<p><em>(Based on an exam exercise from ITU, January 2000)</em></p>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">WaterTemps.java</span></code> provided in the handout, and write a program
+that reads from the console a whole line containing one or more numbers
+separated by “<code class="docutils literal notranslate"><span class="pre">;</span> </code>” (i.e. a semicolon and a space): each number represents a
+water temperature measurement.  Then, the program must print:</p>
+<ol class="arabic simple">
+<li><p>the maximum water temperature, and</p></li>
+<li><p>the number of temperature drops, i.e. how many times a temperature is
+immediately followed by a lower temperature.</p></li>
+</ol>
+<p>For example, if the input of the program is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>15; 16.5; 16; 16.2; 16; 15.8; 15.5
+</pre></div>
+</div>
+<p>then the program must print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Maximum water temperature: 16.5
+Number of temperature drops: 4
+</pre></div>
+</div>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">WaterTemps.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional inputs.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>You can reuse and adapt some code from the file <code class="docutils literal notranslate"><span class="pre">Evens.java</span></code> provided with
+<a class="reference internal" href="arrays.html#lab-arrays-even"><span class="std std-ref">03 - Even Numbers</span></a>.</p></li>
+<li><p>To obtain a <code class="docutils literal notranslate"><span class="pre">double</span></code> from a <code class="docutils literal notranslate"><span class="pre">String</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">Double.parseDouble(...)</span></code>.
+For instance, <code class="docutils literal notranslate"><span class="pre">Double.parseDouble(&quot;3.14&quot;)</span></code> produces the value 3.14 (of type
+<code class="docutils literal notranslate"><span class="pre">double</span></code>).</p></li>
+</ul>
+</div>
+</section>
+<section id="sub-array">
+<span id="lab-day-2-sub-array"></span><span id="index-0"></span><h2>09 - Sub-Array<a class="headerlink" href="#sub-array" title="Permalink to this heading">#</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> provided in the handout and implement the
+following static method (in the class <code class="docutils literal notranslate"><span class="pre">ArrayUtils</span></code>):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method must return <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">arr1</span></code> contains all the values that are
+contained in <code class="docutils literal notranslate"><span class="pre">arr2</span></code>, <em>in the same order</em> in which they appear in <code class="docutils literal notranslate"><span class="pre">arr2</span></code>
+(although <code class="docutils literal notranslate"><span class="pre">arr1</span></code> may have other values before, after, or in between the
+values of <code class="docutils literal notranslate"><span class="pre">arr2</span></code>).</p>
+<p>For example, the following code snippet should print <code class="docutils literal notranslate"><span class="pre">true</span></code> (because <code class="docutils literal notranslate"><span class="pre">arr2</span></code>
+requires <code class="docutils literal notranslate"><span class="pre">arr1</span></code> to contain the value 1 followed by 3, possibly with other values
+in between):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">arr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">arr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ArrayUtils</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="w"> </span><span class="n">arr2</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Instead, the following code snippet should print <code class="docutils literal notranslate"><span class="pre">false</span></code>  (because <code class="docutils literal notranslate"><span class="pre">arr2</span></code>
+requires <code class="docutils literal notranslate"><span class="pre">arr1</span></code> to contain the value 3 followed by 1, possibly with other values
+in between):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">arr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">arr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ArrayUtils</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span><span class="w"> </span><span class="n">arr2</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.,
+and <code class="docutils literal notranslate"><span class="pre">ArrayTestUtils.java</span></code>: they are test programs and utility methods to test
+the class <code class="docutils literal notranslate"><span class="pre">ArrayUtils</span></code>, and they might not compile or work correctly until you
+complete the implementation of <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code>.  You should read those files
+and try to run the test programs, but you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional test programs.  After you submit,
+double-check your grading result on DTU Autolab: if the secret checks fail, then
+your solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>You may want to read again
+<a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">how to split a Java program into separate files</span></a>.</p></li>
+<li><p>To check whether your solution works with one of the test programs, you will
+need to compile at least <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code>, <code class="docutils literal notranslate"><span class="pre">ArrayTestUtils.java</span></code>, and that
+test program.  For instance, if you want to try <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, you will need
+to first run (on the console):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac ArrayUtils.java ArrayTestUtils.java Test01.java
+</pre></div>
+</div>
+<p>and then you can execute the <code class="docutils literal notranslate"><span class="pre">main</span></code> method contained in the class <code class="docutils literal notranslate"><span class="pre">Test01</span></code>, by
+running:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java Test01
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="array-rotation">
+<span id="lab-day-2-array-rotation"></span><h2>10 - Array Rotation<a class="headerlink" href="#array-rotation" title="Permalink to this heading">#</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> provided in the handout and implement the
+following static methods:</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">rotateLeft</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method takes an array <code class="docutils literal notranslate"><span class="pre">arr</span></code> as argument, and returns an array
+containing the same values of <code class="docutils literal notranslate"><span class="pre">arr</span></code>, rotated to the left by one position,
+i.e.:</p>
+<ul class="simple">
+<li><p>the first value in the array becomes the last value, and</p></li>
+<li><p>each one of the other values is shifted to the left by one position.</p></li>
+</ul>
+<p>For example, if <code class="docutils literal notranslate"><span class="pre">arr</span></code> is the array:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{4, 1, 2, 3}
+</pre></div>
+</div>
+<p>then the static method must return the array:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4}
+</pre></div>
+</div>
+<p>(Notice that the value <code class="docutils literal notranslate"><span class="pre">4</span></code> has been moved from the first to the last position
+of the array, and the other values have been moved to the left by one
+position.)</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">rotateLeft</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method takes an array <code class="docutils literal notranslate"><span class="pre">arr</span></code> and a non-negative integer <code class="docutils literal notranslate"><span class="pre">n</span></code> as
+arguments, and returns an array containing the same values of <code class="docutils literal notranslate"><span class="pre">arr</span></code>, rotated
+to the left by <code class="docutils literal notranslate"><span class="pre">n</span></code> positions.</p>
+<p>For example, if <code class="docutils literal notranslate"><span class="pre">arr</span></code> is the array:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{5, 6, 7, 1, 2, 3, 4}
+</pre></div>
+</div>
+<p>then a call to <code class="docutils literal notranslate"><span class="pre">rotateLeft(arr,</span> <span class="pre">3)</span></code> must return an array containing the same
+values of <code class="docutils literal notranslate"><span class="pre">arr</span></code> rotated to the left by 3 positions, i.e.:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4, 5, 6, 7}
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">ArrayUtils</span></code>, and they might not
+compile or work correctly until you complete the implementation of
+<code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code>.  You should read those test programs and try to run them, but
+you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> on DTU Autolab.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>To compute and return the rotated array, you may either modify the given array
+<code class="docutils literal notranslate"><span class="pre">arr</span></code>, or create and return a new array: feel free to choose the technique
+that you prefer.</p></li>
+<li><p>You must consider the case where the static methods are called with an array
+of length 0.</p></li>
+<li><p>An array may be rotated by a number of positions that is greater than the
+length of the array.</p></li>
+<li><p>You might notice that we are defining two (static) methods that have the same
+name (<code class="docutils literal notranslate"><span class="pre">rotateLeft</span></code>) but take a different number and/or types of arguments:
+technically, this is called <strong>overloading</strong>.</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional test programs.  After you submit,
+double-check your grading result on DTU Autolab: if the secret checks fail, then
+your solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>You may want to read again
+<a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">how to split a Java program into separate files</span></a>.</p></li>
+<li><p>To check whether your solution works with one of the test programs, you will
+need to compile at least <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> and that test program.  For
+instance, if you want to try <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, you will need to first run (on the
+console):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac ArrayUtils.java Test01.java
+</pre></div>
+</div>
+<p>and then you can execute the <code class="docutils literal notranslate"><span class="pre">main</span></code> method contained in the class <code class="docutils literal notranslate"><span class="pre">Test01</span></code>, by
+running:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java Test01
+</pre></div>
+</div>
+</li>
+<li><p>After you implement one of the static methods above, you may reuse it to
+simplify the implementation of the other, i.e.:</p>
+<ul class="simple">
+<li><p>if you choose to implement <code class="docutils literal notranslate"><span class="pre">rotateLeft(arr)</span></code> first, you may implement
+<code class="docutils literal notranslate"><span class="pre">rotateLeft(arr,</span> <span class="pre">n)</span></code> by calling <code class="docutils literal notranslate"><span class="pre">n</span></code> times <code class="docutils literal notranslate"><span class="pre">rotateLeft(arr)</span></code>;</p></li>
+<li><p>if you choose to implement <code class="docutils literal notranslate"><span class="pre">rotateLeft(arr,</span> <span class="pre">n)</span></code> first, you may implement
+<code class="docutils literal notranslate"><span class="pre">rotateLeft(arr)</span></code> by calling <code class="docutils literal notranslate"><span class="pre">rotateLeft(arr,</span> <span class="pre">1)</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="arrays.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 5, Part 1: Arrays</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="simple-classes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 6, Part 1: Simple Classes and Objects</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#triangles">05 - Triangles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyramids">06 - Pyramids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#count-the-occurrences-2">07 - Count the Occurrences 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-temperatures">08 - Water Temperatures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-array">09 - Sub-Array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-rotation">10 - Array Rotation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,959 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/tabs.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="#"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#Symbols"><strong>Symbols</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="Symbols">Symbols</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="inheritance-oo.html#index-4">@Override</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="inheritance-2.html#index-4">abstract class</a>
+</li>
+      <li><a href="inheritance-2.html#index-5">abstract method</a>, <a href="interfaces.html#index-1">[1]</a>
+</li>
+      <li><a href="basic-programming.html#index-1">algorithm</a>
+</li>
+      <li><a href="references-null.html#index-1">alias</a>
+</li>
+      <li><a href="arrays.html#index-0">array</a>
+
+      <ul>
+        <li><a href="arrays-simple-classes-2.html#index-0">command-line arguments</a>
+</li>
+        <li><a href="arrays.html#index-1">index</a>
+</li>
+        <li><a href="arrays-simple-classes-2.html#index-2">jagged</a>
+</li>
+        <li><a href="arrays-simple-classes-2.html#index-3">ragged</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="basic-programming.html#index-29">assembler</a>
+</li>
+      <li><a href="io-conditionals-strings.html#index-24">assignment</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="inheritance-2.html#index-0">base class</a>
+</li>
+      <li><a href="classes-polymorphism.html#index-16">binding</a>
+
+      <ul>
+        <li><a href="classes-polymorphism.html#index-19">compile-time</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-21">dynamic</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-17">early</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-20">late</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-18">static</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="basic-programming.html#index-16">bit</a>
+</li>
+      <li><a href="basic-programming.html#index-34">BlinkenBits</a>
+</li>
+      <li><a href="io-conditionals-strings.html#index-26">boolean operators</a>
+</li>
+      <li><a href="projects.html#index-8">build tools</a>
+
+      <ul>
+        <li><a href="projects.html#index-10">Gradle</a>
+</li>
+        <li><a href="projects.html#index-9">Maven</a>
+</li>
+      </ul></li>
+      <li><a href="basic-programming.html#index-17">byte</a>
+</li>
+      <li><a href="structured.html#index-13">Bytecode</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="errors.html#index-5">catch</a>
+</li>
+      <li><a href="loops2.html#index-5">Character escaping</a>
+</li>
+      <li><a href="io-conditionals-strings.html#index-17">class</a>, <a href="io-conditionals-strings.html#index-7">[1]</a>, <a href="simple-classes.html#index-2">[2]</a>
+
+      <ul>
+        <li><a href="classes-polymorphism.html#index-7">final</a>
+</li>
+        <li><a href="simple-classes.html#index-3">instance</a>
+</li>
+      </ul></li>
+      <li><a href="structured.html#index-12">Class file</a>
+</li>
+      <li><a href="arrays-simple-classes-2.html#index-1">command-line arguments</a>
+</li>
+      <li><a href="basic-programming.html#index-30">compilation</a>
+</li>
+      <li><a href="basic-programming.html#index-0">computation</a>
+</li>
+      <li><a href="basic-programming.html#index-2">computer</a>
+
+      <ul>
+        <li><a href="basic-programming.html#index-13">AMD</a>
+</li>
+        <li><a href="basic-programming.html#index-15">ARM</a>
+</li>
+        <li><a href="basic-programming.html#index-21">command-line interface (CLI)</a>
+</li>
+        <li><a href="basic-programming.html#index-20">console</a>
+</li>
+        <li><a href="basic-programming.html#index-11">CPU (Central Processing Unit)</a>
+</li>
+        <li><a href="basic-programming.html#index-22">graphical user interface (GUI)</a>
+</li>
+        <li><a href="basic-programming.html#index-12">Intel</a>
+</li>
+        <li><a href="basic-programming.html#index-39">machine code</a>, <a href="basic-programming.html#index-9">[1]</a>
+</li>
+        <li><a href="basic-programming.html#index-38">machine instructions</a>, <a href="basic-programming.html#index-8">[1]</a>
+</li>
+        <li><a href="basic-programming.html#index-23">memory</a>
+</li>
+        <li><a href="basic-programming.html#index-3">programmable</a>
+</li>
+        <li><a href="basic-programming.html#index-24">Random Access Memory (RAM)</a>
+</li>
+        <li><a href="basic-programming.html#index-35">register</a>
+</li>
+        <li><a href="basic-programming.html#index-25">solid-state drive (SSD)</a>
+</li>
+        <li><a href="basic-programming.html#index-26">storage</a>
+</li>
+        <li><a href="basic-programming.html#index-27">storage; primary</a>
+</li>
+        <li><a href="basic-programming.html#index-28">storage; secondary</a>
+</li>
+        <li><a href="basic-programming.html#index-7">stored-program</a>
+</li>
+        <li><a href="basic-programming.html#index-19">terminal</a>
+</li>
+        <li><a href="basic-programming.html#index-10">von Neumann architecture</a>
+</li>
+        <li><a href="basic-programming.html#index-14">x86</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simple-classes.html#index-7">constructor</a>
+</li>
+      <li><a href="io-conditionals-strings.html#index-22">control flow</a>, <a href="loops.html#index-0">[1]</a>
+
+      <ul>
+        <li><a href="loops.html#index-3">break</a>, <a href="loops.html#index-8">[1]</a>, <a href="loops2.html#index-1">[2]</a>
+</li>
+        <li><a href="io-conditionals-strings.html#index-28">conditional expression</a>
+</li>
+        <li><a href="loops2.html#index-4">continue</a>
+</li>
+        <li><a href="loops.html#index-7">do-while</a>
+</li>
+        <li><a href="arrays.html#index-6">enhanced for</a>
+</li>
+        <li><a href="loops2.html#index-0">for</a>
+</li>
+        <li><a href="arrays.html#index-5">for-each</a>
+</li>
+        <li><a href="io-conditionals-strings.html#index-25">if-then</a>
+</li>
+        <li><a href="io-conditionals-strings.html#index-23">if-then-else</a>
+</li>
+        <li><a href="loops.html#index-4">loop condition</a>
+</li>
+        <li><a href="loops.html#index-5">loop exit point</a>
+</li>
+        <li><a href="io-conditionals-strings.html#index-30">switch expression</a>
+</li>
+        <li><a href="io-conditionals-strings.html#index-29">switch statement</a>
+</li>
+        <li><a href="loops.html#index-2">while</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="arrays.html#index-2">data structure</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simple-classes.html#index-5">default value</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="prog-interf-encapsulation.html#index-3">encapsulation</a>
+</li>
+      <li><a href="arrays.html#index-4">exception</a>, <a href="errors.html#index-1">[1]</a>, <a href="io-conditionals-strings.html#index-13">[2]</a>, <a href="io-conditionals-strings.html#index-14">[3]</a>, <a href="io-conditionals-strings.html#index-33">[4]</a>
+
+      <ul>
+        <li><a href="errors.html#index-7">checked</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="errors.html#index-0">Exception (class)</a>
+</li>
+      <li><a href="io-conditionals-strings.html#index-20">expression</a>
+
+      <ul>
+        <li><a href="io-conditionals-strings.html#index-21">evaluation</a>
+</li>
+      </ul></li>
+      <li><a href="inheritance-oo.html#index-0">extends</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simple-classes.html#index-4">field</a>
+
+      <ul>
+        <li><a href="classes-polymorphism.html#index-13">field</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-6">final</a>
+</li>
+      </ul></li>
+      <li><a href="files.html#index-0">File (class)</a>
+</li>
+      <li><a href="classes-polymorphism.html#index-0">final</a>
+
+      <ul>
+        <li><a href="classes-polymorphism.html#index-3">class</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-2">field</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-4">method</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-1">variable</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="errors.html#index-6">finally</a>
+</li>
+      <li><a href="projects.html#index-2">fully-qualified name</a>
+</li>
+      <li><a href="structured.html#index-1">function</a>, <a href="structured.html#index-3">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="errors.html#index-9">getter</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="basic-programming.html#index-6">hardware</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="projects.html#index-3">import</a>
+</li>
+      <li><a href="loops2.html#index-3">increment</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="inheritance-oo.html#index-1">Inheritance</a>
+</li>
+      <li><a href="interfaces.html#index-0">interface</a>
+
+      <ul>
+        <li><a href="prog-interf-encapsulation.html#index-1">programming (general concept)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="java-first-taste.html#index-20">java (command line executable)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="structured.html#index-11">javac</a>
+</li>
+      <li><a href="java-first-taste.html#index-1">JShell</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="java-first-taste.html#index-16">literals</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="loops.html#index-1">loop</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="basic-programming.html#index-4">memory</a>, <a href="references-null.html#index-2">[1]</a>
+
+      <ul>
+        <li><a href="basic-programming.html#index-37">address</a>, <a href="references-null.html#index-6">[1]</a>
+</li>
+        <li><a href="references-null.html#index-3">heap</a>
+</li>
+        <li><a href="basic-programming.html#index-36">location</a>, <a href="references-null.html#index-5">[1]</a>
+</li>
+        <li><a href="references-null.html#index-4">stack</a>
+</li>
+      </ul></li>
+      <li><a href="io-conditionals-strings.html#index-1">method</a>, <a href="io-conditionals-strings.html#index-12">[1]</a>, <a href="simple-classes.html#index-10">[2]</a>
+
+      <ul>
+        <li><a href="structured.html#index-6">actual parameters</a>
+</li>
+        <li><a href="structured.html#index-8">body</a>
+</li>
+        <li><a href="io-conditionals-strings.html#index-2">call</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-8">final</a>
+</li>
+        <li><a href="structured.html#index-5">formal parameters</a>
+</li>
+        <li><a href="io-conditionals-strings.html#index-3">invoke</a>
+</li>
+        <li><a href="simple-classes.html#index-12">non-static</a>
+</li>
+        <li><a href="simple-classes.html#index-11">object</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-22">overloading</a>, <a href="lab-day-2.html#index-0">[1]</a>, <a href="lab-day-3.html#index-0">[2]</a>, <a href="references-null.html#index-10">[3]</a>, <a href="references-null.html#index-11">[4]</a>, <a href="references-null.html#index-9">[5]</a>
+</li>
+        <li><a href="structured.html#index-7">signature</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-11">static</a>, <a href="structured.html#index-4">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="prog-interf-encapsulation.html#index-10">modifier</a>, <a href="prog-interf-encapsulation.html#index-6">[1]</a>, <a href="prog-interf-encapsulation.html#index-9">[2]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="io-conditionals-strings.html#index-11">new</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="references-null.html#index-8">null</a>
+</li>
+      <li><a href="java-first-taste.html#index-15">numerical operators</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="io-conditionals-strings.html#index-0">object</a>, <a href="io-conditionals-strings.html#index-16">[1]</a>, <a href="io-conditionals-strings.html#index-8">[2]</a>, <a href="simple-classes.html#index-6">[3]</a>
+
+      <ul>
+        <li><a href="simple-classes.html#index-9">default value</a>
+</li>
+        <li><a href="arrays.html#index-3">field</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="inheritance-2.html#index-3">Object (class)</a>
+</li>
+      <li><a href="inheritance-2.html#index-6">object-oriented programming</a>
+</li>
+      <li><a href="java-first-taste.html#index-17">overflow</a>
+</li>
+      <li><a href="inheritance-oo.html#index-3">Overriding methods</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="io-conditionals-strings.html#index-9">package</a>, <a href="projects.html#index-0">[1]</a>
+</li>
+      <li><a href="prog-interf-encapsulation.html#index-11">package-private</a>, <a href="projects.html#index-1">[1]</a>, <a href="projects.html#index-7">[2]</a>
+</li>
+      <li><a href="references-null.html#index-0">pointer</a>
+</li>
+      <li><a href="classes-polymorphism.html#index-14">polymorphism</a>, <a href="inheritance-2.html#index-7">[1]</a>
+
+      <ul>
+        <li><a href="classes-polymorphism.html#index-15">subtype</a>, <a href="inheritance-2.html#index-8">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="files.html#index-2">PrintWriter</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="prog-interf-encapsulation.html#index-4">private</a>, <a href="prog-interf-encapsulation.html#index-7">[1]</a>, <a href="projects.html#index-6">[2]</a>
+</li>
+      <li><a href="prog-interf-encapsulation.html#index-0">programming interface</a>, <a href="prog-interf-encapsulation.html#index-2">[1]</a>
+</li>
+      <li><a href="basic-programming.html#index-31">programming language</a>
+
+      <ul>
+        <li><a href="basic-programming.html#index-32">assembly</a>, <a href="basic-programming.html#index-41">[1]</a>, <a href="basic-programming.html#index-42">[2]</a>
+</li>
+        <li><a href="basic-programming.html#index-33">java</a>, <a href="java-first-taste.html#index-0">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="projects.html#index-5">protected</a>
+</li>
+      <li><a href="prog-interf-encapsulation.html#index-5">public</a>, <a href="prog-interf-encapsulation.html#index-8">[1]</a>, <a href="projects.html#index-4">[2]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simple-classes.html#index-1">record</a>
+</li>
+      <li><a href="references-null.html#index-7">reference</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="io-conditionals-strings.html#index-27">relational operators</a>
+</li>
+      <li><a href="structured.html#index-10">return</a>
+</li>
+      <li><a href="inheritance-2.html#index-1">root class</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="files.html#index-1">Scanner</a>, <a href="io-conditionals-strings.html#index-10">[1]</a>
+</li>
+      <li><a href="errors.html#index-10">setter</a>
+</li>
+      <li><a href="errors.html#index-3">stack trace</a>
+</li>
+      <li><a href="io-conditionals-strings.html#index-19">statement</a>
+</li>
+      <li><a href="classes-polymorphism.html#index-9">static</a>
+
+      <ul>
+        <li><a href="classes-polymorphism.html#index-12">field</a>
+</li>
+        <li><a href="classes-polymorphism.html#index-10">method</a>
+</li>
+      </ul></li>
+      <li><a href="basic-programming.html#index-5">storage</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="io-conditionals-strings.html#index-4">stream</a>
+
+      <ul>
+        <li><a href="io-conditionals-strings.html#index-5">standard input</a>
+</li>
+        <li><a href="loops.html#index-6">standard input; closing</a>
+</li>
+        <li><a href="io-conditionals-strings.html#index-6">standard output</a>
+</li>
+      </ul></li>
+      <li><a href="io-conditionals-strings.html#index-31">String</a>
+
+      <ul>
+        <li><a href="io-conditionals-strings.html#index-32">literal</a>
+</li>
+      </ul></li>
+      <li><a href="simple-classes.html#index-0">structure</a>
+</li>
+      <li><a href="structured.html#index-0">subroutine</a>, <a href="structured.html#index-2">[1]</a>
+</li>
+      <li><a href="inheritance-oo.html#index-2">super</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simple-classes.html#index-13">this</a>, <a href="simple-classes.html#index-8">[1]</a>
+</li>
+      <li><a href="errors.html#index-2">throw</a>
+</li>
+      <li><a href="errors.html#index-8">throws</a>
+</li>
+      <li><a href="errors.html#index-4">try</a>
+</li>
+      <li><a href="io-conditionals-strings.html#index-18">type</a>, <a href="java-first-taste.html#index-2">[1]</a>
+
+      <ul>
+        <li><a href="java-first-taste.html#index-7">boolean</a>
+</li>
+        <li><a href="java-first-taste.html#index-13">byte</a>
+</li>
+        <li><a href="java-first-taste.html#index-10">char</a>
+</li>
+        <li><a href="java-first-taste.html#index-5">double</a>
+</li>
+        <li><a href="java-first-taste.html#index-14">float</a>
+</li>
+        <li><a href="java-first-taste.html#index-3">int</a>
+</li>
+        <li><a href="java-first-taste.html#index-12">long</a>
+</li>
+        <li><a href="inheritance-2.html#index-2">Object</a>
+</li>
+        <li><a href="java-first-taste.html#index-9">primitive</a>
+</li>
+        <li><a href="java-first-taste.html#index-6">promotion</a>
+</li>
+        <li><a href="java-first-taste.html#index-11">short</a>
+</li>
+        <li><a href="java-first-taste.html#index-8">String</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="java-first-taste.html#index-18">underflow</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="basic-programming.html#index-18">Unicode</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="io-conditionals-strings.html#index-15">value</a>
+</li>
+      <li><a href="java-first-taste.html#index-4">variable</a>
+
+      <ul>
+        <li><a href="classes-polymorphism.html#index-5">final</a>
+</li>
+        <li><a href="structured.html#index-9">local</a>
+</li>
+        <li><a href="loops2.html#index-2">scope</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="basic-programming.html#index-40">wraparound</a>, <a href="java-first-taste.html#index-19">[1]</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

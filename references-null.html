@@ -1,0 +1,1361 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 7, Part 2: References, null values, and the NullPointerException &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 8, Part 1: Programming Interfaces and Encapsulation" href="prog-interf-encapsulation.html" />
+    <link rel="prev" title="Module 7, Part 1: Lab Day" href="lab-day-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 7, Part 2: References, null values, and the NullPointerException</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-a-k-a-pointers-to-arrays-and-objects">References (a.k.a. Pointers) to Arrays and Objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-references-and-mutability">Array References and Mutability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-references-and-mutability">Object References and Mutability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references-in-arrays-of-objects-and-in-arrays-of-arrays">References in Arrays of Objects (and in Arrays of Arrays)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-null-value-and-the-dreaded-nullpointerexception">The <code class="docutils literal notranslate"><span class="pre">null</span></code> Value and the Dreaded <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-whether-a-variable-array-position-or-object-field-contains-null">Checking Whether a Variable, Array Position, or Object Field Contains <code class="docutils literal notranslate"><span class="pre">null</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nullpointerexception-error">The <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> Error</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-null-part-1">07 - Find the <code class="docutils literal notranslate"><span class="pre">null</span></code>, part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-deep-copy">08 - Array Deep-Copy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-null-part-2">09 - Find the <code class="docutils literal notranslate"><span class="pre">null</span></code>, part 2</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-7-part-2-references-null-values-and-the-nullpointerexception">
+<span id="mod-refs-null"></span><h1>Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code><a class="headerlink" href="#module-7-part-2-references-null-values-and-the-nullpointerexception" title="Permalink to this heading">#</a></h1>
+<p>In this second part of Module 7 we explore some “low-level” details of how
+arrays and objects work in Java. This knowledge may not be immediately necessary
+for writing simple programs, but it is fundamental for understanding why a Java
+program may seem to modify its objects (including arrays) in surprising ways, or
+crash unexpectedly. Moreover, this knowledge helps understanding the exact
+meaning of <code class="docutils literal notranslate"><span class="pre">null</span></code> values in Java (which
+<a class="reference internal" href="simple-classes.html#eg-shop-item">we have briefly encountered before</a>).
+In the following sections we address:</p>
+<ul class="simple">
+<li><p>How Java handles <a class="reference internal" href="#sec-refs-null-refs"><span class="std std-ref">arrays and objects using references (a.k.a. pointers)</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-refs-null-refs-null"><span class="std std-ref">The null Value and the Dreaded NullPointerException</span></a></p></li>
+</ul>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><span class="target" id="index-6"></span><section id="references-a-k-a-pointers-to-arrays-and-objects">
+<span id="sec-refs-null-refs"></span><span id="index-7"></span><h2>References (a.k.a. Pointers) to Arrays and Objects<a class="headerlink" href="#references-a-k-a-pointers-to-arrays-and-objects" title="Permalink to this heading">#</a></h2>
+<p>In this section we address the subtle topic of <strong>references</strong> (or <strong>pointers</strong>)
+to arrays and objects in Java.  Although Java does not give us direct access to
+references/pointers (unlike other programming languages, e.g. C), their presence
+can become very evident when we change the values stored in an array, or the
+values of the fields of an object.  In the following sub-sections we explore:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sec-refs-null-refs-arrays"><span class="std std-ref">Array References and Mutability</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-refs-null-refs-objects"><span class="std std-ref">Object References and Mutability</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-refs-null-refs-arrays-of-objs"><span class="std std-ref">References in Arrays of Objects (and in Arrays of Arrays)</span></a></p></li>
+</ul>
+<p>These concepts provide the foundations for understanding
+<a class="reference internal" href="#sec-refs-null-refs-null"><span class="std std-ref">The null Value and the Dreaded NullPointerException</span></a>.</p>
+<section id="array-references-and-mutability">
+<span id="sec-refs-null-refs-arrays"></span><h3>Array References and Mutability<a class="headerlink" href="#array-references-and-mutability" title="Permalink to this heading">#</a></h3>
+<p>Let us declare two variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> of type <code class="docutils literal notranslate"><span class="pre">int[]</span></code> (i.e. arrays of
+integers) on the Java shell.  We declare <code class="docutils literal notranslate"><span class="pre">a</span></code> by creating a new array containing
+the values 10, 20, and 30:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var a = new int[] {10, 20, 30}
+</span>a ==&gt; int[3] { 10, 20, 30 }
+|  created variable a : int[]
+</pre></div>
+</div>
+<p>Then, we define the variable <code class="docutils literal notranslate"><span class="pre">b</span></code> by assigning to it the value of <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var b = a
+</span>b ==&gt; int[3] { 10, 20, 30 }
+|  created variable b : int[]
+</pre></div>
+</div>
+<p>By looking at what we wrote, it might seem that we have defined the variable <code class="docutils literal notranslate"><span class="pre">b</span></code>
+as a “copy” of <code class="docutils literal notranslate"><span class="pre">a</span></code>. Indeed, the Java shell reports that the contents of
+variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are the same: they both consist of an array containing the
+elements 10, 20, 30.</p>
+<p>Let us now modify e.g. the 2nd element of the array of variable <code class="docutils literal notranslate"><span class="pre">b</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; b[1] = 999
+</span>...
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; b
+</span>b ==&gt; int[3] { 10, 999, 30 }
+...
+</pre></div>
+</div>
+<p>As expected, the Java shell shows that the 2nd element of the array of variable
+<code class="docutils literal notranslate"><span class="pre">b</span></code> has been changed, and it has now value 999 (while it was 20 before).  Let’s
+now check the contents of the array in the variable <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; a
+</span>a ==&gt; int[3] { 10, 999, 30 }
+...
+</pre></div>
+</div>
+<p>The array of the variable <code class="docutils literal notranslate"><span class="pre">a</span></code> has been modified, too!</p>
+<p>This happens because <strong>in Java, arrays are handled by reference</strong>: in other
+words, the result of an array creation expression like <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">int[]</span> <span class="pre">{10,</span> <span class="pre">20,</span> <span class="pre">30}</span></code>
+is a <strong>reference</strong> (or <strong>pointer</strong>) to a newly-created array instance, which is
+stored in the computer memory managed by Java (in a memory area called the
+<strong>heap</strong>). Such a reference/pointer is essentially the address of the memory
+location where the actual array data is stored.</p>
+<p>Consequently, in the example above, the variable <code class="docutils literal notranslate"><span class="pre">a</span></code> does <em>not</em> contain a “full
+copy” of the array (and the values contained in the array): instead, the
+variable <code class="docutils literal notranslate"><span class="pre">a</span></code> <em>only contains a reference (a.k.a. pointer) to that array</em>. This is
+depicted below: the “heap memory” contains the array data (length and elements),
+and <code class="docutils literal notranslate"><span class="pre">a</span></code> just contains a reference to it.</p>
+<p><img alt="Local variable 'a' and array data stored in the heap" src="_images/java-heap-array-simple-1.png" /></p>
+<p>Correspondingly, when we define <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code>, we are <em>not</em> “copying the whole
+array of <code class="docutils literal notranslate"><span class="pre">a</span></code> into <code class="docutils literal notranslate"><span class="pre">b</span></code>”: we are only copying the value of the variable <code class="docutils literal notranslate"><span class="pre">a</span></code> (which
+is just a reference/pointer to the array data) into the variable <code class="docutils literal notranslate"><span class="pre">b</span></code> — and
+therefore, the variable <code class="docutils literal notranslate"><span class="pre">b</span></code> will contain a reference/pointer to <em>the same array
+data</em> already referenced by <code class="docutils literal notranslate"><span class="pre">a</span></code>.  In technical terms, the variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>
+are <strong>aliases</strong> that reference <em>the same array data</em>.  This is depicted below.</p>
+<p><img alt="Local variables 'a' and 'b' are aliases that refer to the same array data on the heap" src="_images/java-heap-array-simple.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can observe a similar phenomenon in
+<a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a>. E.g., suppose that the
+register <code class="docutils literal notranslate"><span class="pre">r0</span></code> contains the value 42, which is the address of a memory location
+which contains some data. If we execute the instruction <code class="docutils literal notranslate"><span class="pre">r1</span> <span class="pre">&lt;-</span> <span class="pre">r0</span></code>,
+we are copying the value contained in <code class="docutils literal notranslate"><span class="pre">r0</span></code> into <code class="docutils literal notranslate"><span class="pre">r1</span></code>: as a result, <em>both</em> <code class="docutils literal notranslate"><span class="pre">r0</span></code>
+and <code class="docutils literal notranslate"><span class="pre">r1</span></code> will contain the value 42, so both registers contain the address of
+the same memory location. Note that by executing <code class="docutils literal notranslate"><span class="pre">r1</span> <span class="pre">&lt;-</span> <span class="pre">r0</span></code> we are <em>not</em>
+“copying” the data which is stored in the memory location with address 42!</p>
+</div>
+<p>The consequence of all the above is: if we use variable <code class="docutils literal notranslate"><span class="pre">b</span></code> to change the array
+elements (e.g. by setting <code class="docutils literal notranslate"><span class="pre">b[1]</span> <span class="pre">=</span> <span class="pre">999</span></code>), the change is also visible through
+variable <code class="docutils literal notranslate"><span class="pre">a</span></code> — because <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> reference the same array data.  The
+<em>vice versa</em> is also true: if we use variable <code class="docutils literal notranslate"><span class="pre">a</span></code> to change the array elements,
+the change is also visible through variable <code class="docutils literal notranslate"><span class="pre">b</span></code>.  This is depicted below.</p>
+<p><img alt="When the array data is updated via 'b', the change is also visible via 'a'" src="_images/java-heap-array-simple-updated.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Continuing the note above, we can observe a similar phenomenon in
+<a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a>.
+Assume that both registers <code class="docutils literal notranslate"><span class="pre">r0</span></code> and<code class="docutils literal notranslate"><span class="pre">r1</span></code> contain the value 42, which is the
+address of a memory location containing the value 10. In this case, the
+registers <code class="docutils literal notranslate"><span class="pre">r0</span></code> and <code class="docutils literal notranslate"><span class="pre">r1</span></code> they are acting as aliases referring to the same memory
+location; therefore, any change to that memory location performed via register
+<code class="docutils literal notranslate"><span class="pre">r0</span></code> is visible through register <code class="docutils literal notranslate"><span class="pre">r1</span></code> — and <em>vice versa</em>.</p>
+<p>For instance, suppose that register <code class="docutils literal notranslate"><span class="pre">r2</span></code> contains the value 999. Let us execute
+the following instruction, which writes the value 999 at the memory location
+pointed by <code class="docutils literal notranslate"><span class="pre">r0</span></code>:</p>
+<div class="highlight-fsharp notranslate"><div class="highlight"><pre><span></span><span class="n">memory</span><span class="o">@</span><span class="n">r0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r2</span>
+</pre></div>
+</div>
+<p>This will change the content of the memory location at address 42: it was 10,
+it becomes 999.</p>
+<p>Then, let us load the value at the memory location pointed by <code class="docutils literal notranslate"><span class="pre">r1</span></code> into <code class="docutils literal notranslate"><span class="pre">r3</span></code>:</p>
+<div class="highlight-fsharp notranslate"><div class="highlight"><pre><span></span><span class="n">r3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">memory</span><span class="o">@</span><span class="n">r1</span>
+</pre></div>
+</div>
+<p>This last instruction load the value contained in the memory location at
+address 42. That value is 999, and it was previously written using register
+<code class="docutils literal notranslate"><span class="pre">r0</span></code>.</p>
+</div>
+<p><a class="reference internal" href="#eg-stack-heap-array">Example 47</a> below shows how Java handles memory and
+references in more detail. The main takeaways are:</p>
+<ul class="simple">
+<li><p>while it runs, a Java method stores its variables in a dedicated memory area
+called the <strong>memory stack</strong>; however,</p></li>
+<li><p>arrays are always stored in on the memory heap, and their data is handled
+using references.</p></li>
+</ul>
+<p>Then, <a class="reference internal" href="#eg-stack-heap-array-fun">Example 48</a> shows what happens when an array is
+passed as argument to another method that modifies it.</p>
+<div class="proof example admonition" id="eg-stack-heap-array">
+<p class="admonition-title"><span class="caption-number">Example 47 </span> (Java stack, heap, and array references)</p>
+<section class="example-content" id="proof-content">
+<p>Consider the following Java program:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">StackHeapReferences</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n1</span><span class="p">;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">};</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">b</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">999</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+<span class="linenos">11</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">12</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>When the program starts and begins the execution of the <code class="docutils literal notranslate"><span class="pre">main</span></code> static method
+(line 2), the program memory is organised as shown in the following picture:</p>
+<ul class="simple">
+<li><p>the <strong>stack memory frame of <code class="docutils literal notranslate"><span class="pre">main</span></code></strong> is used as a “working area” by the <code class="docutils literal notranslate"><span class="pre">main</span></code>
+method, to store the values of its local variables.  When <code class="docutils literal notranslate"><span class="pre">main</span></code> starts
+executing, its stack memory only contains the variable <code class="docutils literal notranslate"><span class="pre">args</span></code> coming from the
+method argument;</p></li>
+<li><p>the <strong>heap</strong> is a global memory area used by the whole program.  It contains a
+sequence of <strong>memory locations</strong>, each one having its own <strong>address</strong>. In the
+picture below, the memory locations at addresses 1024, 1028, etc. are
+available for storing data.</p></li>
+</ul>
+<p><img alt="Stack and heap when method 'main' begins its execution" src="_images/java-heap-array-9.png" /></p>
+<p>When the execution reaches line 3 of the program, Java allocates on the
+stack some space for the value of the variable <code class="docutils literal notranslate"><span class="pre">n1</span></code>, and stores <code class="docutils literal notranslate"><span class="pre">42</span></code> there.
+This corresponds to the intuition that <em>“the variable <code class="docutils literal notranslate"><span class="pre">n1</span></code> has the value <code class="docutils literal notranslate"><span class="pre">42</span></code>”</em> —
+and indeed, this intuition is correct for variables of all
+<a class="reference internal" href="java-first-taste.html#sec-basic-programming-java-primitive-data-types-num-ops"><span class="std std-ref">primitive types</span></a> in Java.</p>
+<p><img alt="Stack allocation and initialisation of variable 'n1'" src="_images/java-heap-array-7.png" /></p>
+<p>When the execution reaches line 4, the program allocates on the stack some space
+for the value of the variable <code class="docutils literal notranslate"><span class="pre">n2</span></code>, and copies there the value of <code class="docutils literal notranslate"><span class="pre">n1</span></code> (i.e.
+<code class="docutils literal notranslate"><span class="pre">42</span></code>).  Again, this corresponds to the intuition that <em>“the variable <code class="docutils literal notranslate"><span class="pre">n2</span></code> has
+the value <code class="docutils literal notranslate"><span class="pre">42</span></code>”</em>.</p>
+<p><img alt="Stack allocation and initialisation of variable 'n2'" src="_images/java-heap-array-5.png" /></p>
+<p>When the execution reaches line 6, things become more complicated:</p>
+<ul class="simple">
+<li><p>Java allocates on the stack some space for the variable <code class="docutils literal notranslate"><span class="pre">a</span></code>;</p></li>
+<li><p>then, Java creates the array by executing <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">int[]</span> <span class="pre">{10,</span> <span class="pre">20,</span> <span class="pre">30}</span></code>.</p></li>
+</ul>
+<p>Now, <strong><code class="docutils literal notranslate"><span class="pre">new</span></code> stores the array data on the heap</strong>: in this example, it stores the
+data starting from memory address 1024, by writing the array size (i.e. 3)
+followed by the array values (i.e. 10, 20, 30)</p>
+<p><img alt="Stack allocation of variable 'a' and creation of the array on the heap" src="_images/java-heap-array-3.png" /></p>
+<p>To complete the execution of line 6, a <strong>reference the newly-created array data</strong>
+on the heap is stored in the stack location for variable <code class="docutils literal notranslate"><span class="pre">a</span></code>. That reference is,
+in essence, the memory address of the newly-created array data.
+(In this example, that address is <code class="docutils literal notranslate"><span class="pre">1024</span></code>.)  Therefore, a variable
+like <code class="docutils literal notranslate"><span class="pre">a</span></code> (of type array) does <em>not</em> contain the actual array data: it merely
+contains a <strong>reference</strong> (or <strong>pointer</strong>) to the array data on the heap.</p>
+<p><img alt="Initialisation of the variable 'a' on the stack" src="_images/java-heap-array-2.png" /></p>
+<p>When the execution reaches line 7, the program allocates on the stack some space
+for the variable <code class="docutils literal notranslate"><span class="pre">b</span></code>, and copies there the value of <code class="docutils literal notranslate"><span class="pre">a</span></code> (i.e. the memory address
+<code class="docutils literal notranslate"><span class="pre">1024</span></code>).  (This is similar to how, on line 4, the variable <code class="docutils literal notranslate"><span class="pre">n2</span></code> was initialised
+by copying the value of variable <code class="docutils literal notranslate"><span class="pre">n1</span></code>.)</p>
+<p><img alt="Stack allocation and initialisation of variable 'b'" src="_images/java-heap-array.png" /></p>
+<p>At this point, the variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are <strong>aliases</strong> that refer to the
+same array data stored in the heap.  Therefore, on line 9, the assignment
+<code class="docutils literal notranslate"><span class="pre">b[1]</span> <span class="pre">=</span> <span class="pre">999</span></code> modifies the 2nd element of the same array that we created on line
+6 (and is also referenced by <code class="docutils literal notranslate"><span class="pre">a</span></code>).</p>
+<p><img alt="Update of the array contents (on the heap)" src="_images/java-heap-array-updated.png" /></p>
+<p>Consequently, when line 10 prints the current value of <code class="docutils literal notranslate"><span class="pre">a[1]</span></code>, it prints the
+value <code class="docutils literal notranslate"><span class="pre">999</span></code>.</p>
+</section>
+</div><div class="proof example admonition" id="eg-stack-heap-array-fun">
+<p class="admonition-title"><span class="caption-number">Example 48 </span> (Passing an array as argument to a method)</p>
+<section class="example-content" id="proof-content">
+<p>We now see how a Java method can modify an array received as argument, and how
+the modification can be seen in the code that called the method.</p>
+<p>Consider the following Java program: it is similar to the one in
+<a class="reference internal" href="#eg-stack-heap-array">Example 47</a>, except that it passes the array <code class="docutils literal notranslate"><span class="pre">b</span></code> to the
+static method <code class="docutils literal notranslate"><span class="pre">modify</span></code> — which, in turn, modifies the 2nd element of the
+argument array <code class="docutils literal notranslate"><span class="pre">arr</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">StackHeapReferences</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n1</span><span class="p">;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">};</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="linenos"> 8</span>
+<span class="hll"><span class="linenos"> 9</span><span class="w">        </span><span class="n">modify</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+</span><span class="linenos">10</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+<span class="linenos">11</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">12</span>
+<span class="hll"><span class="linenos">13</span><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">modify</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">14</span><span class="w">        </span><span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">999</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">15</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">16</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This program runs similarly to the one in <a class="reference internal" href="#eg-stack-heap-array">Example 47</a>, until
+it reaches the call to <code class="docutils literal notranslate"><span class="pre">modify(b)</span></code> on line 9.  At that point, the stack and
+heap memory look as follows:</p>
+<p><img alt="Stack and heap just before calling 'modify(b)'" src="_images/java-heap-array.png" /></p>
+<p>When the method call <code class="docutils literal notranslate"><span class="pre">modify(b)</span></code> is executed, two things happen:</p>
+<ol class="arabic simple">
+<li><p>Java allocates a <strong>new stack memory frame</strong> as “working area” for the method
+<code class="docutils literal notranslate"><span class="pre">modify(arr)</span></code>.  In that memory area, the method <code class="docutils literal notranslate"><span class="pre">modify(arr)</span></code> stores its
+local variables — beginning with the argument variable <code class="docutils literal notranslate"><span class="pre">arr</span></code>.  (Meanwhile,
+the stack memory used by <code class="docutils literal notranslate"><span class="pre">main</span></code> is still there, with its local variables)</p></li>
+<li><p>The variable <code class="docutils literal notranslate"><span class="pre">arr</span></code> in the stack frame of <code class="docutils literal notranslate"><span class="pre">modify(arr)</span></code> is initialised with
+the value passed with the method call <code class="docutils literal notranslate"><span class="pre">modify(b)</span></code> in <code class="docutils literal notranslate"><span class="pre">main</span></code>: i.e. the value
+of <code class="docutils literal notranslate"><span class="pre">b</span></code> in <code class="docutils literal notranslate"><span class="pre">main</span></code> (which is a reference to the heap memory address <code class="docutils literal notranslate"><span class="pre">1024</span></code>) is
+copied in <code class="docutils literal notranslate"><span class="pre">arr</span></code>.</p></li>
+</ol>
+<p>As a consequence, the variable <code class="docutils literal notranslate"><span class="pre">arr</span></code> in the method <code class="docutils literal notranslate"><span class="pre">modify</span></code> points to the same
+array data (on the heap) that is also pointed by variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> in the
+method <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+<p><img alt="Stack allocation and initialisation of variable 'arr'" src="_images/java-heap-array-fun.png" /></p>
+<p>When the program execution reaches line 14, <code class="docutils literal notranslate"><span class="pre">modify(arr)</span></code> performs the
+assignment <code class="docutils literal notranslate"><span class="pre">arr[1]</span> <span class="pre">=</span> <span class="pre">999</span></code> — which changes the value in the 2nd position of the
+array stored on the heap (which is also referenced by <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> in <code class="docutils literal notranslate"><span class="pre">main</span></code>).</p>
+<p><img alt="Update of the array contents (on the heap)" src="_images/java-heap-array-fun-updated.png" /></p>
+<p>Then, the method <code class="docutils literal notranslate"><span class="pre">modify(arr)</span></code> ends: its stack frame is removed, and the
+execution goes back to line 10 of the method <code class="docutils literal notranslate"><span class="pre">main(args)</span></code> (which keeps using its
+own stack frame).</p>
+<p><img alt="End of 'modify(arr)', elimination of its stack frame" src="_images/java-heap-array-updated.png" /></p>
+<p>Consequently, when line 10 of <code class="docutils literal notranslate"><span class="pre">main(args)</span></code> prints the current value of <code class="docutils literal notranslate"><span class="pre">a[1]</span></code>,
+it prints the value <code class="docutils literal notranslate"><span class="pre">999</span></code>.</p>
+<p>Summing up: the method <code class="docutils literal notranslate"><span class="pre">modify(arr)</span></code> has modified the array <code class="docutils literal notranslate"><span class="pre">arr</span></code> received as
+argument; and the method <code class="docutils literal notranslate"><span class="pre">main(args)</span></code> can notice that its arrays <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>
+have been changed after calling <code class="docutils literal notranslate"><span class="pre">modify(b)</span></code>.</p>
+</section>
+</div></section>
+<section id="object-references-and-mutability">
+<span id="sec-refs-null-refs-objects"></span><h3>Object References and Mutability<a class="headerlink" href="#object-references-and-mutability" title="Permalink to this heading">#</a></h3>
+<p>What we wrote <a class="reference internal" href="#sec-refs-null-refs-arrays"><span class="std std-ref">above about arrays</span></a>
+applies, more generally, to <em>all objects in Java</em>:</p>
+<ul class="simple">
+<li><p>When Java executes e.g. <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">ClassName(...)</span></code> to create an object of a
+class called <code class="docutils literal notranslate"><span class="pre">ClassName</span></code>, the new object is stored in the memory heap, and
+<code class="docutils literal notranslate"><span class="pre">new</span></code> just returns a reference/pointer to that object — which in this
+example is used to initialise the variable <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p>Then, if we write e.g. <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code>, the variable <code class="docutils literal notranslate"><span class="pre">y</span></code> becomes an <strong>alias</strong> of
+the same object already referenced by <code class="docutils literal notranslate"><span class="pre">x</span></code>.  Therefore, any change applied to
+that object via variable <code class="docutils literal notranslate"><span class="pre">x</span></code> is visible via <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <em>vice versa</em>.</p></li>
+</ul>
+<p>This is illustrated in more detail in <a class="reference internal" href="#eg-stack-heap-object">Example 49</a> below.</p>
+<div class="proof example admonition" id="eg-stack-heap-object">
+<p class="admonition-title"><span class="caption-number">Example 49 </span> (Passing an array as argument to a method)</p>
+<section class="example-content" id="proof-content">
+<p>This example explains in detail what was outlined in
+<a class="reference internal" href="simple-classes.html#remark-pass-objects-methods-modify">Remark 16</a> — i.e. how a method can modify
+an object received as argument.</p>
+<p>Suppose we have the following class definition:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">class</span> <span class="nc">Point</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="linenos">4</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Consider the following Java program, which uses the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> above:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">StackHeapReferences2</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Point</span><span class="p">();</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="n">modify</span><span class="p">(</span><span class="n">p2</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="na">y</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">modify</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="na">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">999</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">14</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Similarly to <a class="reference internal" href="#eg-stack-heap-array">Example 47</a>, the program begins executing the
+static method <code class="docutils literal notranslate"><span class="pre">main</span></code> (line 2) with the argument variable <code class="docutils literal notranslate"><span class="pre">args</span></code> on the stack
+frame.  The heap area has some available space (in this example, at the memory
+addresses starting with 2048).</p>
+<p><img alt="Stack and heap when method 'main' begins its execution" src="_images/java-heap-object-7.png" /></p>
+<p>After the program executes line 3, Java allocates some stack space for the <code class="docutils literal notranslate"><span class="pre">int</span></code>
+variable <code class="docutils literal notranslate"><span class="pre">n</span></code> and stores there the primitive value <code class="docutils literal notranslate"><span class="pre">42</span></code>.</p>
+<p><img alt="Allocation and initialisation of variable 'n' on the stack" src="_images/java-heap-object-5.png" /></p>
+<p>When the execution reaches line 4, two things happen:</p>
+<ul class="simple">
+<li><p>the variable <code class="docutils literal notranslate"><span class="pre">p1</span></code> is allocated on the stack;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Point()</span></code> stores a new object of the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> on the heap memory: in
+this example, <code class="docutils literal notranslate"><span class="pre">new</span></code> stores information about the class of the new object
+(<code class="docutils literal notranslate"><span class="pre">Point</span></code>, at memory address 2048) and the values of the object’s fields (<code class="docutils literal notranslate"><span class="pre">x</span></code>
+at address 2052, <code class="docutils literal notranslate"><span class="pre">y</span></code> at address 2056); both fields are initialised with the
+default value <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+<p><img alt="Allocation and initialisation an object of class 'Point' on the heap" src="_images/java-heap-object-3.png" /></p>
+<p>The execution of line 4 completes by saving in the variable <code class="docutils literal notranslate"><span class="pre">p1</span></code> a <strong>reference</strong>
+(or <strong>pointer</strong>) to the new object’s memory address (<code class="docutils literal notranslate"><span class="pre">2048</span></code>).  Consequently, the
+variable <code class="docutils literal notranslate"><span class="pre">p1</span></code> does <em>not</em> contain the “whole” object: it just contains a
+reference to the object data, which is stored in the heap memory.</p>
+<p><img alt="Initialisation of the variable  on the stack" src="_images/java-heap-object-2.png" /></p>
+<p>After the execution of line 5 (i.e. <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">p2</span> <span class="pre">=</span> <span class="pre">p1</span></code>), the variable <code class="docutils literal notranslate"><span class="pre">p2</span></code> is
+allocated on the stack, and contains a copy of <code class="docutils literal notranslate"><span class="pre">p1</span></code>’s value — i.e. a copy of
+the <em>reference</em> to the <code class="docutils literal notranslate"><span class="pre">Point</span></code> object stored in the heap memory address <code class="docutils literal notranslate"><span class="pre">2048</span></code>.
+Consequently, <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code> are now <strong>aliases</strong> that refer to the same <code class="docutils literal notranslate"><span class="pre">Point</span></code>
+object stored in the heap.</p>
+<p><img alt="Initialisation of the variable  on the stack" src="_images/java-heap-object.png" /></p>
+<p>On line 7, the method call <code class="docutils literal notranslate"><span class="pre">modify(p2)</span></code> creates a new stack frame as “working
+area” for the method <code class="docutils literal notranslate"><span class="pre">modify(p)</span></code>, where the local variable <code class="docutils literal notranslate"><span class="pre">p</span></code> contains a copy
+of the value of the call argument <code class="docutils literal notranslate"><span class="pre">p2</span></code> — i.e. a copy of the <em>reference</em> to the
+<code class="docutils literal notranslate"><span class="pre">Point</span></code> object stored in the heap memory address <code class="docutils literal notranslate"><span class="pre">2048</span></code>.</p>
+<p><img alt="Creation of the stack frame of 'modify(p)'" src="_images/java-heap-object-fun.png" /></p>
+<p>Now, when line 12 is executed (i.e. <code class="docutils literal notranslate"><span class="pre">p.y</span> <span class="pre">=</span> <span class="pre">999</span></code>), the field <code class="docutils literal notranslate"><span class="pre">y</span></code> of the object
+referenced by <code class="docutils literal notranslate"><span class="pre">p</span></code> is updated with the value <code class="docutils literal notranslate"><span class="pre">999</span></code>.  Consequently, this update
+modifies the same object that is also referenced by <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code> in the method
+<code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+<p><img alt="Update of the object referenced by 'p'" src="_images/java-heap-object-fun-updated.png" /></p>
+<p>When the method <code class="docutils literal notranslate"><span class="pre">modify(p)</span></code> ends, Java eliminates its stack frame, and the
+execution continues in method <code class="docutils literal notranslate"><span class="pre">main</span></code> on line 8, which prints the value of
+<code class="docutils literal notranslate"><span class="pre">p1.y</span></code>.</p>
+<p><img alt="Update of the object referenced by 'p'" src="_images/java-heap-object-updated.png" /></p>
+<p>Since the variable <code class="docutils literal notranslate"><span class="pre">p1</span></code> references the same object that has been modified by
+calling <code class="docutils literal notranslate"><span class="pre">modify(p2)</span></code>, the program prints <code class="docutils literal notranslate"><span class="pre">999</span></code>.</p>
+<p>Summing up: the method <code class="docutils literal notranslate"><span class="pre">modify(p)</span></code> has modified the object <code class="docutils literal notranslate"><span class="pre">p</span></code> received as
+argument; and the method <code class="docutils literal notranslate"><span class="pre">main(args)</span></code> can notice that its objects <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code>
+have been changed after calling <code class="docutils literal notranslate"><span class="pre">modify(p2)</span></code>.</p>
+</section>
+</div></section>
+<section id="references-in-arrays-of-objects-and-in-arrays-of-arrays">
+<span id="sec-refs-null-refs-arrays-of-objs"></span><h3>References in Arrays of Objects (and in Arrays of Arrays)<a class="headerlink" href="#references-in-arrays-of-objects-and-in-arrays-of-arrays" title="Permalink to this heading">#</a></h3>
+<p>We now know that all Java objects (and arrays) are allocated on the heap, and
+<code class="docutils literal notranslate"><span class="pre">new</span></code> produces a <em>reference</em> to a heap location.  A consequence of this fact is:
+<strong>when we define an array of objects (or an array of arrays), we are actually
+defining an array of <em>references</em> to objects (or arrays)</strong>.  This is illustrated
+in <a class="reference internal" href="#eg-stack-heap-array-of-arrays">Example 50</a> below.</p>
+<div class="proof example admonition" id="eg-stack-heap-array-of-arrays">
+<p class="admonition-title"><span class="caption-number">Example 50 </span> (References in an array of arrays)</p>
+<section class="example-content" id="proof-content">
+<p>Consider the following program, that defines an array <code class="docutils literal notranslate"><span class="pre">arr</span></code>, and then uses
+it to define a bidimensional array <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ArrayOfArrayReferences</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">};</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">arrArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="p">{</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">arr</span><span class="p">};</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arrArr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arrArr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arrArr[&quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s">&quot;][&quot;</span><span class="o">+</span><span class="n">j</span><span class="o">+</span><span class="s">&quot;] == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">arrArr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">10</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;*****   Assigning: arr[1] = 999   *****&quot;</span><span class="p">);</span>
+<span class="linenos">13</span><span class="w">        </span><span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">999</span><span class="p">;</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arrArr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arrArr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">17</span><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arrArr[&quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s">&quot;][&quot;</span><span class="o">+</span><span class="n">j</span><span class="o">+</span><span class="s">&quot;] == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">arrArr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">);</span>
+<span class="linenos">18</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">19</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">20</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">21</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>By looking at the program, it may seem that the array <code class="docutils literal notranslate"><span class="pre">arr</span></code> is copied (twice)
+inside <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>.  However, this is not the case: <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> only contains two
+<em>references</em> to the array also referenced by <code class="docutils literal notranslate"><span class="pre">arr</span></code>; consequently, when the
+element at index 1 of <code class="docutils literal notranslate"><span class="pre">arr</span></code> is modified (on line 13). the change is also visible
+via <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>.</p>
+<p>More in detail, the program runs as follows.  When <code class="docutils literal notranslate"><span class="pre">main(args)</span></code> begins its
+execution (on line 2), its stack frame only contains the argument variable
+<code class="docutils literal notranslate"><span class="pre">args</span></code>, and the heap has some available space (in this example, the memory
+locations at addresses 1024–1044).</p>
+<p><img alt="Stack and heap when method 'main' begins its execution" src="_images/java-heap-array-array-6.png" /></p>
+<p>When <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">arr</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">int[]</span> <span class="pre">{10,</span> <span class="pre">20}</span></code> is executed (on line 3), the following
+happens:</p>
+<ul class="simple">
+<li><p>the variable <code class="docutils literal notranslate"><span class="pre">arr</span></code> is allocated on the stack;</p></li>
+<li><p>the new array data is stored on the heap.  In this example, the memory
+location at address 1024 contains the array size (<code class="docutils literal notranslate"><span class="pre">2</span></code>), and the locations that
+follow contain the array values (<code class="docutils literal notranslate"><span class="pre">10</span></code> and <code class="docutils literal notranslate"><span class="pre">20</span></code>);</p></li>
+<li><p>the reference to the new array data (returned by <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">int[]...</span></code>) is stored in
+the stack location of variable <code class="docutils literal notranslate"><span class="pre">arr</span></code>.</p></li>
+</ul>
+<p><img alt="Allocation of variable  on the stack, with a reference to the array data on the heap" src="_images/java-heap-array-array-3.png" /></p>
+<p>When <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">arrArr</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">int[][]</span> <span class="pre">{arr,</span> <span class="pre">arr}</span></code> (line 4) is executed, the following
+happens:</p>
+<ul class="simple">
+<li><p>the variable <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> is allocated on the stack;</p></li>
+<li><p>the new array data is stored on the heap.  In this example, the memory
+location at address 1036 contains the array size (<code class="docutils literal notranslate"><span class="pre">2</span></code>), and the locations that
+follow contain the array values — which are <em>copies of the value of <code class="docutils literal notranslate"><span class="pre">arr</span></code></em>,
+i.e. references to the array data stored at memory address <code class="docutils literal notranslate"><span class="pre">1024</span></code>;</p></li>
+<li><p>the reference to the new array data (returned by <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">int[][]...</span></code>) is stored
+in the stack location of variable <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>.</p></li>
+</ul>
+<p>Consequently, each element of the array referenced by the variable <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> is
+itself a <em>reference</em> to the same array data (stored in the heap) that is also
+referenced by the variable <code class="docutils literal notranslate"><span class="pre">arr</span></code>.</p>
+<p><img alt="Allocation of variable  on the stack, with a reference to the array data on the heap" src="_images/java-heap-array-array.png" /></p>
+<p>At this point, the first loop in the program (lines 6–10) prints:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>arrArr[0][0] == 10
+arrArr[0][1] == 20
+arrArr[1][0] == 10
+arrArr[1][1] == 20
+</pre></div>
+</div>
+<p>When the execution reaches the assignment <code class="docutils literal notranslate"><span class="pre">arr[1]</span> <span class="pre">=</span> <span class="pre">999</span></code> (line 13), the value
+stored at index 1 of the array referenced by <code class="docutils literal notranslate"><span class="pre">arr</span></code> is changed to <code class="docutils literal notranslate"><span class="pre">999</span></code>.</p>
+<p><img alt="Update of the array data stored on the heap" src="_images/java-heap-array-array-updated.png" /></p>
+<p>As a consequence, the second loop in the program (lines 15–19) prints:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>arrArr[0][0] == 10
+arrArr[0][1] == 999
+arrArr[1][0] == 10
+arrArr[1][1] == 999
+</pre></div>
+</div>
+<p>You can observe that the change applied to the array referenced by <code class="docutils literal notranslate"><span class="pre">arr</span></code> is
+also visible through <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>.</p>
+</section>
+</div></section>
+</section>
+<section id="the-null-value-and-the-dreaded-nullpointerexception">
+<span id="sec-refs-null-refs-null"></span><span id="index-8"></span><h2>The <code class="docutils literal notranslate"><span class="pre">null</span></code> Value and the Dreaded <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code><a class="headerlink" href="#the-null-value-and-the-dreaded-nullpointerexception" title="Permalink to this heading">#</a></h2>
+<p>In <a class="reference internal" href="arrays.html#remark-array-default-val">Remark 15</a> we have seen that, if we create an array
+without providing its contents, then the array will be filled with default
+values, which depend on the array type. For instance, an array of type <code class="docutils literal notranslate"><span class="pre">int[]</span></code>
+will be filled with 0: <em>(try this on the Java shell)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var numbers = new int[3];
+</span>numbers ==&gt; int[3] { 0, 0, 0 }
+|  created variable numbers : int[]
+</pre></div>
+</div>
+<p>Similarly, in <a class="reference internal" href="simple-classes.html#eg-shop-item">Example 37</a> and when discussing
+<a class="reference internal" href="simple-classes.html#sec-simple-classes-constructor"><span class="std std-ref">constructors</span></a>, we have seen that, when we
+create an object, its fields initially contain a default value (and we can
+define a constructor that immediately assigns another value to the fields, if
+needed).</p>
+<p>An important thing to know is that
+<strong>in Java, the default value for objects is <code class="docutils literal notranslate"><span class="pre">null</span></code></strong>. We have
+<a class="reference internal" href="simple-classes.html#eg-shop-item">previously mentioned</a> that, intuitively, the <code class="docutils literal notranslate"><span class="pre">null</span></code> value
+represents a “missing object” (or a “missing array”); now, with our understanding
+of <a class="reference internal" href="#sec-refs-null-refs"><span class="std std-ref">references (a.k.a. pointers) in Java</span></a>,
+we can be more precise: the <code class="docutils literal notranslate"><span class="pre">null</span></code> value represents
+<strong>a “missing” reference (a.k.a. pointer) to an object</strong>.</p>
+<p>This means that:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">null</span></code> value might be used wherever an object (or array) is expected.
+For instance, if you define the variable:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>you could later assign the <code class="docutils literal notranslate"><span class="pre">null</span></code> value to it:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>If you create an array of objects without specifying the contents, it will
+be filled with <code class="docutils literal notranslate"><span class="pre">null</span></code> values. For example: <em>(try this on the Java shell!)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var arr = new String[5]
+</span>arr ==&gt; String[5] { null, null, null, null, null }
+|  created variable arr : String[]
+</pre></div>
+</div>
+</li>
+<li><p>The same happens when creating an array of arrays without specifying the size or
+contents of the “inner” arrays (because in Java, arrays are objects, too). For
+example: <em>(try this on the Java shell!)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var arrArr = new int[2][]
+</span>arrArr ==&gt; int[2][] { null, null }
+|  created variable arrArr : int[][]
+</pre></div>
+</div>
+<p>Observe that the array referenced by <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> contains 2 <code class="docutils literal notranslate"><span class="pre">null</span></code> values,
+representing “missing” references to arrays (in this case, such “missing” arrays
+have type <code class="docutils literal notranslate"><span class="pre">int[]</span></code>)</p>
+</li>
+<li><p>Also, if an object field is expected to contain an object, then it will
+contain <code class="docutils literal notranslate"><span class="pre">null</span></code> by default (and the constructor can assign a different value,
+if needed). For example, try creating the following class <code class="docutils literal notranslate"><span class="pre">Test</span></code> on the Java
+shell:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Test</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">field1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">field2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Observe that the class fields are expected to contain an object (of the class
+<code class="docutils literal notranslate"><span class="pre">String</span></code>) and an array of <code class="docutils literal notranslate"><span class="pre">int</span></code>egers (and in Java, arrays are objects, too).
+Now, try creating an object of the class <code class="docutils literal notranslate"><span class="pre">Test</span></code> and visualising the (default)
+values contained in its fields:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var t = new Test()
+</span>t ==&gt; Test@30dae81
+|  created variable t : Test
+
+<span class="hll">jshell&gt; System.out.println(&quot;Field 1: &quot; + t.field1);
+</span>Field 1: null
+
+<span class="hll">jshell&gt; System.out.println(&quot;Field 2: &quot; + t.field2);
+</span>Field 2: null
+</pre></div>
+</div>
+</li>
+</ul>
+<section id="checking-whether-a-variable-array-position-or-object-field-contains-null">
+<span id="sec-refs-null-refs-null-check"></span><h3>Checking Whether a Variable, Array Position, or Object Field Contains <code class="docutils literal notranslate"><span class="pre">null</span></code><a class="headerlink" href="#checking-whether-a-variable-array-position-or-object-field-contains-null" title="Permalink to this heading">#</a></h3>
+<p>We can check whether a variable, an array position, or an object field contains
+the <code class="docutils literal notranslate"><span class="pre">null</span></code> value with a simple comparison: <em>(try the following code snippets on
+the Java Shell, continuing the examples above)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">str</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;the variable &#39;str&#39; contains null!&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;the variable &#39;str&#39; does not contain null&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arr[1] contains null!&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arr[2] does not contain null&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arrArr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arrArr[0] contains null!&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arrArr[0] does not contain null&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="na">field1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="na">field2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Both t.field1 and t.field2 contain null!&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;t.field1 or t.field2 does not contain null&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="the-nullpointerexception-error">
+<span id="sec-refs-null-refs-null-exception"></span><h3>The <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> Error<a class="headerlink" href="#the-nullpointerexception-error" title="Permalink to this heading">#</a></h3>
+<p>If a program tries to call a method of a <code class="docutils literal notranslate"><span class="pre">null</span></code> value, or access a field of a
+<code class="docutils literal notranslate"><span class="pre">null</span></code> value, then <strong>the program will crash during its execution</strong>, with the
+error <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code>.</p>
+<p>For instance, continuing the examples above, one might expect that:</p>
+<ul class="simple">
+<li><p>the variable <code class="docutils literal notranslate"><span class="pre">str</span></code> has type <code class="docutils literal notranslate"><span class="pre">String</span></code>, so we should be allowed to call its
+method <code class="docutils literal notranslate"><span class="pre">toLowerCase()</span></code></p></li>
+<li><p>similarly, <code class="docutils literal notranslate"><span class="pre">arr[0]</span></code> has type <code class="docutils literal notranslate"><span class="pre">String</span></code>, so we should be allowed to call its
+method <code class="docutils literal notranslate"><span class="pre">toUpperCase()</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arrArr[0]</span></code> has type <code class="docutils literal notranslate"><span class="pre">int[]</span></code>, so we should be allowed to access its field
+<code class="docutils literal notranslate"><span class="pre">length</span></code>:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arrArr[0]</span></code> has type <code class="docutils literal notranslate"><span class="pre">int[]</span></code>, so we should be allowed to access its element
+<code class="docutils literal notranslate"><span class="pre">arrArr[0][0]</span></code>;</p></li>
+</ul>
+<p>Indeed, Java will let us write code that performs these operations (without
+reporting any type error) and will let us run that code — but when such
+operations are actually executed, they will produce a <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code>
+error. We can observe such errors on the Java shell: <em>(continuing the examples
+above)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; str.toLowerCase()
+</span>|  Exception java.lang.NullPointerException: Cannot invoke &quot;String.toUpperCase()&quot; because &quot;...str&quot; is null
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; arr[0].toUpperCase()
+</span>|  Exception java.lang.NullPointerException: Cannot invoke &quot;String.toUpperCase()&quot; because &quot;...arr[0]&quot; is null
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; arrArr[0].length
+</span>|  Exception java.lang.NullPointerException: Cannot read the array length because &quot;...arrArr[0]&quot; is null
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; arrArr[0][0]
+</span>|  Exception java.lang.NullPointerException: Cannot load from int array because &quot;...arrArr[0]&quot; is null
+</pre></div>
+</div>
+<p>For this reason, when writing Java code, it is important to consider whether our
+code might try, while running, to call a method on a <code class="docutils literal notranslate"><span class="pre">null</span></code> value, or access a
+field of a <code class="docutils literal notranslate"><span class="pre">null</span></code> value, or index an element of a <code class="docutils literal notranslate"><span class="pre">null</span></code> value. Correspondingly,
+we may want to include checks to see whether a variable, array element, or
+object field is <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> errors are probably the most common bug in Java programs,
+and they arise when a programmer writes code that introduces or mishandles a
+<code class="docutils literal notranslate"><span class="pre">null</span></code> value (i.e., a “missing” reference to an object or array) while the
+program runs.</p>
+<p>Summing up what we wrote <a class="reference internal" href="#sec-refs-null-refs-null"><span class="std std-ref">above</span></a>,
+<code class="docutils literal notranslate"><span class="pre">null</span></code> values can be introduced in five main ways:</p>
+<ul>
+<li><p>The programmer has manually written <code class="docutils literal notranslate"><span class="pre">null</span></code> in the code, e.g. by assigning it
+to a variable, or passing it as an argument to a method.</p></li>
+<li><p>The programmer has defined an uninitialised array of objects (or an array of
+arrays), and has left some array element with the default value <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p></li>
+<li><p>The programmer has created an object with a field that should be an object (or
+an array), but that field has been left with the default value <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p></li>
+<li><p>The programmer has declared an uninitialised variable whose type is a class or
+an array, using e.g. the syntax:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="n">stringVar</span><span class="p">;</span><span class="w"> </span><span class="c1">// Uninitialised variable of type String</span>
+<span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arrayVar</span><span class="p">;</span><span class="w">   </span><span class="c1">// Uninitialised variable of type int[]</span>
+</pre></div>
+</div>
+<p>and after that variable has been declared, the programmer leaves it with its
+default value (which is <code class="docutils literal notranslate"><span class="pre">null</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can try executing <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">stringVar</span></code> on the Java shell: you will see that
+the newly-declared variable <code class="docutils literal notranslate"><span class="pre">stringVar</span></code> has type <code class="docutils literal notranslate"><span class="pre">String</span></code> and contains <code class="docutils literal notranslate"><span class="pre">null</span></code>
+(i.e., the default value for objects). When this happens, calling e.g.
+<code class="docutils literal notranslate"><span class="pre">stringVar.length()</span></code> causes a <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> error.</p>
+<p>Observe that these lecture notes adopt a more modern Java syntax for
+declaring variables, i.e., <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">...</span></code>. This syntax forces us to provide
+an expression to initialise the newly-declared variable — and this way,
+introducing <code class="docutils literal notranslate"><span class="pre">null</span></code>s by mistake is considerably more difficult.</p>
+</div>
+</li>
+<li><p>The programmer has used some method (possibly written by others) that returns
+<code class="docutils literal notranslate"><span class="pre">null</span></code>, or modifies some object (or array) given as argument by assigning
+<code class="docutils literal notranslate"><span class="pre">null</span></code> to its fields (or array elements).</p></li>
+</ul>
+<p>After a <code class="docutils literal notranslate"><span class="pre">null</span></code> value has been introduced in the data handled by a running
+program, the program can end up “multiplicating” that <code class="docutils literal notranslate"><span class="pre">null</span></code> value by assigning
+it to other variables, object fields, and array elements. Therefore, if a
+program crashes with a <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> error, the problem can be very
+hard to debug: tracking down the origin of a <code class="docutils literal notranslate"><span class="pre">null</span></code> value and fixing it can take
+a lot of time!</p>
+</div>
+</section>
+</section>
+<section id="concluding-remarks">
+<span id="sec-refs-null-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of these topics:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sec-refs-null-refs"><span class="std std-ref">References (a.k.a. pointers) to arrays and objects</span></a>.</p></li>
+<li><p><a class="reference internal" href="#sec-refs-null-refs-null"><span class="std std-ref">The null value and the NullPointerException</span></a>.</p></li>
+<li><p>How to check <a class="reference internal" href="#sec-refs-null-refs-null-check"><span class="std std-ref">whether a variable, object field, or array element contains null</span></a>.</p></li>
+</ul>
+<div class="admonition note" id="note-array-object-equality-alias">
+<p class="admonition-title">Note</p>
+<p>After the discussion on
+<a class="reference internal" href="#sec-refs-null-refs"><span class="std std-ref">array and object references</span></a>, we can
+now exactly understand why we should <em>not</em> (usually) compare arrays
+and object using the operator <code class="docutils literal notranslate"><span class="pre">==</span></code>: that operator <strong>compares array/object
+references</strong> and returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if two references are equal (i.e. if they
+are aliases that point to the same array/object in the heap memory).</p>
+<p>You can try it by yourself on the Java shell.  First, define the following
+variables and arrays:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Then, you can observe that:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code> produces <code class="docutils literal notranslate"><span class="pre">true</span></code>, because <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are aliases for the same array
+in the memory heap (as shown <a class="reference internal" href="#sec-refs-null-refs"><span class="std std-ref">above</span></a>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">c</span></code> produces <code class="docutils literal notranslate"><span class="pre">false</span></code>, because <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> contain references to different
+arrays in the heap memory (although those two arrays contain exactly the same
+values).</p></li>
+</ul>
+</div>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-refs-null-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: they sometimes mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 3.1 - “Creating Objects”</p></li>
+<li><p>Section 8.3 - “Arrays of Objects”</p></li>
+<li><p>Section 8.4 - “Command-Line Arguments”</p></li>
+<li><p>Section 8.6 - “Two-Dimensional Arrays”</p></li>
+</ul>
+<p>The idea of <code class="docutils literal notranslate"><span class="pre">null</span></code> reference was introduced in 1964/1965 by the famous computer
+scientist <a class="reference external" href="https://en.wikipedia.org/wiki/Tony_Hoare">Tony Hoare</a>, and was later
+adopted by many programming languages.  When a programming language offers
+<code class="docutils literal notranslate"><span class="pre">null</span></code> references (like Java, C, C++), they become a frequent source of bugs —
+and for this reason, Tony Hoare has declared that <code class="docutils literal notranslate"><span class="pre">null</span></code> references have been
+his <em>“billion dollar mistake.”</em>  If you are curious, you can watch Tony Hoare
+discuss the topic in
+<a class="reference external" href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">this talk</a>.</p>
+</section>
+<section id="exercises">
+<span id="sec-refs-null-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="eg-array-references-objects">
+
+<p class="admonition-title"><span class="caption-number">Exercise 29 </span> (Experimenting with arrays of (references to) objects)</p>
+<section id="exercise-content">
+<p>Write a Java program based on the one in
+<a class="reference internal" href="#eg-stack-heap-array-of-arrays">Example 50</a>
+— but, instead of an array of arrays, use an arrays of objects.  For example:</p>
+<ul class="simple">
+<li><p>define a variable <code class="docutils literal notranslate"><span class="pre">p</span></code> of the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> (see
+<a class="reference internal" href="#eg-stack-heap-object">Example 49</a>);</p></li>
+<li><p>define an array of <code class="docutils literal notranslate"><span class="pre">Point</span></code>s as <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">points</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">Point[]</span> <span class="pre">{p,</span> <span class="pre">p}</span></code>;</p></li>
+<li><p>show that, if you modify the value of the field <code class="docutils literal notranslate"><span class="pre">p.y</span></code>, the change is also
+visible when you print the values of <code class="docutils literal notranslate"><span class="pre">points[0].y</span></code> and <code class="docutils literal notranslate"><span class="pre">points[1].y</span></code>.</p></li>
+</ul>
+<p>To understand what is happening, it may be helpful to draw diagrams that outline
+how the stack and heap are used by the program.</p>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-refs-null-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-refs-null-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-refs-null-find-null"><span class="std std-ref">07 - Find the null, part 1</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-refs-null-array-deep-copy"><span class="std std-ref">08 - Array Deep-Copy</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-refs-null-find-null-2"><span class="std std-ref">09 - Find the null, part 2</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="find-the-null-part-1">
+<span id="lab-refs-null-find-null"></span><span id="index-9"></span><h3>07 - Find the <code class="docutils literal notranslate"><span class="pre">null</span></code>, part 1<a class="headerlink" href="#find-the-null-part-1" title="Permalink to this heading">#</a></h3>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">NullFinder.java</span></code> provided in the handout, and
+implement the following 4 static methods (in the class <code class="docutils literal notranslate"><span class="pre">NullFinder</span></code>):</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">containsNull</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">containsNull</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">containsNull</span><span class="p">(</span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">arrArr</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">containsNull</span><span class="p">(</span><span class="n">String</span><span class="o">[][]</span><span class="w"> </span><span class="n">arrArr</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Each one of the static methods must inspect its argument, and return <code class="docutils literal notranslate"><span class="pre">true</span></code> if
+the argument itself is <code class="docutils literal notranslate"><span class="pre">null</span></code>, or if it is an array that contains a <code class="docutils literal notranslate"><span class="pre">null</span></code> value
+somewhere. Otherwise (i.e., if the argument is an array that does <em>not</em> contain
+any <code class="docutils literal notranslate"><span class="pre">null</span></code> value), the static methods must return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs and utility methods to test the class <code class="docutils literal notranslate"><span class="pre">NullFinder</span></code>, and
+they might not compile or work correctly until you complete the implementation
+of <code class="docutils literal notranslate"><span class="pre">NullFinder.java</span></code>.  You should read those files and try to run the test
+programs, but you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">NullFinder.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more arrays.  After you submit, double-check your
+grading result on DTU Autolab: if the secret checks fail, then your solution is
+not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To save some work, you can implement the 3rd static method above by calling the
+1st, and the 4th static method by calling the 2nd…</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The static methods that take as argument an array of arrays must also support
+<a class="reference internal" href="arrays-simple-classes-2.html#eg-array-array-jagged">jagged arrays</a>.</p></li>
+<li><p>In an array of arrays, the “inner” arrays might contain <code class="docutils literal notranslate"><span class="pre">null</span></code>s (depending on
+their type): the static methods above must check whether this happens, when
+appropriate.</p></li>
+<li><p>You might notice that we are defining multiple (static) methods that have the
+same name (<code class="docutils literal notranslate"><span class="pre">containsNull</span></code>) but take different types of arguments:
+technically, this is called <strong>overloading</strong>.</p></li>
+</ul>
+</div>
+</section>
+<section id="array-deep-copy">
+<span id="lab-refs-null-array-deep-copy"></span><span id="index-10"></span><h3>08 - Array Deep-Copy<a class="headerlink" href="#array-deep-copy" title="Permalink to this heading">#</a></h3>
+<p>This is a follow-up to <a class="reference internal" href="lab-day-3.html#lab-day-3-array-equality"><span class="std std-ref">01 - Array Equality</span></a>, and the starting point
+is your updated file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> with your implementations of the static
+methods <code class="docutils literal notranslate"><span class="pre">areEqual(arr1,</span> <span class="pre">arr2)</span></code> and <code class="docutils literal notranslate"><span class="pre">areEqual(arrArr1,</span> <span class="pre">arrArr2)</span></code>. Your task is to
+implement the following additional <code class="docutils literal notranslate"><span class="pre">static</span></code> methods:</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">deepCopy</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which returns a <em>deep copy</em> of the given array <code class="docutils literal notranslate"><span class="pre">arr</span></code> — i.e. a <em>new</em> array
+that contains the same number of <code class="docutils literal notranslate"><span class="pre">int</span></code> values contained in <code class="docutils literal notranslate"><span class="pre">arr</span></code>, and where
+each value is equal to the corresponding value in <code class="docutils literal notranslate"><span class="pre">arr</span></code>.  In other words:</p>
+<ul class="simple">
+<li><p>calling <code class="docutils literal notranslate"><span class="pre">areEqual(arr,</span> <span class="pre">deepCopy(arr))</span></code> must always return <code class="docutils literal notranslate"><span class="pre">true</span></code>; and</p></li>
+<li><p>if we define <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">copy</span> <span class="pre">=</span> <span class="pre">deepCopy(arr)</span></code>, then changing a value of the array
+<code class="docutils literal notranslate"><span class="pre">copy</span></code> must <em>not</em> change the contents of the original array <code class="docutils literal notranslate"><span class="pre">arr</span></code>.</p></li>
+</ul>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="nf">deepCopy</span><span class="p">(</span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">arrArr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which returns a <em>deep copy</em> of the given array of arrays <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> — i.e. a
+<em>new</em> array that contains same number of arrays of <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>, and where each
+array is a deep copy of the corresponding array in <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>.  In other words:</p>
+<ul class="simple">
+<li><p>calling <code class="docutils literal notranslate"><span class="pre">areEqual(arrArr,</span> <span class="pre">deepCopy(arrArr))</span></code> must always return <code class="docutils literal notranslate"><span class="pre">true</span></code>; and</p></li>
+<li><p>if we define <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">copy</span> <span class="pre">=</span> <span class="pre">deepCopy(arrArr)</span></code>, then changing a value of the
+array of arrays <code class="docutils literal notranslate"><span class="pre">copy</span></code> must <em>not</em> change the contents of the original array
+of arrays <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the code you should write in <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code>,
+and they might not compile or work correctly until you complete your work.  You
+should read those test programs, try to run the tests, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to
+see their expected outputs — but you must <em>not</em> modify those files.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>After you implement the first static method above, you might reuse it to
+implement the second.</p></li>
+<li><p>To create an array of arrays containing <code class="docutils literal notranslate"><span class="pre">n</span></code> uninitialised arrays, you can
+write e.g.: <em>(try this on the Java shell!)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">arrArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][]</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This way, the array <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> contains <code class="docutils literal notranslate"><span class="pre">n</span></code> elements, and each one of them is
+<code class="docutils literal notranslate"><span class="pre">null</span></code> (i.e. each element of <code class="docutils literal notranslate"><span class="pre">arrArr</span></code> is a “missing” reference to an array of
+<code class="docutils literal notranslate"><span class="pre">int</span></code>egers). You can then assign an actual array of <code class="docutils literal notranslate"><span class="pre">int</span></code>egers to each element
+of <code class="docutils literal notranslate"><span class="pre">arrArr</span></code>, e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">arrArr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might notice that we are defining two (static) methods that have the same
+name (<code class="docutils literal notranslate"><span class="pre">deepCopy</span></code>) but take a different number and/or types of arguments:
+technically, this is called <strong>overloading</strong>.</p>
+</div>
+</section>
+<section id="find-the-null-part-2">
+<span id="lab-refs-null-find-null-2"></span><span id="index-11"></span><h3>09 - Find the <code class="docutils literal notranslate"><span class="pre">null</span></code>, part 2<a class="headerlink" href="#find-the-null-part-2" title="Permalink to this heading">#</a></h3>
+<p>This assignment is similar to <a class="reference internal" href="#lab-refs-null-find-null"><span class="std std-ref">07 - Find the null, part 1</span></a>. The handout
+includes the file <code class="docutils literal notranslate"><span class="pre">NullFinder.java</span></code>, which (unlike
+<a class="reference internal" href="#lab-refs-null-find-null"><span class="std std-ref">07 - Find the null, part 1</span></a>) contains the definitions of two classes (with
+the respective constructors), which you must <em>not</em> modify:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Employee</span></code>, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Company</span></code>, which has one field that is an array of <code class="docutils literal notranslate"><span class="pre">Employee</span></code> objects.</p></li>
+</ul>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">NullFinder.java</span></code> and implement the
+following 3 static methods in the class <code class="docutils literal notranslate"><span class="pre">NullFinder</span></code>:</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">containsNull</span><span class="p">(</span><span class="n">Employee</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">containsNull</span><span class="p">(</span><span class="n">Company</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">containsNull</span><span class="p">(</span><span class="n">Company</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Each one of the static methods must inspect its argument, and return <code class="docutils literal notranslate"><span class="pre">true</span></code> if
+the argument itself is <code class="docutils literal notranslate"><span class="pre">null</span></code>, or if it contains a <code class="docutils literal notranslate"><span class="pre">null</span></code> value somewhere (e.g.,
+a <code class="docutils literal notranslate"><span class="pre">Company</span></code> object contains an array of <code class="docutils literal notranslate"><span class="pre">Employee</span></code>s, and the name of one of them
+might be <code class="docutils literal notranslate"><span class="pre">null</span></code>…). Otherwise, the static methods must return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs and utility methods to test the class <code class="docutils literal notranslate"><span class="pre">NullFinder</span></code>, and
+they might not compile or work correctly until you complete the implementation
+of <code class="docutils literal notranslate"><span class="pre">NullFinder.java</span></code>.  You should read those files and try to run the test
+programs, but you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">NullFinder.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your static methods with more arguments.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If may want to implement the static methods in the order given above: this way,
+you can implement the 2nd method by calling the 1st, and the 3rd by calling the
+2nd…</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might notice that we are defining multiple (static) methods that have the
+same name (<code class="docutils literal notranslate"><span class="pre">containsNull</span></code>) but take different types of arguments: technically,
+this is called <strong>overloading</strong>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab-day-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 7, Part 1: Lab Day</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="prog-interf-encapsulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 8, Part 1: Programming Interfaces and Encapsulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-a-k-a-pointers-to-arrays-and-objects">References (a.k.a. Pointers) to Arrays and Objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-references-and-mutability">Array References and Mutability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-references-and-mutability">Object References and Mutability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references-in-arrays-of-objects-and-in-arrays-of-arrays">References in Arrays of Objects (and in Arrays of Arrays)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-null-value-and-the-dreaded-nullpointerexception">The <code class="docutils literal notranslate"><span class="pre">null</span></code> Value and the Dreaded <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-whether-a-variable-array-position-or-object-field-contains-null">Checking Whether a Variable, Array Position, or Object Field Contains <code class="docutils literal notranslate"><span class="pre">null</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-nullpointerexception-error">The <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code> Error</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-null-part-1">07 - Find the <code class="docutils literal notranslate"><span class="pre">null</span></code>, part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-deep-copy">08 - Array Deep-Copy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-null-part-2">09 - Find the <code class="docutils literal notranslate"><span class="pre">null</span></code>, part 2</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

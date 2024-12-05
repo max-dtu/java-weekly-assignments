@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 7, Part 1: Lab Day &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 7, Part 2: References, null values, and the NullPointerException" href="references-null.html" />
+    <link rel="prev" title="Module 6, Part 2: More About Arrays and Objects" href="arrays-simple-classes-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 7, Part 1: Lab Day</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-equality">01 - Array Equality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cow-say">02 - Cow Say</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#palindromes">03 - Palindromes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-characters">04 - Video Game Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-departures">05 - Train Departures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">06 - Dates</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-7-part-1-lab-day">
+<span id="mod-lab-day-3"></span><h1>Module 7, Part 1: Lab Day<a class="headerlink" href="#module-7-part-1-lab-day" title="Permalink to this heading">#</a></h1>
+<p>This first part of Module 7 does not introduce new contents: instead, it
+provides a series of assessments to improve your Java programming skills. All
+the following assignments can be solved with the Java programming notions
+introduced in Modules 2, 3, 4, 5, and 6.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-day-3-array-equality"><span class="std std-ref">01 - Array Equality</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-3-cowsay"><span class="std std-ref">02 - Cow Say</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-3-palindromes"><span class="std std-ref">03 - Palindromes</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-3-video-game-characters"><span class="std std-ref">04 - Video Game Characters</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-3-train-departures"><span class="std std-ref">05 - Train Departures</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-day-3-dates"><span class="std std-ref">06 - Dates</span></a></p></li>
+</ul>
+<section id="array-equality">
+<span id="lab-day-3-array-equality"></span><span id="index-0"></span><h2>01 - Array Equality<a class="headerlink" href="#array-equality" title="Permalink to this heading">#</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> provided in the handout, and implement the
+following <code class="docutils literal notranslate"><span class="pre">static</span></code> methods:</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">areEqual</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">arr2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given arrays <code class="docutils literal notranslate"><span class="pre">arr1</span></code> and <code class="docutils literal notranslate"><span class="pre">arr2</span></code> contain the same
+number of <code class="docutils literal notranslate"><span class="pre">int</span></code> values, and all the <code class="docutils literal notranslate"><span class="pre">int</span></code> values in corresponding positions
+are equal.  Otherwise, this static method must return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">areEqual</span><span class="p">(</span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">arrArr1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">arrArr2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the given arrays of arrays <code class="docutils literal notranslate"><span class="pre">arrArr1</span></code> and <code class="docutils literal notranslate"><span class="pre">arrArr2</span></code>:</p>
+<ul class="simple">
+<li><p>contain the same number of arrays, and</p></li>
+<li><p>all their arrays in corresponding positions contain the same number of <code class="docutils literal notranslate"><span class="pre">int</span></code>
+values, and all the <code class="docutils literal notranslate"><span class="pre">int</span></code> values in corresponding positions are equal.</p></li>
+</ul>
+<p>Otherwise, this static method must return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the code you should write in <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code>,
+and they might not compile or work correctly until you complete your work.  You
+should read those test programs, try to run the tests, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to
+see their expected outputs — but you must <em>not</em> modify those files.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">ArrayUtils.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>After you implement the first static method above, you might reuse it to
+implement the second.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This method must also support <a class="reference internal" href="arrays-simple-classes-2.html#eg-array-array-jagged">jagged arrays</a>.</p></li>
+<li><p>You might notice that we are defining two (static) methods that have the same
+name (<code class="docutils literal notranslate"><span class="pre">areEqual</span></code>) but take a different number and/or types of arguments:
+technically, this is called <strong>overloading</strong>.</p></li>
+</ul>
+</div>
+</section>
+<section id="cow-say">
+<span id="lab-day-3-cowsay"></span><h2>02 - Cow Say<a class="headerlink" href="#cow-say" title="Permalink to this heading">#</a></h2>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">CowSay.java</span></code> and implement a version of the
+program “<a class="reference external" href="https://en.wikipedia.org/wiki/Cowsay">cowsay</a>”. The program must read
+one line of text (as a <code class="docutils literal notranslate"><span class="pre">String</span></code>) from the terminal; then, the program must
+display on the terminal a cow with a speech balloon containing that text.</p>
+<p>For instance, suppose that a user runs the program <code class="docutils literal notranslate"><span class="pre">CowSay.java</span></code> and writes the
+following input line on the console:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>How does a computer eat pizza? One byte at a time.
+</pre></div>
+</div>
+<p>Then, the program <code class="docutils literal notranslate"><span class="pre">CowSay.java</span></code> must display:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> _________________________________________
+| How does a computer eat pizza? One byte |
+| at a time.                              |
+ -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</pre></div>
+</div>
+<p>The rules for formatting the text in the speech balloon are the following:</p>
+<ul class="simple">
+<li><p>The speech balloon must have a fixed width of 43 characters, as shown in the
+example above.</p></li>
+<li><p>The number of text characters displayed on each line of the speech balloon
+must be at most 39:</p>
+<ul>
+<li><p>if the input text does not fit in 39 characters, it must be printed on
+multiple lines, showing as many words as possible on each line;</p></li>
+<li><p>each line must be enclosed with the symbol <code class="docutils literal notranslate"><span class="pre">|</span></code> to the left and to the
+right (as shown above).</p></li>
+</ul>
+</li>
+</ul>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">CowSay.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>You may want to split the input line into an array of words. To achieve this,
+you may have a look at <a class="reference internal" href="arrays.html#eg-splitting-string-into-array">Example 35</a> again…</p></li>
+<li><p>If you want to include a line separator in a string, you should use
+<code class="docutils literal notranslate"><span class="pre">System.lineSeparator()</span></code>, as explained in the hints of
+<a class="reference internal" href="structured.html#lab-structured-square2"><span class="std std-ref">06 - Square 2</span></a>.</p></li>
+<li><p>Remember that in order to include the character <code class="docutils literal notranslate"><span class="pre">\</span></code> in a string, you will need
+to <em>escape</em> that character by adding another <code class="docutils literal notranslate"><span class="pre">\</span></code> in front. For instance,
+the following Java statement:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Here is a single backslash: \\&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>produces the output: <em>(try on the Java shell!)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Here is a single backslash: \
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more inputs.  After you submit, double-check your
+grading result on DTU Autolab: if the secret checks fail, then your solution is
+not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+<section id="palindromes">
+<span id="lab-day-3-palindromes"></span><h2>03 - Palindromes<a class="headerlink" href="#palindromes" title="Permalink to this heading">#</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Palindromes.java</span></code> provided in the handout, and write a program
+that prints whether each command-line argument is a <em>palindrome</em>, i.e. a word
+that reads the same way from left to right, and from right to left.</p>
+<p>For example, if the program is executed from a terminal as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java Palindromes.java foo racecar
+</pre></div>
+</div>
+<p>then the program must print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>foo is not a palindrome
+racecar is a palindrome
+</pre></div>
+</div>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Palindromes.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="arrays-simple-classes-2.html#eg-arrays-cmd-line">Example 41</a> shows how a Java program can examine its
+command-line arguments.</p></li>
+<li><p>Remember that if <code class="docutils literal notranslate"><span class="pre">str</span></code> is a <code class="docutils literal notranslate"><span class="pre">String</span></code>, then the method <code class="docutils literal notranslate"><span class="pre">str.charAt(n)</span></code> returns
+the character at position <code class="docutils literal notranslate"><span class="pre">n</span></code> of <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more words that may or may not be palindromes.  After
+you submit, double-check your grading result on DTU Autolab: if the secret
+checks fail, then your solution is not correct, and you should fix it and
+resubmit.</p>
+</div>
+</section>
+<section id="video-game-characters">
+<span id="lab-day-3-video-game-characters"></span><h2>04 - Video Game Characters<a class="headerlink" href="#video-game-characters" title="Permalink to this heading">#</a></h2>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Character.java</span></code> provided in the handout, and
+implement a class named <code class="docutils literal notranslate"><span class="pre">Character</span></code> representing a video game character. Each
+object of the class <code class="docutils literal notranslate"><span class="pre">Character</span></code> must contain a name, and values for speed and
+strength: when defining the class, you need to decide the names and types of its
+fields. The requirements for the class <code class="docutils literal notranslate"><span class="pre">Character</span></code> are the listed below.</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Character</span></code> must have the following constructor:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Character</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">speed</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">strength</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which allows us to create a new <code class="docutils literal notranslate"><span class="pre">Character</span></code> object by writing e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Character</span><span class="p">(</span><span class="s">&quot;Lara Croft&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Character</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns a representation of <code class="docutils literal notranslate"><span class="pre">this</span></code> object as a <code class="docutils literal notranslate"><span class="pre">String</span></code>.  For instance,
+when this method is called on <code class="docutils literal notranslate"><span class="pre">c</span></code> (from the point above) it must return the
+string:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Lara Croft (speed = 17, strength = 13)
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Character</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">powerUp</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which increases the speed and strength of <code class="docutils literal notranslate"><span class="pre">this</span></code> object by the given <code class="docutils literal notranslate"><span class="pre">amount</span></code>.
+For instance, when this method is called on <code class="docutils literal notranslate"><span class="pre">c</span></code> (from the point above) as
+<code class="docutils literal notranslate"><span class="pre">c.powerUp(3)</span></code>, it must bring <code class="docutils literal notranslate"><span class="pre">c</span></code>’s speed to 20 and strength to 16.
+(Remember that <code class="docutils literal notranslate"><span class="pre">void</span></code> means that this method does not return any value.)</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Character</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">nerf</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which reduces the speed and strength of <code class="docutils literal notranslate"><span class="pre">this</span></code> object by the given <code class="docutils literal notranslate"><span class="pre">amount</span></code>.
+For instance, when this method is called on <code class="docutils literal notranslate"><span class="pre">c</span></code> (from the point above) as
+<code class="docutils literal notranslate"><span class="pre">c.nerf(3)</span></code>, it must bring <code class="docutils literal notranslate"><span class="pre">c</span></code>’s speed to 14 and strength to 10.
+(Remember that <code class="docutils literal notranslate"><span class="pre">void</span></code> means that this method does not return any value.)</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Character</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isBetterThan</span><span class="p">(</span><span class="n">Character</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which must return <code class="docutils literal notranslate"><span class="pre">true</span></code> if <em>both</em> the speed <em>and</em> the strength of <code class="docutils literal notranslate"><span class="pre">this</span></code>
+object are greater than those of the given <code class="docutils literal notranslate"><span class="pre">other</span></code> object. Otherwise, the
+method must return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Character</span></code> must have the following <em>static</em> method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printBest</span><span class="p">(</span><span class="n">Character</span><span class="o">[]</span><span class="w"> </span><span class="n">characters</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method must print on the terminal which character object in the
+array <code class="docutils literal notranslate"><span class="pre">characters</span></code> is better than all the other characters in the array.
+Characters must be compared using the method <code class="docutils literal notranslate"><span class="pre">isBetterThan</span></code> (see above). The
+static method <code class="docutils literal notranslate"><span class="pre">printBest</span></code> must print either:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">array</span> <span class="pre">is</span> <span class="pre">empty!</span></code> if the array <code class="docutils literal notranslate"><span class="pre">characters</span></code> has length zero; or</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">There</span> <span class="pre">is</span> <span class="pre">no</span> <span class="pre">best</span> <span class="pre">character</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">array!</span></code> if none of the <code class="docutils literal notranslate"><span class="pre">Character</span></code>
+objects in the array <code class="docutils literal notranslate"><span class="pre">characters</span></code> is better than all the others; or</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Best</span> <span class="pre">character:</span> <span class="pre">...</span></code> with the description of the best <code class="docutils literal notranslate"><span class="pre">Character</span></code> object in
+the array (formatted according to the method <code class="docutils literal notranslate"><span class="pre">description</span></code>, see above). For
+instance, if the array <code class="docutils literal notranslate"><span class="pre">characters</span></code> contains the object <code class="docutils literal notranslate"><span class="pre">Lara</span> <span class="pre">Croft</span></code> defined
+above, and that character is better than any other character in the array,
+then this static method must print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Best character: Lara Croft (speed = 17, strength = 13)
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>To find the best character in the given array (if there is one), you might
+consider using nested loops…</p></li>
+<li><p>Remember that <code class="docutils literal notranslate"><span class="pre">void</span></code> means that this method does not return any value. If
+you want to end the method and return to the caller, you can use the
+<code class="docutils literal notranslate"><span class="pre">return</span></code> statement (without any argument).</p></li>
+</ul>
+</div>
+</li>
+</ul>
+<div class="docutils">
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Character.java</span></code> on DTU Autolab.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This exercise requires writing a Java class that contains both
+<a class="reference internal" href="structured.html#sec-structured-struct-static-methods"><span class="std std-ref">static methods</span></a>
+and <a class="reference internal" href="simple-classes.html#sec-simple-classes-methods"><span class="std std-ref">non-static methods (a.k.a. object methods, or just methods)</span></a>:
+this is perfectly valid, but the two different kinds of methods must not be
+confused when reasoning about our Java code. Remember that an object method can
+only be called on an object, which must have been created beforehand!</p>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks.
+After you submit, double-check your grading result on DTU Autolab: if the secret
+checks fail, then your solution is not correct, and you should fix it and
+resubmit.</p>
+</div>
+</section>
+<section id="train-departures">
+<span id="lab-day-3-train-departures"></span><h2>05 - Train Departures<a class="headerlink" href="#train-departures" title="Permalink to this heading">#</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Departure.java</span></code> provided in the handout, and implement a class
+named <code class="docutils literal notranslate"><span class="pre">Departure</span></code> representing the time when a train departs from a train
+station, as follows.</p>
+<ul>
+<li><p>Objects of the class <code class="docutils literal notranslate"><span class="pre">Departure</span></code> must have three fields called respectively:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hour</span></code> (of type <code class="docutils literal notranslate"><span class="pre">int</span></code>) and <code class="docutils literal notranslate"><span class="pre">minutes</span></code> (of type <code class="docutils literal notranslate"><span class="pre">int</span></code>), which represent the
+time the train leaves the station;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">destination</span></code> (of type <code class="docutils literal notranslate"><span class="pre">String</span></code>), which is the destination of the train;</p></li>
+</ul>
+<p>Therefore, if <code class="docutils literal notranslate"><span class="pre">d</span></code> is an object of type <code class="docutils literal notranslate"><span class="pre">Departure</span></code>, we can write e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">.</span><span class="na">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">d</span><span class="p">.</span><span class="na">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+<span class="n">d</span><span class="p">.</span><span class="na">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Aarhus&quot;</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The train to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="na">destination</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; leaves at &quot;</span>
+<span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="na">hour</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="na">minutes</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Departure</span></code> must have the following constructor:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Departure</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">hour</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">minutes</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">destination</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which allows us to create a new <code class="docutils literal notranslate"><span class="pre">Departure</span></code> object by writing e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Departure</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Aarhus&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Departure</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns a representation of <code class="docutils literal notranslate"><span class="pre">this</span></code> object as a <code class="docutils literal notranslate"><span class="pre">String</span></code>.  When this
+method is called on <code class="docutils literal notranslate"><span class="pre">d</span></code> (from the point above) it must return the string:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>10:25 to Aarhus
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Departure</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">boolean</span><span class="w"> </span><span class="nf">leavesBefore</span><span class="p">(</span><span class="n">Departure</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the time of <code class="docutils literal notranslate"><span class="pre">this</span></code> departure comes
+before the time of the <code class="docutils literal notranslate"><span class="pre">other</span></code> departure.  Otherwise, the method returns
+<code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Departure</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">delay</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">minutes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method modifies the time of <code class="docutils literal notranslate"><span class="pre">this</span></code> departure by delaying it
+by the given amount of <code class="docutils literal notranslate"><span class="pre">minutes</span></code>.  The method does not return anything
+(<code class="docutils literal notranslate"><span class="pre">void</span></code>).</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">Departure</span></code>, and they might not
+compile or work correctly until you complete the implementation of class
+<code class="docutils literal notranslate"><span class="pre">Departure</span></code> in the file <code class="docutils literal notranslate"><span class="pre">Departure.java</span></code>.  You should read those test programs
+and try to run them, but you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Departure.java</span></code> on DTU Autolab.</p>
+</section>
+<section id="dates">
+<span id="lab-day-3-dates"></span><h2>06 - Dates<a class="headerlink" href="#dates" title="Permalink to this heading">#</a></h2>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Date.java</span></code> provided in the handout, and implement a class named
+<code class="docutils literal notranslate"><span class="pre">Date</span></code> which represent a date on the calendar.  The class must have fields to
+store <code class="docutils literal notranslate"><span class="pre">int</span></code> values for the year, month, and day.  Your task is to implement the
+class <code class="docutils literal notranslate"><span class="pre">Date</span></code> as follows.</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Date</span></code> must have the following constructor:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This constructor allows us to create a new object of the class <code class="docutils literal notranslate"><span class="pre">Date</span></code> by
+simply writing, e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The arguments passed to the constructor must be stored in the class fields.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Date</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="nf">toISO</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method returns a string representation of <code class="docutils literal notranslate"><span class="pre">this</span></code> object, according to
+the <a class="reference external" href="https://www.iso.org/iso-8601-date-and-time-format.html">standard ISO format YYYY-MM-DD</a>.
+For example, the following code snippet:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="na">toISO</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>should print on the console:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2023-09-29
+</pre></div>
+</div>
+<p>(Note that single-digit months and days are represented with a <code class="docutils literal notranslate"><span class="pre">0</span></code> in front,
+e.g. <code class="docutils literal notranslate"><span class="pre">2023-02-03</span></code>)</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Date</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">this</span></code> date is valid, and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.
+For example, the following code snippet should print <code class="docutils literal notranslate"><span class="pre">true</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="na">isValid</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Instead, the following code snippet should print <code class="docutils literal notranslate"><span class="pre">false</span></code> (there is no 13th
+month):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d2</span><span class="p">.</span><span class="na">isValid</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Also, the following code snippet should print <code class="docutils literal notranslate"><span class="pre">false</span></code> (September only has 30
+days):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d3</span><span class="p">.</span><span class="na">isValid</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Also, the following code snippet should print <code class="docutils literal notranslate"><span class="pre">false</span></code> (because February 2023
+only has 28 days, since 2023 is not a leap year):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d4</span><span class="p">.</span><span class="na">isValid</span><span class="p">());</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Date</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">daysUntil</span><span class="p">(</span><span class="n">Date</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method computes and returns the number of days between <code class="docutils literal notranslate"><span class="pre">this</span></code> date and
+the <code class="docutils literal notranslate"><span class="pre">target</span></code> date.  For example, the following code snippet should print <code class="docutils literal notranslate"><span class="pre">1</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">d2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d1</span><span class="p">.</span><span class="na">daysUntil</span><span class="p">(</span><span class="n">d2</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Instead, the following code snippet should print <code class="docutils literal notranslate"><span class="pre">10</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">d1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">d2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Date</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d1</span><span class="p">.</span><span class="na">daysUntil</span><span class="p">(</span><span class="n">d2</span><span class="p">));</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the class <code class="docutils literal notranslate"><span class="pre">Date</span></code>, and they might not compile or
+work correctly until you complete the implementation of <code class="docutils literal notranslate"><span class="pre">Date.java</span></code>.  You should
+read those test programs and try to run them, but you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Date.java</span></code> on DTU Autolab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with more dates (either valid or invalid).  After you
+submit, double-check your grading result on DTU Autolab: if the secret checks
+fail, then your solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>You may want to write a utility static method to compute the length of
+a given month in a given year (taking into account leap years): this can be
+useful to implement both methods <code class="docutils literal notranslate"><span class="pre">isValid()</span></code> and <code class="docutils literal notranslate"><span class="pre">daysUntil(...)</span></code>.</p></li>
+<li><p>You might reuse some code from the solutions to <a class="reference internal" href="lab-day-1.html#lab-lab-day-1-leap-year"><span class="std std-ref">03 - Leap Year</span></a>
+and <a class="reference internal" href="lab-day-1.html#lab-lab-day-1-month-days"><span class="std std-ref">04 - Days in a Month</span></a>…</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="arrays-simple-classes-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 6, Part 2: More About Arrays and Objects</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="references-null.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-equality">01 - Array Equality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cow-say">02 - Cow Say</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#palindromes">03 - Palindromes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-characters">04 - Video Game Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-departures">05 - Train Departures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dates">06 - Dates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

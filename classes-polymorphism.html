@@ -1,0 +1,1112 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 10, Part 2: More on Java Classes and Polymorphism &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/bussproofs"]}, "tex": {"packages": {"[+]": ["bussproofs"]}, "macros": {}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="_static/mathjax/es5/tex-svg.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 11, Part 1: Lab Day" href="lab-day-5.html" />
+    <link rel="prev" title="Module 10, part 1: More on Class Inheritance and abstract classes" href="inheritance-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 10, Part 2: More on Java Classes and Polymorphism</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-keyword">The <code class="docutils literal notranslate"><span class="pre">final</span></code> Keyword</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-class-fields-and-methods">Static Class Fields (and Methods)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-subtype-polymorphism-and-early-vs-late-binding">More on Subtype Polymorphism and Early vs. Late Binding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counters">05 - Counters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-monsters-part-4">06 - Video Game Monsters, Part 4</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-10-part-2-more-on-java-classes-and-polymorphism">
+<span id="mod-classes-polymorphism"></span><h1>Module 10, Part 2: More on Java Classes and Polymorphism<a class="headerlink" href="#module-10-part-2-more-on-java-classes-and-polymorphism" title="Permalink to this heading">#</a></h1>
+<p>This module we address a few more elements of programming, especially related to
+classes and inheritance:
+<a class="reference internal" href="#sec-classes-polymorphism-final"><span class="std std-ref">the “final” keyword</span></a>, and
+<a class="reference internal" href="#sec-classes-polymorphism-static-methods-fields"><span class="std std-ref">static class fields</span></a>.
+We also address the topic of
+<a class="reference internal" href="#sec-classes-polymorphism-polymorphism"><span class="std std-ref">subtype polymorphism</span></a> in more
+depth, discussing when it does <em>not</em> work as one might expect, due to
+the difference between <strong>early and late binding</strong>.</p>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span><span class="target" id="index-6"></span><span class="target" id="index-7"></span><section id="the-final-keyword">
+<span id="sec-classes-polymorphism-final"></span><span id="index-8"></span><h2>The <code class="docutils literal notranslate"><span class="pre">final</span></code> Keyword<a class="headerlink" href="#the-final-keyword" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">final</span></code> keyword can be used in various ways in a Java program.</p>
+<ul class="simple">
+<li><p>If we <strong>declare a local variable of a method as <code class="docutils literal notranslate"><span class="pre">final</span></code></strong>, then the value
+assigned to that variable cannot be modified.  This also applies to variables
+used for method arguments.  Using <code class="docutils literal notranslate"><span class="pre">final</span></code> can prevent subtle bugs, because any
+attempt to “accidentally” modify the value of a <code class="docutils literal notranslate"><span class="pre">final</span></code> variable will result
+in an error from the Java compiler.  This is illustrated in
+<a class="reference internal" href="#eg-final-local-variable">Example 62</a> below.</p></li>
+<li><p>If we <strong>declare the field of a class as <code class="docutils literal notranslate"><span class="pre">final</span></code></strong>, then the value assigned to
+that field cannot be modified <em>after the field is initialised</em> (i.e. after the
+first assignment of a value to that field, which may take place in a
+constructor).  This is illustrated in <a class="reference internal" href="#eg-final-field">Example 63</a> below.</p></li>
+</ul>
+<div class="proof example admonition" id="eg-final-local-variable">
+<p class="admonition-title"><span class="caption-number">Example 62 </span> (Final local variables (and arguments) in methods)</p>
+<section class="example-content" id="proof-content">
+<p>Consider again the code of the class <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> in
+<a class="reference internal" href="structured.html#eg-code-duplication-static-method">Example 31</a>. We can observe that:</p>
+<ul class="simple">
+<li><p>The static method <code class="docutils literal notranslate"><span class="pre">main</span></code> declares several local variables (<code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">n1</span></code>, <code class="docutils literal notranslate"><span class="pre">n2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sum1</span></code>, <code class="docutils literal notranslate"><span class="pre">sum2</span></code>), whose value is never changed after their declaration.  Still,
+it is possible to accidentally write code that modifies the value of those
+variables. To prevent this, we can mark each variable in <code class="docutils literal notranslate"><span class="pre">main</span></code> as <code class="docutils literal notranslate"><span class="pre">final</span></code>: if
+we do so, any attempt to assign a value to a <code class="docutils literal notranslate"><span class="pre">final</span></code> variable will cause a
+Java compilation error like <em>“cannot assign a value to final variable.”</em></p></li>
+<li><p>Instead, the static method <code class="docutils literal notranslate"><span class="pre">sum</span></code> declares two local variables (<code class="docutils literal notranslate"><span class="pre">summation</span></code> and
+<code class="docutils literal notranslate"><span class="pre">i</span></code>) whose value is changed after their declaration.  These variables <em>cannot</em>
+be marked as <code class="docutils literal notranslate"><span class="pre">final</span></code> — because the program actually needs to modify them to
+perform its tasks.  However, the static method <code class="docutils literal notranslate"><span class="pre">sum</span></code> also has a variable
+called <code class="docutils literal notranslate"><span class="pre">n</span></code> (used for the method’s argument), and the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> should <em>not</em>
+be modified when <code class="docutils literal notranslate"><span class="pre">sum</span></code> is being executed: to prevent this, we can mark the
+argument <code class="docutils literal notranslate"><span class="pre">n</span></code> as <code class="docutils literal notranslate"><span class="pre">final</span></code>.</p></li>
+</ul>
+<p>The modified class <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> using <code class="docutils literal notranslate"><span class="pre">final</span></code> for local variables and method
+arguments looks as follows. <em>(The differences with the code in
+<a class="reference internal" href="structured.html#eg-code-duplication-static-method">Example 31</a> are highlighted.)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">TwoSums</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos"> 3</span><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+</span><span class="linenos"> 4</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Please write two positive numbers:&quot;</span><span class="p">);</span>
+<span class="hll"><span class="linenos"> 7</span><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</span><span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">sum1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">sum2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">n2</span><span class="p">);</span>
+</span><span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sum of all numbers from 1 to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum1</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sum of all numbers from 1 to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum2</span><span class="p">);</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="hll"><span class="linenos">19</span><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">20</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">summation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Will be updated during the computation of the sum</span>
+<span class="linenos">21</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">            </span><span class="n">summation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">summation</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">24</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">summation</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">26</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div><div class="proof example admonition" id="eg-final-field">
+<p class="admonition-title"><span class="caption-number">Example 63 </span> (Final fields)</p>
+<section class="example-content" id="proof-content">
+<p>Consider again the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code> in
+<a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-super-private">Example 57</a>: the two fields <code class="docutils literal notranslate"><span class="pre">name</span></code>
+and <code class="docutils literal notranslate"><span class="pre">species</span></code> are initialised in the constructor, and never modified again.
+If that is desired, it is advisable to mark the two fields as <code class="docutils literal notranslate"><span class="pre">final</span></code>, as
+follows. <em>(The differences with the code in
+<a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-cats-dogs-super-private">Example 57</a> are highlighted.)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Pet</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos"> 2</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 3</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">species</span><span class="p">;</span>
+</span><span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Pet</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">species</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">species</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">species</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>After this change, if we try to modify the value of one of the <code class="docutils literal notranslate"><span class="pre">final</span></code> fields
+(e.g. by writing <code class="docutils literal notranslate"><span class="pre">this.name</span> <span class="pre">=</span> <span class="pre">&quot;Test&quot;;</span></code> in the body of the method
+<code class="docutils literal notranslate"><span class="pre">getDescription()</span></code>), we will get an error. <em>(Try it!)</em></p>
+</section>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Java, the keyword <code class="docutils literal notranslate"><span class="pre">final</span></code> can also be used to control inheritance:</p>
+<ul class="simple">
+<li><p>if we declare a method <code class="docutils literal notranslate"><span class="pre">final</span></code>, then the method cannot be overridden in
+derived classes;</p></li>
+<li><p>if we declare a whole class <code class="docutils literal notranslate"><span class="pre">final</span></code>, then the class cannot be extended by
+other classes.</p></li>
+</ul>
+<p>We will <em>not</em> use these two features in this course — but they may be useful
+when writing more advanced programs.</p>
+</div>
+<span class="target" id="index-9"></span><span class="target" id="index-10"></span><span class="target" id="index-11"></span><span class="target" id="index-12"></span></section>
+<section id="static-class-fields-and-methods">
+<span id="sec-classes-polymorphism-static-methods-fields"></span><span id="index-13"></span><h2>Static Class Fields (and Methods)<a class="headerlink" href="#static-class-fields-and-methods" title="Permalink to this heading">#</a></h2>
+<p>Up to this point we have seen that, when writing a class in Java, we can write
+two kinds of methods:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="simple-classes.html#sec-simple-classes-methods"><span class="std std-ref">object methods</span></a> (a.k.a.
+non-static methods, or simply methods), and</p></li>
+<li><p><a class="reference internal" href="structured.html#sec-structured-struct-static-methods"><span class="std std-ref">static methods</span></a> (a.k.a.
+class methods).</p></li>
+</ul>
+<p>In a nutshell, the difference between the two is that:</p>
+<ul>
+<li><p><strong>Object methods can only be called on an object of the class that defines the
+method</strong>. For instance, in <a class="reference internal" href="#eg-final-field">Example 63</a> we can see that the class
+<code class="docutils literal notranslate"><span class="pre">Pet</span></code> defines the (non-static) method <code class="docutils literal notranslate"><span class="pre">getDescription()</span></code>; hence, if <code class="docutils literal notranslate"><span class="pre">pet</span></code> is
+an object of type <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, then we can call <code class="docutils literal notranslate"><span class="pre">pet.getDescription()</span></code>.
+(Correspondingly, the body of <code class="docutils literal notranslate"><span class="pre">getDescription()</span></code> can use the special variable
+<code class="docutils literal notranslate"><span class="pre">this</span></code> to access the object on which the method has been called.)</p></li>
+<li><p>Instead, <strong>static methods are called “directly”</strong>: for instance, in
+<a class="reference internal" href="#eg-final-local-variable">Example 62</a> the static method <code class="docutils literal notranslate"><span class="pre">sum(...)</span></code> is simply
+called by writing <code class="docutils literal notranslate"><span class="pre">sum(n1)</span></code> and <code class="docutils literal notranslate"><span class="pre">sum(n2)</span></code> (in the body of the method <code class="docutils literal notranslate"><span class="pre">main</span></code>).
+(Correspondingly, the body of <code class="docutils literal notranslate"><span class="pre">sum(..)</span></code> <em>cannot</em> use the special variable
+<code class="docutils literal notranslate"><span class="pre">this</span></code>, because <code class="docutils literal notranslate"><span class="pre">sum(...)</span></code> is <em>not</em> an object method.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More verbosely, in the static method <code class="docutils literal notranslate"><span class="pre">main</span></code> in
+<a class="reference internal" href="#eg-final-local-variable">Example 62</a> we could have called the static method
+<code class="docutils literal notranslate"><span class="pre">sum(...)</span></code> by explicitly writing the name of the class that contains it —
+i.e. we could have written <code class="docutils literal notranslate"><span class="pre">TwoSums.sum(n1)</span></code> and <code class="docutils literal notranslate"><span class="pre">TwoSums.sum(n2)</span></code>.  Also in
+this case, the static method <code class="docutils literal notranslate"><span class="pre">sum(...)</span></code> is <em>not</em> called on an object.</p>
+</div>
+</li>
+</ul>
+<p>Java offers a similar distinction between <strong>object fields</strong> (a.k.a. non-static
+fields) and <strong>static fields</strong> (a.k.a. class fields).  The difference between the
+two is <strong>where the value of the field is stored</strong>:</p>
+<ul class="simple">
+<li><p><strong>the value of an object field is stored in each object that owns the field</strong>,
+as explained in <a class="reference internal" href="simple-classes.html#sec-simple-classes-basic"><span class="std std-ref">Defining a Simple Class and Creating Objects</span></a>.  For instance,
+if both <code class="docutils literal notranslate"><span class="pre">pet1</span></code> and <code class="docutils literal notranslate"><span class="pre">pet2</span></code> are objects of the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, then they both have
+a field called <code class="docutils literal notranslate"><span class="pre">name</span></code> (according to the definition of the class), and each
+object has its own value for that field (e.g. <code class="docutils literal notranslate"><span class="pre">pet1.name</span></code> may have the value
+<code class="docutils literal notranslate"><span class="pre">&quot;Viggo&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">pet2.name</span></code> may have the value <code class="docutils literal notranslate"><span class="pre">&quot;Kamilla&quot;</span></code>).</p></li>
+<li><p>Instead, <strong>the value of a static field is stored in a single global location</strong>
+accessed via the class name.  Therefore (unlike an object field) the value of
+a class field is <em>not</em> stored in each object of the class that defines the
+field. This is illustrated in <a class="reference internal" href="#eg-static-fields">Example 64</a> and
+<a class="reference internal" href="#eg-static-fields-2">Example 65</a> below.</p></li>
+</ul>
+<div class="proof example admonition" id="eg-static-fields">
+<p class="admonition-title"><span class="caption-number">Example 64 </span> (Converting measures)</p>
+<section class="example-content" id="proof-content">
+<p>Suppose we need two utility methods to convert a measure in miles into
+kilometers, and <em>vice versa</em>.  Both methods need to know what is the number of
+kilometers in a mile; instead of repeating that number in each method, we can
+store it in a class field called e.g. <code class="docutils literal notranslate"><span class="pre">kmsPerMile</span></code>, used by both methods as
+follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Measures</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kmsPerMile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.609344</span><span class="p">;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">milesToKms</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">miles</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">miles</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Measures</span><span class="p">.</span><span class="na">kmsPerMile</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">kmsToMiles</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">kms</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">kms</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Measures</span><span class="p">.</span><span class="na">kmsPerMile</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">11</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the field <code class="docutils literal notranslate"><span class="pre">kmsPerMile</span></code> is stored “globally” and can be accessed by
+writing <code class="docutils literal notranslate"><span class="pre">Measures.kmsPerMile</span></code> (without creating an object of the class
+<code class="docutils literal notranslate"><span class="pre">Measures</span></code>).</p>
+</section>
+</div><div class="proof example admonition" id="eg-static-fields-2">
+<p class="admonition-title"><span class="caption-number">Example 65 </span> (Converting measures, version 2)</p>
+<section class="example-content" id="proof-content">
+<p>The code in <a class="reference internal" href="#eg-static-fields">Example 64</a> has a design flaw: the static field
+<code class="docutils literal notranslate"><span class="pre">Measures.kmsPerMile</span></code> can be accidentally modified (e.g. by writing an
+assignment like <code class="docutils literal notranslate"><span class="pre">Measures.kmsPerMile</span> <span class="pre">=</span> <span class="pre">42</span></code>), and this would make the two static
+methods <code class="docutils literal notranslate"><span class="pre">Measures.milesToKms(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">Measures.kmsToMiles(...)</span></code> return
+incorrect results.</p>
+<p>To avoid this issue, we can mark the static field <code class="docutils literal notranslate"><span class="pre">Measures.kmsPerMile</span></code> as
+<code class="docutils literal notranslate"><span class="pre">final</span></code>, thus turning it into a constant that cannot be modified.</p>
+<p>The resulting code would look as shown below — where we follow the Java
+convention of writing <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">final</span></code> field names in uppercase letters (to better
+recognise that they are constants):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Measures</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">KMS_PER_MILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.609344</span><span class="p">;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">milesToKms</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">miles</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">miles</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Measures</span><span class="p">.</span><span class="na">KMS_PER_MILE</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">kmsToMiles</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">kms</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">kms</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Measures</span><span class="p">.</span><span class="na">KMS_PER_MILE</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">11</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This way, any part of the program can read the constant <code class="docutils literal notranslate"><span class="pre">Measures.KMS_PER_MILE</span></code>
+without the risk of accidentally modifying it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the Java API, the mathematical constants <code class="docutils literal notranslate"><span class="pre">Math.PI</span></code> (which is the value of
+<span class="math notranslate nohighlight">\(\pi\)</span>) and <code class="docutils literal notranslate"><span class="pre">Math.E</span></code> (which is the value of <span class="math notranslate nohighlight">\(e\)</span>, the base of natural logarithms)
+are declared as <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">final</span></code> fields of a class called <code class="docutils literal notranslate"><span class="pre">Math</span></code>, similarly to
+<code class="docutils literal notranslate"><span class="pre">Measures.KMS_PER_MILE</span></code> above.  If you are curious, you can have a look at the
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html">Java API documentation for the class
+Math</a>.</p>
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">System.out</span></code> is one of the <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">final</span></code> fields of a class called
+<code class="docutils literal notranslate"><span class="pre">System</span></code>, and it contains the object on which we call e.g.
+<code class="docutils literal notranslate"><span class="pre">System.out.println(...)</span></code>.  If you are curious, you can have a look at the
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/System.html">Java API documentation for the class
+System</a>.</p>
+</div>
+</section>
+</div><span class="target" id="index-14"></span><span class="target" id="index-15"></span><span class="target" id="index-16"></span><span class="target" id="index-17"></span><span class="target" id="index-18"></span><span class="target" id="index-19"></span><span class="target" id="index-20"></span></section>
+<section id="more-on-subtype-polymorphism-and-early-vs-late-binding">
+<span id="sec-classes-polymorphism-polymorphism"></span><span id="index-21"></span><h2>More on Subtype Polymorphism and Early vs. Late Binding<a class="headerlink" href="#more-on-subtype-polymorphism-and-early-vs-late-binding" title="Permalink to this heading">#</a></h2>
+<p>We have mentioned that
+<a class="reference internal" href="inheritance-oo.html#sec-inheritance-oo-oo"><span class="std std-ref">subtype polymorphism is a cornerstone of object-oriented programming</span></a>,
+and we have already seen it in action when writing generic code that calls
+methods which “behave differently” because they are overridden in a subclass:</p>
+<ul class="simple">
+<li><p>in <a class="reference internal" href="interfaces.html#eg-multiple-interfaces">Example 53</a>, there is a loop that calls the method
+<code class="docutils literal notranslate"><span class="pre">.getDescription()</span></code> on each object contained in an array of generic <code class="docutils literal notranslate"><span class="pre">Device</span></code>s
+— and the actual method being executed may behave differently (since the
+method may be provided by an object of the class <code class="docutils literal notranslate"><span class="pre">Scanner</span></code>, <code class="docutils literal notranslate"><span class="pre">Printer</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">AllInOne</span></code>);</p></li>
+<li><p>in <a class="reference internal" href="inheritance-2.html#eg-inheritance-pets-sound-abstract">Example 59</a> and
+<a class="reference internal" href="inheritance-oo.html#eg-inheritance-pets-snake-override">Example 58</a>, there is a loop that calls the
+method <code class="docutils literal notranslate"><span class="pre">.getSound()</span></code> on each object contained in an array of generic <code class="docutils literal notranslate"><span class="pre">Pet</span></code>s
+— and the actual method being executed may behave differently (since the
+method may be provided by an object of the class <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, <code class="docutils literal notranslate"><span class="pre">Cat</span></code>, or <code class="docutils literal notranslate"><span class="pre">Snake</span></code>).</p></li>
+</ul>
+<p>This <em>polymorphic</em> behaviour takes place because <strong>when we call an object
+method, Java checks what is the actual class of the object <em>while the program is
+running</em></strong>, and chooses (i.e., “binds”) the “most specialised” overridden method
+depending on the actual class of that object.</p>
+<p>This technique (i.e. choosing the method to call when the program runs) is
+called <strong>late binding</strong> or <strong>dynamic binding</strong>, because it takes place “late”
+and “dynamically” while the program runs. This enables <strong>subtype polymorphism</strong>,
+as we have seen thus far.</p>
+<p>However, late binding in Java is <strong>only used when calling object
+methods</strong> — and is <em>not</em> used in other situations: in fact, the default
+behaviour of Java is to <strong>choose (“bind”) which method to call “early”, at compile time</strong>,
+depending on the type of the method <em>arguments</em>.  This technique is called
+<strong>early binding</strong> or <strong>static binding</strong> or <strong>compile-time binding</strong>, because it
+takes place “early” and “statically” when the program is compiled, before it is
+executed.  This is illustrated in <a class="reference internal" href="#eg-static-binding">Example 66</a> below.</p>
+<div class="proof example admonition" id="eg-static-binding">
+<span id="index-22"></span><p class="admonition-title"><span class="caption-number">Example 66 </span> (Late binding vs. early binding in action)</p>
+<section class="example-content" id="proof-content">
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can (and should!) try the code below on the Java shell – or you should
+write and execute this code in some Java files, to see late and early binding in
+action.</p>
+</div>
+<p>Consider the code below: it contains a simplified version of our <code class="docutils literal notranslate"><span class="pre">Pet</span></code> class
+hierarchy, where the object method <code class="docutils literal notranslate"><span class="pre">.printDescription()</span></code> is specialised (i.e.
+overridden) in the subclass <code class="docutils literal notranslate"><span class="pre">Dog</span></code>.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Pet</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Pet</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Generic pet called &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">11</span><span class="p">}</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="kd">class</span> <span class="nc">Dog</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Pet</span><span class="p">{</span>
+<span class="linenos">14</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Dog</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<span class="linenos">16</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="w">    </span><span class="nd">@Override</span>
+<span class="linenos">19</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Doggo called &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+<span class="linenos">21</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">22</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, let us create an array of <code class="docutils literal notranslate"><span class="pre">Pet</span></code> objects, containing an object of the class
+<code class="docutils literal notranslate"><span class="pre">Pet</span></code> and an object of the class <code class="docutils literal notranslate"><span class="pre">Dog</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">dog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dog</span><span class="p">(</span><span class="s">&quot;Mrs Wolf&quot;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">pet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pet</span><span class="p">(</span><span class="s">&quot;Wilson&quot;</span><span class="p">);</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">pets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pet</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">dog</span><span class="p">,</span><span class="w"> </span><span class="n">pet</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Let us now write the loop below, that that goes through each element <code class="docutils literal notranslate"><span class="pre">p</span></code> of the
+array <code class="docutils literal notranslate"><span class="pre">pets</span></code> and calls the method <code class="docutils literal notranslate"><span class="pre">p.printDescription()</span></code>.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="n">pets</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="na">printDescription</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When this loop runs, Java choses the “most specialised” method for <code class="docutils literal notranslate"><span class="pre">p</span></code> — thanks
+to late binding.  More precisely:</p>
+<ul class="simple">
+<li><p>if the object referenced by <code class="docutils literal notranslate"><span class="pre">p</span></code> belongs to the class <code class="docutils literal notranslate"><span class="pre">Dog</span></code>, then the
+overridden object method <code class="docutils literal notranslate"><span class="pre">.printDescription()</span></code> (on lines 19–21 above) is
+called; otherwise,</p></li>
+<li><p>if the object referenced by <code class="docutils literal notranslate"><span class="pre">p</span></code> belongs to the class <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, then the generic
+object method <code class="docutils literal notranslate"><span class="pre">.printDescription()</span></code> (on lines 8–10 above) is called.</p></li>
+</ul>
+<p>Consequently, the output of the loop above is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Doggo called Mrs Wolf
+Generic pet called Wilson
+</pre></div>
+</div>
+<p>Importantly, variable <code class="docutils literal notranslate"><span class="pre">p</span></code> in the loop body has type <code class="docutils literal notranslate"><span class="pre">Pet</span></code>, but <em>the behaviour of
+<code class="docutils literal notranslate"><span class="pre">p.printDescription()</span></code> changes depending on the specific subclass of the object
+referred by <code class="docutils literal notranslate"><span class="pre">p</span></code> while the program runs</em>: this is called <strong>subtype
+polymorphism</strong>.</p>
+<p>Now, let us define two <code class="docutils literal notranslate"><span class="pre">static</span></code> methods that print information about a dog or a
+pet, similarly to the object method <code class="docutils literal notranslate"><span class="pre">.printDescription()</span></code> above.  We call both
+static methods <code class="docutils literal notranslate"><span class="pre">printInfo(...)</span></code>, but notice that they take an argument of a
+different type (technically, we are <strong>overloading</strong> the method name).</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printInfo</span><span class="p">(</span><span class="n">Pet</span><span class="w"> </span><span class="n">pet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Generic pet called &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pet</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printInfo</span><span class="p">(</span><span class="n">Dog</span><span class="w"> </span><span class="n">dog</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Doggo called &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dog</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, if we call <code class="docutils literal notranslate"><span class="pre">printInfo(pet)</span></code>, then Java selects which static method
+to execute <em>based on the type of the argument given to the call</em> (which is the
+variable <code class="docutils literal notranslate"><span class="pre">pet</span></code>, of type <code class="docutils literal notranslate"><span class="pre">Pet</span></code>).  This is early (a.k.a. “static”) binding.
+Therefore, we get the output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Generic pet called Wilson
+</pre></div>
+</div>
+<p>Similarly, if we call <code class="docutils literal notranslate"><span class="pre">printInfo(dog)</span></code>, then Java again selects which static
+method to execute based on the type of the argument given to the call (which is
+now the variable <code class="docutils literal notranslate"><span class="pre">dog</span></code>, of the <code class="docutils literal notranslate"><span class="pre">Dog</span></code>).  Therefore, we get the output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Doggo called Mrs Wolf
+</pre></div>
+</div>
+<p>So far, the behaviour of <code class="docutils literal notranslate"><span class="pre">printInfo(pet)</span></code> and <code class="docutils literal notranslate"><span class="pre">printInfo(dog)</span></code> is similar to
+what we get by calling the object methods <code class="docutils literal notranslate"><span class="pre">pet.printDescription()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">dog.printDescription()</span></code>.  But what happens if we write a loop that calls the
+static method <code class="docutils literal notranslate"><span class="pre">printInfo(p)</span></code>, where <code class="docutils literal notranslate"><span class="pre">p</span></code> is an element of the array <code class="docutils literal notranslate"><span class="pre">pets</span></code>?</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="n">pets</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printInfo</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Although this loop may appear similar to the previous loop (which calls
+<code class="docutils literal notranslate"><span class="pre">p.printDescription()</span></code>), <strong>the output of this loop is different</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Generic pet called Mrs Wolf
+Generic pet called Wilson
+</pre></div>
+</div>
+<p>This happens because, in the body of the loop, <code class="docutils literal notranslate"><span class="pre">printInfo(p)</span></code> is called with the
+argument <code class="docutils literal notranslate"><span class="pre">p</span></code>, which is a variable of type <code class="docutils literal notranslate"><span class="pre">Pet</span></code>.  Java uses this type
+information to select “early” (and “statically” at compile-time, i.e. <em>before the loop runs</em>)
+which method to call, and chooses the method that takes an argument of type
+<code class="docutils literal notranslate"><span class="pre">Pet</span></code>.  This choice (“binding”) of the method ignores the fact that, <em>while the
+loop runs</em>, <code class="docutils literal notranslate"><span class="pre">p</span></code> may refer to an object that belongs to the more specific class
+<code class="docutils literal notranslate"><span class="pre">Dog</span></code>.</p>
+<p>This last loop shows the difference between early binding and late binding —
+and also shows that, in Java, subtype polymorphism is only used when
+calling object methods.</p>
+</section>
+</div></section>
+<section id="concluding-remarks">
+<span id="sec-classes-polymorphism-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of three main topics:</p>
+<ul class="simple">
+<li><p>using <a class="reference internal" href="#sec-classes-polymorphism-final"><span class="std std-ref">the “final” keyword</span></a> to forbid
+changing the value of a variable or field;</p></li>
+<li><p>using <a class="reference internal" href="#sec-classes-polymorphism-static-methods-fields"><span class="std std-ref">static class fields</span></a>
+to store “global” information, and</p></li>
+<li><p>the connection between <a class="reference internal" href="#sec-classes-polymorphism-polymorphism"><span class="std std-ref">subtype polymorphism and late binding</span></a>,
+and the difference with early binding.</p></li>
+</ul>
+<p>These topics (especially the last two) are quite technical, and may not be
+relevant for all Java programs.  However, being aware of them will be helpful
+for understanding where a Java program is storing its data (using class fields
+vs. object fields), or why a Java program may seem to run by executing the
+“wrong” method (because maybe it is using early binding while we expect late
+binding).</p>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-classes-polymorphism-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: they might mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 2.2 - “Variables” and “Constants” (for the modifier <code class="docutils literal notranslate"><span class="pre">final</span></code>)</p></li>
+<li><p>Section 7.3 - “Static Class Members”</p></li>
+<li><p>Section 10.1 - “Late Binding”</p></li>
+<li><p>Section 10.2 - “Polymorphism via Inheritance”</p></li>
+<li><p>Section 10.3 - “Polymorphism via Interfaces”</p></li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-classes-polymorphism-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="ex-final-local-variables">
+
+<p class="admonition-title"><span class="caption-number">Exercise 32 </span> (Experimenting with <code class="docutils literal notranslate"><span class="pre">final</span></code> local variables and fields)</p>
+<section id="exercise-content">
+<p>Have a look at your solutions to previous weekly assessments (or the solutions
+provided by the teacher), and consider: could you mark some of the local
+variables and object fields as <code class="docutils literal notranslate"><span class="pre">final</span></code>, as in <a class="reference internal" href="#eg-final-local-variable">Example 62</a>?
+What would the code look like, if you use <code class="docutils literal notranslate"><span class="pre">final</span></code> whenever possible?</p>
+<p>In general, using <code class="docutils literal notranslate"><span class="pre">final</span></code> (when possible) makes the code more robust — but it
+may also make the code more cluttered and harder to read.  Finding the best
+compromise between robustness and readability requires some practice, and it is
+often a matter of personal taste.</p>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-classes-polymorphism-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-classes-polymorphism-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-classes-polymorphism-counters"><span class="std std-ref">05 - Counters</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-classes-polymorphism-monsters-4"><span class="std std-ref">06 - Video Game Monsters, Part 4</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="counters">
+<span id="lab-classes-polymorphism-counters"></span><h3>05 - Counters<a class="headerlink" href="#counters" title="Permalink to this heading">#</a></h3>
+<p>In this assessment you will implement two kinds of counters:</p>
+<ul class="simple">
+<li><p>a <code class="docutils literal notranslate"><span class="pre">Counter</span></code> class for creating objects that maintain their own internal
+counter value, and provide (non-static) methods to manipulate that value; and</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">StaticCounter</span></code> class, which maintains a “global” counter value, and
+provides <code class="docutils literal notranslate"><span class="pre">static</span></code> methods to manipulate it.</p></li>
+</ul>
+<p>Note that all the fields (if any) of the classes <code class="docutils literal notranslate"><span class="pre">Counter</span></code> and <code class="docutils literal notranslate"><span class="pre">StaticCounter</span></code>
+must be <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p>
+<p>First, edit the file <code class="docutils literal notranslate"><span class="pre">Counter.java</span></code> provided in the handout, and implement the
+class <code class="docutils literal notranslate"><span class="pre">Counter</span></code> with the following requirements.</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Counter</span></code> must provide the constructor:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="nf">Counter</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">initial</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which initialises a new counter object with the given <code class="docutils literal notranslate"><span class="pre">initial</span></code> value.</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Counter</span></code> must provide the following methods:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getValue</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which respectively retrieve the current value of <code class="docutils literal notranslate"><span class="pre">this</span></code> counter, or set the
+current value of <code class="docutils literal notranslate"><span class="pre">this</span></code> counter with the given value <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Counter</span></code> must provide the following methods:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">decrement</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which respectively increment or decrement the current value of <code class="docutils literal notranslate"><span class="pre">this</span></code> counter
+by 1.</p>
+</li>
+</ul>
+<p>Then, edit the file <code class="docutils literal notranslate"><span class="pre">Counter.java</span></code> provided in the handout, and add the
+implementation of the class <code class="docutils literal notranslate"><span class="pre">StaticCounter</span></code>, which maintains a “global” counter
+that has the initial value 0, and can be read and changed using the static
+methods below.</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">StaticCounter</span></code> must provide the following static methods:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getValue</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which respectively retrieve the current value of the “global” counter, or set
+the current value of the counter with the given new <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">StaticCounter</span></code> must provide the following static methods:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">increment</span><span class="p">()</span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">decrement</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which respectively increment or decrement the current value of the “global”
+counter by 1.</p>
+</li>
+</ul>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Counter.java</span></code> on DTU Autolab.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.:
+they are test programs that use the code you should write in <code class="docutils literal notranslate"><span class="pre">Counter.java</span></code>,
+and they might not compile or work correctly until you complete your work.  You
+should read those test programs, try to run them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see
+their expected outputs — but you must <em>not</em> modify those files.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>For the class <code class="docutils literal notranslate"><span class="pre">Counter</span></code>, you need to include a <code class="docutils literal notranslate"><span class="pre">private</span></code> field that stores the
+current value of the counter.</p></li>
+<li><p>For the class <code class="docutils literal notranslate"><span class="pre">StaticCounter</span></code>, you need to include a <code class="docutils literal notranslate"><span class="pre">private</span></code> <a class="reference internal" href="#sec-classes-polymorphism-static-methods-fields"><span class="std std-ref">static field</span></a> that stores the current
+value of the counter.</p></li>
+</ul>
+</div>
+</section>
+<section id="video-game-monsters-part-4">
+<span id="lab-classes-polymorphism-monsters-4"></span><h3>06 - Video Game Monsters, Part 4<a class="headerlink" href="#video-game-monsters-part-4" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This assessment can be solved using the contents introduced in previous Modules.
+It is not directly connected to the new topics introduced in this module.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For this assessment you must submit <strong>two files: <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code></strong>.  For the submission instructions, see the
+<a class="reference internal" href="#note-monsters5-grading-zipfile"><span class="std std-ref">note at the end of this assessment</span></a>.</p>
+</div>
+<p>This is a follow-up to the assessment
+<a class="reference internal" href="lab-day-4.html#lab-day-4-monsters-3"><span class="std std-ref">05 - Video Game Monsters, Part 3</span></a>, and the starting point is its
+solution, i.e. the files <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> and <code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code> (you can use either
+your own files, or the ones provided by the teacher as a solution to
+<a class="reference internal" href="lab-day-4.html#lab-day-4-monsters-3"><span class="std std-ref">05 - Video Game Monsters, Part 3</span></a>).</p>
+<p>The development of the video game has reached the stage of testing some elements
+of the gameplay: controlling a player on the playground.</p>
+<p>First, you will need to modify the static method <code class="docutils literal notranslate"><span class="pre">displayPlayground(...)</span></code> of the
+class <code class="docutils literal notranslate"><span class="pre">GameUtils</span></code> (in the file <code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code>), and change it into:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">displayPlayground</span><span class="p">(</span><span class="n">Monster</span><span class="o">[][]</span><span class="w"> </span><span class="n">playground</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pCol</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The updated static method must produce the same output required in
+<a class="reference internal" href="lab-day-4.html#lab-day-4-monsters-3"><span class="std std-ref">05 - Video Game Monsters, Part 3</span></a> — but in addition, the updated
+method must also show the player’s position, by printing an <code class="docutils literal notranslate"><span class="pre">X</span></code> at row <code class="docutils literal notranslate"><span class="pre">pRow</span></code>
+and column <code class="docutils literal notranslate"><span class="pre">pCol</span></code> of the playground.</p>
+<p>Then, you will need to add the following static methods to the class <code class="docutils literal notranslate"><span class="pre">GameUtils</span></code>
+in the file <code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code>.</p>
+<ul>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">GameUtils</span></code> must provide the static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">playerWins</span><span class="p">(</span><span class="n">Monster</span><span class="o">[][]</span><span class="w"> </span><span class="n">playground</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method must return <code class="docutils literal notranslate"><span class="pre">true</span></code> if all monsters in the given
+<code class="docutils literal notranslate"><span class="pre">playground</span></code> are dead.  Otherwise, the method must return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">GameUtils</span></code> must provide the static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">playerEaten</span><span class="p">(</span><span class="n">Monster</span><span class="o">[][]</span><span class="w"> </span><span class="n">playground</span><span class="p">,</span>
+<span class="w">                                  </span><span class="kt">int</span><span class="w"> </span><span class="n">pRow</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pCol</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method must return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <code class="docutils literal notranslate"><span class="pre">playground</span></code> contains a monster
+at the player’s row <code class="docutils literal notranslate"><span class="pre">pRow</span></code> and column <code class="docutils literal notranslate"><span class="pre">pCol</span></code>, and that monster is not dead.
+Otherwise, the method must return <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">GameUtils</span></code> must provide the static method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">playGame</span><span class="p">(</span><span class="n">Monster</span><span class="o">[][]</span><span class="w"> </span><span class="n">playground</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This static method must implement the game loop: it must keep track of the
+current player position (starting at row 0 and column 0), and read whole lines
+of input from the terminal, where each line contains a command for controlling
+the game.  The supported commands and their effect are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span></code> -
+This command causes <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> to display the game playground and
+information about the monsters, as produced by the methods
+<code class="docutils literal notranslate"><span class="pre">GameUtils.displayPlayground(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">GameUtils.displayMonsters(...)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">up</span></code>, <code class="docutils literal notranslate"><span class="pre">down</span></code>, <code class="docutils literal notranslate"><span class="pre">left</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code> -
+These commands cause <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> to change the player’s current row and
+column by one cell in the required direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hit</span></code> -
+This command makes <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> apply 100 points of hit damage at the
+current player position, by using the method <code class="docutils literal notranslate"><span class="pre">GameUtils.hit(...)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">burn</span></code> -
+This command makes <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> apply 100 points of burning damage at the
+current player position, by using the method <code class="docutils literal notranslate"><span class="pre">GameUtils.burn(...)</span></code>.</p></li>
+</ul>
+<p>After reading and executing one of the commands above, the static method
+<code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> must check whether the player has been eaten or has won.  If
+the player has <em>not</em> been eaten and has <em>not</em> won, the game loop repeats, by
+reading and executing the next command.  Otherwise:</p>
+<ul>
+<li><p>If the player has been eaten, then <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> must print a message like
+the following, explaining which monster is responsible (using the
+<code class="docutils literal notranslate"><span class="pre">Monster</span></code>’s method <code class="docutils literal notranslate"><span class="pre">getDescription()</span></code>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>You were eaten by Blackfur (owlbear; health: 59)
+</pre></div>
+</div>
+<p>After printing the output above, <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> must return to the caller.</p>
+</li>
+<li><p>If the player has won, then <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> must print <code class="docutils literal notranslate"><span class="pre">You</span> <span class="pre">won!</span></code>, followed
+by the output of <code class="docutils literal notranslate"><span class="pre">GameUtils.displayMonsters(...)</span></code> (showing that all monsters
+are now dead).  Therefore, the output may look like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>You won!
+Row 1, column 1: Mashface (wumpus; health: 0)
+Row 3, column 2: Hoothowl (owlbear; health: 0)
+</pre></div>
+</div>
+<p>After printing the output above, <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> must return to the caller.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To see your implementation of <code class="docutils literal notranslate"><span class="pre">playGame(...)</span></code> in action, you can compile all
+<code class="docutils literal notranslate"><span class="pre">.java</span></code> files in the handout folder (by executing <code class="docutils literal notranslate"><span class="pre">javac</span> <span class="pre">*.java</span></code> in the
+terminal), and then run <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">Test12</span></code>.  The game will looks as follows: (the
+highlighted lines are the commands written on the terminal by the user, while
+the other lines are the game output)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">show
+</span>X....
+.W...
+.....
+..O..
+.....
+Row 1, column 1: Mashface (wumpus; health: 20)
+Row 3, column 2: Hoothowl (owlbear; health: 59)
+<span class="hll">hit
+</span><span class="hll">show
+</span>X....
+.W...
+.....
+..O..
+.....
+Row 1, column 1: Mashface (wumpus; health: 0)
+Row 3, column 2: Hoothowl (owlbear; health: 59)
+<span class="hll">right
+</span><span class="hll">down
+</span><span class="hll">show
+</span>.....
+.X...
+.....
+..O..
+.....
+Row 1, column 1: Mashface (wumpus; health: 0)
+Row 3, column 2: Hoothowl (owlbear; health: 59)
+<span class="hll">right
+</span><span class="hll">right
+</span><span class="hll">down
+</span><span class="hll">down
+</span><span class="hll">show
+</span>.....
+.W...
+.....
+..OX.
+.....
+Row 1, column 1: Mashface (wumpus; health: 0)
+Row 3, column 2: Hoothowl (owlbear; health: 59)
+<span class="hll">left
+</span>You were eaten by Hoothowl (owlbear; health: 59)
+</pre></div>
+</div>
+</div>
+</li>
+</ul>
+<div class="admonition note" id="note-monsters5-grading-zipfile">
+<p class="admonition-title">Note</p>
+<p>For this assessment you need to prepare and submit a ZIP file containing your
+modified versions of <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> and <code class="docutils literal notranslate"><span class="pre">GameUtils.java</span></code>.  To prepare that ZIP
+file, you can simply execute from the terminal (inside the handout directory):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./grade -z
+</pre></div>
+</div>
+<p>This command will grade your work <em>and</em> prepare a ZIP file that you can then
+submit on DTU Autolab.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>When solving this assessment, you should <em>not</em> need to change the file
+<code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> developed for <a class="reference internal" href="lab-day-4.html#lab-day-4-monsters-3"><span class="std std-ref">05 - Video Game Monsters, Part 3</span></a>
+(i.e. you should be able to just copy&amp;paste and reuse the file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code>
+from the previous solution, and then submit it as-is).</p></li>
+<li><p>When implementing <code class="docutils literal notranslate"><span class="pre">GameUtils.playGame(...)</span></code>, using a
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-conditions-switch"><span class="std std-ref">switch statement</span></a> may simplify
+your work.</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="inheritance-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab-day-5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 11, Part 1: Lab Day</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-final-keyword">The <code class="docutils literal notranslate"><span class="pre">final</span></code> Keyword</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-class-fields-and-methods">Static Class Fields (and Methods)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-subtype-polymorphism-and-early-vs-late-binding">More on Subtype Polymorphism and Early vs. Late Binding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counters">05 - Counters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-monsters-part-4">06 - Video Game Monsters, Part 4</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

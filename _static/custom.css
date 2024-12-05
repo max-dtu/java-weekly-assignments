@@ -1,0 +1,16 @@
+span.linenos {
+    color: lightslategray;
+    font-size: 85%;
+}
+
+.figcaption span.caption-number, .figcaption span.caption-text {
+    color: gray;
+    font-size: 85%;
+}
+
+.asm {
+    font-family: monospace;
+    background-color: lightblue;
+    color: black;
+    padding: 0.2em;
+}

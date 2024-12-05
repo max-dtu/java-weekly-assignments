@@ -1,0 +1,975 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 4, Part 2: Structured Programming &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/bussproofs"]}, "tex": {"packages": {"[+]": ["bussproofs"]}, "macros": {}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="_static/mathjax/es5/tex-svg.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 5, Part 1: Arrays" href="arrays.html" />
+    <link rel="prev" title="Module 4, Part 1: More About Loops" href="loops2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 4, Part 2: Structured Programming</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-programming-and-code-reuse">Structured Programming and Code Reuse</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-code-into-static-methods">Splitting Code into Static Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-code-into-separate-classes">Splitting Code into Separate Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-code-into-separate-files">Splitting Code into Separate Files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-2">05 - Maximum 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#square-2">06 - Square 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#days-in-a-month-2">07 - Days in a Month 2</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-4-part-2-structured-programming">
+<span id="mod-structured"></span><h1>Module 4, Part 2: Structured Programming<a class="headerlink" href="#module-4-part-2-structured-programming" title="Permalink to this heading">#</a></h1>
+<p>In this second part of Module 4 we address how to
+structure your code for better readability.
+More specifically, we study how to split the code into
+<a class="reference internal" href="#sec-structured-struct-static-methods"><span class="std std-ref">static methods</span></a>,
+which are a form of “subroutine” in Java. Then, we build upon this concept
+to see how to further split our code into
+<a class="reference internal" href="#sec-structured-struct-separate-classes"><span class="std std-ref">separate classes</span></a>,
+and then into <a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">separate files</span></a>.</p>
+<span class="target" id="index-0"></span><section id="structured-programming-and-code-reuse">
+<span id="sec-structured-struct"></span><span id="index-1"></span><h2>Structured Programming and Code Reuse<a class="headerlink" href="#structured-programming-and-code-reuse" title="Permalink to this heading">#</a></h2>
+<p>At this point, we have seen various elements of the Java programming language,
+which allow us to organise and run the statements of our programs in 3 ways:</p>
+<ul class="simple">
+<li><p>executing statements in <strong>sequence</strong> (by writing them one after the other);</p></li>
+<li><p>executing statements <strong>conditionally</strong>, depending the result of a boolean
+expression (<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-conditions-if-then-else"><span class="std std-ref">If-Then-Else Statement</span></a>,
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-conditions-if-then"><span class="std std-ref">If-Then Statement</span></a>,
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-conditions-switch"><span class="std std-ref">Switch Statement</span></a>);</p></li>
+<li><p>executing statements <strong>repeatedly</strong>, depending on the result of a boolean
+expression (<a class="reference internal" href="loops.html#sec-loops-while"><span class="std std-ref">While Statement</span></a>,
+<a class="reference internal" href="loops.html#sec-loops-do-while"><span class="std std-ref">Do-While Statement</span></a>, <a class="reference internal" href="loops2.html#sec-loops2-for"><span class="std std-ref">For Statement</span></a>).</p></li>
+</ul>
+<p>These constructs give us the basic tools of <strong>structured programming</strong> and are
+sufficient for writing any possible algorithm that a computer can execute.
+(There is even
+<a class="reference external" href="https://en.wikipedia.org/wiki/Structured_program_theorem">a famous theorem that proves this fact</a>.)
+However, if we only use these constructs to write our Java programs, may end up
+writing a lot of duplicated code!  This is illustrated in
+<a class="reference internal" href="#eg-code-duplication">Example 30</a> below.</p>
+<div class="proof example admonition" id="eg-code-duplication">
+<p class="admonition-title"><span class="caption-number">Example 30 </span> (Code duplication)</p>
+<section class="example-content" id="proof-content">
+<p>Consider again <a class="reference internal" href="loops2.html#eg-summing-numbers-for">Example 27</a>, but now suppose that we need
+to write a program that lets the user provide <em>two</em> positive values <span class="math notranslate nohighlight">\(n_1\)</span> and
+<span class="math notranslate nohighlight">\(n_2\)</span>, and then computes and displays the sum of all numbers from 1 to <span class="math notranslate nohighlight">\(n_1\)</span>,
+and then from 1 to <span class="math notranslate nohighlight">\(n_2\)</span>.</p>
+<p>With the elements of Java we have seen thus far, we would end up writing a
+program like the following:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">TwoSums</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Please write two positive numbers:&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">sum1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Will be updated during the computation of the sum</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">12</span><span class="w">            </span><span class="n">sum1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">13</span><span class="w">        </span><span class="p">}</span>
+</span><span class="linenos">14</span>
+<span class="hll"><span class="linenos">15</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">sum2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Will be updated during the computation of the sum</span>
+</span><span class="hll"><span class="linenos">16</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">17</span><span class="w">            </span><span class="n">sum2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">18</span><span class="w">        </span><span class="p">}</span>
+</span><span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sum of all numbers from 1 to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum1</span><span class="p">);</span>
+<span class="linenos">21</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sum of all numbers from 1 to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum2</span><span class="p">);</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="linenos">24</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">25</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Observe that the code of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that computes the sum is repeated twice.
+If we had to compute more than two sums, or more complex results, the amount of
+duplicated code would increase, and this would become more and more
+inconvenient:</p>
+<ul class="simple">
+<li><p>duplicated code makes programs longer and harder to understand;</p></li>
+<li><p>duplicated code makes programs harder to maintain: if a piece of duplicated
+code contains a bug, then the bug is also duplicated, and must be fixed twice!</p></li>
+</ul>
+<div class="docutils">
+</div>
+</section>
+</div><span class="target" id="index-2"></span><p id="index-3">What we need to reduce code duplication is generally called a <strong>subroutine</strong> (or
+<strong>function</strong>), i.e. a sub-program that performs a useful task; we also need some
+way to <strong>call</strong> a subroutine to make it perform its task.  We now discuss three
+ways to structure Java code for improving code reuse, based on the concept of
+subroutine:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sec-structured-struct-static-methods"><span class="std std-ref">Splitting Code into Static Methods</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-structured-struct-separate-classes"><span class="std std-ref">Splitting Code into Separate Classes</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">Splitting Code into Separate Files</span></a></p></li>
+</ul>
+<span class="target" id="index-4"></span><span class="target" id="index-5"></span><span class="target" id="index-6"></span><span class="target" id="index-7"></span><span class="target" id="index-8"></span><span class="target" id="index-9"></span><section id="splitting-code-into-static-methods">
+<span id="sec-structured-struct-static-methods"></span><span id="index-10"></span><h3>Splitting Code into Static Methods<a class="headerlink" href="#splitting-code-into-static-methods" title="Permalink to this heading">#</a></h3>
+<p>Java allows us to define a form of “subroutine” called “<strong>static method</strong>” —
+which is a block of code with an assigned name that can be <strong>called</strong> (possibly
+providing some values as arguments). When a static method is called, it executes
+the Java statements written in its body, and finally produces and <strong>returns</strong> a
+result to the caller.</p>
+<p>The definition of a static method looks as follows: <em>(try to copy&amp;paste it on the
+Java shell)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="linenos">4</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Line 1 above (before the open curly bracket “<code class="docutils literal notranslate"><span class="pre">{</span></code>”) is the <strong>signature</strong> of the
+static method, which tells us that:</p>
+<ul class="simple">
+<li><p>we are defining a static method whose name is <code class="docutils literal notranslate"><span class="pre">max</span></code></p></li>
+<li><p>the static method takes two arguments, a.k.a. <strong>formal parameters</strong>:</p>
+<ul>
+<li><p>one has type <code class="docutils literal notranslate"><span class="pre">int</span></code>, and its name is <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>the other has type <code class="docutils literal notranslate"><span class="pre">int</span></code>, and its name is <code class="docutils literal notranslate"><span class="pre">b</span></code></p></li>
+</ul>
+</li>
+<li><p>the static method returns a result of type <code class="docutils literal notranslate"><span class="pre">int</span></code> (as specified after the
+keyword <code class="docutils literal notranslate"><span class="pre">static</span></code>)</p></li>
+</ul>
+<p>The curly brackets <code class="docutils literal notranslate"><span class="pre">{</span></code>…<code class="docutils literal notranslate"><span class="pre">}</span></code> (lines 1–4) surround the <strong>method body</strong>, which is
+executed when the static method is called.</p>
+<p>When we write code that needs to call the static method above, we simply use its
+name, providing the required arguments (between parentheses, and separated by
+commas).  For instance, on the Java shell we can try:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var maximum = max(3, 21 * 2)
+</span>maximum ==&gt; 42
+|  created variable maximum : int
+</pre></div>
+</div>
+<p>When Java executes the static method call <code class="docutils literal notranslate"><span class="pre">max(3,</span> <span class="pre">21</span> <span class="pre">*</span> <span class="pre">2)</span></code> above, it proceeds as
+follows:</p>
+<ul class="simple">
+<li><p>Java <strong>evaluates all the call arguments</strong>, proceeding from left to right.  In
+this example, the argument <code class="docutils literal notranslate"><span class="pre">3</span></code> is already a value, while <code class="docutils literal notranslate"><span class="pre">21</span> <span class="pre">*</span> <span class="pre">2</span></code> evaluates
+to <code class="docutils literal notranslate"><span class="pre">42</span></code>.  Therefore, the static method call becomes <code class="docutils literal notranslate"><span class="pre">max(3,</span> <span class="pre">42)</span></code>;</p></li>
+<li><p>Then, the two values 3 and 42 become the <strong>actual parameters</strong> of the method
+call, i.e. they are <strong>passed</strong> to the body of <code class="docutils literal notranslate"><span class="pre">max</span></code> providing a value to its
+formal parameters <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>;</p></li>
+<li><p>Now, the body of the static method <code class="docutils literal notranslate"><span class="pre">max</span></code> is executed:</p>
+<ul>
+<li><p>as mentioned in the previous item, the formal parameters <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> get the
+values passed with the call, i.e., 3 and 42, respectively. Intuitively, this
+is akin to placing the variable declarations <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">42</span></code>
+just before the first line of the method body;</p></li>
+<li><p>on line 2, the method body declares a <strong>local variable</strong> <code class="docutils literal notranslate"><span class="pre">result</span></code>, computing
+the maximum between the values assigned to <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> by the call (i.e. 3
+and 42) using a
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-conditions-conditional-expr"><span class="std std-ref">conditional expression</span></a>.
+Therefore, the local variable <code class="docutils literal notranslate"><span class="pre">result</span></code> takes the value 42;</p></li>
+<li><p>on line 3, the method body <strong>returns</strong> the value of the variable <code class="docutils literal notranslate"><span class="pre">result</span></code>
+(which is 42) to the caller.</p></li>
+</ul>
+</li>
+</ul>
+<p>The value returned by the method call (i.e., 42) is finally used to declare the
+variable <code class="docutils literal notranslate"><span class="pre">maximum</span></code> in the Java shell (as shown by the shell output).</p>
+<p>We can define static methods as we please — and they are especially useful for
+tasks that are performed multiple times in our program, as shown in
+<a class="reference internal" href="#eg-code-duplication-static-method">Example 31</a> below.</p>
+<div class="proof example admonition" id="eg-code-duplication-static-method">
+<p class="admonition-title"><span class="caption-number">Example 31 </span> (Avoiding code duplication with static methods)</p>
+<section class="example-content" id="proof-content">
+<p>We can remove the code duplication in <a class="reference internal" href="#eg-code-duplication">Example 30</a> by defining
+a static method that computes the summation, and calling it when needed.</p>
+<p>For example, we could define a static method named <code class="docutils literal notranslate"><span class="pre">sum</span></code> that:</p>
+<ul class="simple">
+<li><p>takes one argument of type <code class="docutils literal notranslate"><span class="pre">int</span></code>, named <code class="docutils literal notranslate"><span class="pre">n</span></code>;</p></li>
+<li><p>returns a value of type <code class="docutils literal notranslate"><span class="pre">int</span></code>;</p></li>
+<li><p>in its body, computes the sum of all <code class="docutils literal notranslate"><span class="pre">int</span></code> values between 1 and <code class="docutils literal notranslate"><span class="pre">n</span></code>, and
+returns the result.</p></li>
+</ul>
+<p>With this adaptation, the Java program in <a class="reference internal" href="#eg-code-duplication">Example 30</a> could
+be rewritten as follows, removing the code duplication.  (Notice that the static
+method <code class="docutils literal notranslate"><span class="pre">sum</span></code> is defined on lines 19–25, and is called on lines 10 and 11)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">TwoSums</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Please write two positive numbers:&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">sum1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">sum2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">n2</span><span class="p">);</span>
+</span><span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sum of all numbers from 1 to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum1</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sum of all numbers from 1 to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum2</span><span class="p">);</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="hll"><span class="linenos">19</span><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">20</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">summation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Will be updated during the computation of the sum</span>
+</span><span class="hll"><span class="linenos">21</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">22</span><span class="w">            </span><span class="n">summation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">summation</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">24</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">summation</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">25</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">26</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<section id="splitting-code-into-separate-classes">
+<span id="sec-structured-struct-separate-classes"></span><h3>Splitting Code into Separate Classes<a class="headerlink" href="#splitting-code-into-separate-classes" title="Permalink to this heading">#</a></h3>
+<p>When designing or developing our Java programs, we can use classes to better
+organise our static methods, as shown in
+<a class="reference internal" href="#eg-code-duplication-separate-classes">Example 32</a> below.</p>
+<div class="proof example admonition" id="eg-code-duplication-separate-classes">
+<p class="admonition-title"><span class="caption-number">Example 32 </span> (Organising the code in separate classes)</p>
+<section class="example-content" id="proof-content">
+<p>Continuing <a class="reference internal" href="#eg-code-duplication-static-method">Example 31</a>, we may want to move our
+static method <code class="docutils literal notranslate"><span class="pre">sum</span></code> into a different class.  The idea is to improve code
+readability by distinguishing the class <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> (which contains the <code class="docutils literal notranslate"><span class="pre">main</span></code>
+method of the program) from the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code> (where we want to put
+miscellaneous utility methods, like <code class="docutils literal notranslate"><span class="pre">sum</span></code> and possibly others).
+The result of this reorganisation is shown below. Notice that:</p>
+<ul class="simple">
+<li><p>there is now a class named <code class="docutils literal notranslate"><span class="pre">Utils</span></code> that contains the definition of <code class="docutils literal notranslate"><span class="pre">sum</span></code>
+(lines 20–28), and</p></li>
+<li><p>to call the static method <code class="docutils literal notranslate"><span class="pre">sum</span></code>, we now need to specify the name of the class
+where the static method is defined, i.e. we need to write <code class="docutils literal notranslate"><span class="pre">Utils.sum(...)</span></code>
+(lines 10 and 11).</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">TwoSums</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Please write two positive numbers:&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">sum1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Utils</span><span class="p">.</span><span class="na">sum</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">sum2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Utils</span><span class="p">.</span><span class="na">sum</span><span class="p">(</span><span class="n">n2</span><span class="p">);</span>
+</span><span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sum of all numbers from 1 to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum1</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sum of all numbers from 1 to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sum2</span><span class="p">);</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">18</span><span class="p">}</span>
+<span class="linenos">19</span>
+<span class="hll"><span class="linenos">20</span><span class="kd">class</span> <span class="nc">Utils</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">21</span><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">22</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">summation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Will be updated during the computation of the sum</span>
+</span><span class="hll"><span class="linenos">23</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">24</span><span class="w">            </span><span class="n">summation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">summation</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">25</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">26</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">summation</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">27</span><span class="w">    </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">28</span><span class="p">}</span>
+</span></pre></div>
+</div>
+</section>
+</div><span class="target" id="index-11"></span><span class="target" id="index-12"></span></section>
+<section id="splitting-code-into-separate-files">
+<span id="sec-structured-struct-separate-files"></span><span id="index-13"></span><h3>Splitting Code into Separate Files<a class="headerlink" href="#splitting-code-into-separate-files" title="Permalink to this heading">#</a></h3>
+<p>As a further step to better organise our code, we may decide to split some of
+our classes into separate files, with extension <code class="docutils literal notranslate"><span class="pre">.java</span></code>.  This may make our
+programs easier to read and maintain, especially as they grow in size.</p>
+<p>However, splitting classes into multiple files also introduces a drawback:
+<strong>before running a program, we will need to explicitly compile all its <code class="docutils literal notranslate"><span class="pre">.java</span></code>
+files</strong>, by using the <strong>Java compiler <code class="docutils literal notranslate"><span class="pre">javac</span></code></strong>.  When we compile a <code class="docutils literal notranslate"><span class="pre">.java</span></code>
+file, we obtain one or more <strong>class files</strong> — i.e. files with extension
+<code class="docutils literal notranslate"><span class="pre">.class</span></code>, each one containing an executable representation
+(called <strong>Java bytecode</strong>) of a specific class in the program.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can think of Java bytecode as something similar to the
+<a class="reference internal" href="basic-programming.html#sec-basic-programming-stored-computer-von-neumann"><span class="std std-ref">machine instructions executed by a computer’s CPU</span></a>
+— e.g., as in <a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a>.
+However, the Java bytecode is <em>not</em> executed directly by the CPU: instead, it is
+interpreted by the <code class="docutils literal notranslate"><span class="pre">java</span></code> program, which in turn implements the
+<a class="reference external" href="https://www.infoworld.com/article/3272244/what-is-the-jvm-introducing-the-java-virtual-machine.html">Java Virtual Machine (JVM)</a>.
+We will reprise this topic in more detail
+later in the course.</p>
+</div>
+<p>In a nutshell, the procedure for writing and running a Java program now becomes:</p>
+<ol class="arabic simple">
+<li><p><strong>Write one or more Java files</strong> (with extension <code class="docutils literal notranslate"><span class="pre">.java</span></code>), each one defining
+one or more classes — with at least one class containing a static method
+called <code class="docutils literal notranslate"><span class="pre">main</span></code> (which is the starting point when our program is executed);</p></li>
+<li><p><strong>Compile all the Java files into class files</strong>, using the Java compiler
+<code class="docutils literal notranslate"><span class="pre">javac</span></code>.  If your Java files do not contain syntax errors nor type errors,
+then <code class="docutils literal notranslate"><span class="pre">javac</span></code> will generate one class file (with extension <code class="docutils literal notranslate"><span class="pre">.class</span></code>) for each
+class defined in your Java files;</p></li>
+<li><p><strong>Execute the <code class="docutils literal notranslate"><span class="pre">main</span></code> method of the program</strong>, by running <code class="docutils literal notranslate"><span class="pre">java</span></code> followed by
+the name of the class that contains the static method <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+</ol>
+<p><a class="reference internal" href="#eg-code-duplication-separate-files">Example 33</a> and <a class="reference internal" href="#fig-javac-java"><span class="std std-numref">Fig. 17</span></a> below
+illustrate how a Java program can be organised in multiple files, compiled, and
+executed.</p>
+<div class="proof example admonition" id="eg-code-duplication-separate-files">
+<p class="admonition-title"><span class="caption-number">Example 33 </span> (Organising the code in separate files)</p>
+<section class="example-content" id="proof-content">
+<p>Continuing <a class="reference internal" href="#eg-code-duplication-separate-classes">Example 32</a>, we may want to move
+the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code> containing our static method <code class="docutils literal notranslate"><span class="pre">sum</span></code> in a different file.
+The idea is to make our code easier to navigate — especially when it grows in
+size (although this example is quite small).</p>
+<p>Therefore, we now crate two separate files:</p>
+<ul class="simple">
+<li><p>a file called <code class="docutils literal notranslate"><span class="pre">TwoSums.java</span></code>, containing only the class <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code>
+(<a class="reference download internal" download="" href="_downloads/52bd5a175fa64e2f0d70b5821563e8b8/TwoSums.java"><span class="xref download myst">download <code class="docutils literal notranslate"><span class="pre">TwoSums.java</span></code></span></a>)</p></li>
+<li><p>another file called <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code>, containing only the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code>
+(<a class="reference download internal" download="" href="_downloads/48d3fa739e45e0686f871161fdc63748/Utils.java"><span class="xref download myst">download <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code></span></a>)</p></li>
+</ul>
+<p>After we place both files in the same directory, we will need to compile them,
+before we can run the program <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code>.  To compile the files, we use the
+<strong>Java compiler <code class="docutils literal notranslate"><span class="pre">javac</span></code></strong> from the console (in the directory where the files
+<code class="docutils literal notranslate"><span class="pre">TwoSums.java</span></code> and <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> are located):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac TwoSums.java Utils.java
+</pre></div>
+</div>
+<p>(If all goes well, you will not see any error or warning message, and you will
+be back to the console prompt.)</p>
+<p>If you have a look at the directory contents now, you will notice that there are
+<strong>two new files, called <code class="docutils literal notranslate"><span class="pre">TwoSums.class</span></code> and <code class="docutils literal notranslate"><span class="pre">Utils.class</span></code></strong>: they have been
+created by <code class="docutils literal notranslate"><span class="pre">javac</span></code>, and  contain the executable Java bytecode of the two classes
+<code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> and <code class="docutils literal notranslate"><span class="pre">Utils</span></code>.</p>
+<p>We can now run the <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> program that has been compiled and saved in the
+file <code class="docutils literal notranslate"><span class="pre">TwoSums.class</span></code>. To run the program, we invoke <code class="docutils literal notranslate"><span class="pre">java</span></code> by specifying
+<em>the name of the class that contains the <code class="docutils literal notranslate"><span class="pre">main</span></code> static method</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java TwoSums
+</pre></div>
+</div>
+<p>The overall prodedure is illustrated in <a class="reference internal" href="#fig-javac-java"><span class="std std-numref">Fig. 17</span></a> below.  You
+will see that the <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> program runs just as it did in
+<a class="reference internal" href="#eg-code-duplication-separate-classes">Example 32</a> above.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Notice that to execute the <code class="docutils literal notranslate"><span class="pre">main</span></code> method of the class <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> compiled in the
+file <code class="docutils literal notranslate"><span class="pre">TwoSums.class</span></code>, we run <code class="docutils literal notranslate"><span class="pre">java</span></code> with the class name <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> only — i.e.
+we do <em>not</em> write <code class="docutils literal notranslate"><span class="pre">TwoSums.java</span></code> nor <code class="docutils literal notranslate"><span class="pre">TwoSums.class</span></code>!</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To compile <em>all</em> the <code class="docutils literal notranslate"><span class="pre">.java</span></code> files contained in the current directory, without
+listing their names one by one, you can execute:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac *.java
+</pre></div>
+</div>
+</div>
+<figure class="align-default" id="fig-javac-java">
+<img alt="Java compilation and execution workflow" src="_images/javac-java.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">A diagram of the Java compilation and execution workflow, based on the scenario
+illustrated in <a class="reference internal" href="#eg-code-duplication-separate-files">Example 33</a>.  The Java source
+code files (<code class="docutils literal notranslate"><span class="pre">TwoSums.java</span></code> and <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code>) are compiled using <code class="docutils literal notranslate"><span class="pre">javac</span></code>,
+producing one Java bytecode file for each class (<code class="docutils literal notranslate"><span class="pre">TwoSums.class</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Utils.class</span></code>); the class files are then executed using <code class="docutils literal notranslate"><span class="pre">java</span></code>, and the running
+program can then e.g. interact with the console to read keyboard inputs or print
+outputs on screen.</span><a class="headerlink" href="#fig-javac-java" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When writing our first Java programs up to this point, we have considered
+situations where a Java program fits in single file (called e.g.
+<code class="docutils literal notranslate"><span class="pre">Program.java</span></code>), and we have been able to run the program directly by using
+<code class="docutils literal notranslate"><span class="pre">java</span></code> (by executing e.g. <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">Program.java</span></code> on a terminal).</p>
+<p>For these single-file programs, <code class="docutils literal notranslate"><span class="pre">java</span></code> is automatically following the workflow
+illustrated in <a class="reference internal" href="#fig-javac-java"><span class="std std-numref">Fig. 17</span></a>: under the hood, it is invoking <code class="docutils literal notranslate"><span class="pre">javac</span></code>,
+producing <code class="docutils literal notranslate"><span class="pre">.class</span></code> files, and then running the <code class="docutils literal notranslate"><span class="pre">main</span></code> method of the program in
+the Java Virtual Machine (JVM); the class files, however, are not saved on disk.</p>
+<p>You can try this workflow yourself.  Go back to the single-file version of our
+program <code class="docutils literal notranslate"><span class="pre">TwoSums.java</span></code> (in <a class="reference internal" href="#eg-code-duplication-separate-classes">Example 32</a>),
+and execute on the terminal:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>javac TwoSums.java
+</pre></div>
+</div>
+<p>This will create <em>two</em> new bytecode class file called <code class="docutils literal notranslate"><span class="pre">TwoSums.class</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> (just like the ones we compiled in
+<a class="reference internal" href="#eg-code-duplication-separate-files">Example 33</a>).  You can then execute the
+<code class="docutils literal notranslate"><span class="pre">main</span></code> method of the class <code class="docutils literal notranslate"><span class="pre">TwoSums</span></code> by running:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java TwoSums
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="concluding-remarks">
+<span id="sec-structured-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of three main topics:</p>
+<ul class="simple">
+<li><p>How to define and call
+<a class="reference internal" href="#sec-structured-struct-static-methods"><span class="std std-ref">static methods</span></a>, to
+make your code better structured and easier to reuse;</p></li>
+<li><p>How to organise your static methods into
+<a class="reference internal" href="#sec-structured-struct-separate-classes"><span class="std std-ref">separate classes</span></a>;</p></li>
+<li><p>How to split your classes into
+<a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">separate files</span></a>, how
+to compile your <code class="docutils literal notranslate"><span class="pre">.java</span></code> files into <code class="docutils literal notranslate"><span class="pre">.class</span></code> files (using the Java compiler
+<code class="docutils literal notranslate"><span class="pre">javac</span></code>), and how to execute them.</p></li>
+</ul>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-structured-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>The notions introduced in this module should allow you to better understand what
+was happening, e.g., when you used <code class="docutils literal notranslate"><span class="pre">Math.sqrt(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">Math.abs(...)</span></code> for solving
+<a class="reference internal" href="io-conditionals-strings.html#lab-io-cond-strings-distance"><span class="std std-ref">06 - Line-Point Distance</span></a>: you were calling some static methods
+defined in a class named <code class="docutils literal notranslate"><span class="pre">Math</span></code>, which is part of the Java API.  If you are
+curious, you can find the documentation of the <code class="docutils literal notranslate"><span class="pre">Math</span></code> class and its static methods
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html">here</a>.</p>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-structured-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-structured-maximum2"><span class="std std-ref">05 - Maximum 2</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-structured-square2"><span class="std std-ref">06 - Square 2</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-structured-month-days-2"><span class="std std-ref">07 - Days in a Month 2</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="maximum-2">
+<span id="lab-structured-maximum2"></span><h3>05 - Maximum 2<a class="headerlink" href="#maximum-2" title="Permalink to this heading">#</a></h3>
+<p>This is a variation of the assessment <a class="reference internal" href="io-conditionals-strings.html#lab-io-cond-strings-maximum"><span class="std std-ref">03 - Print the Maximum</span></a>,
+but with the program <a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">split into separate files</span></a>.</p>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> and implement the body of the static method with the
+following signature (in the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code>):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The method takes three arguments <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code> (all of type <code class="docutils literal notranslate"><span class="pre">int</span></code>). When
+called, the method must return the maximum value between those given as arguments.
+For instance, if the method is called as <code class="docutils literal notranslate"><span class="pre">Utils.max(1,</span> <span class="pre">42,</span> <span class="pre">-3)</span></code>, then it must
+return 42. The method is used in the
+test program contained in the file <code class="docutils literal notranslate"><span class="pre">Maximum.java</span></code>, which is also included in the
+handout: you should read <code class="docutils literal notranslate"><span class="pre">Maximum.java</span></code> and try to run it, but you must <em>not</em>
+modify it.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> on DTU Autolab.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Besides testing your solution by running <code class="docutils literal notranslate"><span class="pre">./grade</span></code>, make sure you are also able
+to manually compile this multi-file Java program (using <code class="docutils literal notranslate"><span class="pre">javac</span></code>) and then run it
+(using <code class="docutils literal notranslate"><span class="pre">java</span></code>), as explained <a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">above</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional inputs.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+<section id="square-2">
+<span id="lab-structured-square2"></span><h3>06 - Square 2<a class="headerlink" href="#square-2" title="Permalink to this heading">#</a></h3>
+<p>This is a variation of the assessment <a class="reference internal" href="loops.html#lab-loops-square"><span class="std std-ref">09 - Square</span></a>,
+but with the program <a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">split into separate files</span></a>.</p>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> and implement the body of the static method with the
+following signature (in the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code>):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">createSquare</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The method takes as argument the size of a square, and must return a <code class="docutils literal notranslate"><span class="pre">String</span></code>
+representing a square of that size, made by using the character <code class="docutils literal notranslate"><span class="pre">#</span></code> (like the
+square shown in <a class="reference internal" href="loops.html#lab-loops-square"><span class="std std-ref">09 - Square</span></a>).  The method is used in the
+test program contained in the file <code class="docutils literal notranslate"><span class="pre">Square.java</span></code>, which is also included in the
+handout: you should read <code class="docutils literal notranslate"><span class="pre">Square.java</span></code> and try to run it, but you must <em>not</em>
+modify it.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> on DTU Autolab.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Besides testing your solution by running <code class="docutils literal notranslate"><span class="pre">./grade</span></code>, make sure you are also able
+to manually compile this multi-file Java program (using <code class="docutils literal notranslate"><span class="pre">javac</span></code>) and then run it
+(using <code class="docutils literal notranslate"><span class="pre">java</span></code>), as explained <a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">above</span></a>.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The string that represents the square might include multiple lines of characters.
+To generate the required “newline” that separate one line from the next, you
+should call <code class="docutils literal notranslate"><span class="pre">System.lineSeparator()</span></code>: it is
+a static method provided by the Java API which returns a string containing the
+special character(s) that, when printed, are visualised as a newline (you can
+read the documentation
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/System.html#lineSeparator()">here</a>).</p>
+<p>For example, you can try this on the Java shell: <em>(note: the content of
+the variable <code class="docutils literal notranslate"><span class="pre">twoLines</span></code> will be slightly different on Windows)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var twoLines = &quot;Line 1&quot; + System.lineSeparator() + &quot;Line 2&quot;
+</span>twoLines ==&gt; &quot;Line 1\nLine 2&quot;
+|  created variable twoLines : String
+
+<span class="hll">jshell&gt; System.out.println(twoLines)
+</span>Line 1
+Line 2
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional inputs.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+<section id="days-in-a-month-2">
+<span id="lab-structured-month-days-2"></span><h3>07 - Days in a Month 2<a class="headerlink" href="#days-in-a-month-2" title="Permalink to this heading">#</a></h3>
+<p>This is a variation of the assessment <a class="reference internal" href="lab-day-1.html#lab-lab-day-1-month-days"><span class="std std-ref">04 - Days in a Month</span></a>,
+but with the program <a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">split into separate files</span></a>.</p>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> and implement the following <strong>two static methods</strong>
+(in the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code>).</p>
+<ol class="arabic">
+<li><p>A static method called <code class="docutils literal notranslate"><span class="pre">monthNumber</span></code> that:</p>
+<ul class="simple">
+<li><p>takes one argument (of type <code class="docutils literal notranslate"><span class="pre">String</span></code>) representing the name of a month;</p></li>
+<li><p>returns an <code class="docutils literal notranslate"><span class="pre">int</span></code>eger value corresponding to the number of the month — or 0,
+if the month name is invalid.</p></li>
+</ul>
+<p>The month name can be written using any combination of uppercase and
+lowercase letters. For instance:</p>
+<ul class="simple">
+<li><p>the static method call <code class="docutils literal notranslate"><span class="pre">Utils.monthNumber(&quot;jAnUaRy&quot;)</span></code> must return 1;</p></li>
+<li><p>the static method call <code class="docutils literal notranslate"><span class="pre">Utils.monthNumber(&quot;aPRil&quot;)</span></code> must return 4;</p></li>
+<li><p>the static method call <code class="docutils literal notranslate"><span class="pre">Utils.monthNumber(&quot;foobar&quot;)</span></code> must return 0.</p></li>
+</ul>
+</li>
+<li><p>A static method called <code class="docutils literal notranslate"><span class="pre">daysInMonth</span></code> that:</p>
+<ul class="simple">
+<li><p>takes two arguments (of type <code class="docutils literal notranslate"><span class="pre">int</span></code>) representing a month number and a year,
+respectively;</p></li>
+<li><p>returns an <code class="docutils literal notranslate"><span class="pre">int</span></code>eger value corresponding to the number of days in the given
+month in the given year, taking into account leap years. If the month
+number is invalid, the method must return 0.</p></li>
+</ul>
+<p>For instance:</p>
+<ul class="simple">
+<li><p>the static method call <code class="docutils literal notranslate"><span class="pre">Utils.daysInMonth(1,</span> <span class="pre">2024)</span></code> must return 31;</p></li>
+<li><p>the static method call <code class="docutils literal notranslate"><span class="pre">Utils.daysInMonth(2,</span> <span class="pre">1900)</span></code> must return 28;</p></li>
+<li><p>the static method call <code class="docutils literal notranslate"><span class="pre">Utils.daysInMonth(42,</span> <span class="pre">1733)</span></code> must return 0.</p></li>
+</ul>
+</li>
+</ol>
+<p>These two methods are used in the test program contained in the file
+<code class="docutils literal notranslate"><span class="pre">MonthDays.java</span></code>, which is also included in the handout: you should read
+<code class="docutils literal notranslate"><span class="pre">MonthDays.java</span></code> and try to run it, but you must <em>not</em> modify it.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> on DTU Autolab.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>You will need to write the complete definition of the two static methods
+— i.e., both their signatures and their bodies. Feel free to give any name
+you like to the formal parameters of the methods.</p></li>
+<li><p>Besides testing your solution by running <code class="docutils literal notranslate"><span class="pre">./grade</span></code>, make sure you are also able
+to manually compile this multi-file Java program (using <code class="docutils literal notranslate"><span class="pre">javac</span></code>) and then run it
+(using <code class="docutils literal notranslate"><span class="pre">java</span></code>), as explained <a class="reference internal" href="#sec-structured-struct-separate-files"><span class="std std-ref">above</span></a>.</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional inputs.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="loops2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 4, Part 1: More About Loops</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="arrays.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 5, Part 1: Arrays</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-programming-and-code-reuse">Structured Programming and Code Reuse</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-code-into-static-methods">Splitting Code into Static Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-code-into-separate-classes">Splitting Code into Separate Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-code-into-separate-files">Splitting Code into Separate Files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-2">05 - Maximum 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#square-2">06 - Square 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#days-in-a-month-2">07 - Days in a Month 2</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1027 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 5, Part 1: Arrays &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/bussproofs"]}, "tex": {"packages": {"[+]": ["bussproofs"]}, "macros": {}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="_static/mathjax/es5/tex-svg.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 5, Part 2: Lab Day" href="lab-day-2.html" />
+    <link rel="prev" title="Module 4, Part 2: Structured Programming" href="structured.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 5, Part 1: Arrays</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goal-an-interactive-program-that-reads-lotto-numbers">Goal: an Interactive Program that Reads Lotto Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-in-java-the-basics">Arrays in Java: the Basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-array-contents-the-for-each-statement">Looping over Array Contents: the For-Each Statement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-arrays-some-examples">Using Arrays: Some Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-the-occurrences">01 - Count the Occurrences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-3">02 - Maximum 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-numbers">03 - Even Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">04 - Statistics</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-5-part-1-arrays">
+<span id="mod-arrays"></span><h1>Module 5, Part 1: Arrays<a class="headerlink" href="#module-5-part-1-arrays" title="Permalink to this heading">#</a></h1>
+<p>Up until now, we have seen how to write programs that handle values of various
+types — e.g., <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>… Moreover, all the programs we have
+seen until now have a common characteristic: we exactly know how many values
+each program maintains in memory at each point during its execution. This can be
+determined by selecting a position in the program code, and looking at which
+variables are in <a class="reference internal" href="loops2.html#remark-scope">scope</a>.</p>
+<p>However, a program may sometimes need to handle a number of values that is only
+known at run-time. In this case, we can use <strong><a class="reference internal" href="#sec-arrays-arrays"><span class="std std-ref">arrays</span></a></strong>.
+An array is a <strong>structured data type</strong>: when a value of type “array” is created,
+it acts as a <em>container</em> for other values, which we can access and modify.</p>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><section id="arrays">
+<span id="sec-arrays-arrays"></span><span id="index-2"></span><h2>Arrays<a class="headerlink" href="#arrays" title="Permalink to this heading">#</a></h2>
+<p>An <strong>array</strong> is a collection of values of the same type; each value contained in
+an array is identified by an <strong>index</strong>, which is the position of the value
+inside the array itself.  Most programming languages offer arrays as a
+fundamental <strong>data stucture</strong>, i.e. a way to organise, store, and access values
+in the computer memory.</p>
+<p>Before delving into arrays, we first consider
+<a class="reference internal" href="#sec-arrays-arrays-goal-prog"><span class="std std-ref">a problem that requires us to use arrays</span></a>.
+Then, we explore:</p>
+<ul class="simple">
+<li><p>the <a class="reference internal" href="#sec-arrays-arrays-basics"><span class="std std-ref">fundamentals of arrays in Java</span></a>, and</p></li>
+<li><p>how to <a class="reference internal" href="#sec-arrays-arrays-loops"><span class="std std-ref">loop over arrays</span></a>.</p></li>
+</ul>
+<p>We also discuss a very useful example: how to
+<a class="reference internal" href="#eg-splitting-string-into-array">split a string into an array of strings</a>.</p>
+<section id="goal-an-interactive-program-that-reads-lotto-numbers">
+<span id="sec-arrays-arrays-goal-prog"></span><h3>Goal: an Interactive Program that Reads Lotto Numbers<a class="headerlink" href="#goal-an-interactive-program-that-reads-lotto-numbers" title="Permalink to this heading">#</a></h3>
+<p>Our goal is to write a program that runs on the console (a.k.a. terminal) and
+behaves as follows:</p>
+<ol class="arabic">
+<li><p>Asks the user how many Lotto numbers they want to play;</p></li>
+<li><p>Reads the Lotto numbers one by one, ensuring that:</p>
+<ul class="simple">
+<li><p>each number is between 1 and 36, and</p></li>
+<li><p>each number is unique.</p></li>
+</ul>
+<p>If one of the conditions above does not hold, the program asks the user to
+enter a correct Lotto number instead.</p>
+</li>
+<li><p>Finally, the program prints a summary of all the Lotto numbers provided by
+the user.</p></li>
+</ol>
+<p>Based on what we have seen so far, the description above means that we need to
+write a program that uses some form of loop.  However, we have <em>not</em> yet seen
+how a Java program can store and read an arbitrary number of values (in this
+case, determined by how many Lotto numbers the user wishes to play).  To achieve
+this, we will use an <em>array</em> to store the lotto numbers.</p>
+<div class="proof example admonition" id="eg-lotto-numbers-solution">
+<p class="admonition-title"><span class="caption-number">Example 34 </span> (Lotto numbers)</p>
+<section class="example-content" id="proof-content">
+<p>The following Java program behaves according to the description above, and uses
+an <em>array</em>. We discuss arrays in the rest of this section.</p>
+<p>Besides the array, the program below uses some constructs that deserve a few
+comments:</p>
+<ul>
+<li><p>On line 11, the <code class="docutils literal notranslate"><span class="pre">for</span></code> statement has an empty update statement (notice that
+there is nothing between the last semicolon <code class="docutils literal notranslate"><span class="pre">;</span></code> and the closing parenthesis
+<code class="docutils literal notranslate"><span class="pre">)</span></code> on that line).  This simply means that the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop does not execute any
+update statement after the loop body — it just checks the loop condition
+again.  The loop variable <code class="docutils literal notranslate"><span class="pre">i</span></code> is updated on line 32 (but only if the condition
+<code class="docutils literal notranslate"><span class="pre">!isDuplicate</span></code> on line 28 is <code class="docutils literal notranslate"><span class="pre">true</span></code>).</p></li>
+<li><p>On line 17, the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop body uses a <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement to “skip” the rest
+of the loop body for the current loop iteration, as described in
+<a class="reference internal" href="loops2.html#sec-loops2-continue"><span class="std std-ref">The continue Statement</span></a>.</p></li>
+<li><p>On lines 21 and 33, the program uses the increment statements <code class="docutils literal notranslate"><span class="pre">j++</span></code> and <code class="docutils literal notranslate"><span class="pre">i++</span></code>:
+they are equivalent to <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">=</span> <span class="pre">j</span> <span class="pre">+</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">i</span> <span class="pre">+</span> <span class="pre">1</span></code>, respectively.</p></li>
+<li><p>On line 25 there is a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement: if executed, that statement only
+breaks the immediately surrounding <code class="docutils literal notranslate"><span class="pre">for</span></code> loop (lines 21–27), and the
+execution continues from line 28.</p></li>
+<li><p>On lines 40–42 there is a special form of <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that iterates over the
+values stored in an array: we will discuss it
+<a class="reference internal" href="#sec-arrays-arrays-loops"><span class="std std-ref">shortly</span></a>.</p></li>
+<li><p>On line 41, we use <code class="docutils literal notranslate"><span class="pre">System.out.print(...)</span></code> to print something on the console
+<em>without</em> adding a “newline” at the end. To see the difference between
+<code class="docutils literal notranslate"><span class="pre">System.out.print(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">System.out.println(...)</span></code>, try the following on
+the Java shell:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Output 1 &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Output 2&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>and compare its output with the output produced by:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Output 1 &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Output 2&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Lotto</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;How many Lotto numbers do you want to play? &quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">howMany</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">howMany</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="c1">// Array that will contain the numbers</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">12</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Enter a number between 1 and 36: &quot;</span><span class="p">);</span>
+<span class="linenos">13</span><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">36</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Number out of range!&quot;</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">isDuplicated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// Was the last number entered before?</span>
+<span class="linenos">21</span><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numbers</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">23</span><span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;You have already entered &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="linenos">24</span><span class="w">                    </span><span class="n">isDuplicated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">                </span><span class="p">}</span>
+<span class="linenos">27</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isDuplicated</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">30</span><span class="w">                </span><span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="linenos">31</span><span class="w">                </span><span class="kd">var</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos">32</span><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;OK, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; numbers left&quot;</span><span class="p">);</span>
+<span class="linenos">33</span><span class="w">                </span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// Move on to read the next Lotto number</span>
+<span class="linenos">34</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">35</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;You entered the numbers: &quot;</span><span class="p">);</span>
+<span class="linenos">40</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">41</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print without a final newline</span>
+<span class="linenos">42</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">43</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print a final newline</span>
+<span class="linenos">44</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">45</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<section id="arrays-in-java-the-basics">
+<span id="sec-arrays-arrays-basics"></span><h3>Arrays in Java: the Basics<a class="headerlink" href="#arrays-in-java-the-basics" title="Permalink to this heading">#</a></h3>
+<p>In Java, arrays are objects and are created using <code class="docutils literal notranslate"><span class="pre">new</span></code>, as follows:
+<em>(as usual, we experiment on the Java shell)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span>jshell&gt; var ints = new int[5]
+</span><span class="linenos">2</span>ints ==&gt; int[5] { 0, 0, 0, 0, 0 }
+<span class="linenos">3</span>|  created variable ints : int[]
+</pre></div>
+</div>
+<p>In the example above, <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">int[5]</span></code> creates a new array containing 5 values of
+type <code class="docutils literal notranslate"><span class="pre">int</span></code>; then, the new array is used to declare a variable that we have
+called <code class="docutils literal notranslate"><span class="pre">ints</span></code>.  After that, the Java shell tells us that:</p>
+<ul class="simple">
+<li><p>on line 2: the variable <code class="docutils literal notranslate"><span class="pre">ints</span></code> gives us access to an array that contains 5
+values of type <code class="docutils literal notranslate"><span class="pre">int</span></code> — and each one of these values is 0. This is
+represented by the Java shell as <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0</span> <span class="pre">}</span></code>;</p></li>
+<li><p>on line 3: the variable <code class="docutils literal notranslate"><span class="pre">ints</span></code> has type <code class="docutils literal notranslate"><span class="pre">int[]</span></code>, which is the type of an
+array containing values of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
+</ul>
+<p>In general, we can create arrays containing <em>any</em> number of values of the same
+type, and we can also choose that type freely.  For instance, we can create an
+array of values of type <code class="docutils literal notranslate"><span class="pre">double</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var doubles = new double[2 + 3];
+</span>doubles ==&gt; double[5] { 0.0, 0.0, 0.0, 0.0, 0.0 }
+|  created variable doubles : double[]
+</pre></div>
+</div>
+<p>Notice that the number of values stored in the array can be any expression of
+type <code class="docutils literal notranslate"><span class="pre">int</span></code>, such as <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span></code> above.  Therefore, we can also write e.g.
+<code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">double[n]</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is a variable whose value is not known while we write
+the code (e.g. because the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> is read from the terminal when the
+program runs).</p>
+<div class="proof remark admonition" id="remark-array-default-val">
+<p class="admonition-title"><span class="caption-number">Remark 15 </span> (Arrays filled with default values)</p>
+<section class="remark-content" id="proof-content">
+<p>In the examples above, we have created the arrays <code class="docutils literal notranslate"><span class="pre">ints</span></code> and <code class="docutils literal notranslate"><span class="pre">doubles</span></code> without
+specifying which values they contain: consequently, Java has created the
+arrays by using <strong>default values</strong> — and such default values depend on the
+type of the array: for instance, an array of <code class="docutils literal notranslate"><span class="pre">int</span></code>s is filled with the value 0,
+while an array of <code class="docutils literal notranslate"><span class="pre">double</span></code>s is filled with the value 0.0.</p>
+</section>
+</div><p>We can also create an array by specifying which values it contains:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span>jshell&gt; var speeds = new double[] {10.0, 18.2, 42.3}
+</span><span class="linenos">2</span>speeds ==&gt; double[3] { 10.0, 18.2, 42.3 }
+<span class="linenos">3</span>|  created variable speeds : double[]
+</pre></div>
+</div>
+<p>Notice line 2 above: it says that the array in the variable <code class="docutils literal notranslate"><span class="pre">speeds</span></code> contains
+the three values we have specified when creating the array object (on line 1).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If we create an array by explicitly providing the array contents (as we did when
+defining the variable <code class="docutils literal notranslate"><span class="pre">speeds</span></code> above), we cannot specify at the same time the
+length of the array — i.e. writing <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">double[3]</span> <span class="pre">{10.0,</span> <span class="pre">18.2,</span> <span class="pre">42.3}</span></code> gives
+an error. <em>(Try it!)</em></p>
+</div>
+<p id="index-3">After an array object has been created, we can see how many values it contains
+by accessing its <code class="docutils literal notranslate"><span class="pre">length</span></code> field, which contains a value of type <code class="docutils literal notranslate"><span class="pre">int</span></code>: <em>(we will
+see what an “object field” is exactly later in the course)</em></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;The length of &#39;ints&#39; is: &quot; + ints.length)
+</span>The length of &#39;ints&#39; is: 5
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;The length of &#39;speeds&#39; is: &quot; + speeds.length)
+</span>The length of &#39;speeds&#39; is: 3
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The length of an array is fixed when the array is created, and cannot be changed
+afterwards.</p>
+</div>
+<p>To access a value stored in an array, we use the <strong>index</strong> of the value, i.e.
+the position of the value insude the array, counting from 0.  To do that, we use
+the notation:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">array_expr</span><span class="o">[</span><span class="n">int_expr</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">array_expr</span></code> is any expression that produces an array (e.g. a variable of
+type array, such as <code class="docutils literal notranslate"><span class="pre">speeds</span></code> above), and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int_expr</span></code> is any expression of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
+</ul>
+<p>For example: (remember that the array in the variable <code class="docutils literal notranslate"><span class="pre">speeds</span></code> is <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">10.0,</span> <span class="pre">18.2,</span> <span class="pre">42.3</span> <span class="pre">}</span></code>)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;The value of speeds[0] is: &quot; + speeds[0])
+</span>The value of speeds[0] is: 10.0
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;The value of speeds[1] is: &quot; + speeds[1])
+</span>The value of speeds[1] is: 18.2
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;The value of speeds[2] is: &quot; + speeds[2])
+</span>The value of speeds[2] is: 42.3
+</pre></div>
+</div>
+<p>We can also <strong>change a value stored in an array</strong>, by performing an assignment
+that replaces the value with a specified index.  For example, if we try:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; speeds[1] = 1234.5
+</span>...
+</pre></div>
+</div>
+<p>and we display again the contents of the array <code class="docutils literal notranslate"><span class="pre">speeds</span></code> on the Java shell, we
+will notice that its second value (i.e. the value with index 1) is now
+1234.5 (while it was 18.2 before).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; speeds
+</span>speeds ==&gt; double[3] { 10.0, 1234.5, 42.3 }
+|  value of speeds : double[]
+</pre></div>
+</div>
+<div class="admonition important" id="index-4">
+<p class="admonition-title">Important</p>
+<p>If we try to access an array value in a position that is beyond the length of
+the array, we get an error, as an <em>exception</em>.  You can see it for yourself: try
+to access e.g. <code class="docutils literal notranslate"><span class="pre">speeds[3]</span></code> on the Java shell! <em>(Remember that array indexes
+are counted from 0,  so <code class="docutils literal notranslate"><span class="pre">speeds[3]</span></code> is trying to access the 4th element of the array.)</em></p>
+</div>
+</section>
+<section id="looping-over-array-contents-the-for-each-statement">
+<span id="sec-arrays-arrays-loops"></span><h3>Looping over Array Contents: the For-Each Statement<a class="headerlink" href="#looping-over-array-contents-the-for-each-statement" title="Permalink to this heading">#</a></h3>
+<p>To loop over all the values stored in an array, we can use e.g. a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, by
+incrementing an index and making sure that it does not go beyond the last index
+of the array.  For example: <em>(Try it on the Java shell!)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">speeds</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The value of speeds[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;] is: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Since the indexes of an array are counted from 0, the last value of an array
+<code class="docutils literal notranslate"><span class="pre">arr</span></code> is stored at position <code class="docutils literal notranslate"><span class="pre">arr.length</span> <span class="pre">-</span> <span class="pre">1</span></code>.  For this reason, before running
+the loop body, the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop above checks that the index <code class="docutils literal notranslate"><span class="pre">i</span></code> is <em>less than</em> the
+array length: when <code class="docutils literal notranslate"><span class="pre">i</span></code> becomes equal to the array length, the loop condition
+evaluates to <code class="docutils literal notranslate"><span class="pre">false</span></code> (which mean that the index <code class="docutils literal notranslate"><span class="pre">i</span></code> is beyond the last array
+index), and the loop ends.</p>
+</div>
+<span class="target" id="index-5"></span><p id="index-6">Looping over all values stored in an array is a very common programming pattern,
+and it is quite easy to make mistakes when writing the code that increments and
+checks the array index. For this reason, Java offers a specialised form of loop,
+called <strong><code class="docutils literal notranslate"><span class="pre">for-each</span></code> statement</strong> (or <strong>enhanced <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</strong>), designed to
+simplify loops over array elements, and avoid mistakes.  The syntax is:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">array_expr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Loop body, repeated for each value of the array produced by array_expr</span>
+<span class="p">}</span>
+<span class="c1">// Statements executed after the loop ends</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">for-each</span></code> loop is executed as follows:</p>
+<ul class="simple">
+<li><p>first, <code class="docutils literal notranslate"><span class="pre">array_expr</span></code> is evaluated, and it must produce an array;</p></li>
+<li><p>then, for each value stored in the array produced by <code class="docutils literal notranslate"><span class="pre">array_expr</span></code>:</p>
+<ul>
+<li><p>the current array value is assigned to the variable <code class="docutils literal notranslate"><span class="pre">x</span></code>; and</p></li>
+<li><p>the loop body is executed, and it can use the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> to access the
+current array value;</p></li>
+</ul>
+</li>
+<li><p>finally, after the last array value has been used, the execution continues
+with the statements (if any) that follow the loop.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">for-each</span></code> loop uses the the array values in order, based on their index.</p>
+<p>For example: <em>(Try it on the Java shell!)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="n">speeds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The array &#39;speeds&#39; contains the value: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The output of the <code class="docutils literal notranslate"><span class="pre">for-each</span></code> loop above is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The array &#39;speeds&#39; contains the value: 10.0
+The array &#39;speeds&#39; contains the value: 1234.5
+The array &#39;speeds&#39; contains the value: 42.3
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">for-each</span></code> loop provides access to each value stored in an array by
+<em>copying</em> the current value in the loop variable. Consequently, if you change
+the loop variable, the change is <em>not</em> reflected in the array! For example,
+consider: (using the array <code class="docutils literal notranslate"><span class="pre">speeds</span></code> from the previous examples)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="n">speeds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The value of variable &#39;s&#39; is: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">42.0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The value of variable &#39;s&#39; is now: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you execute the loop above on the Java shell, you will see that the value of
+the variable <code class="docutils literal notranslate"><span class="pre">s</span></code> changes at each loop — and when the variable is assigned the
+value <code class="docutils literal notranslate"><span class="pre">42.0</span></code>, the assignments only modifies <code class="docutils literal notranslate"><span class="pre">s</span></code>, not the content of the array
+<code class="docutils literal notranslate"><span class="pre">speeds</span></code>. You can verify this fact by visualising the contents of <code class="docutils literal notranslate"><span class="pre">speeds</span></code>
+before and after executing the loop above.</p>
+</div>
+</section>
+<section id="using-arrays-some-examples">
+<span id="sec-arrays-arrays-examples"></span><h3>Using Arrays: Some Examples<a class="headerlink" href="#using-arrays-some-examples" title="Permalink to this heading">#</a></h3>
+<p>This section contains some common examples array usage.</p>
+<ul class="simple">
+<li><p>Splitting a string into an array of strings (<a class="reference internal" href="#eg-splitting-string-into-array">Example 35</a>)</p></li>
+<li><p>Static methods taking arrays as arguments (<a class="reference internal" href="#eg-array-method-argument">Example 36</a>)</p></li>
+</ul>
+<div class="proof example admonition" id="eg-splitting-string-into-array">
+<p class="admonition-title"><span class="caption-number">Example 35 </span> (Splitting a string into an array of strings)</p>
+<section class="example-content" id="proof-content">
+<p>We have already seen
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-strings-methods"><span class="std std-ref">some useful String methods</span></a>,
+but <code class="docutils literal notranslate"><span class="pre">String</span></code> objects offer much more.  For instance, the <code class="docutils literal notranslate"><span class="pre">String</span></code> object method
+<code class="docutils literal notranslate"><span class="pre">split(separator)</span></code> computes and returns an array of <code class="docutils literal notranslate"><span class="pre">String</span></code> objects; each
+object stored in that array, in turn, is a sub-string of the original string,
+obtained by splitting the original string using the given <code class="docutils literal notranslate"><span class="pre">separator</span></code>.</p>
+<p>For example, if you want to split a string around each space <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code>, you
+can try:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; &quot;This is a test&quot;.split(&quot; &quot;)
+</span>$1 ==&gt; String[4] { &quot;This&quot;, &quot;is&quot;, &quot;a&quot;, &quot;test&quot; }
+|  created scratch variable $1 : String[]
+</pre></div>
+</div>
+<p>Or, if you want to split a string around each occurrence of <code class="docutils literal notranslate"><span class="pre">&quot;,</span> <span class="pre">&quot;</span></code> (i.e. a comma
+followed by a space):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; &quot;This is a sentence, and this is another sentence&quot;.split(&quot;, &quot;)
+</span>$2 ==&gt; String[2] { &quot;This is a sentence&quot;, &quot;and this is another sentence&quot; }
+|  created scratch variable $2 : String[]
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">split(...)</span></code> method provided by <code class="docutils literal notranslate"><span class="pre">String</span></code> objects is very flexible, because
+the “separator” is actually a
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/regex/Pattern.html#sum">regular expression</a>
+that can specify rather complex splitting patterns.  You don’t need to learn
+regular expressions in this course, but <strong>you will get an error if you try to
+split a string using a separator that happens to be an invalid regular
+expression</strong>: try e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;.split(&quot;[&quot;)</span></code> on the Java shell.</p>
+</div>
+</section>
+</div><div class="proof example admonition" id="eg-array-method-argument">
+<p class="admonition-title"><span class="caption-number">Example 36 </span> (Arrays as method arguments)</p>
+<section class="example-content" id="proof-content">
+<p>In Java we can write static methods that take arrays as arguments. For example,
+the following static method returns the sum of all values contained in its argument
+<code class="docutils literal notranslate"><span class="pre">values</span></code> — which has type <code class="docutils literal notranslate"><span class="pre">int[]</span></code>, and thus, is an array of <code class="docutils literal notranslate"><span class="pre">int</span></code>egers.
+Observe that the program uses a <a class="reference internal" href="#sec-arrays-arrays-loops"><span class="std std-ref">for-each loop</span></a>
+to examine all array elements.
+<em>(Try copy&amp;pasting this code snippet on the Java shell!)</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">values</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Will contain the sum of all elements of &#39;values&#39;    </span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">v</span><span class="p">:</span><span class="w"> </span><span class="n">values</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can try the static method above on the Java shell. For instance, you can
+create an array of integers called <code class="docutils literal notranslate"><span class="pre">arr</span></code>…</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var arr = new int[] {1, 2, 3, 4}
+</span>arr ==&gt; int[4] { 1, 2, 3, 4 }
+|  created variable arr : int[]
+</pre></div>
+</div>
+<p>…and then call <code class="docutils literal notranslate"><span class="pre">sum(arr)</span></code> to compute the sum of all its values.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; System.out.println(&quot;The sum of the values in &#39;arr&#39; is: &quot; + sum(arr))
+</span>The sum of values in &#39;arr&#39; is: 10
+</pre></div>
+</div>
+</section>
+</div></section>
+</section>
+<section id="concluding-remarks">
+<span id="sec-arrays-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of how to define and use
+<a class="reference internal" href="#sec-arrays-arrays"><span class="std std-ref">arrays</span></a> to handle collections of a fixed number of
+values (each one having the same type). With this knowledge, you should be able
+to understand each line of the programs in <a class="reference internal" href="#eg-lotto-numbers-solution">Example 34</a>.</p>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-arrays-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: they sometimes mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 8.1 - “Array Elements”</p></li>
+<li><p>Section 8.2 - “Declaring and Using Arrays”</p></li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-arrays-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="ex-arrays-practice">
+
+<p class="admonition-title"><span class="caption-number">Exercise 25 </span> (Some practice with arrays)</p>
+<section id="exercise-content">
+<p>Try the following tasks:</p>
+<ul class="simple">
+<li><p>Create an array containing values of type <code class="docutils literal notranslate"><span class="pre">int</span></code>, containing 5 numbers from 1
+to 5.</p></li>
+<li><p>Create an array containing 5 values of type <code class="docutils literal notranslate"><span class="pre">int</span></code>, filled with the default
+value 0.  Then, modify the values stored in the array, so that, after your
+modifications, the array contains the numbers from 1 to 5.</p></li>
+<li><p>Create an array containing 1000 values of type <code class="docutils literal notranslate"><span class="pre">double</span></code>, filled with the
+default value 0.0.</p></li>
+<li><p>Create an array containing 1000 values of type <code class="docutils literal notranslate"><span class="pre">double</span></code>, filled with the
+default value 0.0.  Then, modify the values stored in the array, so that,
+after your modifications, the array contains the numbers from 1.0 to 1000.0
+(<strong>NOTE</strong>: you might want to use a loop to perform this task…).</p></li>
+</ul>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-arrays-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-arrays-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-arrays-count"><span class="std std-ref">01 - Count the Occurrences</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-arrays-maximum-3"><span class="std std-ref">02 - Maximum 3</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-arrays-even"><span class="std std-ref">03 - Even Numbers</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-arrays-statistics"><span class="std std-ref">04 - Statistics</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="count-the-occurrences">
+<span id="lab-arrays-count"></span><h3>01 - Count the Occurrences<a class="headerlink" href="#count-the-occurrences" title="Permalink to this heading">#</a></h3>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> provided in the handout. In the class
+<code class="docutils literal notranslate"><span class="pre">Utils</span></code>, implement the static method with the following signature:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The static method must count how many times the value <code class="docutils literal notranslate"><span class="pre">v</span></code> occurs in the array
+<code class="docutils literal notranslate"><span class="pre">values</span></code>, and return the result. Note that <code class="docutils literal notranslate"><span class="pre">values</span></code> might have 0 elements.</p>
+<p>The static method <code class="docutils literal notranslate"><span class="pre">Utils.count(...)</span></code> is used in the test program contained in the
+file <code class="docutils literal notranslate"><span class="pre">Occurrences.java</span></code>, which is also included in the handout: you should read
+<code class="docutils literal notranslate"><span class="pre">Occurrences.java</span></code> and try to run it, but you must <em>not</em> modify it.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> on DTU Autolab.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Besides testing your solution by running <code class="docutils literal notranslate"><span class="pre">./grade</span></code>, make sure you are also able
+to manually compile this multi-file Java program (using <code class="docutils literal notranslate"><span class="pre">javac</span></code>) and then run it
+(using <code class="docutils literal notranslate"><span class="pre">java</span></code>), as explained in <a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">Splitting Code into Separate Files</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional inputs.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+</section>
+<section id="maximum-3">
+<span id="lab-arrays-maximum-3"></span><h3>02 - Maximum 3<a class="headerlink" href="#maximum-3" title="Permalink to this heading">#</a></h3>
+<p>This is a variation of the assessment <a class="reference internal" href="structured.html#lab-structured-maximum2"><span class="std std-ref">05 - Maximum 2</span></a>. Your task
+is to edit the file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> provided in the handout. In the class <code class="docutils literal notranslate"><span class="pre">Utils</span></code>,
+implement a static method that:</p>
+<ul class="simple">
+<li><p>is named <code class="docutils literal notranslate"><span class="pre">max</span></code>;</p></li>
+<li><p>takes one argument: an array of values of type <code class="docutils literal notranslate"><span class="pre">double</span></code>;</p></li>
+<li><p>returns a value of type <code class="docutils literal notranslate"><span class="pre">double</span></code>.</p></li>
+</ul>
+<p>The static method <code class="docutils literal notranslate"><span class="pre">Utils.max(...)</span></code> must return the maximum among the values
+contained in the array passed as argument. You can assume that the array passed
+as argument has length 1 or greater.</p>
+<p>The static method <code class="docutils literal notranslate"><span class="pre">Utils.max(...)</span></code> is used in the test program contained in the
+file <code class="docutils literal notranslate"><span class="pre">Maximum.java</span></code>, which is also included in the handout: you should read
+<code class="docutils literal notranslate"><span class="pre">Maximum.java</span></code> and try to run it, but you must <em>not</em> modify it.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Utils.java</span></code> on DTU Autolab.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Besides testing your solution by running <code class="docutils literal notranslate"><span class="pre">./grade</span></code>, make sure you are also able
+to manually compile this multi-file Java program (using <code class="docutils literal notranslate"><span class="pre">javac</span></code>) and then run it
+(using <code class="docutils literal notranslate"><span class="pre">java</span></code>), as explained in <a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">Splitting Code into Separate Files</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The automatic grading on DTU Autolab includes some additional secret checks that
+test your submission with additional inputs.  After you submit, double-check
+your grading result on DTU Autolab: if the secret checks fail, then your
+solution is not correct, and you should fix it and resubmit.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>To see how to write a static method that takes an array as argument, see
+<a class="reference internal" href="#eg-array-method-argument">Example 36</a>. The signature of the static method
+<code class="docutils literal notranslate"><span class="pre">count(...)</span></code> in <a class="reference internal" href="#lab-arrays-count"><span class="std std-ref">01 - Count the Occurrences</span></a> may also be helpful.</p>
+</div>
+</section>
+<section id="even-numbers">
+<span id="lab-arrays-even"></span><h3>03 - Even Numbers<a class="headerlink" href="#even-numbers" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Evens.java</span></code> provided in the handout, and write a program that
+reads from the console a whole line containing one or more integer numbers
+separated by “<code class="docutils literal notranslate"><span class="pre">,</span> </code>” (i.e. a comma and a space), and prints how many of those
+numbers are even.</p>
+<p>For instance, if the line read from the console is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1, 32, 4, 12, 5, 66
+</pre></div>
+</div>
+<p>then the program must print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Evens.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The file <code class="docutils literal notranslate"><span class="pre">Evens.java</span></code> already contains some code that reads a line from the
+console, and turns it into an array of integers (after splitting the line as
+shown in <a class="reference internal" href="#eg-splitting-string-into-array">Example 35</a>).</p>
+</div>
+</section>
+<section id="statistics">
+<span id="lab-arrays-statistics"></span><h3>04 - Statistics<a class="headerlink" href="#statistics" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Statistics.java</span></code> provided in the handout, and write a program
+that reads from the console a whole line containing one or more numbers
+separated by “<code class="docutils literal notranslate"><span class="pre">;</span> </code>” (i.e. a semicolon and a space), and prints their mean and
+standard deviation.  The numbers may contain decimal digits, and should be
+handled as <code class="docutils literal notranslate"><span class="pre">double</span></code>s.</p>
+<p>For instance, if the line read from the console is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.0; 2; 3; 4.0
+</pre></div>
+</div>
+<p>then the program must print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Mean: 2.5
+Standard deviation: 1.118033988749895
+</pre></div>
+</div>
+<p>Remember that, if we have a set of <span class="math notranslate nohighlight">\(n\)</span> input values <span class="math notranslate nohighlight">\(x_1, \ldots, x_n\)</span>, then
+their mean <span class="math notranslate nohighlight">\(\bar{x}\)</span> is computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} \;=\; \frac{1}{n}\sum_{i = 1}^n x_i
+\]</div>
+<p>and their standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> (greek letter “sigma”) is computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma \;=\; \sqrt{\frac{1}{n} \sum_{i = 1}^n(x_i - \bar{x})^2}
+\]</div>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Statistics.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>You can reuse and adapt some code from the file <code class="docutils literal notranslate"><span class="pre">Evens.java</span></code> provided with
+<a class="reference internal" href="#lab-arrays-even"><span class="std std-ref">03 - Even Numbers</span></a>.</p></li>
+<li><p>To obtain a <code class="docutils literal notranslate"><span class="pre">double</span></code> from a <code class="docutils literal notranslate"><span class="pre">String</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">Double.parseDouble(...)</span></code>.
+For instance, <code class="docutils literal notranslate"><span class="pre">Double.parseDouble(&quot;3.14&quot;)</span></code> produces the value 3.14 (of type
+<code class="docutils literal notranslate"><span class="pre">double</span></code>).</p></li>
+<li><p>To compute the power and the square root in the standard deviation formula,
+you can use <code class="docutils literal notranslate"><span class="pre">Math.pow(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">Math.sqrt(...)</span></code>, respectively.  For instance:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; Math.pow(3.0, 2)
+</span>$1 ==&gt; 9.0
+|  created scratch variable $1 : double
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; Math.sqrt(25.0)
+</span>$2 ==&gt; 5.0
+|  created scratch variable $2 : double
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="structured.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 4, Part 2: Structured Programming</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab-day-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 5, Part 2: Lab Day</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goal-an-interactive-program-that-reads-lotto-numbers">Goal: an Interactive Program that Reads Lotto Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-in-java-the-basics">Arrays in Java: the Basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-array-contents-the-for-each-statement">Looping over Array Contents: the For-Each Statement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-arrays-some-examples">Using Arrays: Some Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-the-occurrences">01 - Count the Occurrences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-3">02 - Maximum 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#even-numbers">03 - Even Numbers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">04 - Statistics</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

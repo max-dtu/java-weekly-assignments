@@ -1,0 +1,1549 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 8, Part 2: Java interfaces &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 9, Part 1: Lab Day" href="lab-day-4.html" />
+    <link rel="prev" title="Module 8, Part 1: Programming Interfaces and Encapsulation" href="prog-interf-encapsulation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 8, Part 2: Java interfaces</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-and-using-interfaces-in-java">Defining and Using <code class="docutils literal notranslate"><span class="pre">interface</span></code>s in Java</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-the-dtu-christmas-party-management-software">The Problem: the DTU Christmas Party Management Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-dtu-christmas-party-software-using-interfaces">Implementing the DTU Christmas Party Software Using <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-interfaces-and-implementing-multiple-interfaces">Extending Interfaces and Implementing Multiple Interfaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vehicle-fleet-management">04 - Vehicle Fleet Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electronic-devices-shop">05 - Electronic Devices Shop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-monsters-part-2">06 - Video Game Monsters, Part 2</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-8-part-2-java-interfaces">
+<span id="mod-interfaces"></span><h1>Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s<a class="headerlink" href="#module-8-part-2-java-interfaces" title="Permalink to this heading">#</a></h1>
+<p>In this second part of Module 8 we study how to
+<a class="reference internal" href="#sec-interfaces-interfaces"><span class="std std-ref">define a Java interface</span></a>, and how to write
+reusable code based on that interface.</p>
+<span class="target" id="index-0"></span><section id="defining-and-using-interfaces-in-java">
+<span id="sec-interfaces-interfaces"></span><span id="index-1"></span><h2>Defining and Using <code class="docutils literal notranslate"><span class="pre">interface</span></code>s in Java<a class="headerlink" href="#defining-and-using-interfaces-in-java" title="Permalink to this heading">#</a></h2>
+<p>When designing and writing Java programs, we may sometimes need to handle
+objects that should intuitively belong to different classes, and yet, have very
+similar <a class="reference internal" href="prog-interf-encapsulation.html#sec-interfaces-encapsulation-interfaces-general"><span class="std std-ref">programming interfaces</span></a>.</p>
+<p>In these situations, Java allows us to define and give a name to commonly-used
+programming interfaces, by using the keyword <code class="docutils literal notranslate"><span class="pre">interface</span></code>; then, we can write
+reusable code that works on any object that provides the desired interface.</p>
+<p>The idea, in a nutshell, is:</p>
+<ul>
+<li><p>We can define an interface with a list of so-called <strong>abstract methods</strong>, i.e.
+method names with argument and return types, but <em>without a body</em>.  For
+example, we may define an interface like the following: intuitively, it
+describes any object that “can be moved,” and contains one abstract method
+called <code class="docutils literal notranslate"><span class="pre">move</span></code> that takes two <code class="docutils literal notranslate"><span class="pre">double</span></code>s and returns nothing (<code class="docutils literal notranslate"><span class="pre">void</span></code>):</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">CanBeMoved</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dy</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Then, we define our classes as usual — but when defining a class, we can
+also specify that the class <strong>implements</strong> one or more <code class="docutils literal notranslate"><span class="pre">interface</span></code>s — i.e.
+the class provides all the methods required by the interface.  For example,
+reprising the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> from
+<a class="reference internal" href="simple-classes.html#lab-simple-classes-point"><span class="std std-ref">a previous assignment</span></a>, we can write:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">class</span> <span class="nc">Point</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CanBeMoved</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">6</span><span class="w">        </span><span class="c1">// ...code that adds &#39;dx&#39; and &#39;dy&#39; to the point coordinates...</span>
+<span class="linenos">7</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">8</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>On line 1, <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">implements</span> <span class="pre">CanBeMoved</span> <span class="pre">...</span></code> means that the class <code class="docutils literal notranslate"><span class="pre">Point</span></code>
+satisfies the requirements of the interface <code class="docutils literal notranslate"><span class="pre">CanBeMoved</span></code> — i.e., the class
+includes the definition of the method <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">void</span> <span class="pre">move(double</span> <span class="pre">dx,</span> <span class="pre">double</span> <span class="pre">dy)</span></code>
+(including the method body, i.e. the actual <em>implementation</em> of the method).
+Note that, if the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> does <em>not</em> implement all the method(s)
+required by the interface <code class="docutils literal notranslate"><span class="pre">CanBeMoved</span></code>, Java will report an error.</p>
+</li>
+<li><p>As a consequence, we will be able to call all the methods of the interface
+<code class="docutils literal notranslate"><span class="pre">CanBeMoved</span></code> on any object of the class <code class="docutils literal notranslate"><span class="pre">Point</span></code> — e.g. if <code class="docutils literal notranslate"><span class="pre">p</span></code> has type
+<code class="docutils literal notranslate"><span class="pre">Point</span></code>, then we can call <code class="docutils literal notranslate"><span class="pre">p.move(...)</span></code>.  Moreover, every object of the class
+<code class="docutils literal notranslate"><span class="pre">Point</span></code> also gets the additional type <code class="docutils literal notranslate"><span class="pre">CanBeMoved</span></code>.</p></li>
+</ul>
+<p>To explore more concretely how Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s work and when they are useful,
+we start with a problem: writing a program for
+<a class="reference internal" href="#sec-interfaces-christmas"><span class="std std-ref">managing the DTU Christmas party</span></a>.
+Then, we discuss:</p>
+<ul class="simple">
+<li><p>a <a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">first solution</a>
+based on using classes and objects as we have seen thus far;</p></li>
+<li><p>a <a class="reference internal" href="#eg-dtu-christmas-party-one-class-no-interfaces">second solution</a>,
+also based on using classes and objects as we have seen thus far;</p></li>
+<li><p>a <a class="reference internal" href="#sec-interfaces-christmas-solution"><span class="std std-ref">third solution</span></a>
+that addresses the drawbacks of the previous two solutions,
+by defining and using an <code class="docutils literal notranslate"><span class="pre">interface</span></code>.</p></li>
+</ul>
+<section id="the-problem-the-dtu-christmas-party-management-software">
+<span id="sec-interfaces-christmas"></span><h3>The Problem: the DTU Christmas Party Management Software<a class="headerlink" href="#the-problem-the-dtu-christmas-party-management-software" title="Permalink to this heading">#</a></h3>
+<p>Consider this scenario: DTU is organising its annual Christmas party, and asks
+us to write a program to handle the list of people who will attend.  The
+requirements are the following:</p>
+<ul class="simple">
+<li><p>All DTU employees can attend the party;</p></li>
+<li><p>Guests with a ticket can also attend the party;</p></li>
+<li><p>The program must provide a description of each person attending the party
+— including:</p>
+<ul>
+<li><p>the person’s role (employee or guest), and</p></li>
+<li><p>the person’s name, and</p></li>
+<li><p>either:</p>
+<ul>
+<li><p>the department (if the person is an employee), or</p></li>
+<li><p>the ticket number (if the person is a guest).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The program must print three different reports showing:</p>
+<ul>
+<li><p>the list of DTU employees attending the party;</p></li>
+<li><p>the list of guests attending the party;</p></li>
+<li><p>the list of all people attending the party.</p></li>
+</ul>
+</li>
+</ul>
+<p>The requirements above suggests that we should have some class to represent and
+store the information of each individual employee or guest at the party.</p>
+<p>The examples below address this problem in two ways:</p>
+<ul class="simple">
+<li><p>using <a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">separate classes for representing an employee and a guest</a>,
+and</p></li>
+<li><p>using <a class="reference internal" href="#eg-dtu-christmas-party-one-class-no-interfaces">one class &quot;Person&quot; for representing both an employee and a guest</a>.</p></li>
+</ul>
+<div class="proof example admonition" id="eg-dtu-christmas-party-two-classes-no-interfaces">
+<p class="admonition-title"><span class="caption-number">Example 51 </span> (DTU Christmas Party — solution 1 (<code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> classes))</p>
+<section class="example-content" id="proof-content">
+<p>We could address the task by defining two classes for the two kinds of people
+that can attend the Christmas party: one class representing a <code class="docutils literal notranslate"><span class="pre">Guest</span></code> and
+another class representing a DTU <code class="docutils literal notranslate"><span class="pre">Employee</span></code>, as shown below.  Both classes have
+a field to store the person’s <code class="docutils literal notranslate"><span class="pre">name</span></code> (as a <code class="docutils literal notranslate"><span class="pre">String</span></code>) and provide a method
+<code class="docutils literal notranslate"><span class="pre">getInfo()</span></code> that returns a <code class="docutils literal notranslate"><span class="pre">String</span></code> describing the person.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Employee</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Employee</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Employee, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span><span class="p">}</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="kd">class</span> <span class="nc">Guest</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">16</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Guest</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Guest, ticket &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">27</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Using the classes above, we can write the following sample program, that creates
+a few employees and guests, stores them into arrays, and prints a draft of the
+reports outlined in the software requirements above.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ChristmasParty</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">(</span><span class="s">&quot;Ida Iversen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Aqua&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">(</span><span class="s">&quot;Oliver Olesen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Construct&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">(</span><span class="s">&quot;Alceste Scalas&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Compute&quot;</span><span class="p">);</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">g1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Guest</span><span class="p">(</span><span class="s">&quot;Laura Lund&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">123</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">g2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Guest</span><span class="p">(</span><span class="s">&quot;Emma Ebbesen&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">);</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">e1</span><span class="p">,</span><span class="w"> </span><span class="n">e2</span><span class="p">,</span><span class="w"> </span><span class="n">e3</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos">11</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">guests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Guest</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">g1</span><span class="p">,</span><span class="w"> </span><span class="n">g2</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of people at the DTU Christmas party: &quot;</span><span class="p">);</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">printEmployees</span><span class="p">(</span><span class="n">employees</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">        </span><span class="n">printGuests</span><span class="p">(</span><span class="n">guests</span><span class="p">);</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of DTU employees at the party: &quot;</span><span class="p">);</span>
+<span class="linenos">18</span><span class="w">        </span><span class="n">printEmployees</span><span class="p">(</span><span class="n">employees</span><span class="p">);</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of guests at the party: &quot;</span><span class="p">);</span>
+<span class="linenos">21</span><span class="w">        </span><span class="n">printGuests</span><span class="p">(</span><span class="n">guests</span><span class="p">);</span>
+<span class="linenos">22</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printEmployees</span><span class="p">(</span><span class="n">Employee</span><span class="o">[]</span><span class="w"> </span><span class="n">employees</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">e</span><span class="p">:</span><span class="w"> </span><span class="n">employees</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">26</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;    - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getInfo</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos">27</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">28</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printGuests</span><span class="p">(</span><span class="n">Guest</span><span class="o">[]</span><span class="w"> </span><span class="n">guests</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">31</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">g</span><span class="p">:</span><span class="w"> </span><span class="n">guests</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">32</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;    - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">g</span><span class="p">.</span><span class="na">getInfo</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos">33</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">34</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">35</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The program’s output satisfies the requirements:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>List of people at the DTU Christmas party: 
+    - Ida Iversen (Employee, DTU Aqua)
+    - Oliver Olesen (Employee, DTU Construct)
+    - Alceste Scalas (Employee, DTU Compute)
+    - Laura Lund (Guest, ticket 123)
+    - Emma Ebbesen (Guest, ticket 75)
+List of DTU employees at the party: 
+    - Ida Iversen (Employee, DTU Aqua)
+    - Oliver Olesen (Employee, DTU Construct)
+    - Alceste Scalas (Employee, DTU Compute)
+List of guests at the party: 
+    - Laura Lund (Guest, ticket 123)
+    - Emma Ebbesen (Guest, ticket 75)
+</pre></div>
+</div>
+<p>However, we can notice two drawbacks:</p>
+<ul class="simple">
+<li><p>there is <strong>duplicated code</strong>: the two static methods <code class="docutils literal notranslate"><span class="pre">printEmployees(...)</span></code>
+(lines 24–28) and <code class="docutils literal notranslate"><span class="pre">printGuests(...)</span></code> (lines 30–34) are pretty much the same,
+except for the type of the argument (array of <code class="docutils literal notranslate"><span class="pre">Employee</span></code>s vs. array of
+<code class="docutils literal notranslate"><span class="pre">Guest</span></code>s).  This suggests that, as the program becomes more complex, we may
+need to duplicate the code of all the functionalities that need to work on
+both <code class="docutils literal notranslate"><span class="pre">Employee</span></code>s and <code class="docutils literal notranslate"><span class="pre">Guest</span></code>s;</p></li>
+<li><p>similarly, we need to keep two distinct arrays for <code class="docutils literal notranslate"><span class="pre">Employee</span></code>s and <code class="docutils literal notranslate"><span class="pre">Guest</span></code>s;
+we cannot define an array that contains all people attending the party.</p></li>
+</ul>
+<p>To address these drawback, we try a different approach, presented in
+<a class="reference internal" href="#eg-dtu-christmas-party-one-class-no-interfaces">Example 52</a> below.</p>
+</section>
+</div><div class="proof example admonition" id="eg-dtu-christmas-party-one-class-no-interfaces">
+<p class="admonition-title"><span class="caption-number">Example 52 </span> (DTU Christmas Party — solution 2 (one <code class="docutils literal notranslate"><span class="pre">Person</span></code> class))</p>
+<section class="example-content" id="proof-content">
+<p>We now address the task by defining one class <code class="docutils literal notranslate"><span class="pre">Person</span></code> (shown below)
+representing a generic person attending the Christmas party, with some code
+that checks whether the person is an employee or a guest.  Notice, in particular:</p>
+<ul class="simple">
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Person</span></code> defines a field <code class="docutils literal notranslate"><span class="pre">isEmployee</span></code> which should have the value
+<code class="docutils literal notranslate"><span class="pre">true</span></code> in objects that represent an employee, and <code class="docutils literal notranslate"><span class="pre">false</span></code> in objects that
+represent a guest;</p></li>
+<li><p>Each object of the class <code class="docutils literal notranslate"><span class="pre">Person</span></code> has fields for storing <em>both</em> the person’s
+department <em>and</em> the ticket number: these fields are used (or not) depending on
+whether the person is an employee or guest (as shown in the body of the method
+<code class="docutils literal notranslate"><span class="pre">getInfo()</span></code>);</p></li>
+<li><p>we define two constructors:</p>
+<ul>
+<li><p>one constructor taking a <code class="docutils literal notranslate"><span class="pre">String</span></code> argument for the name, and a <code class="docutils literal notranslate"><span class="pre">String</span></code>
+argument for the department.  This constructor sets up the object to
+represent an employee;</p></li>
+<li><p>another constructor taking a <code class="docutils literal notranslate"><span class="pre">String</span></code> argument for the name, and an <code class="docutils literal notranslate"><span class="pre">int</span></code>
+argument for the ticket number.  This constructor sets up the object to
+represent a guest.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isEmployee</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">isEmployee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">14</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">isEmployee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">isEmployee</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">21</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Employee, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">23</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Guest, ticket &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">26</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Using the class <code class="docutils literal notranslate"><span class="pre">Person</span></code> above, we can write the following sample program, that
+creates a few employees and guests, stores them into arrays, and prints a draft
+of the reports outlined in the software requirements.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ChristmasParty</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;Ida Iversen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Aqua&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;Oliver Olesen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Construct&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;Alceste Scalas&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Compute&quot;</span><span class="p">);</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">g1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;Laura Lund&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">123</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">g2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;Emma Ebbesen&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">);</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">e1</span><span class="p">,</span><span class="w"> </span><span class="n">g1</span><span class="p">,</span><span class="w"> </span><span class="n">e2</span><span class="p">,</span><span class="w"> </span><span class="n">e3</span><span class="p">,</span><span class="w"> </span><span class="n">g2</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos">11</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">e1</span><span class="p">,</span><span class="w"> </span><span class="n">e2</span><span class="p">,</span><span class="w"> </span><span class="n">e3</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos">12</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">guests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">g1</span><span class="p">,</span><span class="w"> </span><span class="n">g2</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of people at the DTU Christmas party: &quot;</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">        </span><span class="n">printPeople</span><span class="p">(</span><span class="n">people</span><span class="p">);</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of DTU employees at the party: &quot;</span><span class="p">);</span>
+<span class="linenos">18</span><span class="w">        </span><span class="n">printPeople</span><span class="p">(</span><span class="n">employees</span><span class="p">);</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of guests at the party: &quot;</span><span class="p">);</span>
+<span class="linenos">21</span><span class="w">        </span><span class="n">printPeople</span><span class="p">(</span><span class="n">guests</span><span class="p">);</span>
+<span class="linenos">22</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printPeople</span><span class="p">(</span><span class="n">Person</span><span class="o">[]</span><span class="w"> </span><span class="n">people</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="n">people</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">26</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;    - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getInfo</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos">27</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">28</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">29</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The output of this new program satisfies the requirements:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>List of people at the DTU Christmas party: 
+    - Ida Iversen (Employee, DTU Aqua)
+    - Laura Lund (Guest, ticket 123)
+    - Oliver Olesen (Employee, DTU Construct)
+    - Alceste Scalas (Employee, DTU Compute)
+    - Emma Ebbesen (Guest, ticket 75)
+List of DTU employees at the party: 
+    - Ida Iversen (Employee, DTU Aqua)
+    - Oliver Olesen (Employee, DTU Construct)
+    - Alceste Scalas (Employee, DTU Compute)
+List of guests at the party: 
+    - Laura Lund (Guest, ticket 123)
+    - Emma Ebbesen (Guest, ticket 75)
+</pre></div>
+</div>
+<p>The code above has less duplication than the solution shown in
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a>: there is just one
+static method called <code class="docutils literal notranslate"><span class="pre">printPeople(..)</span></code> that handles both employees and guests.
+Also, this new solution gives us the flexibility of putting employees and guests
+in separate arrays, or in a same array, depending on our needs.</p>
+<p>However, this new solution also has two drawbacks:</p>
+<ul class="simple">
+<li><p>there are <strong>redundant fields in the class <code class="docutils literal notranslate"><span class="pre">Person</span></code></strong>: every object of that
+class stores the values of both the person’s department and the ticket number
+— but only one of those fields is actually used, depending on whether the
+field <code class="docutils literal notranslate"><span class="pre">isEmployee</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>;</p></li>
+<li><p>we have <strong>less type safety</strong>: if we make a slight mistake on lines 10–12
+of the static method <code class="docutils literal notranslate"><span class="pre">ChristmasParty.main(...)</span></code>, we may put an employee object
+inside the <code class="docutils literal notranslate"><span class="pre">guests</span></code> array (or <em>vice versa</em>, we may put a guest object inside
+the <code class="docutils literal notranslate"><span class="pre">employees</span></code> array), and Java will not report any error.  We would only
+notice the mistake when running the program.</p></li>
+</ul>
+<p>To address these drawbacks, and the ones discussed in
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a>
+above,
+we examine
+<a class="reference internal" href="#sec-interfaces-christmas-solution"><span class="std std-ref">a third solution using Java interfaces</span></a>.</p>
+</section>
+</div></section>
+<section id="implementing-the-dtu-christmas-party-software-using-interfaces">
+<span id="sec-interfaces-christmas-solution"></span><h3>Implementing the DTU Christmas Party Software Using <code class="docutils literal notranslate"><span class="pre">interface</span></code>s<a class="headerlink" href="#implementing-the-dtu-christmas-party-software-using-interfaces" title="Permalink to this heading">#</a></h3>
+<p>We now explore another approach to the DTU Christmas Party software that
+addresses the drawbacks of the solutions shown in
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a> and
+<a class="reference internal" href="#eg-dtu-christmas-party-one-class-no-interfaces">Example 52</a>.</p>
+<p>Observe the classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> in
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a>, and how they are
+used in <code class="docutils literal notranslate"><span class="pre">ChristmasParty.java</span></code>.  In particular, observe that:</p>
+<ul class="simple">
+<li><p>both classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> offer a <code class="docutils literal notranslate"><span class="pre">public</span></code> field called <code class="docutils literal notranslate"><span class="pre">name</span></code>, that
+the program <code class="docutils literal notranslate"><span class="pre">ChristmasParty.java</span></code> only uses to read the name of the employee
+or guest;</p></li>
+<li><p>both classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> offer a <code class="docutils literal notranslate"><span class="pre">public</span></code> method called
+<code class="docutils literal notranslate"><span class="pre">getInfo()</span></code>, that takes no arguments and returns a <code class="docutils literal notranslate"><span class="pre">String</span></code>.</p></li>
+</ul>
+<p>We can capture this common programming interface by defining a Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>
+called e.g. <code class="docutils literal notranslate"><span class="pre">Person</span></code>, and defined as:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">interface</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">();</span>
+<span class="linenos">3</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">();</span>
+<span class="linenos">4</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Then, we slightly revise the two classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> in
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a>, with two
+variations:</p>
+<ol class="arabic simple">
+<li><p>we declare that both <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> implement the methods required by
+the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code>, by writing <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">implements</span> <span class="pre">Person</span> <span class="pre">...</span></code> in each class
+definition;</p></li>
+<li><p>we add the implementation of the method <code class="docutils literal notranslate"><span class="pre">getName()</span></code>, which simply returns
+the name of the employee or guest.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The interface <code class="docutils literal notranslate"><span class="pre">Person</span></code> includes the method <code class="docutils literal notranslate"><span class="pre">getName()</span></code> (instead of a field
+called <code class="docutils literal notranslate"><span class="pre">name</span></code>) due to a technical constraint: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s allow us to
+require the presence of specific methods, but they do <em>not</em> allow us to require
+the presence of specific fields.  Therefore, the only way to write an
+<code class="docutils literal notranslate"><span class="pre">interface</span></code> which allows us to retrieve the name of a <code class="docutils literal notranslate"><span class="pre">Person</span></code> is to include a
+method like <code class="docutils literal notranslate"><span class="pre">getName()</span></code>.</p>
+</div>
+<p>The resulting updated classes are shown below: the differences with
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a> are highlighted.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Employee</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Employee</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">department</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Employee, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">department</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="hll"><span class="linenos">19</span><span class="kd">class</span> <span class="nc">Guest</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">20</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Guest</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">24</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticketNumber</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">27</span>
+<span class="hll"><span class="linenos">28</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">29</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos">30</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">31</span>
+<span class="linenos">32</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">33</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Guest, ticket &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">ticketNumber</span><span class="p">;</span>
+<span class="linenos">34</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">35</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The relationship between the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code> and the revised classes
+<code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> is graphically depicted in the
+<a class="reference external" href="https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/">UML class diagram</a>
+in <a class="reference internal" href="#fig-uml-person-employee-guest"><span class="std std-numref">Fig. 19</span></a> below.</p>
+<figure class="align-default" id="fig-uml-person-employee-guest">
+<img alt="UML class diagram of the interface 'Person' and classes 'Person' and 'Employee'" src="_images/person-employee-guest.svg" /><figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">UML class diagram showing the relationship between the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code> and
+the revised classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code>.</span><a class="headerlink" href="#fig-uml-person-employee-guest" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The diagram in <a class="reference internal" href="#fig-uml-person-employee-guest"><span class="std std-numref">Fig. 19</span></a> is interpreted as
+follows:</p>
+<ul class="simple">
+<li><p>the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code> at the top shows the abstract methods required by the
+interface definition, with the corresponding arguments (if any) and return
+types.  For instance: the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code> specifies a method <code class="docutils literal notranslate"><span class="pre">getName()</span></code>
+that takes no arguments and returns a <code class="docutils literal notranslate"><span class="pre">String</span></code>;</p></li>
+<li><p>the classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> show their respective constructors and
+methods (if any), with their respective argument types.  For instance: the
+constructor of <code class="docutils literal notranslate"><span class="pre">Employee</span></code> takes two arguments (<code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">department</span></code>) both
+having type <code class="docutils literal notranslate"><span class="pre">String</span></code>;</p></li>
+<li><p>the dashed arrows mean that the class at the origin of the arrow <em>implements</em>
+the interface pointed by the arrow (e.g. the class <code class="docutils literal notranslate"><span class="pre">Employee</span></code> implements the
+interface <code class="docutils literal notranslate"><span class="pre">Person</span></code>, hence <code class="docutils literal notranslate"><span class="pre">Employee</span></code> must implement the methods <code class="docutils literal notranslate"><span class="pre">getName()</span></code>
+and <code class="docutils literal notranslate"><span class="pre">getInfo()</span></code>, even if they are not shown explicitly in the class diagram).</p></li>
+</ul>
+<p>Now, with the definitions above, we can use <code class="docutils literal notranslate"><span class="pre">Person</span></code> as a type: in fact,
+<strong><code class="docutils literal notranslate"><span class="pre">Person</span></code> is <em>the type of all objects of any class which implements the interface
+<code class="docutils literal notranslate"><span class="pre">Person</span></code></em></strong>.  Therefore, any object of the class <code class="docutils literal notranslate"><span class="pre">Employee</span></code> has also type
+<code class="docutils literal notranslate"><span class="pre">Person</span></code>, and any object of the class <code class="docutils literal notranslate"><span class="pre">Guest</span></code> has also type <code class="docutils literal notranslate"><span class="pre">Person</span></code>.</p>
+<p>Consequently, using the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code> and the revised classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code>
+and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> above, we can revise the program <code class="docutils literal notranslate"><span class="pre">ChristmasParty.java</span></code> in
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a> and make it very
+similar to the simpler version discussed in
+<a class="reference internal" href="#eg-dtu-christmas-party-one-class-no-interfaces">Example 52</a>: the result is shown
+below. (The differences with
+<a class="reference internal" href="#eg-dtu-christmas-party-one-class-no-interfaces">Example 52</a> are highlighted.)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ChristmasParty</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">(</span><span class="s">&quot;Ida Iversen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Aqua&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">(</span><span class="s">&quot;Oliver Olesen&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Construct&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">e3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">(</span><span class="s">&quot;Alceste Scalas&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DTU Compute&quot;</span><span class="p">);</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">g1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Guest</span><span class="p">(</span><span class="s">&quot;Laura Lund&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">123</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">g2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Guest</span><span class="p">(</span><span class="s">&quot;Emma Ebbesen&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">);</span>
+<span class="linenos"> 9</span>
+<span class="hll"><span class="linenos">10</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">e1</span><span class="p">,</span><span class="w"> </span><span class="n">g1</span><span class="p">,</span><span class="w"> </span><span class="n">e2</span><span class="p">,</span><span class="w"> </span><span class="n">e3</span><span class="p">,</span><span class="w"> </span><span class="n">g2</span><span class="w"> </span><span class="p">};</span>
+</span><span class="hll"><span class="linenos">11</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">e1</span><span class="p">,</span><span class="w"> </span><span class="n">e2</span><span class="p">,</span><span class="w"> </span><span class="n">e3</span><span class="w"> </span><span class="p">};</span>
+</span><span class="hll"><span class="linenos">12</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">guests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Guest</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">g1</span><span class="p">,</span><span class="w"> </span><span class="n">g2</span><span class="w"> </span><span class="p">};</span>
+</span><span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of people at the DTU Christmas party: &quot;</span><span class="p">);</span>
+<span class="hll"><span class="linenos">15</span><span class="w">        </span><span class="n">printPeople</span><span class="p">(</span><span class="n">people</span><span class="p">);</span>
+</span><span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of DTU employees at the party: &quot;</span><span class="p">);</span>
+<span class="hll"><span class="linenos">18</span><span class="w">        </span><span class="n">printPeople</span><span class="p">(</span><span class="n">employees</span><span class="p">);</span>
+</span><span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;List of guests at the party: &quot;</span><span class="p">);</span>
+<span class="hll"><span class="linenos">21</span><span class="w">        </span><span class="n">printPeople</span><span class="p">(</span><span class="n">guests</span><span class="p">);</span>
+</span><span class="linenos">22</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">23</span>
+<span class="hll"><span class="linenos">24</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printPeople</span><span class="p">(</span><span class="n">Person</span><span class="o">[]</span><span class="w"> </span><span class="n">people</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">25</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="n">people</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos">26</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;    - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span>
+</span><span class="hll"><span class="linenos">27</span><span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getInfo</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+</span><span class="hll"><span class="linenos">28</span><span class="w">        </span><span class="p">}</span>
+</span><span class="hll"><span class="linenos">29</span><span class="w">    </span><span class="p">}</span>
+</span><span class="linenos">30</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Observe that this new program addresses the drawbacks of both
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a> and
+<a class="reference internal" href="#eg-dtu-christmas-party-one-class-no-interfaces">Example 52</a>:</p>
+<ul class="simple">
+<li><p>we can now create an array of type <code class="docutils literal notranslate"><span class="pre">Person[]</span></code> (line 10), i.e. an array that
+contains any object offering the methods of the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code>.
+Therefore, the array <code class="docutils literal notranslate"><span class="pre">people</span></code> can contain both objects of the class
+<code class="docutils literal notranslate"><span class="pre">Employee</span></code>, and objects of the class <code class="docutils literal notranslate"><span class="pre">Guest</span></code>;</p></li>
+<li><p>we can also define arrays containing elements of the class <code class="docutils literal notranslate"><span class="pre">Employee</span></code> <em>only</em>,
+or <code class="docutils literal notranslate"><span class="pre">Guest</span></code> <em>only</em> (lines 11–12): if we make a mistake and try to put e.g. the
+employee <code class="docutils literal notranslate"><span class="pre">e1</span></code> inside the array <code class="docutils literal notranslate"><span class="pre">guests</span></code>, Java will report a type error, and
+the program will not compile;</p></li>
+<li><p>we can also define methods that take as arguments any object (or array of
+objects) implementing the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code>.  In particular,
+<code class="docutils literal notranslate"><span class="pre">printPeople(...)</span></code> (lines 24–29) takes as argument an array of objects that
+implement the interface <code class="docutils literal notranslate"><span class="pre">Person</span></code>, and only uses the methods provided by that
+interface (i.e. <code class="docutils literal notranslate"><span class="pre">getName()</span></code> and <code class="docutils literal notranslate"><span class="pre">getInfo()</span></code>).  Consequently,
+<code class="docutils literal notranslate"><span class="pre">printPeople(...)</span></code> is very reusable: the program calls it three times with
+arrays containing <code class="docutils literal notranslate"><span class="pre">Person</span></code>s (line 15), <code class="docutils literal notranslate"><span class="pre">Employee</span></code>s (line 18), and <code class="docutils literal notranslate"><span class="pre">Guest</span></code>s
+(line 21).</p></li>
+</ul>
+<p>Notice that method calls on objects of type <code class="docutils literal notranslate"><span class="pre">Person</span></code>, like <code class="docutils literal notranslate"><span class="pre">p.getInfo()</span></code>
+(line 27), will call the method provided by the object in <code class="docutils literal notranslate"><span class="pre">p</span></code>: therefore, if the
+object in <code class="docutils literal notranslate"><span class="pre">p</span></code> is a <code class="docutils literal notranslate"><span class="pre">Guest</span></code>, then <code class="docutils literal notranslate"><span class="pre">p.getInfo()</span></code> will call the method <code class="docutils literal notranslate"><span class="pre">getInfo()</span></code>
+of the class <code class="docutils literal notranslate"><span class="pre">Guest</span></code>, which returns a string like
+<code class="docutils literal notranslate"><span class="pre">&quot;Laura</span> <span class="pre">Lund</span> <span class="pre">(Guest,</span> <span class="pre">ticket</span> <span class="pre">123)&quot;</span></code>.</p>
+<p>The output of the program above is the following, and respects the requirements:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>List of people at the DTU Christmas party: 
+    - Ida Iversen (Employee, DTU Aqua)
+    - Laura Lund (Guest, ticket 123)
+    - Oliver Olesen (Employee, DTU Construct)
+    - Alceste Scalas (Employee, DTU Compute)
+    - Emma Ebbesen (Guest, ticket 75)
+List of DTU employees at the party: 
+    - Ida Iversen (Employee, DTU Aqua)
+    - Oliver Olesen (Employee, DTU Construct)
+    - Alceste Scalas (Employee, DTU Compute)
+List of guests at the party: 
+    - Laura Lund (Guest, ticket 123)
+    - Emma Ebbesen (Guest, ticket 75)
+</pre></div>
+</div>
+</section>
+<section id="extending-interfaces-and-implementing-multiple-interfaces">
+<span id="sec-interfaces-electronics"></span><h3>Extending Interfaces and Implementing Multiple Interfaces<a class="headerlink" href="#extending-interfaces-and-implementing-multiple-interfaces" title="Permalink to this heading">#</a></h3>
+<p>Our Java code can define and use as many <code class="docutils literal notranslate"><span class="pre">interface</span></code>s as we need.  We can also
+combine the interfaces in two ways:</p>
+<ul>
+<li><p>We can <strong>extend an interface</strong>.  For example, if we define:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">CommercialDriver</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getLicenseNumber</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>then the interface <code class="docutils literal notranslate"><span class="pre">CommercialDriver</span></code> has all the methods of <code class="docutils literal notranslate"><span class="pre">Person</span></code>, <em>plus</em>
+the method <code class="docutils literal notranslate"><span class="pre">getLicenseNumber()</span></code>.  Then, if we define a class like e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">TaxiDriver</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CommercialDriver</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then the class <code class="docutils literal notranslate"><span class="pre">TaxiDriver</span></code> must implement all the methods of
+<code class="docutils literal notranslate"><span class="pre">CommercialDriver</span></code> (including those of <code class="docutils literal notranslate"><span class="pre">Person</span></code>); moreover, each object of the
+class <code class="docutils literal notranslate"><span class="pre">TaxiDriver</span></code> has <em>also</em> the types <code class="docutils literal notranslate"><span class="pre">CommercialDriver</span></code> and <code class="docutils literal notranslate"><span class="pre">Person</span></code>.</p>
+</li>
+<li><p>We can <strong>write classes that implement multiple interfaces</strong>.  For example, if
+we define:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">HasGpsTag</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getDistanceFrom</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">latitude</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">longitude</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>then we can define classes that implement <em>both</em> the methods of <code class="docutils literal notranslate"><span class="pre">Person</span></code> <em>and</em>
+<code class="docutils literal notranslate"><span class="pre">HasGpsTag</span></code>, like:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">PoliceAgent</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Person</span><span class="p">,</span><span class="w"> </span><span class="n">HasGpsTag</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Moreover, each object of the class <code class="docutils literal notranslate"><span class="pre">PoliceAgent</span></code> has <em>also</em> the types
+<code class="docutils literal notranslate"><span class="pre">Person</span></code> and <code class="docutils literal notranslate"><span class="pre">HasGpsTag</span></code>.</p>
+</li>
+</ul>
+<p><a class="reference internal" href="#eg-multiple-interfaces">Example 53</a> below shows both these features in action.</p>
+<div class="proof example admonition" id="eg-multiple-interfaces">
+<p class="admonition-title"><span class="caption-number">Example 53 </span> (Office supplies shop)</p>
+<section class="example-content" id="proof-content">
+<p>We are asked to write the software that manages the inventory of a shop that
+sells office supplies — in particular, scanners and printers.  The
+requirements are:</p>
+<ul class="simple">
+<li><p>every device sold by the shop has a model, a description, and a serial code;</p></li>
+<li><p>the shop handles three kinds of devices with different functionalities:</p>
+<ul>
+<li><p>scanners can scan, and we need to store and retrieve their scanning
+resolution in DPI (dots per inch);</p></li>
+<li><p>printers can print, and we need to store and retrieve their printing
+resolution in DPI;</p></li>
+<li><p>all-in-one devices can both scan and print, and we need to store and
+retrieve both their scanning and printing resolutions in DPI.</p></li>
+</ul>
+</li>
+</ul>
+<p>The software we are going to write must handle the devices according to their
+scanning and printing functionalities.</p>
+<p>After some analysis, we decide to organise our program with:</p>
+<ul class="simple">
+<li><p>a basic interface <code class="docutils literal notranslate"><span class="pre">Device</span></code> with methods to get the model, description, and
+serial code of a device;</p></li>
+<li><p>an interface <code class="docutils literal notranslate"><span class="pre">CanScan</span></code> that extends <code class="docutils literal notranslate"><span class="pre">Device</span></code> with a method to get the scanning
+resolution;</p></li>
+<li><p>an interface <code class="docutils literal notranslate"><span class="pre">CanPrint</span></code> that extends <code class="docutils literal notranslate"><span class="pre">Device</span></code> with a method to get the
+printing resolution;</p></li>
+<li><p>three classes representing the three kinds of devices sold by the shop, and
+their functionalities:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Scanner</span></code>, implementing the interface <code class="docutils literal notranslate"><span class="pre">CanScan</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Printer</span></code>, implementing the interface <code class="docutils literal notranslate"><span class="pre">CanPrint</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AllInOne</span></code>, implementing both interfaces <code class="docutils literal notranslate"><span class="pre">CanScan</span></code> and <code class="docutils literal notranslate"><span class="pre">CanPrint</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>The corresponding UML class diagram is shown in
+<a class="reference internal" href="#fig-uml-office-supplies"><span class="std std-numref">Fig. 20</span></a> below, where:</p>
+<ul class="simple">
+<li><p>each interface and class specifies its methods, with argument types and return
+types;</p></li>
+<li><p>the solid arrows show when an interface (the origin of the arrow) <em>extends</em>
+another interface (the target of the arrow);</p></li>
+<li><p>the dashed arrows show when a class (the origin of the arrow) <em>implements</em> one
+or more interfaces (the target(s) of the arrow).</p></li>
+</ul>
+<figure class="align-default" id="fig-uml-office-supplies">
+<img alt="UML class diagram for the office supplies shop software" src="_images/office-supplies.svg" /><figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">UML class diagram showing the relationship between the interfaces and classes
+of the “office supplies shop” example.  Observe that the interfaces <code class="docutils literal notranslate"><span class="pre">CanScan</span></code>
+and <code class="docutils literal notranslate"><span class="pre">CanPrint</span></code> extend the basic interface <code class="docutils literal notranslate"><span class="pre">Device</span></code>, and the class <code class="docutils literal notranslate"><span class="pre">AllInOne</span></code>
+implements two interfaces.</span><a class="headerlink" href="#fig-uml-office-supplies" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The corresponding interface and class definitions are shown below. Notice that
+we keep all fields <code class="docutils literal notranslate"><span class="pre">private</span></code>, but their value can be retrieved by calling the
+appropriate interface methods.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kd">interface</span> <span class="nc">Device</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">  2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">();</span>
+<span class="linenos">  3</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">();</span>
+<span class="linenos">  4</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">();</span>
+<span class="linenos">  5</span><span class="p">}</span>
+<span class="linenos">  6</span>
+<span class="linenos">  7</span><span class="kd">interface</span> <span class="nc">CanScan</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Device</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">  8</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getScannerDPI</span><span class="p">();</span>
+<span class="linenos">  9</span><span class="p">}</span>
+<span class="linenos"> 10</span>
+<span class="linenos"> 11</span><span class="kd">interface</span> <span class="nc">CanPrint</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Device</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 12</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPrinterDPI</span><span class="p">();</span>
+<span class="linenos"> 13</span><span class="p">}</span>
+<span class="linenos"> 14</span>
+<span class="linenos"> 15</span><span class="kd">class</span> <span class="nc">Scanner</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CanScan</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 16</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="linenos"> 17</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos"> 18</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Scanner</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dpi</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 21</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="linenos"> 22</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos"> 23</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+<span class="linenos"> 24</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 25</span>
+<span class="linenos"> 26</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 27</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="p">;</span>
+<span class="linenos"> 28</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 31</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="p">;</span>
+<span class="linenos"> 32</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getScannerDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 35</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos"> 36</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 37</span>
+<span class="linenos"> 38</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 39</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Scanner&quot;</span><span class="p">;</span>
+<span class="linenos"> 40</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 41</span><span class="p">}</span>
+<span class="linenos"> 42</span>
+<span class="linenos"> 43</span><span class="kd">class</span> <span class="nc">Printer</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CanPrint</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 44</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="linenos"> 45</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+<span class="linenos"> 47</span>
+<span class="linenos"> 48</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Printer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dpi</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 49</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="linenos"> 50</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos"> 51</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+<span class="linenos"> 52</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 53</span>
+<span class="linenos"> 54</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 55</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="p">;</span>
+<span class="linenos"> 56</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 57</span>
+<span class="linenos"> 58</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 59</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="p">;</span>
+<span class="linenos"> 60</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 61</span>
+<span class="linenos"> 62</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPrinterDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 63</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dpi</span><span class="p">;</span>
+<span class="linenos"> 64</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 65</span>
+<span class="linenos"> 66</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 67</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Printer&quot;</span><span class="p">;</span>
+<span class="linenos"> 68</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 69</span><span class="p">}</span>
+<span class="linenos"> 70</span>
+<span class="linenos"> 71</span><span class="kd">class</span> <span class="nc">AllInOne</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CanScan</span><span class="p">,</span><span class="w"> </span><span class="n">CanPrint</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 72</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="linenos"> 73</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scannerDpi</span><span class="p">;</span>
+<span class="linenos"> 74</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">printerDpi</span><span class="p">;</span>
+<span class="linenos"> 75</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+<span class="linenos"> 76</span>
+<span class="linenos"> 77</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">AllInOne</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">scanDpi</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">printDpi</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serialCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 78</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="linenos"> 79</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">scannerDpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanDpi</span><span class="p">;</span>
+<span class="linenos"> 80</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">printerDpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">printDpi</span><span class="p">;</span>
+<span class="linenos"> 81</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serialCode</span><span class="p">;</span>
+<span class="linenos"> 82</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 83</span>
+<span class="linenos"> 84</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 85</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">model</span><span class="p">;</span>
+<span class="linenos"> 86</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 87</span>
+<span class="linenos"> 88</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 89</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">serialCode</span><span class="p">;</span>
+<span class="linenos"> 90</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 91</span>
+<span class="linenos"> 92</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPrinterDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 93</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">printerDpi</span><span class="p">;</span>
+<span class="linenos"> 94</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 95</span>
+<span class="linenos"> 96</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getScannerDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 97</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">scannerDpi</span><span class="p">;</span>
+<span class="linenos"> 98</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 99</span>
+<span class="linenos">100</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">101</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Multifunction scanner + printer&quot;</span><span class="p">;</span>
+<span class="linenos">102</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">103</span><span class="p">}</span>
+<span class="linenos">104</span><span class="w">    </span>
+</pre></div>
+</div>
+<p>Finally, we write a sample program that uses these interfaces and classes, as
+shown below. Notice that:</p>
+<ul class="simple">
+<li><p>the array <code class="docutils literal notranslate"><span class="pre">devices</span></code> (line 12) can contain any object that implements the basic
+interface <code class="docutils literal notranslate"><span class="pre">Device</span></code>;</p></li>
+<li><p>the array <code class="docutils literal notranslate"><span class="pre">scanners</span></code> (line 13) can contain any object with scanning
+functionality (i.e. having type/interface <code class="docutils literal notranslate"><span class="pre">CanScan</span></code>) — and this includes
+both simple scanners and all-in-one devices.  However, the array <code class="docutils literal notranslate"><span class="pre">scanners</span></code>
+<em>cannot</em> contain objects without the type/interface <code class="docutils literal notranslate"><span class="pre">CanScan</span></code>, like the simple
+printers <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code>.</p></li>
+<li><p>similarly, the array <code class="docutils literal notranslate"><span class="pre">printers</span></code> (line 14) can only contain objects having the
+type/interface <code class="docutils literal notranslate"><span class="pre">CanPrint</span></code> — which excludes simple scanners like <code class="docutils literal notranslate"><span class="pre">s1</span></code> and
+<code class="docutils literal notranslate"><span class="pre">s2</span></code>;</p></li>
+<li><p>similar considerations and restrictions apply for the methods
+<code class="docutils literal notranslate"><span class="pre">showDevices(...)</span></code>, <code class="docutils literal notranslate"><span class="pre">showScanners(...)</span></code>, and <code class="docutils literal notranslate"><span class="pre">showPrinters(...)</span></code>.</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">OfficeSupplies</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="s">&quot;Canon CanoScan Lide 300&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4800</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A123Z&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="s">&quot;Epson Perfection V600&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">6400</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A456L&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Printer</span><span class="p">(</span><span class="s">&quot;Brother HL-L2310D&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2400</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;B127F&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Printer</span><span class="p">(</span><span class="s">&quot;HP LaserJet M110we&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;B199H&quot;</span><span class="p">);</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AllInOne</span><span class="p">(</span><span class="s">&quot;Xerox WorkCentre 3025&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C235N&quot;</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AllInOne</span><span class="p">(</span><span class="s">&quot;Kyocera MA2001&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"> </span><span class="mi">1800</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C421A&quot;</span><span class="p">);</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Device</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">a2</span><span class="p">};</span>
+<span class="linenos">13</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">scanners</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CanScan</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">a2</span><span class="p">};</span>
+<span class="linenos">14</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">printers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CanPrint</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">a2</span><span class="p">};</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;All devices:&quot;</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">        </span><span class="n">showDevices</span><span class="p">(</span><span class="n">devices</span><span class="p">);</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Devices with scanning functionality:&quot;</span><span class="p">);</span>
+<span class="linenos">20</span><span class="w">        </span><span class="n">showScanners</span><span class="p">(</span><span class="n">scanners</span><span class="p">);</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Devices with printing functionality:&quot;</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">showPrinters</span><span class="p">(</span><span class="n">printers</span><span class="p">);</span>
+<span class="linenos">24</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">showDevices</span><span class="p">(</span><span class="n">Device</span><span class="o">[]</span><span class="w"> </span><span class="n">devices</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">27</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">d</span><span class="p">:</span><span class="w"> </span><span class="n">devices</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">28</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="na">getModel</span><span class="p">()</span>
+<span class="linenos">29</span><span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="na">getDescription</span><span class="p">()</span>
+<span class="linenos">30</span><span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, serial: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="na">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos">31</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">32</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">showScanners</span><span class="p">(</span><span class="n">CanScan</span><span class="o">[]</span><span class="w"> </span><span class="n">scanners</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">35</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="n">scanners</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">36</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">getModel</span><span class="p">()</span>
+<span class="linenos">37</span><span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (DPI: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">getScannerDPI</span><span class="p">()</span>
+<span class="linenos">38</span><span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, serial: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos">39</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">40</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">showPrinters</span><span class="p">(</span><span class="n">CanPrint</span><span class="o">[]</span><span class="w"> </span><span class="n">printers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">43</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">p</span><span class="p">:</span><span class="w"> </span><span class="n">printers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">44</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getModel</span><span class="p">()</span>
+<span class="linenos">45</span><span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (DPI: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getPrinterDPI</span><span class="p">()</span>
+<span class="linenos">46</span><span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, serial: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos">47</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">48</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">49</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The output of the program is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>All devices:
+  - Canon CanoScan Lide 300 (Scanner, serial: A123Z)
+  - Epson Perfection V600 (Scanner, serial: A456L)
+  - Brother HL-L2310D (Printer, serial: B127F)
+  - HP LaserJet M110we (Printer, serial: B199H)
+  - Xerox WorkCentre 3025 (Multifunction scanner + printer, serial: C235N)
+  - Kyocera MA2001 (Multifunction scanner + printer, serial: C421A)
+Devices with scanning functionality:
+  - Canon CanoScan Lide 300 (DPI: 4800, serial: A123Z)
+  - Epson Perfection V600 (DPI: 6400, serial: A456L)
+  - Xerox WorkCentre 3025 (DPI: 600, serial: C235N)
+  - Kyocera MA2001 (DPI: 600, serial: C421A)
+Devices with printing functionality:
+  - Brother HL-L2310D (DPI: 2400, serial: B127F)
+  - HP LaserJet M110we (DPI: 600, serial: B199H)
+  - Xerox WorkCentre 3025 (DPI: 1200, serial: C235N)
+  - Kyocera MA2001 (DPI: 1800, serial: C421A)
+</pre></div>
+</div>
+</section>
+</div><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When writing the methods of a class, it is good practice to
+<strong>annotate</strong> all the the methods required by an interface, by writing
+<code class="docutils literal notranslate"><span class="pre">&#64;Override</span></code> just above the method itself.</p>
+<p>For instance, in <a class="reference internal" href="#eg-multiple-interfaces">Example 53</a> above we may annotate with
+<code class="docutils literal notranslate"><span class="pre">&#64;Override</span></code> all the methods of <code class="docutils literal notranslate"><span class="pre">Scanner</span></code> which are required by the interface
+<code class="docutils literal notranslate"><span class="pre">CanScan</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Scanner</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CanScan</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getSerialCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getScannerDPI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These annotations are not mandatory, but help us visually distinguishing between
+“required” methods (i.e. those required by an interface) and other methods that
+we can change or delete more freely.  Moreover, Java will help us by reporting
+an error if we annotate with <code class="docutils literal notranslate"><span class="pre">&#64;Override</span></code> a method that is not required by any
+interface.</p>
+</div>
+</section>
+</section>
+<section id="concluding-remarks">
+<span id="sec-interfaces-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of how to <a class="reference internal" href="#sec-interfaces-interfaces"><span class="std std-ref">define, extend, and implement interfaces in Java</span></a>;</p>
+<p>At this stage, you should also start
+<a class="reference internal" href="prog-interf-encapsulation.html#sec-interfaces-encapsulation-vs-code-java"><span class="std std-ref">using Visual Studio Code with the Java Extension Pack</span></a>.</p>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-interfaces-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following section of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: it might mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 7.5 - “Interfaces”</p></li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-interfaces-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="exercise admonition" id="ex-private-fields">
+
+<p class="admonition-title"><span class="caption-number">Exercise 30 </span> (Experimenting with private fields)</p>
+<section id="exercise-content">
+<p>Consider all the classes presented in the code samples shown in this Module: try
+to turn each class field from <code class="docutils literal notranslate"><span class="pre">public</span></code> into <code class="docutils literal notranslate"><span class="pre">private</span></code> (one field at a time), and
+check whether the code that uses the class still compiles and runs correctly.</p>
+<p>Observe, in particular, the classes <code class="docutils literal notranslate"><span class="pre">Employee</span></code> and <code class="docutils literal notranslate"><span class="pre">Guest</span></code> in
+<a class="reference internal" href="#eg-dtu-christmas-party-two-classes-no-interfaces">Example 51</a>:</p>
+<ul class="simple">
+<li><p>What happens if you turn their field <code class="docutils literal notranslate"><span class="pre">name</span></code> from <code class="docutils literal notranslate"><span class="pre">public</span></code> into <code class="docutils literal notranslate"><span class="pre">private</span></code>?</p></li>
+<li><p>Can you revise the code to keep the field <code class="docutils literal notranslate"><span class="pre">name</span></code> private, but allow retrieving
+the name with a method called e.g. <code class="docutils literal notranslate"><span class="pre">getName()</span></code>?</p></li>
+</ul>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-interfaces-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-interfaces-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-interfaces-vehicles"><span class="std std-ref">04 - Vehicle Fleet Management</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-interfaces-phones"><span class="std std-ref">05 - Electronic Devices Shop</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-interfaces-monsters-2"><span class="std std-ref">06 - Video Game Monsters, Part 2</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="vehicle-fleet-management">
+<span id="lab-interfaces-vehicles"></span><h3>04 - Vehicle Fleet Management<a class="headerlink" href="#vehicle-fleet-management" title="Permalink to this heading">#</a></h3>
+<p>You are helping a company develop the software that will manage their fleet of
+vehicles. The company has two kinds of vehicles: minivans and trucks.</p>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Vehicle.java</span></code> provided in the handout, and write
+two classes called <code class="docutils literal notranslate"><span class="pre">Minivan</span></code> and <code class="docutils literal notranslate"><span class="pre">Truck</span></code> representing the two kinds of vehicles.
+Each one of these classes must implement an interface called <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> (that you
+also need to write), with the following methods:</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>which returns the model of the vehicle.</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getRegistrationPlate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns the registration plate of the vehicle.</p>
+</li>
+</ul>
+<p>Besides implementing the <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> interface, the <code class="docutils literal notranslate"><span class="pre">Minivan</span></code> and <code class="docutils literal notranslate"><span class="pre">Truck</span></code> classes
+have the following requirements:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Minivan</span></code> class must provide:</p>
+<ul>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">public</span></code> constructor that takes the minivan model (a <code class="docutils literal notranslate"><span class="pre">String</span></code>),
+registration plate (a <code class="docutils literal notranslate"><span class="pre">String</span></code>), and number of seats (an <code class="docutils literal notranslate"><span class="pre">int</span></code>); and</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">public</span></code> field called <code class="docutils literal notranslate"><span class="pre">seats</span></code> (of type <code class="docutils literal notranslate"><span class="pre">int</span></code>), which is the number of
+seats in the minivan.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Truck</span></code> class must provide:</p>
+<ul>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">public</span></code> constructor that takes the truck model (a <code class="docutils literal notranslate"><span class="pre">String</span></code>), registration
+plate (a <code class="docutils literal notranslate"><span class="pre">String</span></code>), and maximum load in kg (a <code class="docutils literal notranslate"><span class="pre">double</span></code>); and</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">public</span></code> field called <code class="docutils literal notranslate"><span class="pre">maxLoad</span></code> (of type <code class="docutils literal notranslate"><span class="pre">double</span></code>) with the maximum load
+of the truck in kg.</p></li>
+</ul>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">ClassTestUtils.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.: they are test programs that use the
+interface and classes you should write in <code class="docutils literal notranslate"><span class="pre">Vehicle.java</span></code>, and they might not
+compile or work correctly until you complete your work.  You should read those
+test programs and try to run them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see their expected
+output — but you must <em>not</em> modify the test programs.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Vehicle.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>The UML diagram describing the relationship between <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code>, <code class="docutils literal notranslate"><span class="pre">Minivan</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">Truck</span></code> is similar to the one in <a class="reference internal" href="#fig-uml-person-employee-guest"><span class="std std-numref">Fig. 19</span></a>:
+before writing code, it may be helpful to sketch it.</p></li>
+<li><p>The objects of the classes <code class="docutils literal notranslate"><span class="pre">Minivan</span></code> and <code class="docutils literal notranslate"><span class="pre">Truck</span></code> need some fields to store the
+model and registration plate.  Feel free to define those fields as you prefer;
+since they are not mentioned by the <code class="docutils literal notranslate"><span class="pre">Vehicle</span></code> interface, you can (and should!)
+make those fields <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p></li>
+</ul>
+</div>
+</section>
+<section id="electronic-devices-shop">
+<span id="lab-interfaces-phones"></span><h3>05 - Electronic Devices Shop<a class="headerlink" href="#electronic-devices-shop" title="Permalink to this heading">#</a></h3>
+<p>You are helping writing the software that manages the devices sold in a shop.
+Each device has a model name, and the company wants to organise the devices
+according to three capabilities: taking pictures, playing music, and making
+phone calls.  More specifically, the company sells the following kinds of
+devices:</p>
+<ul class="simple">
+<li><p>Cameras (that take pictures);</p></li>
+<li><p>Music players (that play music);</p></li>
+<li><p>Featurephones (that make phone calls);</p></li>
+<li><p>Smartphones (that make phone calls, take pictures, and play music).</p></li>
+</ul>
+<p>After some analysis, the decision is to write the software based on:</p>
+<ul class="simple">
+<li><p>a general interface <code class="docutils literal notranslate"><span class="pre">Device</span></code> for all electronic devices;</p></li>
+<li><p>three interfaces that describe specific device capabilities:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CanTakePictures</span></code> - a device that can take pictures;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CanPlayMusic</span></code> - a device that can play music;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CanMakeCalls</span></code> - a device that can make phone calls;</p></li>
+</ul>
+</li>
+<li><p>one class for each kind of device sold by the shop</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Camera</span></code>, implementing the interface <code class="docutils literal notranslate"><span class="pre">CanTakePictures</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MusicPlayer</span></code>, implementing the interface <code class="docutils literal notranslate"><span class="pre">CanPlayMusic</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Featurephone</span></code>, implementing the interface <code class="docutils literal notranslate"><span class="pre">CanMakeCalls</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Smartphone</span></code>, implementing the interfaces <code class="docutils literal notranslate"><span class="pre">CanMakeCalls</span></code>, <code class="docutils literal notranslate"><span class="pre">CanTakePictures</span></code>,
+<code class="docutils literal notranslate"><span class="pre">CanPlayMusic</span></code>;</p></li>
+</ul>
+</li>
+</ul>
+<p>The resulting diagram of interfaces and classes is the following (notice that
+the diagram includes the methods of the interfaces, and the constructor of each
+class).</p>
+<p><img alt="Interfaces and classes for the electronic devices shop" src="_images/device-camera-player-calls.svg" /></p>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Device.java</span></code> provided in the handout, and
+write all the interfaces and classes described above.</p>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">ClassTestUtils.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.: they are test programs that use the
+interfaces and classes you should write in <code class="docutils literal notranslate"><span class="pre">Device.java</span></code>, and they might not
+compile or work correctly until you complete your work.  You should read those
+test programs and try to run them, and also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> to see their expected
+output — but you must <em>not</em> modify the test programs.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Device.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>The arrangement of interfaces and classes of this assessment is quite similar
+to <a class="reference internal" href="#eg-multiple-interfaces">Example 53</a>.</p></li>
+<li><p>The objects of the classes <code class="docutils literal notranslate"><span class="pre">Camera</span></code>, <code class="docutils literal notranslate"><span class="pre">MusicPlayer</span></code>, <code class="docutils literal notranslate"><span class="pre">Featurephone</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Smartphone</span></code> need some fields to store the model and other information
+(e.g. the number of megapixels, for devices that implement the interface
+<code class="docutils literal notranslate"><span class="pre">CanTakePictures</span></code>).
+Feel free to define those fields as you prefer; since they are not mentioned
+by the interfaces, you can (and should!) make those fields <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p></li>
+</ul>
+</div>
+</section>
+<section id="video-game-monsters-part-2">
+<span id="lab-interfaces-monsters-2"></span><h3>06 - Video Game Monsters, Part 2<a class="headerlink" href="#video-game-monsters-part-2" title="Permalink to this heading">#</a></h3>
+<p>For this assignment you can reuse and adapt part of the solution to
+<a class="reference internal" href="prog-interf-encapsulation.html#lab-interfaces-encapsulation-monsters"><span class="std std-ref">02 - Video Game Monsters</span></a>.</p>
+<p>The development of the video game is progressing, and the player is expected to
+face monsters of three different species: wumpus, owlbear, or demogorgon.  Each
+monster has a name and a certain amount of health points; the player can either
+hit or burn a monster, and the monster can heal and recover health points.</p>
+<p>The monster species have different characteristics:</p>
+<ul class="simple">
+<li><p><strong>Wumpus</strong>:</p>
+<ul>
+<li><p>Maximum health points: 20</p></li>
+</ul>
+</li>
+<li><p><strong>Owlbear</strong>:</p>
+<ul>
+<li><p>Maximum health points: 59</p></li>
+<li><p>Takes half the damage when hit</p></li>
+</ul>
+</li>
+<li><p><strong>Demogorgon</strong>:</p>
+<ul>
+<li><p>Maximum health points: 200</p></li>
+<li><p>Takes half the damage when burnt</p></li>
+</ul>
+</li>
+</ul>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> provided in the handout, and
+program each species of monster as a separate class <code class="docutils literal notranslate"><span class="pre">Wumpus</span></code>, <code class="docutils literal notranslate"><span class="pre">Owlbear</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">Demogorgon</span></code>.  Each one of these classes has a constructor that takes the
+monster’s name (as a <code class="docutils literal notranslate"><span class="pre">String</span></code>), and creates a corresponding monster object with
+the maximum health points (according to the monsters’ characteristics listed
+above). All the fields of the monster classes must be <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p>
+<p>Each monster class must implement a Java <code class="docutils literal notranslate"><span class="pre">interface</span></code> called <code class="docutils literal notranslate"><span class="pre">Monster</span></code>, with the
+following methods:</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns a summary with the monster’s name, species, and current health
+points. For example, a <code class="docutils literal notranslate"><span class="pre">Wumpus</span></code> called “Horrorface” having 10 health points
+should return the string: <code class="docutils literal notranslate"><span class="pre">&quot;Horrorface</span> <span class="pre">(wumpus;</span> <span class="pre">health:</span> <span class="pre">10)&quot;</span></code></p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getHealth</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns the current health points of the monster.  The health points
+must be between 0 and the monster’s maximum (according to the monsters’
+characteristics listed above).</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isDead</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the monster has 0 health points, and <code class="docutils literal notranslate"><span class="pre">false</span></code>
+otherwise.</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">heal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which adds the given number of <code class="docutils literal notranslate"><span class="pre">points</span></code> to the monster’s health, up to
+the monster’s maximum health points (according to the
+monsters’ characteristics listed above).</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">hit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which reduces the monster’s health points by the given <code class="docutils literal notranslate"><span class="pre">damage</span></code> — but note
+that some monsters are resistant to being hit, and only take half the
+<code class="docutils literal notranslate"><span class="pre">damage</span></code> (see the monsters’ characteristics listed above).</p>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">burn</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which reduces the monster’s health points by the given <code class="docutils literal notranslate"><span class="pre">damage</span></code> — but note
+that some monsters are resistant to being burnt, and only take half the
+<code class="docutils literal notranslate"><span class="pre">damage</span></code> (see the monsters’ characteristics listed above).</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">ClassTestUtils.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.: they are utility files and test programs
+that use the class <code class="docutils literal notranslate"><span class="pre">Monster</span></code>, and they might not compile or work correctly until
+you complete the implementation of class <code class="docutils literal notranslate"><span class="pre">Monster</span></code> in the file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code>.
+You should read those test programs and try to run them, but you must <em>not</em>
+modify them. You should also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> and read its reports to see the
+expected output of the test programs.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>The UML diagram describing the relationship between <code class="docutils literal notranslate"><span class="pre">Monster</span></code>, <code class="docutils literal notranslate"><span class="pre">Wumpus</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Owlbear</span></code>, and <code class="docutils literal notranslate"><span class="pre">Demogorgon</span></code> is similar to the one in
+<a class="reference internal" href="#fig-uml-person-employee-guest"><span class="std std-numref">Fig. 19</span></a>: before writing code, it may be
+helpful to sketch it.</p></li>
+<li><p>The objects of the classes <code class="docutils literal notranslate"><span class="pre">Wumpus</span></code>, <code class="docutils literal notranslate"><span class="pre">Owlbear</span></code>, and <code class="docutils literal notranslate"><span class="pre">Demogorgon</span></code> need some
+fields to store the monster’s name and health points.  Feel free to define
+those fields as you prefer — but make sure those fields are <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="prog-interf-encapsulation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 8, Part 1: Programming Interfaces and Encapsulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab-day-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 9, Part 1: Lab Day</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-and-using-interfaces-in-java">Defining and Using <code class="docutils literal notranslate"><span class="pre">interface</span></code>s in Java</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-the-dtu-christmas-party-management-software">The Problem: the DTU Christmas Party Management Software</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-dtu-christmas-party-software-using-interfaces">Implementing the DTU Christmas Party Software Using <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-interfaces-and-implementing-multiple-interfaces">Extending Interfaces and Implementing Multiple Interfaces</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vehicle-fleet-management">04 - Vehicle Fleet Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electronic-devices-shop">05 - Electronic Devices Shop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-monsters-part-2">06 - Video Game Monsters, Part 2</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1122 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 8, Part 1: Programming Interfaces and Encapsulation &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 8, Part 2: Java interfaces" href="interfaces.html" />
+    <link rel="prev" title="Module 7, Part 2: References, null values, and the NullPointerException" href="references-null.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 8, Part 1: Programming Interfaces and Encapsulation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendation-using-vs-code-with-the-java-extension-pack">Recommendation: Using VS Code With the Java Extension Pack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-notion-of-programming-interface">The General Notion of “Programming Interface”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encapsulation-public-vs-private-fields-and-methods">Encapsulation: <code class="docutils literal notranslate"><span class="pre">public</span></code> vs. <code class="docutils literal notranslate"><span class="pre">private</span></code> Fields and Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bank-account-scenario">The Bank Account Scenario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-class-bankaccount-without-encapsulation">The Class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> Without Encapsulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-class-bankaccount-with-encapsulation">The Class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> With Encapsulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-a-constructor-field-or-method-is-neither-public-nor-private">What If a Constructor, Field, or Method Is Neither <code class="docutils literal notranslate"><span class="pre">public</span></code> nor <code class="docutils literal notranslate"><span class="pre">private</span></code>?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cars-3">01 - Cars 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-monsters">02 - Video Game Monsters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vending-machines">03 - Vending Machines</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-8-part-1-programming-interfaces-and-encapsulation">
+<span id="mod-interfaces-encapsulation"></span><h1>Module 8, Part 1: Programming Interfaces and Encapsulation<a class="headerlink" href="#module-8-part-1-programming-interfaces-and-encapsulation" title="Permalink to this heading">#</a></h1>
+<p>This Module presents new ways to make our Java code better structured and more
+reusable. We explore the general notion of
+<a class="reference internal" href="#sec-interfaces-encapsulation-interfaces-general"><span class="std std-ref">programming interface</span></a>,
+i.e. the way different parts of a program can interact with each other.</p>
+<p>Then, we explore how we can shape our programming interfaces by
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation"><span class="std std-ref">restricting the access to (some) class fields and methods</span></a>.</p>
+<p>Since the size and complexity of our Java programs is about to increase, we also
+have a quick look at
+<a class="reference internal" href="#sec-interfaces-encapsulation-vs-code-java"><span class="std std-ref">how to use Visual Studio Code with the Java Extension Pack</span></a>:
+this will be especially useful in <a class="reference internal" href="interfaces.html#mod-interfaces"><span class="std std-ref">part 2 of this Module</span></a>.</p>
+<section id="recommendation-using-vs-code-with-the-java-extension-pack">
+<span id="sec-interfaces-encapsulation-vs-code-java"></span><h2>Recommendation: Using VS Code With the Java Extension Pack<a class="headerlink" href="#recommendation-using-vs-code-with-the-java-extension-pack" title="Permalink to this heading">#</a></h2>
+<p>From this point of the course, you are encouraged to install a
+<a class="reference external" href="https://code.visualstudio.com/docs/editor/extension-marketplace">Visual Studio Code extension</a>
+that makes Java programming more efficient:
+the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">Extension Pack for Java</a>.</p>
+<p>After you install the extension, you can launch VS Code on a whole directory
+containing one or more Java files.  To do that, you have two ways:</p>
+<ul>
+<li><p>open a terminal in the directory containing your files and execute:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>code .
+</pre></div>
+</div>
+<p>(where the dot <code class="docutils literal notranslate"><span class="pre">.</span></code> means “the current directory”); or</p>
+</li>
+<li><p>launch VS Code (e.g. by clicking on its icon), then click on <em>“File” ➜ “Open
+Folder…”</em> and select the folder containing your Java files.</p></li>
+</ul>
+<p>Now, VS Code (and the Java extension pack) will be running a Java compiler
+behind the scenes, and it will let the compiler analyse your Java code as you
+write it. Therefore, VS Code will help you by:</p>
+<ul class="simple">
+<li><p><strong>Reporting errors and warnings as you write Java code</strong>.  For
+instance:</p>
+<ul>
+<li><p>if you write <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">foo</span> <span class="pre">=</span> <span class="pre">&quot;Hello&quot;</span> <span class="pre">*</span> <span class="pre">2;</span></code>, the expression <code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;</span> <span class="pre">*</span> <span class="pre">2</span></code> will be
+immediately emphasised in red, and if you hover the mouse pointer over it,
+you will see a pop-up explaining why the expression is wrong;</p></li>
+<li><p>if you fix the expression and write e.g. <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">foo</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">2;</span></code>, you should see
+the variable <code class="docutils literal notranslate"><span class="pre">foo</span></code> emphasised in yellow, and if you hover the mouse pointer
+over it, you will see a pop-up explaining that the variable <code class="docutils literal notranslate"><span class="pre">foo</span></code> is never
+actually used in your program.</p></li>
+</ul>
+</li>
+<li><p><strong>Reporting type information</strong> about your code: when you hover the mouse
+pointer over a variable or method, you will see a pop-up showing its type.</p></li>
+<li><p><strong>Providing method autocompletion</strong>, i.e. suggesting what method(s) you might
+call, depending on the type of an expression.  For example, if you write
+<code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">&quot;a&quot;.</span></code> you will see that, as soon as you type the dot <code class="docutils literal notranslate"><span class="pre">.</span></code> after
+the expression <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code>, VS Code shows the list of methods that you can call on
+<code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code> — which are all methods provided by the class <code class="docutils literal notranslate"><span class="pre">String</span></code>.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Even if you use the helpful features of the Java Extension Pack, you can (and
+should!) still
+<a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">execute java and javac from the terminal</span></a>
+to compile and execute your code.  This way, you may see more detailed error
+messages about your code.  Moreover, using <code class="docutils literal notranslate"><span class="pre">javac</span></code> and <code class="docutils literal notranslate"><span class="pre">java</span></code> from the terminal
+can be handy if VS Code or the Java extension report strange errors, e.g. due to
+some misconfiguration.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is another extension designed to help Java programming in Visual Studio code,
+called the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=Oracle.oracle-java">Java Platform Extension for Visual Studio Code</a>. The recommendation for this course is to install the
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">Extension Pack for Java</a>
+instead (as suggested above), because it has better support for small Java
+projects.</p>
+</div>
+<span class="target" id="index-0"></span></section>
+<section id="the-general-notion-of-programming-interface">
+<span id="sec-interfaces-encapsulation-interfaces-general"></span><span id="index-1"></span><h2>The General Notion of “Programming Interface”<a class="headerlink" href="#the-general-notion-of-programming-interface" title="Permalink to this heading">#</a></h2>
+<p>When we talk about programming (in any programming language), a <strong>programming
+interface</strong> is the specification of how a software component can be accessed and
+used by the rest of a program, or by other programs.</p>
+<p>In Java, each class and object has a programming interface — which is the set
+of fields that can be read or written, and methods that can be called.</p>
+<p>For instance, consider again the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> from
+<a class="reference internal" href="simple-classes.html#eg-shopitem-program-nonstatic-methods">Example 40</a>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">ShopItem</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">availability</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">ShopItem</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">netPrice</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">vat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">avail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">netPrice</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vat</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avail</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (price: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; DKK + &quot;</span>
+<span class="linenos">16</span><span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">vat</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;% VAT; &quot;</span>
+<span class="linenos">17</span><span class="w">                    </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;availability: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">availability</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">inflateNetPrice</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">percentage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">netPrice</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">percentage</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span><span class="p">));</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">        </span><span class="c1">// This &quot;return&quot; is optional, since this method returns nothing (void)</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">27</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The fields and methods of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> constitute its programming
+interface, i.e. how a program can access the data stored in the objects of the
+class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>, and the code provided by the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>.  More
+specifically, the programming interface of <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> includes:</p>
+<ul>
+<li><p>the <strong>constructor</strong>, which allows us to create new objects of the class
+<code class="docutils literal notranslate"><span class="pre">ShopItem</span></code> by writing e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShopItem</span><span class="p">(</span><span class="s">&quot;Plant pot&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">61.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>the <strong>fields</strong>, which allow us to read and write the values of the fields
+stored in any object of the class <code class="docutils literal notranslate"><span class="pre">ShopItem</span></code>, e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">item</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Cup&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// Change the value of the field &#39;name&#39; of object &#39;item&#39;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;VAT: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">vat</span><span class="p">);</span><span class="w">  </span><span class="c1">// Read field &#39;vat&#39; of object &#39;item&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>the <strong>methods</strong>, which allow us to perform operations on objects and/or
+compute results based on the object’s field values, e.g.:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">item</span><span class="p">.</span><span class="na">inflateNetPrice</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Item description: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Every time we write a class in Java, we are also specifying a programming
+interface, which determines how that class and its objects can be used.</p>
+<span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><span class="target" id="index-5"></span></section>
+<section id="encapsulation-public-vs-private-fields-and-methods">
+<span id="sec-interfaces-encapsulation-encapsulation"></span><span id="index-6"></span><h2>Encapsulation: <code class="docutils literal notranslate"><span class="pre">public</span></code> vs. <code class="docutils literal notranslate"><span class="pre">private</span></code> Fields and Methods<a class="headerlink" href="#encapsulation-public-vs-private-fields-and-methods" title="Permalink to this heading">#</a></h2>
+<p>When we write a class, we may define a series of fields and methods that should
+be for “internal use only” — i.e. we need those fields/methods to write other
+methods of the class, but we may not want those fields/methods to be used in
+other parts of our program (or by other programs).  In other words, we may want
+to <strong>restrict the programming interface of our class</strong> by
+<strong>restricting the access to some of its fields or methods</strong>: this concept is
+called <strong>encapsulation</strong>.</p>
+<p>More specifically, when writing classes we may want to distinguish between two
+main levels of access, using two different <strong>modifiers</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">public</span></code> fields and methods</strong> that can be accessed by any other part of a
+program, and</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">private</span></code> fields and methods</strong> that can only be accessed from
+<em>inside the class that defines them</em>.</p></li>
+</ul>
+<p>To illustrate the concept and the motivation, let us examine a scenario:
+designing and implementing a
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank"><span class="std std-ref">Java class that represents a bank account</span></a>.
+We discuss:</p>
+<ul class="simple">
+<li><p>how to implement the bank account class
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank-no-enc"><span class="std std-ref">without encapsulation</span></a>,
+and what are the consequences; and</p></li>
+<li><p>how to implement the bank account class
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank-no-enc"><span class="std std-ref">with encapsulation</span></a>.</p></li>
+</ul>
+<p>Finally, we briefly discuss <a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-package-private"><span class="std std-ref">what happens when we do not specify whether a field or method is public or private</span></a>.</p>
+<section id="the-bank-account-scenario">
+<span id="sec-interfaces-encapsulation-encapsulation-bank"></span><h3>The Bank Account Scenario<a class="headerlink" href="#the-bank-account-scenario" title="Permalink to this heading">#</a></h3>
+<p>Suppose you are asked to design and develop a class called <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code>
+representing a bank account, with the following requirements:</p>
+<ul class="simple">
+<li><p>Each object of the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> must store the bank account number,
+owner, and balance;</p></li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> must provide a constructor to create an empty bank
+account with a given number for a given owner;</p></li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> must provide methods for performing the following
+operations on its objects:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">deposit</span></code>, for adding a given amount to the balance of <code class="docutils literal notranslate"><span class="pre">this</span></code> account;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">withdraw</span></code>, for removing a given amount from the balance of <code class="docutils literal notranslate"><span class="pre">this</span></code> account.
+This method must return the actual amount withdrawn from the account,
+ensuring that the balance does not become negative: e.g., <code class="docutils literal notranslate"><span class="pre">withdraw</span></code>ing the
+amount 1000 from a bank account that only has balance 800 must set the
+balance to 0, and return 800;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transfer</span></code>, which has the effect of withdrawing a given amount from <code class="docutils literal notranslate"><span class="pre">this</span></code>
+account, and deposit it to a destination account. This method must return
+the actual amount being transferred, with the same constraints explained for
+<code class="docutils literal notranslate"><span class="pre">withdraw</span></code> above.</p></li>
+</ul>
+</li>
+<li><p>Each object of the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> must also remember how many operations
+(deposit, withdraw, transfer) have been performed in total since its creation.</p></li>
+<li><p>Finally, the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> must provide a method returning a description
+(as a <code class="docutils literal notranslate"><span class="pre">String</span></code>) including the account number, owner, balance, and total number
+of operations.</p></li>
+</ul>
+<p>The goal is to use <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> objects to write programs that may look like
+the following:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">BankAccountTest</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">args</span><span class="o">[]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">acc1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BankAccount</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Abigail Abildgaard&quot;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">acc2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BankAccount</span><span class="p">(</span><span class="mi">4321</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Marcus Marcussen&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BankAccount</span><span class="o">[]</span><span class="p">{</span><span class="w"> </span><span class="n">acc1</span><span class="p">,</span><span class="w"> </span><span class="n">acc2</span><span class="w"> </span><span class="p">};</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;New bank accounts:&quot;</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="n">printAccounts</span><span class="p">(</span><span class="n">accounts</span><span class="p">);</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Depositing 5000 DKK on the 1st account...&quot;</span><span class="p">);</span>
+<span class="linenos">11</span><span class="w">        </span><span class="n">acc1</span><span class="p">.</span><span class="na">deposit</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">printAccounts</span><span class="p">(</span><span class="n">accounts</span><span class="p">);</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Withdrawing 300.55 DKK from the 1st account...&quot;</span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">withdrawn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acc1</span><span class="p">.</span><span class="na">withdraw</span><span class="p">(</span><span class="mf">300.55</span><span class="p">);</span>
+<span class="linenos">16</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;* Amount withdrawn: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">withdrawn</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; DKK&quot;</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">        </span><span class="n">printAccounts</span><span class="p">(</span><span class="n">accounts</span><span class="p">);</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Transferring 7500 DKK from 1st to 2nd account...&quot;</span><span class="p">);</span>
+<span class="linenos">20</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">transferred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acc1</span><span class="p">.</span><span class="na">transfer</span><span class="p">(</span><span class="n">acc2</span><span class="p">,</span><span class="w"> </span><span class="mi">7500</span><span class="p">);</span>
+<span class="linenos">21</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;* Amount transferred: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">transferred</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; DKK&quot;</span><span class="p">);</span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">printAccounts</span><span class="p">(</span><span class="n">accounts</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="w">    </span><span class="c1">// Utility method to print the descriptions of the given bank accounts</span>
+<span class="linenos">26</span><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printAccounts</span><span class="p">(</span><span class="n">BankAccount</span><span class="o">[]</span><span class="w"> </span><span class="n">accounts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">27</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="n">acc</span><span class="p">:</span><span class="w"> </span><span class="n">accounts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">28</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;    - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">acc</span><span class="p">.</span><span class="na">description</span><span class="p">());</span>
+<span class="linenos">29</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">30</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Leave an empty line for spacing</span>
+<span class="linenos">31</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">32</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="the-class-bankaccount-without-encapsulation">
+<span id="sec-interfaces-encapsulation-encapsulation-bank-no-enc"></span><h3>The Class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> Without Encapsulation<a class="headerlink" href="#the-class-bankaccount-without-encapsulation" title="Permalink to this heading">#</a></h3>
+<p>Here is a possible implementation of the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> that satisfies all
+the requirements
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank"><span class="std std-ref">listed above</span></a>.
+Observe that it uses a field called <code class="docutils literal notranslate"><span class="pre">operations</span></code> to count the total number of
+operations performed on a bank account object, and the value of that field is
+incremented whenever the methods <code class="docutils literal notranslate"><span class="pre">deposit</span></code> or <code class="docutils literal notranslate"><span class="pre">withdraw</span></code> are called (and
+therefore, indirectly, also the method <code class="docutils literal notranslate"><span class="pre">transfer</span></code> increments the operations
+count).</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">BankAccount</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">operations</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">BankAccount</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">owner</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">operations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">deposit</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">operations</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">21</span><span class="w">            </span><span class="c1">// Ensure the amount being withdrawn does not exceed the balance</span>
+<span class="linenos">22</span><span class="w">            </span><span class="n">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">24</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">operations</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="linenos">28</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">transfer</span><span class="p">(</span><span class="n">BankAccount</span><span class="w"> </span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">31</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">transferredAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span>
+<span class="linenos">32</span><span class="w">        </span><span class="n">destination</span><span class="p">.</span><span class="na">deposit</span><span class="p">(</span><span class="n">transferredAmount</span><span class="p">);</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">transferredAmount</span><span class="p">;</span>
+<span class="linenos">35</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">38</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Account &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; owned by &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">owner</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span>
+<span class="linenos">39</span><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; DKK (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">operations</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; operations)&quot;</span><span class="p">;</span>
+<span class="linenos">40</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">41</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can try this version of the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> and
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank"><span class="std std-ref">the test program above</span></a>
+by copy&amp;pasting their code in separate files, called <code class="docutils literal notranslate"><span class="pre">BankAccount.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">BankAccountTest.java</span></code>, saved in the same directory. Then, you can compile the
+resulting multi-file Java program (using <code class="docutils literal notranslate"><span class="pre">javac</span></code>) and then run it
+(using <code class="docutils literal notranslate"><span class="pre">java</span></code>), as explained in <a class="reference internal" href="structured.html#sec-structured-struct-separate-files"><span class="std std-ref">Splitting Code into Separate Files</span></a>.</p>
+</div>
+<p>This implementation of the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> satisfies the requirements, but
+it has a potential design issue: after a bank account object is created,
+the code that can access the object can directly manipulate its fields, without
+using the methods <code class="docutils literal notranslate"><span class="pre">deposit</span></code>, <code class="docutils literal notranslate"><span class="pre">withdraw</span></code>, or <code class="docutils literal notranslate"><span class="pre">transfer</span></code>. This is possible because
+the <a class="reference internal" href="#sec-interfaces-encapsulation-interfaces-general"><span class="std std-ref">programming interface</span></a>
+of the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> includes the possibility of reading and writing the
+values in the object fields — but in this scenario, this might be undesirable.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">main</span></code> static method of
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank"><span class="std std-ref">the test program above</span></a>
+might be changed to “transfer” money between the bank accounts <code class="docutils literal notranslate"><span class="pre">acc1</span></code> and <code class="docutils literal notranslate"><span class="pre">acc2</span></code>
+as follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">acc1</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acc1</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">25000</span><span class="p">;</span>
+<span class="n">acc2</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acc2</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">25000</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Java will happily compile and execute this code — but notice that, as a
+consequence:</p>
+<ul class="simple">
+<li><p>the balance of <code class="docutils literal notranslate"><span class="pre">acc1</span></code> becomes negative, and</p></li>
+<li><p>the “transfer” is not counted in the total number of operations performed on
+<code class="docutils literal notranslate"><span class="pre">acc1</span></code> nor <code class="docutils literal notranslate"><span class="pre">acc2</span></code>.</p></li>
+</ul>
+<p>This is arguably undesirable, and not compatible with the requirements
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank"><span class="std std-ref">listed above</span></a>. The
+possibility of writing this undesirable code increases the risk of introducing
+bugs in the programs that use our class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> (especially when such
+programs become larger and many people work on them). It would be better to
+prevent this situation from happening.</p>
+<span class="target" id="index-7"></span><span class="target" id="index-8"></span></section>
+<section id="the-class-bankaccount-with-encapsulation">
+<span id="sec-interfaces-encapsulation-encapsulation-bank-enc"></span><span id="index-9"></span><h3>The Class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> With Encapsulation<a class="headerlink" href="#the-class-bankaccount-with-encapsulation" title="Permalink to this heading">#</a></h3>
+<p>To avoid the issues illustrated
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank-no-enc"><span class="std std-ref">above</span></a>, we can
+explicitly add <strong>modifiers</strong> to each field, constructor, and method in a class
+definition, to state which parts of a Java program can access them.</p>
+<p>Here is a possible revision the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> above, which restricts the
+programming interface offered by the class with the following changes
+(highlighted):</p>
+<ul class="simple">
+<li><p>The field <code class="docutils literal notranslate"><span class="pre">owner</span></code>, the constructor, and all the methods now have the
+modifier <code class="docutils literal notranslate"><span class="pre">public</span></code>. This means that:</p>
+<ul>
+<li><p>any part of a Java program can create <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> objects using its
+constructor;</p></li>
+<li><p>after a <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> object is created, its <code class="docutils literal notranslate"><span class="pre">owner</span></code> field can be read and
+changed by any part of a Java program;</p></li>
+<li><p>moreover, any part of a Java programs can call the methods <code class="docutils literal notranslate"><span class="pre">deposit</span></code>,
+<code class="docutils literal notranslate"><span class="pre">withdraw</span></code>, <code class="docutils literal notranslate"><span class="pre">transfer</span></code>, and <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p></li>
+</ul>
+</li>
+<li><p>The fields <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">balance</span></code>, and <code class="docutils literal notranslate"><span class="pre">operations</span></code> now have the modifier
+<code class="docutils literal notranslate"><span class="pre">private</span></code>. This means that those fields can only be read and written by Java
+code that is written inside the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code>.</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">BankAccount</span><span class="w"> </span><span class="p">{</span>
+<span class="hll"><span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 3</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 4</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos"> 5</span><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">operations</span><span class="p">;</span>
+</span><span class="linenos"> 6</span>
+<span class="hll"><span class="linenos"> 7</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">BankAccount</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">owner</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos"> 8</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">operations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">13</span>
+<span class="hll"><span class="linenos">14</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deposit</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">15</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">operations</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">18</span>
+<span class="hll"><span class="linenos">19</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">20</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">21</span><span class="w">            </span><span class="c1">// Ensure the amount being withdrawn does not exceed the balance</span>
+<span class="linenos">22</span><span class="w">            </span><span class="n">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="p">;</span>
+<span class="linenos">23</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">24</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">operations</span><span class="o">++</span><span class="p">;</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="linenos">28</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">29</span>
+<span class="hll"><span class="linenos">30</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">transfer</span><span class="p">(</span><span class="n">BankAccount</span><span class="w"> </span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">31</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">transferredAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span>
+<span class="linenos">32</span><span class="w">        </span><span class="n">destination</span><span class="p">.</span><span class="na">deposit</span><span class="p">(</span><span class="n">transferredAmount</span><span class="p">);</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">transferredAmount</span><span class="p">;</span>
+<span class="linenos">35</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">36</span>
+<span class="hll"><span class="linenos">37</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span class="linenos">38</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Account &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; owned by &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">owner</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span>
+<span class="linenos">39</span><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; DKK (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">operations</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; operations)&quot;</span><span class="p">;</span>
+<span class="linenos">40</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">41</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>After these changes, the <code class="docutils literal notranslate"><span class="pre">main</span></code> static method of
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank"><span class="std std-ref">the test program above</span></a>
+will still compile and run correctly <em>(try it!)</em>. However, if we try writing
+again the “bad” bank transfer:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">acc1</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acc1</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">25000</span><span class="p">;</span>
+<span class="n">acc2</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acc2</span><span class="p">.</span><span class="na">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">25000</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>then this code would now violate the programming interface of the class
+<code class="docutils literal notranslate"><span class="pre">BankAccount</span></code>, and we would get compilation errors like the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BankAccountTest.java:... error: balance has private access in BankAccount
+        acc1.balance = acc1.balance - 25000;
+</pre></div>
+</div>
+<p>Therefore, a programmer that uses the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> will be only allowed
+to access and use the <code class="docutils literal notranslate"><span class="pre">public</span></code> parts of the class definition, and will not be
+allowed to write the “bad” bank transfer above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this example, we have declared the field <code class="docutils literal notranslate"><span class="pre">owner</span></code> in the class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code>
+as <code class="docutils literal notranslate"><span class="pre">public</span></code>. There was no strong reason to do it: if you change modifier of the
+<code class="docutils literal notranslate"><span class="pre">owner</span></code> field to <code class="docutils literal notranslate"><span class="pre">private</span></code>, the code and the test program above will still work
+<em>(try it!)</em>.</p>
+<p>A common rule of thumb for designing programming interfaces in Java is that
+fields should <em>not</em> be made <code class="docutils literal notranslate"><span class="pre">public</span></code>, while methods can be made <code class="docutils literal notranslate"><span class="pre">public</span></code> (or
+not) depending on their intended use.</p>
+</div>
+<span class="target" id="index-10"></span></section>
+<section id="what-if-a-constructor-field-or-method-is-neither-public-nor-private">
+<span id="sec-interfaces-encapsulation-encapsulation-package-private"></span><span id="index-11"></span><h3>What If a Constructor, Field, or Method Is Neither <code class="docutils literal notranslate"><span class="pre">public</span></code> nor <code class="docutils literal notranslate"><span class="pre">private</span></code>?<a class="headerlink" href="#what-if-a-constructor-field-or-method-is-neither-public-nor-private" title="Permalink to this heading">#</a></h3>
+<p>Until now, we have not used the <code class="docutils literal notranslate"><span class="pre">public</span></code> nor <code class="docutils literal notranslate"><span class="pre">private</span></code> modifiers in our classes
+— except for the <code class="docutils literal notranslate"><span class="pre">main</span></code> static method, which must be declared <code class="docutils literal notranslate"><span class="pre">public</span></code> in
+order to be executable by Java.</p>
+<p>So, a natural question is: if a field, method, or constructor is neither
+<code class="docutils literal notranslate"><span class="pre">public</span></code> nor <code class="docutils literal notranslate"><span class="pre">private</span></code>, what kind of access does it have? Which parts of a Java
+program can use it?</p>
+<p>The answer is that Java has a default access level called “<em>package-private</em>,”
+which is used if no other modifier is specified. For instance, all fields,
+methods, and constructors defined above in the
+<a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation-bank-no-enc"><span class="std std-ref">class BankAccount without encapsulation</span></a>
+are “<em>package-private</em>.”</p>
+<p>The access level “<em>package-private</em>” is “in between” <code class="docutils literal notranslate"><span class="pre">public</span></code> and <code class="docutils literal notranslate"><span class="pre">private</span></code> —
+but for the kind of Java programs we have written thus far, it is pretty much
+indistinguishable from <code class="docutils literal notranslate"><span class="pre">public</span></code>.  In order to truly appreciate the difference
+between <code class="docutils literal notranslate"><span class="pre">public</span></code> and “<em>package-private</em>,” we would need to discuss some elements
+of Java that we will address only later in the course.</p>
+<p>Therefore, we will adopt this approach:</p>
+<ul class="simple">
+<li><p>We will always specify whether a class field, or constructor, or method, is
+<code class="docutils literal notranslate"><span class="pre">public</span></code> or <code class="docutils literal notranslate"><span class="pre">private</span></code>. This is good programming practice, and familiarising
+with it will be very useful.</p></li>
+<li><p>If a class field, or constructor, or method has no <code class="docutils literal notranslate"><span class="pre">public</span></code> nor <code class="docutils literal notranslate"><span class="pre">private</span></code>
+modifier, you should consider which one of the two would be more suitable.
+The code will often work anyway without modifiers (because “no modifier” means
+“<em>package-private</em>”, which is not far from <code class="docutils literal notranslate"><span class="pre">public</span></code>); however, it is usually
+better to use <code class="docutils literal notranslate"><span class="pre">private</span></code> as much as possible, in order to minimise the
+programming interface exposed by a class to other Java code that uses it.</p></li>
+</ul>
+</section>
+</section>
+<section id="concluding-remarks">
+<span id="sec-interfaces-encapsulation-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of two main topics:</p>
+<ul class="simple">
+<li><p>The general notion of <a class="reference internal" href="#sec-interfaces-encapsulation-interfaces-general"><span class="std std-ref">programming interface</span></a>;</p></li>
+<li><p><a class="reference internal" href="#sec-interfaces-encapsulation-encapsulation"><span class="std std-ref">Restricting (encapsulating) the fields and methods of a class</span></a>
+by making them <code class="docutils literal notranslate"><span class="pre">private</span></code> or <code class="docutils literal notranslate"><span class="pre">public</span></code>. This has the effect of shaping and
+restricting the programming interface offered by the class.</p></li>
+</ul>
+<p>At this stage, you should also start
+<a class="reference internal" href="#sec-interfaces-encapsulation-vs-code-java"><span class="std std-ref">using Visual Studio Code with the Java Extension Pack</span></a>.</p>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-interfaces-encapsulation-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following section of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: it might mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 4.3 - “Encapsulation”</p></li>
+</ul>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-interfaces-encapsulation-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-interfaces-encapsulation-cars-3"><span class="std std-ref">01 - Cars 3</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-interfaces-encapsulation-monsters"><span class="std std-ref">02 - Video Game Monsters</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-interfaces-encapsulation-vending-machines"><span class="std std-ref">03 - Vending Machines</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="cars-3">
+<span id="lab-interfaces-encapsulation-cars-3"></span><h3>01 - Cars 3<a class="headerlink" href="#cars-3" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a variation of the assessment <a class="reference internal" href="simple-classes.html#lab-simple-classes-cars-2"><span class="std std-ref">04 - Cars 2</span></a>, and
+you might use its solution as a starting point. Observe that here you are asked
+to implement <code class="docutils literal notranslate"><span class="pre">public</span></code> constructors and methods, and keep all class fields
+<code class="docutils literal notranslate"><span class="pre">private</span></code>.</p>
+</div>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code> provided in the handout, and implement a class called
+<code class="docutils literal notranslate"><span class="pre">Car</span></code> representing a car.  The requirements are the following.</p>
+<ul>
+<li><p>When defining the class <code class="docutils literal notranslate"><span class="pre">Car</span></code> you can can declare all the fields you like, but
+they must be all <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p></li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Car</span></code> must have a <code class="docutils literal notranslate"><span class="pre">public</span></code> constructor that takes the car’s brand,
+model, number plate, and colour, and can be called e.g. as:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Car</span><span class="p">(</span><span class="s">&quot;FIAT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Topolino&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EZ 13623&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Car</span></code> objects must have the following methods:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getBrand</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getModel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNumberPlate</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getColor</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When called on a <code class="docutils literal notranslate"><span class="pre">Car</span></code> object, these methods must return, respectively, the
+brand, model, number plate, and colour used to construct the object.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Car</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When called, the method returns a string with the car information.  For
+instance, calling <code class="docutils literal notranslate"><span class="pre">c.description()</span></code> (using <code class="docutils literal notranslate"><span class="pre">c</span></code> from the previous point) must
+return a string of the following form:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>FIAT Topolino, blue [EZ 13623]
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Car</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">equals</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <code class="docutils literal notranslate"><span class="pre">brand</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">numberPlate</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">color</span></code> fields of <code class="docutils literal notranslate"><span class="pre">this</span></code> object are equal to the corresponding fields of
+the <code class="docutils literal notranslate"><span class="pre">other</span></code> object; otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Car</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isAlike</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="n">other</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When called, the method returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the <code class="docutils literal notranslate"><span class="pre">brand</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, and <code class="docutils literal notranslate"><span class="pre">color</span></code>
+fields of <code class="docutils literal notranslate"><span class="pre">this</span></code> object are equal to the corresponding fields of the <code class="docutils literal notranslate"><span class="pre">other</span></code>
+object; otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">ClassTestUtils.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.: they are utility files and test programs
+that use the class <code class="docutils literal notranslate"><span class="pre">Car</span></code>, and they might not compile or work correctly until you
+complete the implementation of class <code class="docutils literal notranslate"><span class="pre">Car</span></code> in the file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code>.  You should
+read those test programs and try to run them, but you must <em>not</em> modify them.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Car.java</span></code> on DTU Autolab.</p>
+</section>
+<section id="video-game-monsters">
+<span id="lab-interfaces-encapsulation-monsters"></span><h3>02 - Video Game Monsters<a class="headerlink" href="#video-game-monsters" title="Permalink to this heading">#</a></h3>
+<p>You are helping in the development of a video game where the player faces some
+monsters.  Each monster has a name and a maximum of 100 health points; the
+player can either hit or burn a monster, and the monster can heal and recover
+health points.</p>
+<p>Your task is to edit the file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> and define a class named <code class="docutils literal notranslate"><span class="pre">Monster</span></code>.
+The requirements are the following.</p>
+<ul>
+<li><p>When defining the class <code class="docutils literal notranslate"><span class="pre">Monster</span></code> you can can declare all the fields you like,
+but they must be all <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p></li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">Monster</span></code> must have a <code class="docutils literal notranslate"><span class="pre">public</span></code> constructor that takes the monster’s
+name (as a <code class="docutils literal notranslate"><span class="pre">String</span></code>), and creates a corresponding monster object with the
+maximum health points (100).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Monster</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getDescription</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns a summary with the monster’s name, and current health
+points. For example, a monster called “Horrorface” having 10 health points
+should return the string: <code class="docutils literal notranslate"><span class="pre">&quot;Horrorface</span> <span class="pre">(health:</span> <span class="pre">10)&quot;</span></code></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Monster</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getHealth</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns the current health points of the monster.  The health points
+must be between 0 and 100.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Monster</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isDead</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the monster has 0 health points, and <code class="docutils literal notranslate"><span class="pre">false</span></code>
+otherwise.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Monster</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">heal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which adds the given number of <code class="docutils literal notranslate"><span class="pre">points</span></code> to the monster’s health, up to
+the monster’s maximum health points (100).</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Monster</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">hit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which reduces the monster’s health points by the given <code class="docutils literal notranslate"><span class="pre">damage</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Monster</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">burn</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">damage</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which reduces the monster’s health points by the given <code class="docutils literal notranslate"><span class="pre">damage</span></code>.</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">ClassTestUtils.java</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, etc.: they are utility files and test programs that use the class
+<code class="docutils literal notranslate"><span class="pre">Monster</span></code>, and they might not compile or work correctly until you complete the
+implementation of class <code class="docutils literal notranslate"><span class="pre">Monster</span></code> in the file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code>.  You should read
+those test programs and try to run them, but you must <em>not</em> modify them. You
+should also run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> and read its reports to see the expected output of
+the test programs.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Monster.java</span></code> on DTU Autolab.</p>
+</section>
+<section id="vending-machines">
+<span id="lab-interfaces-encapsulation-vending-machines"></span><h3>03 - Vending Machines<a class="headerlink" href="#vending-machines" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">VendingMachine.java</span></code> provided in the handout, and implement a
+class named <code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> that represents a vending machine. The vending
+machine has a location, and holds a number of coffee and chocolate servings, and
+an amount of cash. It can serve beverages according to the following list:</p>
+<ul class="simple">
+<li><p><strong>coffee</strong>: costs 10, and consumes 1 serving of coffee;</p></li>
+<li><p><strong>chocolate</strong>: costs 20, and consumes 1 serving of chocolate;</p></li>
+<li><p><strong>Wiener melange</strong>: costs 30, and consumes 1 serving of coffee and 1 serving
+of chocolate.</p></li>
+</ul>
+<p>The requirements for the class <code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> are the following.</p>
+<ul>
+<li><p>When defining the class <code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> you can can declare all the fields you like,
+but they must be all <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p></li>
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> must have a <code class="docutils literal notranslate"><span class="pre">public</span></code> constructor that takes the
+machines’s location (as a <code class="docutils literal notranslate"><span class="pre">String</span></code>) and the number of coffee and chocolate
+servings it holds (as <code class="docutils literal notranslate"><span class="pre">int</span></code>egers). A newly-created vending machine must hold
+no cash. For instance, the constructor should allow us to create a vending
+machine object with 10 servings of coffee and 12 servings of chocolate, as
+follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">VendingMachine</span><span class="p">(</span><span class="s">&quot;DTU Building 324&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">description</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns a summary of the machine status. For instance, calling
+<code class="docutils literal notranslate"><span class="pre">m.description()</span></code> on the vending machine <code class="docutils literal notranslate"><span class="pre">m</span></code> created above must return:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Machine @ DTU building 324 (coffee: 10; chocolate: 12; cash: 0)
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">putCash</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which increases the cash held in a vending machine object by the given
+<code class="docutils literal notranslate"><span class="pre">amount</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">serveCoffee</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">serveChocolate</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">serveWienerMelange</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>These methods must return <code class="docutils literal notranslate"><span class="pre">true</span></code> if the vending machine contains enough cash
+and coffee/chocolate servings for the requested beverage, according to the
+list above; in this case, the method must also correspondingly reduce the
+amount of coffee/chocolate and cash held by the vending machine. Otherwise
+(i.e., if the vending machine does not have enough coffee/chocolate or cash),
+the methods must just return <code class="docutils literal notranslate"><span class="pre">false</span></code> without changing the machine status.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> objects must have the following method:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">retrieveCash</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which returns the amount of cash currently held by the machine. After this
+method is called, the machine must contain zero cash.</p>
+</li>
+</ul>
+<p>The handout includes some Java files called <code class="docutils literal notranslate"><span class="pre">TestUtils.java</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ClassTestUtils.java</span></code> and <code class="docutils literal notranslate"><span class="pre">Test01.java</span></code>, <code class="docutils literal notranslate"><span class="pre">Test02.java</span></code>, etc.: they are utility
+files and test programs that use the class <code class="docutils literal notranslate"><span class="pre">Monster</span></code>, and they might not compile
+or work correctly until you complete the implementation of class
+<code class="docutils literal notranslate"><span class="pre">VendingMachine</span></code> in the file <code class="docutils literal notranslate"><span class="pre">VendingMachine.java</span></code>.  You should read those test
+programs and try to run them, but you must <em>not</em> modify them. You should also
+run <code class="docutils literal notranslate"><span class="pre">./grade</span></code> and read its reports to see the expected output of the test
+programs.</p>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">VendingMachine.java</span></code> on DTU
+Autolab.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="references-null.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="interfaces.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendation-using-vs-code-with-the-java-extension-pack">Recommendation: Using VS Code With the Java Extension Pack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-notion-of-programming-interface">The General Notion of “Programming Interface”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encapsulation-public-vs-private-fields-and-methods">Encapsulation: <code class="docutils literal notranslate"><span class="pre">public</span></code> vs. <code class="docutils literal notranslate"><span class="pre">private</span></code> Fields and Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bank-account-scenario">The Bank Account Scenario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-class-bankaccount-without-encapsulation">The Class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> Without Encapsulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-class-bankaccount-with-encapsulation">The Class <code class="docutils literal notranslate"><span class="pre">BankAccount</span></code> With Encapsulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-a-constructor-field-or-method-is-neither-public-nor-private">What If a Constructor, Field, or Method Is Neither <code class="docutils literal notranslate"><span class="pre">public</span></code> nor <code class="docutils literal notranslate"><span class="pre">private</span></code>?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cars-3">01 - Cars 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#video-game-monsters">02 - Video Game Monsters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vending-machines">03 - Vending Machines</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

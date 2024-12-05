@@ -1,0 +1,1152 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 3, Part 2: Loops &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/bussproofs"]}, "tex": {"packages": {"[+]": ["bussproofs"]}, "macros": {}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="_static/mathjax/es5/tex-svg.js"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 4, Part 1: More About Loops" href="loops2.html" />
+    <link rel="prev" title="Module 3, Part 1: Lab Day" href="lab-day-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="java-first-taste.html">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 3, Part 2: Loops</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goal-a-program-that-lets-the-user-guess-a-number">Goal: a Program that Lets the User Guess a Number</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interlude-generating-random-numbers">Interlude: Generating Random Numbers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-statement">While Statement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-as-long-as-more-inputs-are-available">Looping as Long as More Inputs Are Available</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-while-statement">Do-While Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#password-check-2">07 - Password Check 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animal-sounds">08 - Animal Sounds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#square">09 - Square</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-3-part-2-loops">
+<span id="mod-loops"></span><h1>Module 3, Part 2: Loops<a class="headerlink" href="#module-3-part-2-loops" title="Permalink to this heading">#</a></h1>
+<span class="target" id="index-0"></span><p id="index-1">In this module we address <strong>loops</strong>, i.e., how to write Java programs that
+repeat the execution of some statements based on a (boolean) conditions. More
+specifically,
+we focus on two <strong>control flow statements</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#sec-loops-while"><span class="std std-ref">While Statement</span></a></p></li>
+<li><p><a class="reference internal" href="#sec-loops-do-while"><span class="std std-ref">Do-While Statement</span></a></p></li>
+</ul>
+<p>We have already seen the notion of a “loop” when programming
+<a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a>, where we can use the
+instruction <span class="asm">if … jump …</span> to jump back to a
+previously-executed part of the code if a certain condition is true
+(see e.g. <a class="reference internal" href="basic-programming.html#eg-asm-increase-reg-limit">Example 6</a>). However, when programming in
+BlinkenBits assembly we had to consider which register to check for deciding
+whether to jump, and which exact memory location the computer should jump to.
+These details make assembly programs hard to write, read, and maintain —
+especially because programming using explicit jumps (also called “GOTOs” in some
+programming languages) quickly leads to
+<a class="reference external" href="https://craftofcoding.wordpress.com/2020/02/12/the-world-of-unstructured-programming-i-e-spaghetti-code/">spaghetti code</a>.</p>
+<p>When we write a loop in Java, these details are handled automatically behind the
+scenes, as the Java code is translated into machine instructions. Therefore, we
+can focus on higher-level aspects: which statements of our program may need to
+be repeated, and what is the (boolean) condition for repeating them.</p>
+<p>To see what Java loops look like and how they can be used, let us
+consider a practical problem: writing an
+<a class="reference internal" href="#sec-loops-goal-prog"><span class="std std-ref">interactive program that asks the user to guess a number</span></a>.</p>
+<section id="goal-a-program-that-lets-the-user-guess-a-number">
+<span id="sec-loops-goal-prog"></span><h2>Goal: a Program that Lets the User Guess a Number<a class="headerlink" href="#goal-a-program-that-lets-the-user-guess-a-number" title="Permalink to this heading">#</a></h2>
+<p>Our goal is to write a program that runs on the console (a.k.a. terminal) and
+behaves as follows:</p>
+<ol class="arabic simple">
+<li><p>It internally generates a secret random integer number between 0 and 99;</p></li>
+<li><p>It asks the user to guess the secret number, and reads the integer from the
+console;</p></li>
+<li><p>If the user closes the input stream, or the user writes something that is not
+an integer, the program continues from point 6 below. <em>(We will see the
+meaning of “closing the input stream” shortly)</em></p></li>
+<li><p>If the user’s guess is correct, the program congratulates the user and
+continues from point 6 below;</p></li>
+<li><p>Otherwise, if the user’s guess is <em>not</em> correct:</p>
+<ol class="arabic simple">
+<li><p>if the user’s guess was the number -1, the program reveals the secret
+number and continues from point 6 below;</p></li>
+<li><p>otherwise, the program prints whether the user’s guess was higher or lower
+than the correct answer, and repeats from point 2 above;</p></li>
+</ol>
+</li>
+<li><p>Finally, the program says goodbye to the user, and ends.</p></li>
+</ol>
+<p>This behaviour is depicted in the following flowchart.</p>
+<p><img alt="Flowchart for the number guessing program" src="_images/guess-number.drawio.svg" /></p>
+<p>Based on the elements of Java we have covered so far, we can see that the
+description above requires some conditional checks on some expression of type
+<code class="docutils literal notranslate"><span class="pre">boolean</span></code> (e.g. comparing the user’s number with the random number, on point 4
+above).  However, we have <em>not</em> yet seen how to:</p>
+<ul class="simple">
+<li><p>Generate random numbers;</p></li>
+<li><p>Re-execute part of a program depending on some condition (see point 5.2 above,
+and the looping-back arrow at the top of the highlighted part of the
+flowchart); and</p></li>
+<li><p>Check whether the input stream contains unexpected data or has been closed.</p></li>
+</ul>
+<p>We will see that
+<a class="reference internal" href="#sec-loops-goal-prog-random"><span class="std std-ref">generating random numbers</span></a> and
+<a class="reference internal" href="#sec-loops-while-scanner-hasnext"><span class="std std-ref">checking the input stream</span></a>
+are not difficult issues.  Instead, re-executing parts of a program multiple
+times (based on a condition) requires us to use a new concept: control flow
+statements for loops.</p>
+<div class="proof example admonition" id="eg-guess-number-solution">
+<p class="admonition-title"><span class="caption-number">Example 20 </span> (A number-guessing program)</p>
+<section class="example-content" id="proof-content">
+<p>The following Java program behaves according to the description above, and uses
+some Java constructs that we have not yet seen.  In the rest of this module we
+will discuss such constructs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><p>You can run the program below by copy&amp;pasting it in a text editor (e.g. VS
+Code), saving it in a file called <code class="docutils literal notranslate"><span class="pre">Guess.java</span></code>, and then running on a
+terminal (in the same folder where you saved the file):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java Guess.java
+</pre></div>
+</div>
+</li>
+<li><p>On line 23, the program below uses a
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-conditions-conditional-expr"><span class="std std-ref">conditional expression</span></a>
+that produces a string which can be either <code class="docutils literal notranslate"><span class="pre">&quot;too</span> <span class="pre">high&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;too</span> <span class="pre">low&quot;</span></code>
+depending on whether the result of the expression <code class="docutils literal notranslate"><span class="pre">guess</span> <span class="pre">&gt;</span> <span class="pre">secret</span></code> is true o
+false. That string is then used to initialise the variable called <code class="docutils literal notranslate"><span class="pre">feedback</span></code>.
+The same effect can be achieved by using an if-then-else statement instead.
+<em>(Try it as an exercise!)</em></p></li>
+</ul>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Guess</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="c1">// Create a random number generator</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">rnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Random</span><span class="p">();</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="c1">// Generate a random integer between 0 (included) and 100 (excluded)</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnd</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hi, human.  I have a secret number in my mind.&quot;</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Try to guess it!&quot;</span><span class="p">);</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNextInt</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">15</span><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">guess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos">16</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">secret</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">17</span><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Your guess is correct!  Well done!&quot;</span><span class="p">);</span>
+<span class="linenos">18</span><span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">20</span><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The secret number was: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">secret</span><span class="p">);</span>
+<span class="linenos">21</span><span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">23</span><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">feedback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">guess</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">secret</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;too high&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;too low&quot;</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Your guess was &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">feedback</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.  Try again!&quot;</span><span class="p">);</span>
+<span class="linenos">25</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="linenos">28</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Goodbye!&quot;</span><span class="p">);</span>
+<span class="linenos">29</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">30</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div><span class="target" id="index-2"></span><span class="target" id="index-3"></span><section id="interlude-generating-random-numbers">
+<span id="sec-loops-goal-prog-random"></span><span id="index-4"></span><h3>Interlude: Generating Random Numbers<a class="headerlink" href="#interlude-generating-random-numbers" title="Permalink to this heading">#</a></h3>
+<p>Before delving into the main topics of this module, let us address an easy
+part of <a class="reference internal" href="#eg-guess-number-solution">Example 20</a>: the creation of a random number.</p>
+<p>Observe that, on line 4, the program in <a class="reference internal" href="#eg-guess-number-solution">Example 20</a>
+declares a variable <code class="docutils literal notranslate"><span class="pre">rnd</span></code> by creating a new object of the class
+<code class="docutils literal notranslate"><span class="pre">java.util.Random</span></code>; then, on line 6, the program calls the method
+<code class="docutils literal notranslate"><span class="pre">rnd.nextInt(100)</span></code> that produces a random <code class="docutils literal notranslate"><span class="pre">int</span></code> number between 0 (included) and
+100 (excluded).</p>
+<p>The way we create and use the object of type <code class="docutils literal notranslate"><span class="pre">java.util.Random</span></code> is similar to
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-console-io-scanner"><span class="std std-ref">how we create and use objects of the class java.util.Scanner</span></a>
+— but of course, objects of the class <code class="docutils literal notranslate"><span class="pre">Random</span></code> serve a different purpose, and
+have different methods.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The class <code class="docutils literal notranslate"><span class="pre">java.util.Random</span></code> is part of the Java API; if you are curious, you
+can have a look at
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Random.html">its official documentation</a>.</p>
+</div>
+</section>
+</section>
+<section id="while-statement">
+<span id="sec-loops-while"></span><h2>While Statement<a class="headerlink" href="#while-statement" title="Permalink to this heading">#</a></h2>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">while</span></code> statement</strong> (or “<code class="docutils literal notranslate"><span class="pre">while</span></code> loop”) in Java has the following syntax:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">bool_expr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="c1">// Statements that are executed at each loop repetition</span>
+<span class="linenos">3</span><span class="p">}</span>
+<span class="linenos">4</span><span class="c1">// Other statements can follow (optionally)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is called the <strong>loop condition</strong>, and can be any expression of
+type <code class="docutils literal notranslate"><span class="pre">boolean</span></code>.  The <code class="docutils literal notranslate"><span class="pre">while</span></code> statement is executed as follows:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is evaluated;</p></li>
+<li><p>then, the result if <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is checked:</p>
+<ul class="simple">
+<li><p>if the result of <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is the value <code class="docutils literal notranslate"><span class="pre">true</span></code>, then:</p>
+<ul>
+<li><p>the statements in the pair of curly brackets <code class="docutils literal notranslate"><span class="pre">{</span></code>…<code class="docutils literal notranslate"><span class="pre">}</span></code> (lines 1–3) are
+executed; (that block of statements is called the <strong>loop body</strong>)</p></li>
+<li><p>if one of such statements is <code class="docutils literal notranslate"><span class="pre">break</span></code>, the execution exits from the
+<code class="docutils literal notranslate"><span class="pre">while</span></code> loop and continues with the statements (if any) that follow it
+(line 4);</p></li>
+<li><p>otherwise (i.e. if no <code class="docutils literal notranslate"><span class="pre">break</span></code> is encountered), the execution continues
+(or “loops”) by going back to point 1 above;</p></li>
+</ul>
+</li>
+<li><p>otherwise (i.e. if the result of <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is the value <code class="docutils literal notranslate"><span class="pre">false</span></code>), the
+execution continues with the statements (if any) that follow the “while”
+loop (line 4).</p></li>
+</ul>
+</li>
+</ol>
+<p>When represented as a flowchart, the <code class="docutils literal notranslate"><span class="pre">while</span></code> statement looks as follows —
+where the highlighted part (excluding the loop condition <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code>) is the
+loop body. Whenever we spot the following pattern in a flowchart, we should
+consider using a <code class="docutils literal notranslate"><span class="pre">while</span></code> statement when writing the corresponding Java program.</p>
+<p><img alt="Flowchart for &quot;while&quot; loop" src="_images/while.drawio.svg" /></p>
+<div class="proof remark admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 10 </span> (Beware of infinite loops!)</p>
+<section class="remark-content" id="proof-content">
+<p>The description above means that the “while” loop will repeat as long as the
+expression <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> produces the result <code class="docutils literal notranslate"><span class="pre">true</span></code> when evaluated.  If that
+expression always evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the loop will keep repeating forever
+(as in <a class="reference internal" href="#eg-infinite-while-java-shell">Example 21</a> below) —
+unless the loop body executes a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement (as in
+<a class="reference internal" href="#eg-finite-while-java-shell-break">Example 23</a> below).</p>
+<p>Infinite loops may be useful or not, depending on the goals of a program.
+When designing and writing your code, take the following into consideration:</p>
+<ul class="simple">
+<li><p>Are there situations where a loop you wrote may run forever?</p></li>
+<li><p>If the answer is “yes,” is the infinite loop part of the program requirements?
+Or, is it just a bug?</p></li>
+</ul>
+</section>
+</div><div class="proof example admonition" id="eg-infinite-while-java-shell">
+<p class="admonition-title"><span class="caption-number">Example 21 </span> (An infinite loop on the Java shell)</p>
+<section class="example-content" id="proof-content">
+<p>If you try to copy&amp;paste and execute the following code on the Java shell, it
+will loop forever — because the loop condition <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">3</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>
+every time it is checked.  Consequently, this code will print
+<code class="docutils literal notranslate"><span class="pre">Greetings</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">loop</span> <span class="pre">body!</span></code> over and over.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To interrupt the execution of the following code under the Java shell, press
+<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">C</span></code>.  In most cases, you can use <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">C</span></code> to interrupt the execution of
+any program running on a terminal.</p>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Greetings from the loop body!&quot;</span><span class="p">);</span>
+<span class="linenos">3</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div><div class="proof example admonition" id="eg-finite-while-java-shell">
+<p class="admonition-title"><span class="caption-number">Example 22 </span> (A finite loop on the Java shell)</p>
+<section class="example-content" id="proof-content">
+<p>Let us modify the code in <a class="reference internal" href="#eg-infinite-while-java-shell">Example 21</a> so that the
+loop is only repeated 3 times.  We have different ways to do it: one is
+described here, and another in <a class="reference internal" href="#eg-finite-while-java-shell-break">Example 23</a>
+below.</p>
+<p>We can <strong>make the result of the loop condition expression depend on the value of
+a variable</strong>: this way, we can control the loop repetition by changing the
+value of that variable.  For instance:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">2</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">3</span><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Greetings from the loop body! (i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos">4</span><span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos">5</span><span class="p">}</span>
+<span class="linenos">6</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The loop is over! (i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Here we are using the variable <code class="docutils literal notranslate"><span class="pre">i</span></code> as a counter: we initialise it with value 0,
+and we increment its value every time the loop body runs (line 4). Consequently,
+the expression <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">3</span></code> will evaluate to <code class="docutils literal notranslate"><span class="pre">true</span></code> when <code class="docutils literal notranslate"><span class="pre">i</span></code> is either 0, 1, or 2 —
+but will evaluate to <code class="docutils literal notranslate"><span class="pre">false</span></code> when <code class="docutils literal notranslate"><span class="pre">i</span></code> reaches the value 3.  When this happens,
+the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop stops repeating, and the execution continues with the
+statements that follow (line 6).</p>
+<p>If you try to copy&amp;paste and execute the code above on the Java shell, it will
+print the following output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Greetings from the loop body! (i == 0)
+Greetings from the loop body! (i == 1)
+Greetings from the loop body! (i == 2)
+The loop is over! (i == 3)
+</pre></div>
+</div>
+</section>
+</div><div class="proof example admonition" id="eg-finite-while-java-shell-break">
+<p class="admonition-title"><span class="caption-number">Example 23 </span> (A finite loop on the Java shell, using <code class="docutils literal notranslate"><span class="pre">break</span></code>)</p>
+<section class="example-content" id="proof-content">
+<p>Let us write a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop similar to the one in
+<a class="reference internal" href="#eg-finite-while-java-shell">Example 22</a>, but using a different style.  Here we
+write a <strong>potentially infinite loop</strong> where the loop condition always evaluates
+to <code class="docutils literal notranslate"><span class="pre">true</span></code> — but <strong>we stop the loop by using a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement in the loop
+body</strong> (when a certain condition is met).</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Breaking the loop! (i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Greetings from the loop body! (i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="p">}</span>
+<span class="linenos">10</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The loop is over! (i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As in <a class="reference internal" href="#eg-finite-while-java-shell">Example 22</a>, here we are using the variable <code class="docutils literal notranslate"><span class="pre">i</span></code>
+as a counter: we initialise it with value 0, and we increment its value every
+time the loop body runs (line 8).  However (unlike
+<a class="reference internal" href="#eg-finite-while-java-shell">Example 22</a>), here the loop condition is always
+<code class="docutils literal notranslate"><span class="pre">true</span></code>, so the loop will keep repeating regardless of the value of <code class="docutils literal notranslate"><span class="pre">i</span></code>.
+Consequently, we manually check whether the counter has reached the desired
+value (line 3) — and if so, we execute a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement (line 5). When this
+happens, the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop stops repeating, and the execution continues with the
+statements that follow (line 10).</p>
+<p>If you try to copy&amp;paste and execute the code above on the Java shell, it will
+print the following output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Greetings from the loop body! (i == 0)
+Greetings from the loop body! (i == 1)
+Greetings from the loop body! (i == 2)
+Breaking the loop! (i == 3)
+The loop is over! (i == 3)
+</pre></div>
+</div>
+</section>
+</div><div class="proof remark admonition" id="remark-avoid-break">
+<span id="index-5"></span><p class="admonition-title"><span class="caption-number">Remark 11 </span> (Using <code class="docutils literal notranslate"><span class="pre">break</span></code> statements vs. program clarity)</p>
+<section class="remark-content" id="proof-content">
+<p>When writing loops, using the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement is sometimes necessary — but
+in general, <strong><code class="docutils literal notranslate"><span class="pre">break</span></code> statements can make the program logic more complicated</strong>:
+every <code class="docutils literal notranslate"><span class="pre">break</span></code> introduces a new <strong>exit point</strong> for the loop execution, and makes
+it harder to understand when and how a loop may terminate.  This increases the
+chances of introducing bugs in your program.</p>
+<p>Therefore, the advice is: <em>when you design and write your loops, whenever the
+<code class="docutils literal notranslate"><span class="pre">break</span></code> statement seems necessary, take some time and think whether you can
+revise your code in a way that achieves the same goals without using <code class="docutils literal notranslate"><span class="pre">break</span></code></em>.</p>
+<p>For instance, if your code starts looking like
+<a class="reference internal" href="#eg-finite-while-java-shell-break">Example 23</a>, take some time to consider whether
+it could be simplified to look more like <a class="reference internal" href="#eg-finite-while-java-shell">Example 22</a>.</p>
+</section>
+</div><section id="looping-as-long-as-more-inputs-are-available">
+<span id="sec-loops-while-scanner-hasnext"></span><h3>Looping as Long as More Inputs Are Available<a class="headerlink" href="#looping-as-long-as-more-inputs-are-available" title="Permalink to this heading">#</a></h3>
+<p>Objects of the class <code class="docutils literal notranslate"><span class="pre">java.util.Scanner</span></code> include some very handy methods that
+are often used as loop conditions, to make a program loop as long as there are
+more inputs to process.  If <code class="docutils literal notranslate"><span class="pre">s</span></code> is an object of type <code class="docutils literal notranslate"><span class="pre">java.util.Scanner</span></code>, these
+methods are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">s.hasNextInt()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s.hasNextDouble()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s.hasNextLine()</span></code></p></li>
+<li><p>…</p></li>
+</ul>
+<p>These methods behave similarly: when called, they wait (block) until an input
+becomes available from the console, and then they produce a <code class="docutils literal notranslate"><span class="pre">boolean</span></code> value as a
+result. This result may be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the available input conforms to the desired format. E.g.
+<code class="docutils literal notranslate"><span class="pre">s.hasNextInt()</span></code> produces the result <code class="docutils literal notranslate"><span class="pre">true</span></code> if there is an input available
+that has the format of an <code class="docutils literal notranslate"><span class="pre">int</span></code> value — and therefore, we can retrieve that
+value by calling <code class="docutils literal notranslate"><span class="pre">s.nextInt()</span></code>;</p></li>
+<li><p>otherwise, the result is <code class="docutils literal notranslate"><span class="pre">false</span></code>.  This may happen in two cases:</p>
+<ul>
+<li><p>there is input available, but it has the wrong format. E.g. <code class="docutils literal notranslate"><span class="pre">s.hasNextInt()</span></code>
+gives the result <code class="docutils literal notranslate"><span class="pre">false</span></code> if the user has written <code class="docutils literal notranslate"><span class="pre">Hi!</span></code> or <code class="docutils literal notranslate"><span class="pre">3.14</span></code> on the
+terminal; or</p></li>
+<li><p>the input stream has been closed, hence no further inputs will become
+available, as described in <a class="reference internal" href="#remark-closing-default-input-stream">Remark 12</a>
+below.</p></li>
+</ul>
+</li>
+</ul>
+<div class="proof example admonition" id="eg-while-scanner-hasnextint-jshell">
+<p class="admonition-title"><span class="caption-number">Example 24 </span> (Using the <code class="docutils literal notranslate"><span class="pre">Scanner</span></code> object method <code class="docutils literal notranslate"><span class="pre">.hasNextInt()</span></code> as loop condition, part 1)</p>
+<section class="example-content" id="proof-content">
+<p>The following code snippet creates an object of class <code class="docutils literal notranslate"><span class="pre">java.util.Scanner</span></code> to
+receive input from the terminal, and then loops as long as that input has the
+format of an integer value.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos"> 2</span><span class="n">s</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">hasNextInt</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Got an integer value: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="p">}</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Unable to get another integer!&quot;</span><span class="p">);</span>
+<span class="linenos">10</span><span class="n">s</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>You can copy&amp;paste and execute the code above on the Java shell.  If you try,
+the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop will evaluate the loop condition expression <code class="docutils literal notranslate"><span class="pre">s.hasNextInt()</span></code>,
+which blocks until you write something on the console and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code>.  Then:</p>
+<ul class="simple">
+<li><p>if you write an integer, then <code class="docutils literal notranslate"><span class="pre">s.hasNextInt()</span></code> produces the value <code class="docutils literal notranslate"><span class="pre">true</span></code>:
+therefore, the loop body will be executed, and the loop will go back to
+evaluating its condition, which will block waiting for the next input;</p></li>
+<li><p>if you write something that is not an integer, then <code class="docutils literal notranslate"><span class="pre">s.hasNextInt()</span></code> produces
+the value <code class="docutils literal notranslate"><span class="pre">false</span></code>: the loop ends and the execution continues with the
+statements that follow it.</p></li>
+</ul>
+<p>So for example, if you write <code class="docutils literal notranslate"><span class="pre">42</span></code> and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code>, the program will print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Got an integer value: 42
+</pre></div>
+</div>
+<p>Then, the program will wait for the next input.  You can also write multiple
+numbers separated by spaces.  For instance, if you write:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>10 20 30 40
+</pre></div>
+</div>
+<p>and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code>, the program will print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Got an integer value: 10
+Got an integer value: 20
+Got an integer value: 30
+Got an integer value: 40
+</pre></div>
+</div>
+<p>You can end the loop by writing something that is not an integer.  For example,
+if you write:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1234 5678 Bye!
+</pre></div>
+</div>
+<p>and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code>, the program will print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Got an integer value: 1234
+Got an integer value: 5678
+Unable to get another integer!
+</pre></div>
+</div>
+<p>Hence the loop will stop, and you will see the Java shell prompt again.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-closing-default-input-stream">
+<span id="index-6"></span><p class="admonition-title"><span class="caption-number">Remark 12 </span> (Closing the default input stream of a program)</p>
+<section class="remark-content" id="proof-content">
+<p>When you run a program on a terminal, you can <strong>close its standard input stream</strong>
+by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">D</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em><strong>On Windows</strong>, if <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">D</span></code> does not work, you may try instead to
+press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Z</span></code>, and then <code class="docutils literal notranslate"><span class="pre">⏎</span></code>.</em></p>
+</div>
+<p>When the standard input stream is closed, no further inputs will be delivered to
+the program from the console.  The program can notice the event and react
+accordingly: for instance, if you try the key combinations above at the Java
+shell prompt, the Java shell will terminate.</p>
+<p>Your Java programs can detect the event by using the <code class="docutils literal notranslate"><span class="pre">Scanner</span></code> object methods
+<code class="docutils literal notranslate"><span class="pre">.hasNextInt()</span></code>, <code class="docutils literal notranslate"><span class="pre">.hasNextDobule()</span></code>, etc.  However, <strong>this will not work as
+expected if you execute your code under the Java shell!</strong>  You will need to save
+your program in a <code class="docutils literal notranslate"><span class="pre">.java</span></code> file and run it directly from the terminal, as shown
+in <a class="reference internal" href="#eg-while-scanner-hasnextint-terminal">Example 25</a> below.</p>
+</section>
+</div><div class="proof example admonition" id="eg-while-scanner-hasnextint-terminal">
+<p class="admonition-title"><span class="caption-number">Example 25 </span> (Using the <code class="docutils literal notranslate"><span class="pre">Scanner</span></code> object method <code class="docutils literal notranslate"><span class="pre">.hasNextInt()</span></code> as loop condition, part 2)</p>
+<section class="example-content" id="proof-content">
+<p>Let us now turn the code snippet in
+<a class="reference internal" href="#eg-while-scanner-hasnextint-jshell">Example 24</a> into an actual Java program:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">InputLoop</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">hasNextInt</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 7</span><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 8</span><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Got an integer value: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">10</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Unable to get another integer!&quot;</span><span class="p">);</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="linenos">13</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">14</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>You can copy&amp;paste the program above in a text editor (e.g. VS Code), save it
+in a file called <code class="docutils literal notranslate"><span class="pre">InputLoop.java</span></code>, and run it by executing on a terminal (in the
+same folder where the file is saved):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java InputLoop.java
+</pre></div>
+</div>
+<p>Then you can experiment with the inputs described in
+<a class="reference internal" href="#eg-while-scanner-hasnextint-jshell">Example 24</a>.  You can also try closing the
+standard input (by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">D</span></code>): you will see that the loop stops and
+the program terminates, because <code class="docutils literal notranslate"><span class="pre">s.hasNextInt()</span></code> produces <code class="docutils literal notranslate"><span class="pre">false</span></code> when the
+standard input is closed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>On Windows</strong>, if <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">D</span></code> does not work, you may try instead to press
+<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Z</span></code>, and then <code class="docutils literal notranslate"><span class="pre">⏎</span></code>.</p>
+</div>
+</section>
+</div><span class="target" id="index-7"></span></section>
+</section>
+<section id="do-while-statement">
+<span id="sec-loops-do-while"></span><span id="index-8"></span><h2>Do-While Statement<a class="headerlink" href="#do-while-statement" title="Permalink to this heading">#</a></h2>
+<p>A while loop can execute its loop body <em>zero or more times</em>, depending on
+whether the loop condition evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>.  However, there
+cases where we may need to execute the loop body <em>at least once</em>. For
+these situations, Java provides the <strong><code class="docutils literal notranslate"><span class="pre">do-while</span></code> statement</strong> (or “<code class="docutils literal notranslate"><span class="pre">do-while</span></code>
+loop”), with the following syntax:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">2</span><span class="w">    </span><span class="c1">// Statements that are executed at each loop repetition</span>
+<span class="linenos">3</span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">bool_expr</span><span class="p">);</span>
+<span class="linenos">4</span><span class="c1">// Other statements can follow (optionally)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">do-while</span></code> statement is executed as follows:</p>
+<ol class="arabic simple">
+<li><p>the statements in the pair of curly brackets <code class="docutils literal notranslate"><span class="pre">{</span></code>…<code class="docutils literal notranslate"><span class="pre">}</span></code> (lines 1–3) are
+executed; (that block of statements is called the <strong>loop body</strong>)</p>
+<ul class="simple">
+<li><p>if one of such statements is <code class="docutils literal notranslate"><span class="pre">break</span></code>, the execution exits from the
+<code class="docutils literal notranslate"><span class="pre">do-while</span></code> loop and continues with the statements (if any) that follow it
+(line 4);</p></li>
+</ul>
+</li>
+<li><p>then, <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is evaluated;</p></li>
+<li><p>then, the result if <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is checked:</p>
+<ul class="simple">
+<li><p>if the result of <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is the value <code class="docutils literal notranslate"><span class="pre">true</span></code>, then
+the execution continues (or “loops”) by going back to point 1 above;</p></li>
+<li><p>otherwise (i.e. if the result of <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code> is the value <code class="docutils literal notranslate"><span class="pre">false</span></code>), the
+execution continues with the statements (if any) that follow the “while”
+loop (line 4).</p></li>
+</ul>
+</li>
+</ol>
+<p>In other words, the <code class="docutils literal notranslate"><span class="pre">do-while</span></code> loop executes its body once; after that, its
+behaviour is similar to a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop (i.e. it will only execute the body again
+if the loop condition evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>).</p>
+<p>When represented as a flowchart, the <code class="docutils literal notranslate"><span class="pre">do-while</span></code> statement looks as follows —
+where the highlighted part (excluding the loop condition <code class="docutils literal notranslate"><span class="pre">bool_expr</span></code>) is the
+loop body. Whenever we spot the following pattern in a flowchart, we should
+consider using a <code class="docutils literal notranslate"><span class="pre">do-while</span></code> statement when writing the corresponding Java program.</p>
+<p><img alt="Flowchart for &quot;do-while&quot; loop" src="_images/do-while.drawio.svg" /></p>
+<div class="proof example admonition" id="eg-do-while">
+<p class="admonition-title"><span class="caption-number">Example 26 </span> (A <code class="docutils literal notranslate"><span class="pre">do-while</span></code> loop)</p>
+<section class="example-content" id="proof-content">
+<p>Suppose we need to write a program that requires the user to provide a <code class="docutils literal notranslate"><span class="pre">int</span></code>
+value within a certain range, and we want to repeat the request until the user
+provides a valid answer.  We can solve the problem using a <code class="docutils literal notranslate"><span class="pre">do-while</span></code> loop as
+follows: (you can execute this code snippet on the Java shell)</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">var</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="linenos"> 2</span><span class="n">s</span><span class="p">.</span><span class="na">useLocale</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Locale</span><span class="p">.</span><span class="na">ENGLISH</span><span class="p">);</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kd">var</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Please write your height in cm (between 10 and 300)&quot;</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="linenos"> 8</span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">height</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">height</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">300</span><span class="p">));</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Your height is: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; cm&quot;</span><span class="p">);</span>
+<span class="linenos">11</span><span class="n">s</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<section id="concluding-remarks">
+<span id="sec-loops-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of how to execute one or more statements
+repeatedly, depending on the result of a boolean expression, by using
+<a class="reference internal" href="#sec-loops-while"><span class="std std-ref">While Statement</span></a> or <a class="reference internal" href="#sec-loops-do-while"><span class="std std-ref">Do-While Statement</span></a>.</p>
+<p>You should also know how to
+<a class="reference internal" href="#sec-loops-while-scanner-hasnext"><span class="std std-ref">loop as long as more inputs are available</span></a>
+and
+<a class="reference internal" href="#remark-closing-default-input-stream">check whether the program input stream has been closed</a>.</p>
+<p>With this knowledge, you should be able to understand each line of the program
+in <a class="reference internal" href="#eg-guess-number-solution">Example 20</a>.</p>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-loops-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are invited to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: they sometimes mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 5.4 - “The <code class="docutils literal notranslate"><span class="pre">while</span></code> Statement”</p></li>
+<li><p>Section 6.3 - “The <code class="docutils literal notranslate"><span class="pre">do</span></code> Statement”</p></li>
+</ul>
+</section>
+<section id="exercises">
+<span id="sec-loops-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding.</p>
+</div>
+<div class="exercise admonition" id="ex-loops-terminate">
+
+<p class="admonition-title"><span class="caption-number">Exercise 23 </span> (Does this loop terminate?)</p>
+<section id="exercise-content">
+<p>The following code snippets contain some loops: read each one, and try to
+determine whether it terminates.  To check whether your guess is correct, run
+the loop in the Java shell — and remember that you can interrupt the execution
+of a loop by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
+<ul>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;i == &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-loops-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-loops-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-loops-passwords"><span class="std std-ref">07 - Password Check 2</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-loops-animal-sounds"><span class="std std-ref">08 - Animal Sounds</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-loops-square"><span class="std std-ref">09 - Square</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="password-check-2">
+<span id="lab-loops-passwords"></span><h3>07 - Password Check 2<a class="headerlink" href="#password-check-2" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Password.java</span></code> provided in the handout, and write a program that:</p>
+<ol class="arabic simple">
+<li><p>reads a <code class="docutils literal notranslate"><span class="pre">String</span></code> from the console, representing a password; and</p></li>
+<li><p>checks the length of the password:
+if the length is between 5 and 8 characters, the program prints
+<code class="docutils literal notranslate"><span class="pre">Password</span> <span class="pre">length</span> <span class="pre">OK</span></code> and ends;</p>
+<ul class="simple">
+<li><p>if the password is shorter than 5 characters, the program prints
+<code class="docutils literal notranslate"><span class="pre">Password</span> <span class="pre">too</span> <span class="pre">short</span></code> and goes back to point 1;</p></li>
+<li><p>if the password is longer than 8 characters, the program prints
+<code class="docutils literal notranslate"><span class="pre">Password</span> <span class="pre">too</span> <span class="pre">long</span></code> and goes back to point 1.</p></li>
+</ul>
+</li>
+</ol>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Password.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>To solve this assessment, you can reuse most of the solution to
+<a class="reference internal" href="io-conditionals-strings.html#lab-io-cond-strings-password"><span class="std std-ref">05 - Password Check</span></a>, and introduce some form of loop…</p>
+</div>
+</section>
+<section id="animal-sounds">
+<span id="lab-loops-animal-sounds"></span><h3>08 - Animal Sounds<a class="headerlink" href="#animal-sounds" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">AnimalSounds.java</span></code> provided in the handout, and write a program
+that reads the name of an animal from the terminal, and:</p>
+<ul class="simple">
+<li><p>if the animal name is one of those listed in <a class="reference internal" href="#table-animal-sounds"><span class="std std-numref">Table 8</span></a>
+below, the program prints the corresponding sound;</p></li>
+<li><p>otherwise (i.e. if the animal name is not listed in the table) the program
+prints <code class="docutils literal notranslate"><span class="pre">?</span></code>.</p></li>
+</ul>
+<p>The program must keep reading animal names and printing sounds (as explained
+above) until the standard input stream is closed (by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">D</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>On Windows</strong>, if <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">D</span></code> does not work, you may try instead:
+<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Z</span></code>, and then <code class="docutils literal notranslate"><span class="pre">⏎</span></code>.</p>
+</div>
+<table class="table" id="table-animal-sounds">
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">Animal sounds</span><a class="headerlink" href="#table-animal-sounds" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Animal name</p></th>
+<th class="head"><p>Sound</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Dog</p></td>
+<td><p>Woof</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cat</p></td>
+<td><p>Meow</p></td>
+</tr>
+<tr class="row-even"><td><p>Sheep</p></td>
+<td><p>Baa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cow</p></td>
+<td><p>Moo</p></td>
+</tr>
+<tr class="row-even"><td><p>Lion</p></td>
+<td><p>Roar</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pig</p></td>
+<td><p>Oink</p></td>
+</tr>
+<tr class="row-even"><td><p>Duck</p></td>
+<td><p>Quack</p></td>
+</tr>
+</tbody>
+</table>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">AnimalSounds.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>You may use the <code class="docutils literal notranslate"><span class="pre">Scanner</span></code> objects’ method <code class="docutils literal notranslate"><span class="pre">.hasNextLine()</span></code> to
+<a class="reference internal" href="#remark-closing-default-input-stream">check whether the program input stream has been closed</a>.</p></li>
+<li><p>You may consider using a
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-conditions-switch"><span class="std std-ref">switch statement</span></a>
+(see also <a class="reference internal" href="io-conditionals-strings.html#eg-switch-string">Example 19</a>).</p></li>
+</ul>
+</div>
+</section>
+<section id="square">
+<span id="lab-loops-square"></span><h3>09 - Square<a class="headerlink" href="#square" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Square.java</span></code> provided in the handout, and write a program that
+reads from the console an integer value <span class="math notranslate nohighlight">\(n\)</span> and prints a square of size
+<span class="math notranslate nohighlight">\(n \times n\)</span>, using the character <code class="docutils literal notranslate"><span class="pre">#</span></code>.</p>
+<p>You can assume that <span class="math notranslate nohighlight">\(n\)</span> is not negative (but it can be zero!).</p>
+<p>For example, if program reads the value 3, it must print:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>###
+###
+###
+</pre></div>
+</div>
+<p>When you are done, submit the modified file <code class="docutils literal notranslate"><span class="pre">Square.java</span></code> on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>For this assignment, it might be handy to use
+<a class="reference internal" href="io-conditionals-strings.html#sec-io-cond-strings-strings-methods"><span class="std std-ref">Some Useful String Methods</span></a> to create a string that consists of
+<span class="math notranslate nohighlight">\(n\)</span> repetitions of <code class="docutils literal notranslate"><span class="pre">&quot;#&quot;</span></code>…</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab-day-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 3, Part 1: Lab Day</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="loops2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 4, Part 1: More About Loops</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goal-a-program-that-lets-the-user-guess-a-number">Goal: a Program that Lets the User Guess a Number</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interlude-generating-random-numbers">Interlude: Generating Random Numbers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-statement">While Statement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-as-long-as-more-inputs-are-available">Looping as Long as More Inputs Are Available</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-while-statement">Do-While Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#password-check-2">07 - Password Check 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animal-sounds">08 - Animal Sounds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#square">09 - Square</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

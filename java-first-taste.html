@@ -1,0 +1,1275 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Module 2, Part 1: a First Taste of Java &#8212; 02312 Introductory Programming — Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/tabs.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/proof/proof.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/bussproofs"]}, "tex": {"packages": {"[+]": ["bussproofs"]}, "macros": {}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="_static/mathjax/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'java-first-taste';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 2, Part 2: Console I/O, Conditionals, Strings" href="io-conditionals-strings.html" />
+    <link rel="prev" title="Module 1: Basic Notions of Computing and Programming" href="basic-programming.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/dtu.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dtu.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Module 0: Overview of the Course and Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming.html">Module 1: Basic Notions of Computing and Programming</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module 2, Part 1: a First Taste of Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io-conditionals-strings.html">Module 2, Part 2: Console I/O, Conditionals, Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-1.html">Module 3, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Module 3, Part 2: Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops2.html">Module 4, Part 1: More About Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structured.html">Module 4, Part 2: Structured Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Module 5, Part 1: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-2.html">Module 5, Part 2: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simple-classes.html">Module 6, Part 1: Simple Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arrays-simple-classes-2.html">Module 6, Part 2: More About Arrays and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-3.html">Module 7, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references-null.html">Module 7, Part 2: References, <code class="docutils literal notranslate"><span class="pre">null</span></code> values, and the <code class="docutils literal notranslate"><span class="pre">NullPointerException</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="prog-interf-encapsulation.html">Module 8, Part 1: Programming Interfaces and Encapsulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces.html">Module 8, Part 2: Java <code class="docutils literal notranslate"><span class="pre">interface</span></code>s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-4.html">Module 9, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-oo.html">Module 9, Part 2: Class Inheritance and Principles of Object-Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inheritance-2.html">Module 10, part 1: More on Class Inheritance and <code class="docutils literal notranslate"><span class="pre">abstract</span> <span class="pre">class</span></code>es</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes-polymorphism.html">Module 10, Part 2: More on Java Classes and Polymorphism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-5.html">Module 11, Part 1: Lab Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="errors.html">Module 11, Part 2: Error Handling with Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Module 12, Part 1: File I/O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Module 12, Part 2: Managing Java Projects: Packages, JAR Files, Build Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab-day-6.html">Module 13, Part 1: Lab Day — Exam Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exam-qa-lab.html">Module 13, Part 2: Exam Q&amp;A, Review, and Final Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">ChangeLog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jgrader.html">Appendix: Information About JGrader</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item"><nav class="sidebar-indices-items">
+  <p class="sidebar-indices-items__title" role="heading" aria-level="1">Indices</p>
+  <ul class="indices-link">
+        <li class="toctree-l1">
+          <a class="reference internal"
+             href="genindex.html"
+             accesskey="I">General Index</a>
+        </li>
+  </ul>
+</nav></div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 2, Part 1: a First Taste of Java</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-java">What is Java?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenting-with-the-java-shell-jshell">Experimenting with the Java Shell (JShell)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-simple-integer-expressions">Some Simple Integer Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-expressions-with-numbers-having-fractional-parts">Some Expressions with Numbers Having Fractional Parts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-numbers-booleans-and-strings">Beyond Numbers: Booleans and Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#javas-primitive-data-types-and-numerical-operators">Java’s Primitive Data Types and Numerical Operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-first-java-program">Our First Java Program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hello-world">01 - Hello, World!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#taxes">02 - Taxes</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-2-part-1-a-first-taste-of-java">
+<span id="mod-basic-programming-java"></span><span id="index-0"></span><h1>Module 2, Part 1: a First Taste of Java<a class="headerlink" href="#module-2-part-1-a-first-taste-of-java" title="Permalink to this heading">#</a></h1>
+<p>This Module is split in two parts. In this first part, you will get
+a first taste of the Java programming language.
+We first discuss <a class="reference internal" href="#sec-basic-programming-java-what"><span class="std std-ref">what is Java</span></a>
+<a class="reference internal" href="#sec-basic-programming-java-jshell"><span class="std std-ref">some experiments with the Java shell (JShell)</span></a>,
+and then write and execute
+<a class="reference internal" href="#sec-basic-programming-java-first-program"><span class="std std-ref">our first Java program</span></a>.</p>
+<p>In the <a class="reference internal" href="io-conditionals-strings.html#mod-io-cond-strings"><span class="std std-ref">second part of this Module</span></a> we will explore
+some more Java programming constructs allowing us to write some basic programs.</p>
+<section id="what-is-java">
+<span id="sec-basic-programming-java-what"></span><h2>What is Java?<a class="headerlink" href="#what-is-java" title="Permalink to this heading">#</a></h2>
+<p>Java is a <strong>high-level programming language</strong>, originally launched in 1995 by
+Sun Microsystems (which was later acquired by Oracle). Since then, the language
+and its tools have been expanded and improved significantly.</p>
+<p>The term “high-level” means that the language offers programming concepts and
+tools that are quite detached from the “low-level” details of the underlying
+computer. This is very different from assembly, where each instruction has a
+direct correspondence with the computer’s machine instruction; instead, when we
+write and execute a Java program, the Java code is automatically translated into
+machine instructions, which are then executed. <em>(This is not 100% accurate, but
+we will discuss the precise details of how Java works later in the course.)</em></p>
+<p>The main benefits of Java (and most high-level programming languages in general)
+when compared to assembly are:</p>
+<ul class="simple">
+<li><p>The code is more readable by humans, since its notation is based on Eglish
+and mathematics;</p></li>
+<li><p>Programmers can plan their programs by thinking about high-level tasks (e.g.,
+“add <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>”) without worrying about low-level details (e.g., “which
+exact registers are being used to hold <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and the result of the
+addition?)”;</p></li>
+<li><p>The language provides <strong>different types of data</strong> to avoid confusion and
+mistakes. We have seen that, under the hood, a computer only deals
+with numerical values that may have different interpretations;
+correspondingly, we have seen that a
+<a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits-assembly"><span class="std std-ref">BlinkenBits assembly program</span></a>
+only deals with numerical values, and the programmer must keep track of what
+those values are for — e.g., if the value 10 is in a register, that value might be
+either a number to be used for mathematical computations, or a memory address,
+or the symbol <code class="docutils literal notranslate"><span class="pre">a</span></code> to be shown on
+<a class="reference internal" href="basic-programming.html#ex-blinkenbits-display"><span class="std std-ref">the BlinkenBits display</span></a>. Java programs
+assign a type to each value, to distinguish how the value can be used: e.g.,
+Java distinguishes a value of type <code class="docutils literal notranslate"><span class="pre">int</span></code> (integer, usable for mathematical
+computations) from a value of type <code class="docutils literal notranslate"><span class="pre">char</span></code> (which represent a symbol like the
+letter <code class="docutils literal notranslate"><span class="pre">a</span></code>). This makes programs more readable and easier to maintain.</p></li>
+<li><p>Since the code is not tied to specific machine instructions, the code is also more
+<strong>portable</strong> across different computer architectures. For instance, a Java
+program can run in the same way on an Intel or AMD computer with an x86
+processor, and on an Apple computer with an M3 processor, even if their machine
+instructions are incompatible with each other.</p></li>
+</ul>
+</section>
+<section id="experimenting-with-the-java-shell-jshell">
+<span id="sec-basic-programming-java-jshell"></span><span id="index-1"></span><h2>Experimenting with the Java Shell (JShell)<a class="headerlink" href="#experimenting-with-the-java-shell-jshell" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Java Shell (JShell)</strong> is an interactive tool for learning the Java
+programming language and prototyping Java code.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The following instructions will only work if you have already installed the
+<a class="reference internal" href="overview.html#sec-required-software"><span class="std std-ref">software required for the course</span></a>.</p>
+</div>
+<p>First, you need to open a terminal (a.k.a. console) with the command-line
+interface.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Windows</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Linux (Ubuntu)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Search for Git Bash in the start menu, and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code> (return key).</p>
+<p>Alternatively, please follow <a class="reference external" href="https://www.toolsqa.com/git/common-directory-commands-on-git-bash/">these instructions</a>
+(look for the section “Open Git Bash directly in the folder”).</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Please follow <a class="reference external" href="https://support.apple.com/en-gb/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac">these instructions</a>.</p>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">Alt</span></code>+<code class="docutils literal notranslate"><span class="pre">T</span></code>.</p>
+</div></div>
+<p>When the terminal starts, write:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jshell<span class="w"> </span>-v
+</pre></div>
+</div>
+<p>and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code> (return key).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The option <code class="docutils literal notranslate"><span class="pre">-v</span></code> above stands for “verbose” and makes the Java shell display more
+informative messages while we use it.  This option is needed to see information
+about <em>types</em>, that we will discuss shortly.</p>
+</div>
+<p>You should now see the following message printed on the terminal (although the
+reported version may be slightly different):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>|  Welcome to JShell -- Version 21.0.4
+|  For an introduction type: /help intro
+
+jshell&gt;
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">jshell&gt;</span></code> is the <strong>Java shell prompt</strong>: we can write a snippet of Java
+code  there, which will be executed immediately (unless it contains errors);
+then we will see the result of the execution, and we will get a new prompt to
+keep using the shell.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the JShell examples below, some lines are highlighted, which means:
+if you write what is on the right of the <code class="docutils literal notranslate"><span class="pre">jshell&gt;</span></code> prompt on the highlighted
+line and and press <code class="docutils literal notranslate"><span class="pre">⏎</span></code> (return), then the Java shell will produce the output
+that follows.</p>
+</div>
+<span class="target" id="index-2"></span><span class="target" id="index-3"></span><section id="some-simple-integer-expressions">
+<span id="sec-basic-programming-java-jshell-integer"></span><span id="index-4"></span><h3>Some Simple Integer Expressions<a class="headerlink" href="#some-simple-integer-expressions" title="Permalink to this heading">#</a></h3>
+<p>In Java, every value and expression has a <strong>type</strong>.  For example, let us try to
+perform some calculations with integer values:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; 2 + 3
+</span>$1 ==&gt; 5
+|  created scratch variable $1 : int
+</pre></div>
+</div>
+<p>The message above is telling us that the expression <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span></code> has been executed
+and it has produced the result 5 — which in turn has been used to create a
+“scratch variable” called <code class="docutils literal notranslate"><span class="pre">$1</span></code>; moreover, the variable <code class="docutils literal notranslate"><span class="pre">$1</span></code> has a type, which is
+<code class="docutils literal notranslate"><span class="pre">int</span></code> (shorthand for “integer”).  In other words, the integer value 5 is now
+stored in a memory location that we can access later (if we need) through the
+variable name <code class="docutils literal notranslate"><span class="pre">$1</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can imagine that, in order to execute the example above, the Java shell has
+translated the expression <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span></code> into a sequence of machine instructions that
+perform the desired computation, producing the result 5. If those machine
+instructions were written in
+<a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a> assembly, they might look
+as follows:</p>
+<div class="highlight-fsharp notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="o">:</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">2</span><span class="w">          </span><span class="c1">// Put the value 2 in register r0</span>
+<span class="mi">01</span><span class="o">:</span><span class="w"> </span><span class="n">r1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">3</span><span class="w">          </span><span class="c1">// Put the value 3 in register r1</span>
+<span class="mi">02</span><span class="o">:</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r1</span><span class="w">    </span><span class="c1">// Add the values in r0 and r1, put the result in r2</span>
+<span class="mi">03</span><span class="o">:</span><span class="w"> </span><span class="n">r3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">10</span><span class="w">         </span><span class="c1">// Put the value 10 (a memory address) in register r3</span>
+<span class="mi">04</span><span class="o">:</span><span class="w"> </span><span class="n">memory</span><span class="o">@</span><span class="n">r3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r2</span><span class="w">  </span><span class="c1">// Store the result of the addition in memory</span>
+</pre></div>
+</div>
+<p>When writing Java code, we do not need to worry about which exact registers are
+used for the computation, or which exact memory locations are used to store
+results: the translation from Java to machine instructions takes care of these
+aspects.</p>
+</div>
+<p>Continuing the example above, we can now try:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; $1 * 2
+</span>$2 ==&gt; 10
+|  created scratch variable $2 : int
+</pre></div>
+</div>
+<p>I.e., we have given the expression <code class="docutils literal notranslate"><span class="pre">$1</span> <span class="pre">*</span> <span class="pre">2</span></code> to the Java shell, which proceeds as
+follows:</p>
+<ul class="simple">
+<li><p>first, it looks up the value of the variable <code class="docutils literal notranslate"><span class="pre">$1</span></code>, which is 5;</p></li>
+<li><p>conceptually, Java rewrites the expression <code class="docutils literal notranslate"><span class="pre">$1</span> <span class="pre">*</span> <span class="pre">2</span></code> by substituting the
+occurrence of variable <code class="docutils literal notranslate"><span class="pre">$1</span></code> with its value 5 — and this substitution gives
+the expression <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">*</span> <span class="pre">2</span></code>;</p></li>
+<li><p>then, it computes the result of the expression <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">*</span> <span class="pre">2</span></code>, that produces the
+result 10;</p></li>
+<li><p>finally, it stores the result 10 in a “scratch variable” called <code class="docutils literal notranslate"><span class="pre">$2</span></code> of type
+<code class="docutils literal notranslate"><span class="pre">int</span></code>.</p></li>
+</ul>
+<p>The “scratch” variable names <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$2</span></code>, etc. are automatically selected by the
+Java shell to let us reuse the results of previous expressions — but we can
+create variables with (almost) any name we like.  Recalling the
+<a class="reference internal" href="basic-programming.html#eg-computing-area-room">opening example about computing an area</a>, let
+us now use the Java shell to compute the area of a rectangle having width 3 and
+height 7. We can start by declaring some variables with descriptive names:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var width = 3
+</span>width ==&gt; 3
+|  created variable width : int
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var height = 7
+</span>height ==&gt; 7
+|  created variable height : int
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var area = width * height
+</span>area ==&gt; 21
+|  created variable area : int
+</pre></div>
+</div>
+<p>In the first highlighted line above, <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">width</span> <span class="pre">=</span> <span class="pre">2</span></code> declares a variable called
+<code class="docutils literal notranslate"><span class="pre">width</span></code> and having the value 3; in the two lines that follow, JShell tells us
+that <code class="docutils literal notranslate"><span class="pre">width</span></code> has value 3 and type <code class="docutils literal notranslate"><span class="pre">int</span></code>.  Then, we declare the variables
+<code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">area</span></code> in a similar way.  Notice that we declare the variable
+<code class="docutils literal notranslate"><span class="pre">area</span></code> with the result of the expression <code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">*</span> <span class="pre">height</span></code> i.e. by referring to
+the variables that we have introduced earlier.  The value of <code class="docutils literal notranslate"><span class="pre">area</span></code> is computed
+by substituting the variables <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> with their respective values:
+therefore, the expression <code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">*</span> <span class="pre">height</span></code> becomes <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">7</span></code>, which produces the
+value 21.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you try to write an expression that references an undefined variable, you
+will get an error.  For example, if you misspell <code class="docutils literal notranslate"><span class="pre">area</span></code> as <code class="docutils literal notranslate"><span class="pre">aera</span></code>, you will get:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; aera + 42
+</span>|  Error:
+|  cannot find symbol
+|    symbol:   variable aera
+|  aera + 42
+|  ^--^
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To see which variables have been declared so far, their type, and their values,
+you can use the JShell command <code class="docutils literal notranslate"><span class="pre">/vars</span></code>.  If you try it now, you should see an
+output like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; /vars
+</span>|    int $1 = 5
+|    int $2 = 10
+|    int width = 3
+|    int height = 7
+|    int area = 21
+</pre></div>
+</div>
+<p>This tells us e.g. that <code class="docutils literal notranslate"><span class="pre">area</span></code> is a variable of type <code class="docutils literal notranslate"><span class="pre">int</span></code>, and has value 21.</p>
+</div>
+<p>Note that in Java <strong>expressions can be nested</strong> as one may expect from
+mathematics. In this case, after a sub-expression is computed, its result is
+used to compute the surrounding expression. Expression nesting is a common
+feature of most programming languages (except assembly). For example, consider:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var twiceArea = (width * height) * 2
+</span>twiceArea ==&gt; 42
+|  created variable twiceArea : int
+</pre></div>
+</div>
+<p>When executing the code above, Java proceeds as follows:</p>
+<ul class="simple">
+<li><p>First, Java evaluates the innermost sub-expression, i.e., <code class="docutils literal notranslate"><span class="pre">witdth</span> <span class="pre">*</span> <span class="pre">height</span></code>:</p>
+<ul>
+<li><p>Java substitutes he variables <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> with their values, which
+are respectively <code class="docutils literal notranslate"><span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">7</span></code>. Hence, the sub-expression <code class="docutils literal notranslate"><span class="pre">witdth</span> <span class="pre">*</span> <span class="pre">height</span></code>
+becomes <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">7</span></code>;</p></li>
+<li><p>Java now computes the result of the sub-expression <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">7</span></code>, which is <code class="docutils literal notranslate"><span class="pre">21</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Then, Java uses the result of the sub-expression <code class="docutils literal notranslate"><span class="pre">witdth</span> <span class="pre">*</span> <span class="pre">height</span></code> (i.e.,
+<code class="docutils literal notranslate"><span class="pre">21</span></code>) to compute the result of the initial expression <code class="docutils literal notranslate"><span class="pre">(width</span> <span class="pre">*</span> <span class="pre">height)</span> <span class="pre">*</span> <span class="pre">2</span></code>.
+Therefore, Java computes <code class="docutils literal notranslate"><span class="pre">21</span> <span class="pre">*</span> <span class="pre">2</span></code>, which gives the result <code class="docutils literal notranslate"><span class="pre">42</span></code>.</p></li>
+</ul>
+<p>The result <code class="docutils literal notranslate"><span class="pre">42</span></code> is finally used to initialise the variable <code class="docutils literal notranslate"><span class="pre">twiceArea</span></code>.</p>
+<p>(We will discuss nested expressions again later, in <a class="reference internal" href="io-conditionals-strings.html#remark-statements-vs-expressions">Remark 7</a>.)</p>
+</section>
+<section id="some-expressions-with-numbers-having-fractional-parts">
+<span id="sec-basic-programming-java-jshell-fractional"></span><span id="index-5"></span><h3>Some Expressions with Numbers Having Fractional Parts<a class="headerlink" href="#some-expressions-with-numbers-having-fractional-parts" title="Permalink to this heading">#</a></h3>
+<p>Continuing the example above, let us now try to compute half of the area of the
+rectangle:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; area / 2
+</span>$6 ==&gt; 10
+|  created scratch variable $6 : int
+</pre></div>
+</div>
+<p>Since the value of <code class="docutils literal notranslate"><span class="pre">area</span></code> is 21, the result of <code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">2</span></code> should have been 10.5
+— but it has been truncated to 10!</p>
+<p>This happens because the arithmetic expression <code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">2</span></code> only involves values
+and variables of type <code class="docutils literal notranslate"><span class="pre">int</span></code> — and consequently, Java computes a result of type
+<code class="docutils literal notranslate"><span class="pre">int</span></code>, without the fractional part <code class="docutils literal notranslate"><span class="pre">.5</span></code>.  Correspondingly, the scratch variable
+<code class="docutils literal notranslate"><span class="pre">$6</span></code> gets type <code class="docutils literal notranslate"><span class="pre">int</span></code>, because that is the type of the result of the expression
+<code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">2</span></code>.</p>
+<p>Let us try instead to divide the area by <code class="docutils literal notranslate"><span class="pre">2.0</span></code> (i.e. we explicitly write the
+radix point and the fractional part, which in this case is 0):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var halfArea = area / 2.0
+</span>halfArea ==&gt; 10.5
+|  created variable halfArea : double
+</pre></div>
+</div>
+<p>Observe that the result of <code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">2.0</span></code> is now 10.5, which becomes the value of
+the variable <code class="docutils literal notranslate"><span class="pre">halfArea</span></code>; moreover, <code class="docutils literal notranslate"><span class="pre">halfArea</span></code> has type <code class="docutils literal notranslate"><span class="pre">double</span></code>, which denotes
+numbers which may include a fractional part.</p>
+<p id="index-6">The reason is that, in the expression <code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">2.0</span></code>, the value <code class="docutils literal notranslate"><span class="pre">2.0</span></code> has type
+<code class="docutils literal notranslate"><span class="pre">double</span></code> — and when a numerical operation contains <em>at least</em> one operand of
+type <code class="docutils literal notranslate"><span class="pre">double</span></code>, then the result of the whole operation has also type <code class="docutils literal notranslate"><span class="pre">double</span></code>,
+and is computed with the fractional part if needed.  Consequently, the result of
+<code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">2.0</span></code> has type <code class="docutils literal notranslate"><span class="pre">double</span></code> and is the value 10.5.  Correspondingly, the
+variable <code class="docutils literal notranslate"><span class="pre">halfArea</span></code> gets type <code class="docutils literal notranslate"><span class="pre">double</span></code>, because that is the type of the result
+of the expression <code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">2.0</span></code>.</p>
+<div class="proof remark admonition" id="remark-type-promotion">
+<p class="admonition-title"><span class="caption-number">Remark 2 </span> (Type promotion)</p>
+<section class="remark-content" id="proof-content">
+<p>More technically, what happened to the expression <code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">2.0</span></code> is an example of
+<strong>automatic type promotion</strong>, and the principle is: <em>if a numerical operation
+involves operands having different types, then the operand with the “less
+precise” type is promoted (i.e. converted) to the “most precise” type before
+computing the result.</em>   In the example above, the type of the operand <code class="docutils literal notranslate"><span class="pre">2.0</span></code>
+(which is <code class="docutils literal notranslate"><span class="pre">double</span></code>) is more precise than the type of <code class="docutils literal notranslate"><span class="pre">area</span></code> (which is <code class="docutils literal notranslate"><span class="pre">int</span></code>).
+Therefore, the value of <code class="docutils literal notranslate"><span class="pre">area</span></code> (21, of type <code class="docutils literal notranslate"><span class="pre">int</span></code>) is automatically promoted
+(to 21.0, of type <code class="docutils literal notranslate"><span class="pre">double</span></code>) before computing the operation (21.0 / 2.0).</p>
+</section>
+</div><span class="target" id="index-7"></span></section>
+<section id="beyond-numbers-booleans-and-strings">
+<span id="sec-basic-programming-java-jshell-booleans-strings"></span><span id="index-8"></span><h3>Beyond Numbers: Booleans and Strings<a class="headerlink" href="#beyond-numbers-booleans-and-strings" title="Permalink to this heading">#</a></h3>
+<p>Java supports values and expressions with a variety of types (and later in
+the course we will see that we can also define new types).</p>
+<p>For instance, Java supports values of type <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, which can be only <code class="docutils literal notranslate"><span class="pre">true</span></code>
+or <code class="docutils literal notranslate"><span class="pre">false</span></code>.  It also provides the operators <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> (“less than”), <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> (“greater
+than”) or <code class="docutils literal notranslate"><span class="pre">==</span></code> (“equal”) to compare two numbers — and the result of the
+comparison is a boolean value.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; width &lt; height
+</span>$9 ==&gt; true
+|  created scratch variable $9 : boolean
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; width &gt; height
+</span>$10 ==&gt; false
+|  created scratch variable $10 : boolean
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; (width + 4) == height
+</span>$11 ==&gt; true
+|  created scratch variable $11 : boolean
+</pre></div>
+</div>
+<p>Notice that, since <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code> are values, we can store them into
+variables: in fact, the booleans computed in the examples above are stored in
+(scratch) variables — and of course, we can create our own variables of type
+<code class="docutils literal notranslate"><span class="pre">boolean</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var isWidthGreaterThanHeight = width &gt; height
+</span>isWidthGreaterThanHeight ==&gt; true
+|  created variable isWidthGreaterThanHeight : boolean
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The idea that <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code> are values that are produced by a computation
+can also be found in the <a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a>
+comparison instructions: for instance, <span class="asm">r1 &lt;- r2 &lt; r3</span> produces the value
+1 (and writes it in <code class="docutils literal notranslate"><span class="pre">r1</span></code>) when the value in <code class="docutils literal notranslate"><span class="pre">r2</span></code> is smaller than the value in
+<code class="docutils literal notranslate"><span class="pre">r3</span></code>; otherwise, the comparison produces the value 0 (and writes it in <code class="docutils literal notranslate"><span class="pre">r1</span></code>).
+The difference is that Java provides the dedicated keywords <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code>
+to represent boolean values, instead of letting us deal with the numerical
+values 1 and 0.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When writing Java code, we must be mindful about the types expected by operators
+and other language constructs.  For example, the multiplication operator <code class="docutils literal notranslate"><span class="pre">*</span></code> and
+the comparison <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> only accept operands that are numbers (e.g. of type <code class="docutils literal notranslate"><span class="pre">int</span></code> or
+<code class="docutils literal notranslate"><span class="pre">double</span></code>).  Therefore, if we try to use <code class="docutils literal notranslate"><span class="pre">*</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> with some operand of type
+<code class="docutils literal notranslate"><span class="pre">boolean</span></code>, we get an error.  You can see the errors by trying the following
+examples:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; width * true
+</span>|  Error:
+|  bad operand types for binary operator &#39;*&#39;
+|    first type:  int
+|    second type: boolean
+|  width * true
+|  ^----------^
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; isWidthGreaterThanHeight &gt; 42.0
+</span>|  Error:
+|  bad operand types for binary operator &#39;&gt;&#39;
+|    first type:  boolean
+|    second type: double
+|  isWidthGreaterThanHeight &gt; 42.0
+|  ^-----------------------------^
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; width &lt; (4 == height)
+</span>|  Error:
+|  bad operand types for binary operator &#39;&lt;&#39;
+|    first type:  int
+|    second type: boolean
+|  width &lt; (4 == height)
+|  ^-------------------^
+</pre></div>
+</div>
+<p>This type distinction does not exist in <a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a>,
+where every value is a numerical value — so the value <code class="docutils literal notranslate"><span class="pre">0</span></code> is used both
+as the result of a (false) numerical comparison, and as an integer that can be
+operand for additions or subtractions. This lack of type distinctions between
+values is often the source of confusion and mistakes in assembly programs.</p>
+</div>
+<p>Java also supports values of type <code class="docutils literal notranslate"><span class="pre">String</span></code>, that are sequences of characters.
+To create a value of type <code class="docutils literal notranslate"><span class="pre">String</span></code>, we write the desired sequence of characters
+enclosed between double quotes <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>.  For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var hello = &quot;Hello, I am a String!&quot;
+</span>hello ==&gt; &quot;Hello, I am a String!&quot;
+|  created variable hello : String
+</pre></div>
+</div>
+<p>The operator <code class="docutils literal notranslate"><span class="pre">+</span></code> also works on strings: it can take two strings as operands, and
+produces a new string obtained by concatenating the first and second operand.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var hello2 = hello + &quot; And here is more text&quot;
+</span>hello2 ==&gt; &quot;Hello, I am a string! And here is more text&quot;
+|  created variable hello2 : String
+</pre></div>
+</div>
+<p>The operator <code class="docutils literal notranslate"><span class="pre">+</span></code> can also concatenate strings to <code class="docutils literal notranslate"><span class="pre">int</span></code>s, <code class="docutils literal notranslate"><span class="pre">double</span></code>s, or
+<code class="docutils literal notranslate"><span class="pre">boolean</span></code>s, and produce a new string as a result.  For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var message = &quot;The area of the rectangle is &quot; + area
+</span>message ==&gt; &quot;The area of the rectangle is 21&quot;
+|  created variable message : String
+</pre></div>
+</div>
+<span class="target" id="index-9"></span><span class="target" id="index-10"></span><span class="target" id="index-11"></span><span class="target" id="index-12"></span><span class="target" id="index-13"></span><span class="target" id="index-14"></span><span class="target" id="index-15"></span></section>
+<section id="javas-primitive-data-types-and-numerical-operators">
+<span id="sec-basic-programming-java-primitive-data-types-num-ops"></span><span id="index-16"></span><h3>Java’s Primitive Data Types and Numerical Operators<a class="headerlink" href="#javas-primitive-data-types-and-numerical-operators" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#table-primitive-data-types"><span class="std std-numref">Table 5</span></a> and <a class="reference internal" href="#table-numerical-ops"><span class="std std-numref">Table 6</span></a> below
+provide a brief summary of all the <strong>primitive data types</strong> and
+<strong>numerical operators</strong> in Java (some of which we have already seen above).
+<a class="reference internal" href="#table-primitive-data-types"><span class="std std-numref">Table 5</span></a> also includes examples on
+how to write <strong>literal values</strong> of each primitive data type (try writing them on
+the Java shell!).</p>
+<p>These tables are just for reference, and you do not need to know their content
+by heart. We will use these primitive types and numerical operators throughout
+the course.</p>
+<table class="table" id="table-primitive-data-types">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Primitive data types in Java</span><a class="headerlink" href="#table-primitive-data-types" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bits)</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Range of allowed values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">byte</span></code></p></td>
+<td><p>8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(byte)123</span></code></p></td>
+<td><p>-128 to 127</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">short</span></code></p></td>
+<td><p>16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(short)12345</span></code></p></td>
+<td><p>-32,768 to 32,767</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1234567890</span></code></p></td>
+<td><p>-2,147,483,648 to 2,147,483,647</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">long</span></code></p></td>
+<td><p>64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1234567890123456789L</span></code></p></td>
+<td><p>-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3.141592f</span></code></p></td>
+<td><p>+/-3.4E+38F (6-7 significant digits)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></td>
+<td><p>64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3.141592653589793</span></code></p></td>
+<td><p>+/-1.8E+308 (15 significant digits)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">char</span></code></p></td>
+<td><p>16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'A'</span></code></p></td>
+<td><p>All <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">Unicode characters</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Either <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="index-17"></span><span class="target" id="index-18"></span><div class="admonition important" id="index-19">
+<p class="admonition-title">Important</p>
+<p>As shown in <a class="reference internal" href="#table-primitive-data-types"><span class="std std-numref">Table 5</span></a>, <strong>all primitive Java types
+have limits</strong> — for example, a value of type <code class="docutils literal notranslate"><span class="pre">int</span></code> cannot be smaller than
+-2147483648, nor larger than 2147483647. This is conceptually similar to the
+limits in <a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a>, where a
+value held in a register or in a memory location must be between 0 and 4095.</p>
+<p>When a computation exceeds the maximum value allowed by its result type, it will
+<strong>overflow</strong> and “wrap around” to the minimum allowed value. <em>Vice versa</em>, when
+a computation yields a result that is smaller than the minimum value allowed by
+its result type, it will <strong>underflow</strong> and “wrap around” to the maximum allowed
+value. For instance, you can try on the Java shell:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="hll">jshell&gt; var overflow = 2147483647 + 1
+</span>overflow ==&gt; -2147483648
+|  created variable overflow : int
+
+<span class="hll">jshell&gt; var underflow = -2147483648 - 1
+</span>underflow ==&gt; 2147483647
+|  created variable underflow : int
+</pre></div>
+</div>
+<p>In this example, adding 1 to the maximum <code class="docutils literal notranslate"><span class="pre">int</span></code>eger value yields the minimum
+<code class="docutils literal notranslate"><span class="pre">int</span></code>eger value; <em>vice versa</em>, subtracting 1 from the minimum <code class="docutils literal notranslate"><span class="pre">int</span></code>eger value
+yields the maximum <code class="docutils literal notranslate"><span class="pre">int</span></code>eger value.</p>
+<p>You can observe overflows and underflows in BlinkenBits, too. For example, you
+can:</p>
+<ul>
+<li><p>Overflow the value contained in a register:</p>
+<div class="highlight-fsharp notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="o">:</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">05</span><span class="w">        </span><span class="c1">// Memory addr. containing the max allowed value (see below)</span>
+<span class="mi">01</span><span class="o">:</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">memory</span><span class="o">@</span><span class="n">r0</span><span class="w"> </span><span class="c1">// Load maximum allowed value 4095 into r0</span>
+<span class="mi">02</span><span class="o">:</span><span class="w"> </span><span class="n">r1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">1</span><span class="w">         </span><span class="c1">// Put value 1 into r1</span>
+<span class="mi">03</span><span class="o">:</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r1</span><span class="w">   </span><span class="c1">// The result of this addition will be 0 (overflow)</span>
+<span class="mi">04</span><span class="o">:</span><span class="w"> </span><span class="n">halt</span>
+<span class="mi">05</span><span class="o">:</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="mi">4095</span>
+</pre></div>
+</div>
+</li>
+<li><p>Underflow the value contained in a register:</p>
+<div class="highlight-fsharp notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span><span class="o">:</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">0</span><span class="w">         </span><span class="c1">// Put the minimum allowed value 0 into r0</span>
+<span class="mi">01</span><span class="o">:</span><span class="w"> </span><span class="n">r1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">1</span><span class="w">         </span><span class="c1">// Put value 1 into r1</span>
+<span class="mi">02</span><span class="o">:</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r1</span><span class="w">   </span><span class="c1">// The result of this subtraction will be 4095 (underflow)</span>
+<span class="mi">03</span><span class="o">:</span><span class="w"> </span><span class="n">halt</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you try to write a literal numerical value like <code class="docutils literal notranslate"><span class="pre">1234567890123456789</span></code>, Java
+will interpret it as a literal value of type <code class="docutils literal notranslate"><span class="pre">int</span></code> — and you will get an
+error, because that value is too big to fit in 32 bits (the size of <code class="docutils literal notranslate"><span class="pre">int</span></code>
+values, as shown in <a class="reference internal" href="#table-primitive-data-types"><span class="std std-numref">Table 5</span></a>).  Try it on the Java
+shell!</p>
+<p>To represent such a big number, Java provides the <code class="docutils literal notranslate"><span class="pre">long</span></code> type — and to write a
+literal value of <code class="docutils literal notranslate"><span class="pre">long</span></code> type, you need to add an <code class="docutils literal notranslate"><span class="pre">L</span></code> at the end of the number,
+as shown in the example in <a class="reference internal" href="#table-primitive-data-types"><span class="std std-numref">Table 5</span></a>.</p>
+<p>Still, the <code class="docutils literal notranslate"><span class="pre">long</span></code> type also has its limits — so if you add a <code class="docutils literal notranslate"><span class="pre">0</span></code> at the end of
+the number above and write <code class="docutils literal notranslate"><span class="pre">12345678901234567890L</span></code>, you will get an error,
+because that number does not fit in 64 bits (the size of <code class="docutils literal notranslate"><span class="pre">long</span></code> values).  (Try
+it on the Java shell!)</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#table-primitive-data-types"><span class="std std-numref">Table 5</span></a> does not include the type <code class="docutils literal notranslate"><span class="pre">String</span></code>.
+This is not an oversight: we will address the topic in
+<a class="reference internal" href="io-conditionals-strings.html#mod-io-cond-strings"><span class="std std-ref">Module 2, Part 2: Console I/O, Conditionals, Strings</span></a>.</p>
+</div>
+<table class="table" id="table-numerical-ops">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Numerical operators in Java</span><a class="headerlink" href="#table-numerical-ops" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3.14</span> <span class="pre">+</span> <span class="pre">42</span></code></p></td>
+<td><p>Addition</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3.14</span> <span class="pre">-</span> <span class="pre">42</span></code></p></td>
+<td><p>Subtraction</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10.0</span> <span class="pre">/</span> <span class="pre">4</span></code></p></td>
+<td><p>Division</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3.14</span> <span class="pre">*</span> <span class="pre">2</span></code></p></td>
+<td><p>Multiplication</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">13</span> <span class="pre">%</span> <span class="pre">5</span></code></p></td>
+<td><p>Modulo (a.k.a. remainder of the division)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="our-first-java-program">
+<span id="sec-basic-programming-java-first-program"></span><span id="index-20"></span><h2>Our First Java Program<a class="headerlink" href="#our-first-java-program" title="Permalink to this heading">#</a></h2>
+<p>We have used the <a class="reference internal" href="#sec-basic-programming-java-jshell"><span class="std std-ref">Java shell</span></a> to
+experiment with the Java language — but to write an actual Java program, we
+need to write Java statements in a text file with extension <code class="docutils literal notranslate"><span class="pre">.java</span></code>.  Let us now
+create a simple Java program by assembling some of the statements we tried on
+the Java shell.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Our first Java program!</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kd">class</span> <span class="nc">Area</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;The area of the rectangle is &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">area</span><span class="p">;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="linenos">11</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">12</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Let us examine the program above in more detail:</p>
+<ul class="simple">
+<li><p>Line 1 is just a comment: when we write <code class="docutils literal notranslate"><span class="pre">//</span></code> in Java, everything that follows
+the slashes until the end of the line is ignored by the language.  This is
+handy e.g. for leaving notes and documentation for the humans who read the
+program.</p></li>
+<li><p>Lines 5–8 are the same Java statements that we have tried on the Java shell
+— except that <strong>each statement is followed by a semicolon</strong> (the semicolon
+is mandatory, and is used to indicate the end of a statement).</p></li>
+<li><p>On line 10, there is an additional statement: it invokes <code class="docutils literal notranslate"><span class="pre">System.out.println</span></code>
+passing the variable <code class="docutils literal notranslate"><span class="pre">message</span></code> as argument.  <code class="docutils literal notranslate"><span class="pre">System.out.println</span></code> is a
+facility included in the Java environment: when it is invoked, it displays the
+value of its argument on the terminal where the program is running.  <em>(You can
+try that on the Java shell, if you wish.  We will discuss this topic in more
+detail later in the course.)</em></p></li>
+<li><p>All these statements are contained inside the curly brackets <code class="docutils literal notranslate"><span class="pre">{</span></code>…<code class="docutils literal notranslate"><span class="pre">}</span></code> (lines
+4–11) of a <em>method</em> called <code class="docutils literal notranslate"><span class="pre">main</span></code>: when a Java program is launched, it runs
+by executing the statements inside <code class="docutils literal notranslate"><span class="pre">main</span></code>, one by one.  This is conceptually
+similar to <a class="reference internal" href="basic-programming.html#sec-basic-programming-blinkenbits"><span class="std std-ref">BlinkenBits</span></a> that
+executes the instructions in memory, one by one. <em>(We will talk more about
+Java methods later in the course.)</em></p></li>
+<li><p>The method <code class="docutils literal notranslate"><span class="pre">main</span></code>, in turn, belongs a <em>class</em> called <code class="docutils literal notranslate"><span class="pre">Area</span></code> (whose contents
+are inside the curly brackets <code class="docutils literal notranslate"><span class="pre">{</span></code>…<code class="docutils literal notranslate"><span class="pre">}</span></code> on lines 3–12).  We can choose the
+class name however we like. <em>(We will talk more about classes later in the
+course.)</em></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In the Java program above, you can notice that the code is <strong>indented</strong>:</p>
+<ul class="simple">
+<li><p>the code belonging to <code class="docutils literal notranslate"><span class="pre">main</span></code> (lines 5-10) is indented to the right w.r.t. the
+lines that open and close the definition of <code class="docutils literal notranslate"><span class="pre">main</span></code> (lines 4 and 11);</p></li>
+<li><p>similarly, the code belonging to <code class="docutils literal notranslate"><span class="pre">Area</span></code> is indented to the right w.r.t. the
+lines that open and close the definition of <code class="docutils literal notranslate"><span class="pre">Area</span></code> (lines 3 and 12).</p></li>
+</ul>
+<p>This indentation is not required by Java, but makes the code much easier to read
+for us programmers.  This will become very important as our programs will become
+more complex: indentation helps in grasping the code structure at a glance, and
+navigating the program while working on it.</p>
+</div>
+<p>To write and run this program, you can proceed as follows:</p>
+<ol class="arabic">
+<li><p>Open a new terminal — or exit from the Java shell by typing <code class="docutils literal notranslate"><span class="pre">/exit</span></code>.</p></li>
+<li><p>At the terminal prompt, launch Visual Studio Code by executing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>Area.java
+</pre></div>
+</div>
+</li>
+<li><p>You should now see the editing window of VS Code: copy&amp;paste the text of the
+Java program above, and save the file (by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">S</span></code> or <code class="docutils literal notranslate"><span class="pre">⌘</span></code>+<code class="docutils literal notranslate"><span class="pre">S</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If VS Code suggests you to install some “Java extensions,” please ignore it.</p>
+</div>
+</li>
+<li><p>With the steps above, you have created a new text file called <code class="docutils literal notranslate"><span class="pre">Area.java</span></code>
+containing the simple Java program above.  To run the program, go back to
+the terminal from which you launched VS Code, and execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>java<span class="w"> </span>Area.java
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If everything goes well, you should see the following output on the terminal:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The area of the rectangle is 21
+</pre></div>
+</div>
+<p>and then you should see the terminal prompt again: this means that the Java
+program has completed its execution.</p>
+<p>Behind the scenes, the <code class="docutils literal notranslate"><span class="pre">java</span></code> command has translated the program written in the
+file <code class="docutils literal notranslate"><span class="pre">Area.java</span></code> into machine instructions, and those instructions have been
+executed by the CPU of your computer.  <em>(This is not 100% accurate and there is
+more going on behind the scenes, but we will discuss the precise details of how
+<code class="docutils literal notranslate"><span class="pre">java</span></code> works later in the course.)</em></p>
+</section>
+<section id="concluding-remarks">
+<span id="sec-basic-programming-java-concluding-remarks"></span><h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
+<p>You should now have an understanding of the following topics:</p>
+<ul class="simple">
+<li><p>how to experiment with basic Java statements on the Java shell (JShell);</p></li>
+<li><p>in Java, every value and expression has a type (we have experimented with
+<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">double</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code> and <code class="docutils literal notranslate"><span class="pre">String</span></code>);</p></li>
+<li><p>how to save a simple Java program in a file, and how to run it.</p></li>
+</ul>
+<p>You should be able to use the Java shell for further experiments, and use
+<a class="reference internal" href="#sec-basic-programming-java-first-program"><span class="std std-ref">the simple Java program above</span></a>
+as a blueprint and starting point for writing other simple programs.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you read other materials about Java programming (including the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>), you will notice that there is another popular
+style for declaring variables: instead of writing <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">...</span></code>, we can manually
+specify the type of the variable, by writing the type itself instead of <code class="docutils literal notranslate"><span class="pre">var</span></code>.
+Therefore,
+<a class="reference internal" href="#sec-basic-programming-java-first-program"><span class="std std-ref">the simple Java program above</span></a>
+can be also written as follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">class</span> <span class="nc">Area</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;The area of the rectangle is &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">area</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">10</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Feel free to adopt the style you like better, or mix the two styles (e.g.
+declare some variables with <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">...</span></code> and others with <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">...</span></code>).  No
+matter which style you adopt, keep in mind that <em>all variables and values have a
+type</em>, as seen during our
+<a class="reference internal" href="#sec-basic-programming-java-jshell"><span class="std std-ref">experiments with the Java shell</span></a>.</p>
+</div>
+</section>
+<section id="references-and-further-readings">
+<span id="sec-basic-programming-java-references-readings"></span><h2>References and Further Readings<a class="headerlink" href="#references-and-further-readings" title="Permalink to this heading">#</a></h2>
+<p>You are encouraged to read the following sections of the
+<a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a>: (Note: they sometimes mention Java features
+that we will address later in the course)</p>
+<ul class="simple">
+<li><p>Section 1.4 - “The Java Programming Language”</p></li>
+<li><p>Section 2.3 - “Primitive Data Types”</p></li>
+<li><p>Section 2.4 - “Expressions”</p></li>
+</ul>
+<p>The following appendix of the <a class="reference internal" href="overview.html#sec-book"><span class="std std-ref">reference book</span></a> may be also
+useful:</p>
+<ul class="simple">
+<li><p>Appendix C - “The Unicode Character Set”</p></li>
+</ul>
+<p>The Java documentation includes a
+<a class="reference external" href="https://docs.oracle.com/en/java/javase/21/jshell/">Java Shell User’s Guide</a>
+(Note: it mentions Java features that we will address later in the course).</p>
+</section>
+<section id="exercises">
+<span id="sec-basic-programming-java-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These exercises are not part of the course assessment.  They are provided to
+help you self-test your understanding and practice with Java.</p>
+</div>
+<div class="exercise admonition" id="ex-basic-programming-java-guess-type">
+
+<p class="admonition-title"><span class="caption-number">Exercise 19 </span> (What is the type?)</p>
+<section id="exercise-content">
+<p>Read the following Java expressions, and figure out what is the type of each
+one.  To verify whether your answers are correct, you can execute each
+expression on the <a class="reference internal" href="#sec-basic-programming-java-jshell"><span class="std std-ref">Java shell</span></a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Don’t forget to use the option <code class="docutils literal notranslate"><span class="pre">-v</span></code> when you launch <code class="docutils literal notranslate"><span class="pre">jshell</span> <span class="pre">-v</span></code>, otherwise the
+Java shell will not display the type information.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">58</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-23</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;afd</span> <span class="pre">&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">42.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;42.0&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1.5</span> <span class="pre">*</span> <span class="pre">60.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1.5</span> <span class="pre">*</span> <span class="pre">60</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">24</span> <span class="pre">*</span> <span class="pre">60</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1.1</span> <span class="pre">+</span> <span class="pre">60</span> <span class="pre">-</span> <span class="pre">1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">150.0</span> <span class="pre">/</span> <span class="pre">60</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">150</span> <span class="pre">/</span> <span class="pre">60</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span> <span class="pre">+</span> <span class="pre">3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Apollo</span> <span class="pre">&quot;</span> <span class="pre">+</span> <span class="pre">(5</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">2)</span> <span class="pre">+&quot;</span> <span class="pre">was</span> <span class="pre">the</span> <span class="pre">last</span> <span class="pre">crewed</span> <span class="pre">mission</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">Moon&quot;</span></code></p></li>
+</ul>
+</section>
+</div>
+<div class="exercise admonition" id="ex-basic-programming-java-errors">
+
+<p class="admonition-title"><span class="caption-number">Exercise 20 </span> (Causing errors)</p>
+<section id="exercise-content">
+<p>Edit
+<a class="reference internal" href="#sec-basic-programming-java-first-program"><span class="std std-ref">the simple Java program above</span></a>
+by applying one or more of the changes below: each change introduces an error in
+the program.  After each change, save the modified file <code class="docutils literal notranslate"><span class="pre">Area.java</span></code>, and try to
+run it, by executing <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">Area.java</span></code> on the terminal: observe how each change
+causes a different error.</p>
+<ul class="simple">
+<li><p>Remove one of the semicolons</p></li>
+<li><p>Remove one of the curly brackets</p></li>
+<li><p>On line 4, change <code class="docutils literal notranslate"><span class="pre">main</span></code> into <code class="docutils literal notranslate"><span class="pre">maiiin</span></code></p></li>
+<li><p>On line 3, change the name of the variable <code class="docutils literal notranslate"><span class="pre">width</span></code> into <code class="docutils literal notranslate"><span class="pre">w</span></code></p></li>
+<li><p>On line 3, change the initialisation value from <code class="docutils literal notranslate"><span class="pre">3</span></code> (which has type <code class="docutils literal notranslate"><span class="pre">int</span></code>)
+into <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code> (which has type <code class="docutils literal notranslate"><span class="pre">String</span></code>)</p></li>
+<li><p>On line 8, remove the first or last double-quote <code class="docutils literal notranslate"><span class="pre">&quot;</span></code></p></li>
+<li><p>On line 10, change <code class="docutils literal notranslate"><span class="pre">println</span></code> into <code class="docutils literal notranslate"><span class="pre">bogus</span></code></p></li>
+</ul>
+</section>
+</div>
+</section>
+<section id="lab-and-weekly-assessments">
+<span id="sec-basic-programming-java-lab"></span><h2>Lab and Weekly Assessments<a class="headerlink" href="#lab-and-weekly-assessments" title="Permalink to this heading">#</a></h2>
+<p>During the lab you can try the
+<a class="reference internal" href="#sec-basic-programming-java-exercises"><span class="std std-ref">exercises above</span></a> or
+begin your work on the <strong>weekly assessments</strong> below.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lab-basic-programming-java-lab-hello"><span class="std std-ref">01 - Hello, World!</span></a></p></li>
+<li><p><a class="reference internal" href="#lab-basic-programming-java-lab-taxes"><span class="std std-ref">02 - Taxes</span></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>For each assessment, you can download the corresponding handout and submit
+your solution on <strong>DTU Autolab: <a title="Autolab assessments" href="https://autolab.compute.dtu.dk/courses/02312-E24">https://autolab.compute.dtu.dk/courses/02312-E24</a></strong>.</p></li>
+<li><p>For details on how to use Autolab and the assessment handouts, and how to
+submit your solutions, please read <a class="reference internal" href="overview.html#sec-autolab"><span class="std std-ref">these instructions</span></a>.</p></li>
+<li><p>If you have troubles, you can
+<a class="reference internal" href="overview.html#sec-help"><span class="std std-ref">get help from the teacher and TAs</span></a>.</p></li>
+</ul>
+</div>
+<section id="hello-world">
+<span id="lab-basic-programming-java-lab-hello"></span><h3>01 - Hello, World!<a class="headerlink" href="#hello-world" title="Permalink to this heading">#</a></h3>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Hello.java</span></code> provided in the handout to make it display the
+sentence <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">World!</span></code> on the terminal.  Submit the modified file <code class="docutils literal notranslate"><span class="pre">Hello.java</span></code>
+on DTU Autolab.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>In the file <code class="docutils literal notranslate"><span class="pre">Hello.java</span></code> (provided in the handout) there is a comment where
+you should write your Java code.</p></li>
+<li><p>You should use <code class="docutils literal notranslate"><span class="pre">System.out.println(...)</span></code>, as in
+<a class="reference internal" href="#sec-basic-programming-java-first-program"><span class="std std-ref">the simple Java program above</span></a>.</p></li>
+<li><p>Make sure that the program still runs without errors after your changes, by
+executing in a terminal (in the handout directory):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>java Hello.java
+</pre></div>
+</div>
+</li>
+<li><p>Before submitting your solution on DTU Autolab, you can grade it on your own
+computer, by executing in a terminal (in the handout directory):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./grade
+</pre></div>
+</div>
+<p>When the resulting messages say <em>“For details, see: file:/…”</em>, then you
+can open the URL beginning with <code class="docutils literal notranslate"><span class="pre">file:/...</span></code> in a browser to see more details.</p>
+</li>
+</ul>
+</div>
+</section>
+<section id="taxes">
+<span id="lab-basic-programming-java-lab-taxes"></span><h3>02 - Taxes<a class="headerlink" href="#taxes" title="Permalink to this heading">#</a></h3>
+<p>The file <code class="docutils literal notranslate"><span class="pre">Taxes.java</span></code> provided in the handout computes and displays the <em>labour
+market contribution</em> and the <em>special pension savings</em> of a person with an
+<em>income</em> of DKK 120000.</p>
+<p>Edit the file <code class="docutils literal notranslate"><span class="pre">Taxes.java</span></code> to make it <em>also</em> compute and display the <em>basic
+tax</em>, as described below.  Then, submit the modified file <code class="docutils literal notranslate"><span class="pre">Taxes.java</span></code> on DTU
+Autolab.</p>
+<p>The <em>basic tax</em> is computed with the following formula:</p>
+<div class="math notranslate nohighlight">
+\[
+(\mathit{income} - (\mathit{contrib} + \mathit{pension} + \mathit{allowance})) \times 6\%
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathit{contrib}\)</span> is the <em>labour market contribution</em> (already computed in
+<code class="docutils literal notranslate"><span class="pre">Taxes.java</span></code>);</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathit{pension}\)</span> is the <em>special pension savings</em> (already computed in
+<code class="docutils literal notranslate"><span class="pre">Taxes.java</span></code>);</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathit{allowance}\)</span> is a <em>personal allowance</em> that (for this exercise) must
+be equal to DKK 33400.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<ul>
+<li><p>See the hints provided for the assessment
+<a class="reference internal" href="#lab-basic-programming-java-lab-hello"><span class="std std-ref">01 - Hello, World!</span></a></p></li>
+<li><p>To see what the modified <code class="docutils literal notranslate"><span class="pre">Taxes.java</span></code> is expected to output on the terminal,
+you can execute, in the handout directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./grade
+</pre></div>
+</div>
+<p>You will see a message that says <em>“For details, see: file:/…”</em>: you can open
+the URL beginning with <code class="docutils literal notranslate"><span class="pre">file:/...</span></code> in a browser to see more details.</p>
+</li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="basic-programming.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 1: Basic Notions of Computing and Programming</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="io-conditionals-strings.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 2, Part 2: Console I/O, Conditionals, Strings</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-java">What is Java?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenting-with-the-java-shell-jshell">Experimenting with the Java Shell (JShell)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-simple-integer-expressions">Some Simple Integer Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-expressions-with-numbers-having-fractional-parts">Some Expressions with Numbers Having Fractional Parts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-numbers-booleans-and-strings">Beyond Numbers: Booleans and Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#javas-primitive-data-types-and-numerical-operators">Java’s Primitive Data Types and Numerical Operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-first-java-program">Our First Java Program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-remarks">Concluding Remarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-readings">References and Further Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-and-weekly-assessments">Lab and Weekly Assessments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hello-world">01 - Hello, World!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#taxes">02 - Taxes</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024 by Alceste Scalas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
